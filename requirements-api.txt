@@ -1,0 +1,7 @@
+-r requirements-core.txt
+fastapi>=0.110
+uvicorn[standard]>=0.29
+pydantic>=2
+python-multipart
+pytest
+pytest-cov   # setup.cfg [tool:pytest] addopts uses --cov

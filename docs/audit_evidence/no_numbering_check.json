@@ -1,0 +1,69 @@
+{
+ "models_listed": [
+  "classification",
+  "detection",
+  "segmentation"
+ ],
+ "steps": {
+  "preprocess": [
+   "ok",
+   ""
+  ],
+  "detect": [
+   "ok",
+   ""
+  ],
+  "number": [
+   "unavailable",
+   "No dental numbering model is available. Place a trained numbering checkpoint and its .json metadata sidecar in"
+  ],
+  "segment": [
+   "ok",
+   ""
+  ],
+  "match": [
+   "ok",
+   "30/32 detections matched to a segmentation instance (one-to-one, IoU >= 0.5)"
+  ],
+  "classify": [
+   "ok",
+   ""
+  ],
+  "classify_tta": [
+   "ok",
+   ""
+  ],
+  "detect_tta": [
+   "ok",
+   ""
+  ],
+  "segment_tta": [
+   "ok",
+   ""
+  ]
+ },
+ "n_regions": 32,
+ "n_with_fdi": 0,
+ "numbering_statuses": [
+  "unassigned"
+ ],
+ "summary": {
+  "n_regions": 32,
+  "n_numbered": 0,
+  "n_with_mask": 30,
+  "n_review_required": 32,
+  "n_abstained": 25,
+  "all_steps_ok": false,
+  "seconds": 5.73
+ },
+ "numbering_model": {
+  "unavailable": "No dental numbering model is available. Place a trained numbering checkpoint and its .json metadata sidecar in dm_nonum_ly42jctd/, then set active.numbering in configs/models.yaml - or train one from the Model Training page once the main dataset is available."
+ },
+ "PASS": true,
+ "report_findings_with_tooth_number": 0,
+ "report_models": {
+  "detection": "dentex_teeth_detection_v1",
+  "segmentation": "dentex_teeth_segmentation_v1",
+  "classification": "dentex_findings_classification_v1"
+ }
+}

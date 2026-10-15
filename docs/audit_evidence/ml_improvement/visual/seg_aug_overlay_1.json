@@ -1,0 +1,13 @@
+{
+ "image_id": "qe_train_372",
+ "seed": 7,
+ "config_version": "sync_v1",
+ "geom": {
+  "rot_deg": -2.756817773739524,
+  "scale": 0.9682009728094305,
+  "tx": 61.97954133371782,
+  "ty": 32.26463415144454
+ },
+ "hflip": false,
+ "dropped": 0
+}

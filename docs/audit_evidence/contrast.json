@@ -1,0 +1,7 @@
+{
+ "measured": "2026-10-14T17:28:58.485Z",
+ "rule": "WCAG 2.x AA: 4.5:1 normal text, 3:1 large text (>=24px or >=18.66px bold); disabled controls exempt",
+ "unique_failing_combinations_all_pages": 0,
+ "failing_on_end_user_pages": 0,
+ "failures": []
+}

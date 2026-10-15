@@ -1,0 +1,60 @@
+# Dataset expectations for DentaMind AI.  Nothing here is a path on a specific machine: all paths are
+# relative to DATA_ROOT (default: ./data, or ./Data if that is what exists).
+#
+# The real DENTEX dataset is expected to be extracted below DATA_ROOT. The loader searches for any
+# directory named like one of `image_dir_names` and for COCO-style annotation JSON next to / above it.
+dataset:
+  name: DENTEX
+  # Directory names that hold radiographs.
+  image_dir_names: [xrays]
+  # Annotation file names that identify the *main* (annotated) dataset. Matching is case-insensitive.
+  annotation_file_names:
+    - train_quadrant_enumeration_disease.json
+    - train_quadrant_enumeration.json
+    - train_quadrant.json
+    - dentex_detection_train.json
+    - dentex_detection_val.json
+    - dentex_detection_test.json
+  image_extensions: [".png", ".jpg", ".jpeg"]
+  max_search_depth: 6
+  # Folders that never contain project data.
+  ignore_dirs: [".ipynb_checkpoints", "__pycache__", "checkpoints", "runs", "results", "uploads", "processed", "splits", "reports", "annotations", "logs"]
+  # Directory names whose images are treated as *unlabeled test data* when no annotation file exists.
+  test_data_dir_hints: [validation_data, test_data, sample_data]
+  download_help: |
+    The original repository's notebooks download DENTEX from
+      https://dsets.s3.amazonaws.com/dentex/dentex-quadrant-enumeration-disease.tar.gz
+      https://dsets.s3.amazonaws.com/dentex/dentex-quadrant-enumeration.tar.gz
+    (see notebooks/classification/01_dentex_download.ipynb; availability not verified by this project).
+    Extract so that radiographs are in <data>/<...>/xrays/*.png and the COCO annotation file
+    (e.g. train_quadrant_enumeration_disease.json) is next to or above the xrays folder.
+
+labels:
+  # Default DENTEX label vocabulary. The loader prefers `categories_*` found in the real annotation JSON;
+  # these defaults are only used for UI hints and when a file has no category table.
+  quadrants: {0: "1", 1: "2", 2: "3", 3: "4"}
+  enumeration: {0: "1", 1: "2", 2: "3", 3: "4", 4: "5", 5: "6", 6: "7", 7: "8"}
+  findings: {0: "Caries", 1: "DeepCaries", 2: "Impacted", 3: "PeriapicalLesion"}   # VERIFY against the real JSON
+  allow_deciduous_fdi: false
+
+splits:
+  seed: 42
+  fractions: {train: 0.70, val: 0.10, calibration: 0.10, test: 0.10}
+  # Optional regex with ONE capture group extracting a patient id from the image file name.
+  # DENTEX file names (train_123.png) carry no patient id, so each image is its own group by default.
+  patient_id_regex: null
+  min_images_for_split: 10
+
+image:
+  max_upload_mb: 25
+  min_side_px: 256
+  max_side_px: 12000
+  max_pixels: 120000000
+  processed_max_side: 1280
+  clahe: {enabled: false, clip_limit: 2.0, tile_grid: 8}
+
+quality:
+  blur_laplacian_var_min: 20.0
+  contrast_std_min: 0.08
+  brightness_range: [0.15, 0.85]
+  saturation_fraction_max: 0.05

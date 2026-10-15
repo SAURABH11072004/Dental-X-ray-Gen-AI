@@ -1,0 +1,173 @@
+{
+ "C0": {
+  "config": {
+   "exp": "C0",
+   "preproc": "none",
+   "aug": "baseline",
+   "imbalance": "weights",
+   "gamma": 2.0,
+   "epochs": 15,
+   "batch_size": 32,
+   "lr": 0.0003,
+   "wd": 0.0001,
+   "freeze_epochs": 0,
+   "save": false
+  },
+  "inputs": null,
+  "change_vs_C0": "inverse-frequency class weights (cap 5), baseline aug"
+ },
+ "C0r": {
+  "config": {
+   "exp": "C0r",
+   "preproc": "none",
+   "aug": "baseline",
+   "only_new": true,
+   "imbalance": "weights",
+   "gamma": 2.0,
+   "epochs": 15,
+   "batch_size": 32,
+   "lr": 0.0003,
+   "wd": 0.0001,
+   "freeze_epochs": 0,
+   "save": true
+  },
+  "inputs": {
+   "crops_train_sha256": "293cbc38b095e7b5dadad4233dfbaf4ad9e60afd564582342e19718e34686356",
+   "crops_val_sha256": "fc58b21c73835d850196f644e157a530dfb25a30ce01efb791a58a948ececd94",
+   "split_assignments_sha": "1c350480eed2ae96",
+   "manifest_sha256": "932b0b941f54643e2faa7077e52b314475c03cbe03cdf8d4f6b9ecbf1a12a76c",
+   "script_sha256": "9a8e1d18d0c5fcd7ceb89c168c8f350050e70fd4d435b9ee010e0bf3a802607a"
+  },
+  "change_vs_C0": "identical to C0; re-run to check reproducibility and save probabilities"
+ },
+ "I_sampler": {
+  "config": {
+   "exp": "I_sampler",
+   "preproc": "none",
+   "aug": "baseline",
+   "only_new": true,
+   "imbalance": "sampler",
+   "gamma": 2.0,
+   "epochs": 15,
+   "batch_size": 32,
+   "lr": 0.0003,
+   "wd": 0.0001,
+   "freeze_epochs": 0,
+   "save": true
+  },
+  "inputs": {
+   "crops_train_sha256": "293cbc38b095e7b5dadad4233dfbaf4ad9e60afd564582342e19718e34686356",
+   "crops_val_sha256": "fc58b21c73835d850196f644e157a530dfb25a30ce01efb791a58a948ececd94",
+   "split_assignments_sha": "1c350480eed2ae96",
+   "manifest_sha256": "932b0b941f54643e2faa7077e52b314475c03cbe03cdf8d4f6b9ecbf1a12a76c",
+   "script_sha256": "9a8e1d18d0c5fcd7ceb89c168c8f350050e70fd4d435b9ee010e0bf3a802607a"
+  },
+  "change_vs_C0": "sampler p ~ n_c^-0.5, plain cross-entropy (no class weights)"
+ },
+ "C3b_oversample_baselineaug": {
+  "config": {
+   "exp": "C3b_oversample_baselineaug",
+   "preproc": "none",
+   "aug": "baseline",
+   "imbalance": "oversample",
+   "gamma": 2.0,
+   "epochs": 15,
+   "batch_size": 32,
+   "lr": 0.0003,
+   "wd": 0.0001,
+   "freeze_epochs": 0,
+   "save": false
+  },
+  "inputs": null,
+  "change_vs_C0": "duplicate minority crops to min(3n, sqrt(n_max n)); class weights kept; longer epochs"
+ },
+ "I_focal": {
+  "config": {
+   "exp": "I_focal",
+   "preproc": "none",
+   "aug": "baseline",
+   "only_new": true,
+   "imbalance": "focal",
+   "gamma": 2.0,
+   "epochs": 15,
+   "batch_size": 32,
+   "lr": 0.0003,
+   "wd": 0.0001,
+   "freeze_epochs": 0,
+   "save": true
+  },
+  "inputs": {
+   "crops_train_sha256": "293cbc38b095e7b5dadad4233dfbaf4ad9e60afd564582342e19718e34686356",
+   "crops_val_sha256": "fc58b21c73835d850196f644e157a530dfb25a30ce01efb791a58a948ececd94",
+   "split_assignments_sha": "1c350480eed2ae96",
+   "manifest_sha256": "932b0b941f54643e2faa7077e52b314475c03cbe03cdf8d4f6b9ecbf1a12a76c",
+   "script_sha256": "9a8e1d18d0c5fcd7ceb89c168c8f350050e70fd4d435b9ee010e0bf3a802607a"
+  },
+  "change_vs_C0": "focal loss gamma 2, no class weights"
+ },
+ "I_weights_sqrt": {
+  "config": {
+   "exp": "I_weights_sqrt",
+   "preproc": "none",
+   "aug": "baseline",
+   "only_new": true,
+   "imbalance": "weights_sqrt",
+   "gamma": 2.0,
+   "epochs": 15,
+   "batch_size": 32,
+   "lr": 0.0003,
+   "wd": 0.0001,
+   "freeze_epochs": 0,
+   "save": true
+  },
+  "inputs": {
+   "crops_train_sha256": "293cbc38b095e7b5dadad4233dfbaf4ad9e60afd564582342e19718e34686356",
+   "crops_val_sha256": "fc58b21c73835d850196f644e157a530dfb25a30ce01efb791a58a948ececd94",
+   "split_assignments_sha": "1c350480eed2ae96",
+   "manifest_sha256": "932b0b941f54643e2faa7077e52b314475c03cbe03cdf8d4f6b9ecbf1a12a76c",
+   "script_sha256": "9a8e1d18d0c5fcd7ceb89c168c8f350050e70fd4d435b9ee010e0bf3a802607a"
+  },
+  "change_vs_C0": "class weights = sqrt(inverse frequency)"
+ },
+ "I_minority_geom": {
+  "config": {
+   "exp": "I_minority_geom",
+   "preproc": "none",
+   "aug": "minority_geom",
+   "only_new": true,
+   "imbalance": "weights",
+   "gamma": 2.0,
+   "epochs": 15,
+   "batch_size": 32,
+   "lr": 0.0003,
+   "wd": 0.0001,
+   "freeze_epochs": 0,
+   "save": true
+  },
+  "inputs": {
+   "crops_train_sha256": "293cbc38b095e7b5dadad4233dfbaf4ad9e60afd564582342e19718e34686356",
+   "crops_val_sha256": "fc58b21c73835d850196f644e157a530dfb25a30ce01efb791a58a948ececd94",
+   "split_assignments_sha": "1c350480eed2ae96",
+   "manifest_sha256": "932b0b941f54643e2faa7077e52b314475c03cbe03cdf8d4f6b9ecbf1a12a76c",
+   "script_sha256": "9a8e1d18d0c5fcd7ceb89c168c8f350050e70fd4d435b9ee010e0bf3a802607a"
+  },
+  "change_vs_C0": "baseline aug + rotation 5 deg / shift 3% / scale 0.95-1.05 for Deep Caries & Periapical Lesion only"
+ },
+ "C_unweighted": {
+  "config": {
+   "exp": "C_unweighted",
+   "preproc": "none",
+   "aug": "baseline",
+   "imbalance": "none",
+   "gamma": 2.0,
+   "epochs": 15,
+   "batch_size": 32,
+   "lr": 0.0003,
+   "wd": 0.0001,
+   "freeze_epochs": 0,
+   "save": false
+  },
+  "inputs": null,
+  "change_vs_C0": "plain cross-entropy, no weights (reference)"
+ }
+}

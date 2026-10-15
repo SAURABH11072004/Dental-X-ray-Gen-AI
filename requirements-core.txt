@@ -1,0 +1,6 @@
+# DentaMind core: dataset loading, validation, uncertainty, active learning, annotation, reporting.
+# Runs without PyTorch. (requirements.txt is the original pinned research environment and is left unchanged.)
+numpy
+Pillow
+PyYAML
+python-dotenv

@@ -1,0 +1,7 @@
+started
+contrast exit=0
+ui_simplified exit=1
+ui_audit exit=1
+geo exit=0
+review exit=0
+ALL DONE

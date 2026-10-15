@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root { height: 100%; }
+  body { @apply bg-canvas text-ink font-sans antialiased; }
+  *:focus-visible { @apply outline-none ring-2 ring-teal ring-offset-2; }
+}
+
+@layer components {
+  /* Page frame: content uses the available width up to a comfortable maximum, centred on very wide screens. */
+  .page { @apply mx-auto w-full max-w-[1680px]; }
+  .card { @apply bg-white border border-line rounded-xl shadow-card; }
+  .card-pad { @apply p-4 sm:p-5; }
+  .card-head { @apply mb-3 flex items-center justify-between gap-3; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed; }
+  .btn-primary { @apply btn bg-navy text-white shadow-sm hover:bg-navy-700; }
+  .btn-teal { @apply btn bg-teal text-white shadow-sm hover:bg-teal-700; }
+  .btn-ghost { @apply btn bg-white border border-slate-300 text-ink hover:bg-slate-50; }
+  .btn-danger { @apply btn bg-bad text-white hover:opacity-90; }
+  .btn-lg { @apply px-5 py-2.5 text-[0.95rem]; }
+  .input { @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-ink placeholder:text-slate-500; }
+  .label { @apply block text-xs font-semibold uppercase tracking-wide text-muted mb-1; }
+  .th { @apply text-left text-xs font-semibold uppercase tracking-wide text-muted px-3 py-2 bg-slate-50 border-b border-line whitespace-nowrap; }
+  .td { @apply px-3 py-2 text-sm border-b border-slate-100 align-middle; }
+  .h-section { @apply text-[0.95rem] font-semibold text-navy; }
+  .help { @apply text-xs leading-relaxed text-muted; }
+  .note { @apply rounded-lg border border-line bg-slate-50 px-3 py-2 text-sm text-slate-700; }
+}

@@ -1,0 +1,410 @@
+{
+ "run_at": "2026-10-14T23:14:08",
+ "summary": {
+  "PASS": 27,
+  "FAIL": 0,
+  "PARTIAL": 0,
+  "BLOCKED": 0
+ },
+ "details": {
+  "checkpoints": {
+   "classification": {
+    "file": "dentex_findings_classification_v1.pth",
+    "sha256": "5aa878e1fc9ef0976270e14ddc3b5a2a653bfe045a18db37eeb898ebf7a63930",
+    "version": "dentex_findings_classification_v1",
+    "architecture": "resnet50",
+    "metrics": {
+     "classification": {
+      "macro_f1": 0.7179182193530328,
+      "accuracy": 0.824773413897281,
+      "per_class": {
+       "Caries": {
+        "precision": 0.885,
+        "recall": 0.8634146341463415,
+        "f1": 0.874074074074074,
+        "support": 205
+       },
+       "Deep Caries": {
+        "precision": 0.5,
+        "recall": 0.4666666666666667,
+        "f1": 0.4827586206896552,
+        "support": 45
+       },
+       "Impacted": {
+        "precision": 0.918918918918919,
+        "recall": 0.9444444444444444,
+        "f1": 0.9315068493150684,
+        "support": 72
+       },
+       "Periapical Lesion": {
+        "precision": 0.4666666666666667,
+        "recall": 0.7777777777777778,
+        "f1": 0.5833333333333334,
+        "support": 9
+       }
+      }
+     }
+    }
+   },
+   "detection": {
+    "file": "dentex_teeth_detection_v1.pth",
+    "sha256": "a68ce4884066ad80e9f6ea358d7ea56d101c6f7e65445b2f89cef9653e786921",
+    "version": "dentex_teeth_detection_v1",
+    "architecture": "fasterrcnn_resnet50_fpn",
+    "metrics": {
+     "detection": {
+      "map": 0.5600201847175139,
+      "ap50": 0.978490463882042
+     }
+    }
+   },
+   "numbering": {
+    "file": "dentex_fdi_numbering_v1.pth",
+    "sha256": "83f97b2e1ce44b0cd740619930c467a0e32441994a9686fd632293bcb90dd649",
+    "version": "dentex_fdi_numbering_v1",
+    "architecture": "fasterrcnn_resnet50_fpn",
+    "metrics": {
+     "detection": {
+      "map": 0.5233576288885893,
+      "ap50": 0.9281557726762109
+     }
+    }
+   },
+   "segmentation": {
+    "file": "dentex_teeth_segmentation_v1.pth",
+    "sha256": "dd13568c8de5c2cc2c6ff6819cd41bf85669e6f23f5f2845b0d5c40452b618a7",
+    "version": "dentex_teeth_segmentation_v1",
+    "architecture": "maskrcnn_resnet50_fpn",
+    "metrics": {
+     "detection": {
+      "map": 0.5687553535265291,
+      "ap50": 0.9808834703508245
+     }
+    }
+   }
+  },
+  "step_seconds": {
+   "q_train_435": {
+    "preprocess": 0.076,
+    "detect": 0.083,
+    "number": 0.119,
+    "segment": 0.179,
+    "match": 0.0,
+    "classify": 0.121,
+    "classify_tta": 0.128,
+    "detect_tta": 0.081,
+    "segment_tta": 0.181
+   },
+   "q_train_348": {
+    "preprocess": 0.098,
+    "detect": 0.088,
+    "number": 0.13,
+    "segment": 0.239,
+    "match": 0.0,
+    "classify": 0.129,
+    "classify_tta": 0.134,
+    "detect_tta": 0.09,
+    "segment_tta": 0.224
+   },
+   "up_22736273675e": {
+    "preprocess": 0.0,
+    "detect": 0.086,
+    "number": 0.12,
+    "segment": 0.2,
+    "match": 0.0,
+    "classify": 0.127,
+    "classify_tta": 0.132,
+    "detect_tta": 0.083,
+    "segment_tta": 0.185
+   }
+  },
+  "full_response_bytes": {
+   "q_train_435": 84620,
+   "q_train_348": 106758,
+   "up_22736273675e": 88837
+  },
+  "latency": {
+   "predict": {
+    "n": 8,
+    "first_s": 0.42,
+    "median_s": 0.39,
+    "max_s": 0.42
+   },
+   "segment": {
+    "n": 8,
+    "first_s": 0.37,
+    "median_s": 0.38,
+    "max_s": 0.4
+   },
+   "full": {
+    "n": 8,
+    "first_s": 1.23,
+    "median_s": 1.19,
+    "max_s": 1.3
+   }
+  },
+  "gpu_used_mb": {
+   "before_any_inference": 2885,
+   "after_warm_up": 2885,
+   "after_repeats": 2885
+  },
+  "temp_entries": {
+   "before": 1267,
+   "after": 1267
+  },
+  "cpu_full_pipeline_seconds": 11.7
+ },
+ "scenarios": {
+  "empty": {
+   "models_listed": [],
+   "predict": [
+    503,
+    "{\"error\":{\"code\":\"no_checkpoint\",\"message\":\"No dental detection model is available.\",\"hint\":\"Place a trained detection checkpoint and its .json metadata sidecar in empty/, then set active.detection in"
+   ],
+   "segment": 503,
+   "full": [
+    200,
+    {
+     "preprocess": "ok",
+     "detect": "unavailable",
+     "match": "skipped"
+    }
+   ]
+  },
+  "garbage": {
+   "models_listed": [
+    [
+     "dentex_teeth_detection_v1.pth",
+     false,
+     "unverified (no valid metadata sidecar)"
+    ]
+   ],
+   "predict": [
+    503,
+    "{\"error\":{\"code\":\"no_checkpoint\",\"message\":\"No dental detection model is available.\",\"hint\":\"Place a trained detection checkpoint and its .json metadata sidecar in garbage/, then set active.detection "
+   ],
+   "segment": 503,
+   "full": [
+    200,
+    {
+     "preprocess": "ok",
+     "detect": "unavailable",
+     "match": "skipped"
+    }
+   ]
+  },
+  "badsha": {
+   "models_listed": [
+    [
+     "dentex_findings_classification_v1.pth",
+     false,
+     "rejected: checkpoint file does not match the sha256 recorded in its sidecar (mod"
+    ]
+   ],
+   "predict": [
+    503,
+    "{\"error\":{\"code\":\"no_checkpoint\",\"message\":\"No dental detection model is available.\",\"hint\":\"Place a trained detection checkpoint and its .json metadata sidecar in badsha/, then set active.detection i"
+   ],
+   "segment": 503,
+   "full": [
+    200,
+    {
+     "preprocess": "ok",
+     "detect": "unavailable",
+     "match": "skipped"
+    }
+   ]
+  }
+ },
+ "results": [
+  {
+   "id": "MOD-REG-cla",
+   "check": "classification: registered checkpoint file, version, architecture, sha256, dataset fingerprint",
+   "expected": "sidecar sha equals file sha; training config + dataset fingerprint recorded",
+   "actual": "dentex_findings_classification_v1.pth v=dentex_findings_classification_v1 arch=resnet50 sha=5aa878e1fc9ef097 fp=7f66d59d9cbad925 epochs=15 classes=4",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-REG-det",
+   "check": "detection: registered checkpoint file, version, architecture, sha256, dataset fingerprint",
+   "expected": "sidecar sha equals file sha; training config + dataset fingerprint recorded",
+   "actual": "dentex_teeth_detection_v1.pth v=dentex_teeth_detection_v1 arch=fasterrcnn_resnet50_fpn sha=a68ce4884066ad80 fp=7f66d59d9cbad925 epochs=12 classes=1",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-REG-num",
+   "check": "numbering: registered checkpoint file, version, architecture, sha256, dataset fingerprint",
+   "expected": "sidecar sha equals file sha; training config + dataset fingerprint recorded",
+   "actual": "dentex_fdi_numbering_v1.pth v=dentex_fdi_numbering_v1 arch=fasterrcnn_resnet50_fpn sha=83f97b2e1ce44b0c fp=7f66d59d9cbad925 epochs=16 classes=32",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-REG-seg",
+   "check": "segmentation: registered checkpoint file, version, architecture, sha256, dataset fingerprint",
+   "expected": "sidecar sha equals file sha; training config + dataset fingerprint recorded",
+   "actual": "dentex_teeth_segmentation_v1.pth v=dentex_teeth_segmentation_v1 arch=maskrcnn_resnet50_fpn sha=dd13568c8de5c2cc fp=7f66d59d9cbad925 epochs=8 classes=1",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-IMG",
+   "check": "images used for inference",
+   "expected": "at least one real dataset film and one upload",
+   "actual": "[[\"q_train_435\", 1976, 976, \"dataset-test\"], [\"q_train_348\", 2714, 1316, \"dataset-test\"], [\"up_22736273675e\", 1976, 976, \"upload\"]]",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-DET-dat-q_train_",
+   "check": "detector alone on q_train_435 (1976x976): boxes finite, ordered, inside image; scores in [0,1]; no classifier output",
+   "expected": "0 bad, classification absent",
+   "actual": "200 n=31 bad=[] model=dentex_teeth_detection_v1 device=cuda 0.63s classification_present=False",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-CLS-dat-q_train_",
+   "check": "classifier on detected crops of q_train_435: softmax rows finite, non-negative, sum to 1, width = #classes; one row per detection",
+   "expected": "no bad rows",
+   "actual": "200 classes=['Caries', 'Deep Caries', 'Impacted', 'Periapical Lesion'] rows=31 dets=31 bad=[] model=dentex_findings_classification_v1 0.42s",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-SEG-dat-q_train_",
+   "check": "segmenter alone on q_train_435: RLE decodes to HxW, area == pixel count, non-empty, mask lies inside its box",
+   "expected": "no bad instances",
+   "actual": "200 n=32 bad=[] model=dentex_teeth_segmentation_v1 0.40s",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-NUM-dat-q_train_",
+   "check": "numbering on q_train_435: FDI codes valid, unique, confidences in [0,1], unnumbered regions labelled (not guessed)",
+   "expected": "valid + unique",
+   "actual": "200 numbered=31/31 unique=True valid=True statuses=['assigned'] model=dentex_fdi_numbering_v1 1.27s",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-DET-dat-q_train_",
+   "check": "detector alone on q_train_348 (2714x1316): boxes finite, ordered, inside image; scores in [0,1]; no classifier output",
+   "expected": "0 bad, classification absent",
+   "actual": "200 n=28 bad=[] model=dentex_teeth_detection_v1 device=cuda 0.39s classification_present=False",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-CLS-dat-q_train_",
+   "check": "classifier on detected crops of q_train_348: softmax rows finite, non-negative, sum to 1, width = #classes; one row per detection",
+   "expected": "no bad rows",
+   "actual": "200 classes=['Caries', 'Deep Caries', 'Impacted', 'Periapical Lesion'] rows=28 dets=28 bad=[] model=dentex_findings_classification_v1 0.48s",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-SEG-dat-q_train_",
+   "check": "segmenter alone on q_train_348: RLE decodes to HxW, area == pixel count, non-empty, mask lies inside its box",
+   "expected": "no bad instances",
+   "actual": "200 n=29 bad=[] model=dentex_teeth_segmentation_v1 0.48s",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-NUM-dat-q_train_",
+   "check": "numbering on q_train_348: FDI codes valid, unique, confidences in [0,1], unnumbered regions labelled (not guessed)",
+   "expected": "valid + unique",
+   "actual": "200 numbered=28/28 unique=True valid=True statuses=['assigned'] model=dentex_fdi_numbering_v1 1.57s",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-DET-upl-up_22736",
+   "check": "detector alone on up_22736273675e (1976x976): boxes finite, ordered, inside image; scores in [0,1]; no classifier output",
+   "expected": "0 bad, classification absent",
+   "actual": "200 n=33 bad=[] model=dentex_teeth_detection_v1 device=cuda 0.24s classification_present=False",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-CLS-upl-up_22736",
+   "check": "classifier on detected crops of up_22736273675e: softmax rows finite, non-negative, sum to 1, width = #classes; one row per detection",
+   "expected": "no bad rows",
+   "actual": "200 classes=['Caries', 'Deep Caries', 'Impacted', 'Periapical Lesion'] rows=33 dets=33 bad=[] model=dentex_findings_classification_v1 0.39s",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-SEG-upl-up_22736",
+   "check": "segmenter alone on up_22736273675e: RLE decodes to HxW, area == pixel count, non-empty, mask lies inside its box",
+   "expected": "no bad instances",
+   "actual": "200 n=32 bad=[] model=dentex_teeth_segmentation_v1 0.37s",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-NUM-upl-up_22736",
+   "check": "numbering on up_22736273675e: FDI codes valid, unique, confidences in [0,1], unnumbered regions labelled (not guessed)",
+   "expected": "valid + unique",
+   "actual": "200 numbered=32/33 unique=True valid=True statuses=['assigned', 'needs_review', 'unassigned'] model=dentex_fdi_numbering_v1 1.16s",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-PERF",
+   "check": "8 repeated predict/segment/full requests on one upload: latency and GPU memory (device = cuda)",
+   "expected": "no failure; GPU memory does not grow without bound",
+   "actual": "{\"predict\": {\"n\": 8, \"first_s\": 0.42, \"median_s\": 0.39, \"max_s\": 0.42}, \"segment\": {\"n\": 8, \"first_s\": 0.37, \"median_s\": 0.38, \"max_s\": 0.4}, \"full\": {\"n\": 8, \"first_s\": 1.23, \"median_s\": 1.19, \"max_s\": 1.3}} gpu_mb before-any-inference=2885 warm=2885 after-24-requests=2885",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-CLEAN",
+   "check": "repeated inference leaves no files behind in Data/uploads",
+   "expected": "unchanged",
+   "actual": "6 -> 6",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-DET-REPEAT",
+   "check": "same image twice -> identical detections",
+   "expected": "identical within 1e-3 px / 1e-5 score",
+   "actual": "n=33 identical=True",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-CPU-0",
+   "check": "server with CUDA hidden reports no GPU",
+   "expected": "cuda_available false",
+   "actual": "{\"cuda_available\": false, \"gpu_name\": \"NVIDIA GeForce RTX 3050 Laptop GPU\", \"torch_installed\": true}",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-CPU-1",
+   "check": "real detector+classifier inference on the CPU",
+   "expected": "200, device cpu, same number of detections as on the GPU",
+   "actual": "200 device=cpu n=33 (gpu n=33) 6.4s (gpu cuda)",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-CPU-2",
+   "check": "full pipeline on the CPU",
+   "expected": "200, every step ok",
+   "actual": "200 11.7s steps={'preprocess': 'ok', 'detect': 'ok', 'number': 'ok', 'segment': 'ok', 'match': 'ok', 'classify': 'ok', 'classify_tta': 'ok', 'detect_tta': 'ok', 'segment_tta': 'ok'}",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-MISS-empty",
+   "check": "server with checkpoint dir 'empty': registry, /predict, /segment, /analyze/full",
+   "expected": "clear unavailable/refusal state; no synthetic predictions; no traceback",
+   "actual": "models=[] predict=503 '{\"error\":{\"code\":\"no_checkpoint\",\"message\":\"No dental detection model is available.\",\"hint\":\"Place a trained detection c' segment=503 full=200 steps={'preprocess': 'ok', 'detect': 'unavailable', 'match': 'skipped'}",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-MISS-garbage",
+   "check": "server with checkpoint dir 'garbage': registry, /predict, /segment, /analyze/full",
+   "expected": "clear unavailable/refusal state; no synthetic predictions; no traceback",
+   "actual": "models=[('dentex_teeth_detection_v1.pth', False, 'unverified (no valid metadata sidecar)')] predict=503 '{\"error\":{\"code\":\"no_checkpoint\",\"message\":\"No dental detection model is available.\",\"hint\":\"Place a trained detection c' segment=503 full=200 steps={'preprocess': 'ok', 'detect': 'unavailable', 'match': 'skipped'}",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-MISS-badsha",
+   "check": "server with checkpoint dir 'badsha': registry, /predict, /segment, /analyze/full",
+   "expected": "clear unavailable/refusal state; no synthetic predictions; no traceback",
+   "actual": "models=[('dentex_findings_classification_v1.pth', False, 'rejected: checkpoint file does not match the sha256 recorded in its sidecar (mod')] predict=503 '{\"error\":{\"code\":\"no_checkpoint\",\"message\":\"No dental detection model is available.\",\"hint\":\"Place a trained detection c' segment=503 full=200 steps={'preprocess': 'ok', 'detect': 'unavailable', 'match': 'skipped'}",
+   "result": "PASS"
+  },
+  {
+   "id": "MOD-MISS-badsha-v",
+   "check": "tampered sidecar sha256 -> checkpoint rejected as not dental/verified",
+   "expected": "dental_specific false, provenance says rejected",
+   "actual": "[[\"dentex_findings_classification_v1.pth\", false, \"rejected: checkpoint file does not match the sha256 recorded in its sidecar (mod\"]]",
+   "result": "PASS"
+  }
+ ]
+}

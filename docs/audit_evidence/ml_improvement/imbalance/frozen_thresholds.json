@@ -1,0 +1,10 @@
+{
+ "frozen": "2026-10-15",
+ "model": "finding classifier (C0 protocol: inverse-frequency class weights, cap 5, baseline augmentation)",
+ "decision_rule": "argmax of the softmax probabilities (class weights 1, 1, 1, 1 for Caries, Deep Caries, Impacted, Periapical Lesion)",
+ "class_weights": {"Caries": 1.0, "Deep Caries": 1.0, "Impacted": 1.0, "Periapical Lesion": 1.0},
+ "why_not_tuned": "Class-specific weights fitted on the validation split raised in-sample macro-F1 by +0.023 on average (5 seeds) but 2-fold cross-fitting grouped by radiograph gave -0.005 versus plain argmax, and the fitted Deep Caries weight ranged from 0.35 to 3.56 across seeds. The tuned thresholds do not generalise within validation, so none are adopted.",
+ "documented_alternative_not_adopted": "Deep Caries weight 3.0 (all others 1): validation mean Deep Caries recall 0.587 -> 0.689, precision 0.577 -> 0.518, macro-F1 0.764 -> 0.762 (C0r, 5 seeds). This was read off the validation table, so it is itself a validation-selected choice; adopt it only as an explicit clinical recall preference and confirm it on independent data.",
+ "selected_on": "validation split only; calibration and test splits were not read",
+ "source": "docs/audit_evidence/ml_improvement/imbalance/results.json (thresholds.C0r)"
+}

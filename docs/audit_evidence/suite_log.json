@@ -1,0 +1,78 @@
+﻿{
+    "run_at":  "2026-10-14T23:18:21",
+    "host":  "SAURABH",
+    "steps":  [
+                  {
+                      "step":  "unit_tests",
+                      "command":  "D:\\Dentex-Gen Ai\\.venv\\Scripts\\python.exe -m unittest discover -s tests -v",
+                      "exit_code":  0,
+                      "seconds":  67.1,
+                      "log":  "docs/audit_evidence/unit_tests.log",
+                      "tail":  "---------------------------------------------------------------------- | Ran 205 tests in 64.156s |  | OK"
+                  },
+                  {
+                      "step":  "live_api",
+                      "command":  "D:\\Dentex-Gen Ai\\.venv\\Scripts\\python.exe scripts\\audit_live_api.py",
+                      "exit_code":  0,
+                      "seconds":  39,
+                      "log":  "docs/audit_evidence/live_api.log",
+                      "tail":  "PASS    SWEEP-001 GET every parameterless route in /openapi.json (32 routes)             -\u003e swept=32 bad=[] | PASS    DB-001   image registry count after uploads                                     -\u003e 3659 |  | SUMMARY {\u0027PASS\u0027: 139, \u0027FAIL\u0027: 0, \u0027PARTIAL\u0027: 0, \u0027BLOCKED\u0027: 0} -\u003e D:\\Dentex-Gen Ai\\docs\\audit_evidence\\live_api_tests.json"
+                  },
+                  {
+                      "step":  "models",
+                      "command":  "D:\\Dentex-Gen Ai\\.venv\\Scripts\\python.exe scripts\\audit_models.py",
+                      "exit_code":  0,
+                      "seconds":  57,
+                      "log":  "docs/audit_evidence/models.log",
+                      "tail":  "PASS    MOD-MISS-badsha server with checkpoint dir \u0027badsha\u0027: registry, /predict, /segment, /analyze/full -\u003e models=[(\u0027dentex_findings_classification_v1.pth\u0027, False, \u0027rejected: checkpoint file does not match the sha256  | PASS    MOD-MISS-badsha-v tampered sidecar sha256 -\u003e checkpoint rejected as not dental/verified            -\u003e [[\"dentex_findings_classification_v1.pth\", false, \"rejected: checkpoint file does not match the sha256 recorde |  | SUMMARY {\u0027PASS\u0027: 27, \u0027FAIL\u0027: 0, \u0027PARTIAL\u0027: 0, \u0027BLOCKED\u0027: 0} -\u003e D:\\Dentex-Gen Ai\\docs\\audit_evidence\\model_audit.json"
+                  },
+                  {
+                      "step":  "reports",
+                      "command":  "D:\\Dentex-Gen Ai\\.venv\\Scripts\\python.exe scripts\\audit_reports.py",
+                      "exit_code":  0,
+                      "seconds":  10.1,
+                      "log":  "docs/audit_evidence/reports.log",
+                      "tail":  "PASS    RPT-I01   template keys of English present in Hindi and Marathi                          -\u003e {\"hi\": [], \"mr\": []} | PASS    RPT-I02   translation flagged as not natively reviewed                                   -\u003e hi=False mr=False |  | SUMMARY {\u0027PASS\u0027: 61, \u0027FAIL\u0027: 0, \u0027PARTIAL\u0027: 0, \u0027BLOCKED\u0027: 0} -\u003e D:\\Dentex-Gen Ai\\docs\\audit_evidence\\report_audit.json"
+                  },
+                  {
+                      "step":  "no_numbering",
+                      "command":  "D:\\Dentex-Gen Ai\\.venv\\Scripts\\python.exe scripts\\audit_no_numbering.py",
+                      "exit_code":  0,
+                      "seconds":  9.4,
+                      "log":  "docs/audit_evidence/no_numbering.log",
+                      "tail":  "  \"segmentation\": \"dentex_teeth_segmentation_v1\", |   \"classification\": \"dentex_findings_classification_v1\" |  } | }"
+                  },
+                  {
+                      "step":  "approved_training_dry_run",
+                      "command":  "D:\\Dentex-Gen Ai\\.venv\\Scripts\\python.exe scripts\\audit_approved_training.py",
+                      "exit_code":  0,
+                      "seconds":  6.4,
+                      "log":  "docs/audit_evidence/approved_training_dry_run.log",
+                      "tail":  "PASS  APPR-07  export contains the pool review and not the validation-split one               -\u003e records=[\u0027qed_train_435\u0027] excluded=1 | PASS  APPR-08  dry run with one eligible approved review                                      -\u003e 200 {\u0027dry_run\u0027: True, \u0027valid\u0027: True, \u0027config\u0027: {\u0027task\u0027: \u0027classification\u0027, \u0027architecture\u0027:  | PASS  APPR-09  no job was created by the dry run                                              -\u003e [\u0027failed\u0027, \u0027failed\u0027, \u0027failed\u0027, \u0027failed\u0027, \u0027failed\u0027] | SUMMARY {\u0027PASS\u0027: 9, \u0027FAIL\u0027: 0}"
+                  },
+                  {
+                      "step":  "training_api",
+                      "command":  "D:\\Dentex-Gen Ai\\.venv\\Scripts\\python.exe scripts\\audit_training_api.py",
+                      "exit_code":  0,
+                      "seconds":  24.4,
+                      "log":  "docs/audit_evidence/training_api.log",
+                      "tail":  "PASS  TAPI-18  job list shows no absolute paths or traceback                              -\u003e [] | PASS  TAPI-19  statuses recorded for every job                                            -\u003e [\u0027succeeded\u0027, \u0027succeeded\u0027, \u0027cancelled\u0027] | PASS  TAPI-20  real Data\\checkpoints byte-identical and no new files                      -\u003e files 8 -\u003e 8; new Data/runs entries: [] | SUMMARY {\u0027PASS\u0027: 20, \u0027FAIL\u0027: 0}"
+                  },
+                  {
+                      "step":  "windows_check_running",
+                      "command":  "powershell -NoProfile -File scripts\\windows\\check_running.ps1",
+                      "exit_code":  0,
+                      "seconds":  2.4,
+                      "log":  "docs/audit_evidence/windows_check_running.log",
+                      "tail":  "[ OK ] Frontend page (http://localhost:5173) - HTTP 200 | [ OK ] Frontend proxy -\u003e backend (http://localhost:5173/api/health) - proxied OK |  | [ OK ] All checks passed. Open http://localhost:5173"
+                  },
+                  {
+                      "step":  "security_live",
+                      "command":  "D:\\Dentex-Gen Ai\\.venv\\Scripts\\python.exe scripts\\audit_security_live.py",
+                      "exit_code":  0,
+                      "seconds":  200.1,
+                      "log":  "docs/audit_evidence/security_live.log",
+                      "tail":  "PASS  SEC2-18  other buckets unaffected by the control limit                            -\u003e 200 | PASS  SEC2-19  24 bad-token attempts                                                    -\u003e 20x401 4x429 | PASS  SEC2-20  valid token still works after the failed-auth throttle                   -\u003e 200 | SUMMARY {\u0027PASS\u0027: 23, \u0027FAIL\u0027: 0}"
+                  }
+              ]
+}

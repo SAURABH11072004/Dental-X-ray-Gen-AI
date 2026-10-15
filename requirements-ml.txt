@@ -1,0 +1,7 @@
+-r requirements-api.txt
+# Choose the build that matches your driver, e.g. CUDA 12.1:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+# CPU only:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+torch>=2.2.0
+torchvision

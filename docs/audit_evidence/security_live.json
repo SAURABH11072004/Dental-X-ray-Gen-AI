@@ -1,0 +1,170 @@
+{
+ "run_at": "2026-10-14T23:18:21",
+ "summary": {
+  "PASS": 23,
+  "FAIL": 0
+ },
+ "results": [
+  {
+   "id": "SEC2-01",
+   "check": "valid Bearer token",
+   "expected": "200",
+   "actual": "200",
+   "result": "PASS"
+  },
+  {
+   "id": "SEC2-02",
+   "check": "valid X-API-Key",
+   "expected": "200",
+   "actual": "200",
+   "result": "PASS"
+  },
+  {
+   "id": "SEC2-03",
+   "check": "health is open and reports the app version",
+   "expected": "200, version 0.2.0 (not 'unknown')",
+   "actual": "200 version=0.2.0",
+   "result": "PASS"
+  },
+  {
+   "id": "SEC2-04",
+   "check": "19 protected routes without a token",
+   "expected": "401 each",
+   "actual": "non-401: []",
+   "result": "PASS"
+  },
+  {
+   "id": "SEC2-05",
+   "check": "wrong token",
+   "expected": "401 + WWW-Authenticate, no token echo",
+   "actual": "401 Bearer",
+   "result": "PASS"
+  },
+  {
+   "id": "SEC2-06",
+   "check": "token sent with the wrong scheme",
+   "expected": "401",
+   "actual": "401",
+   "result": "PASS"
+  },
+  {
+   "id": "SEC2-07",
+   "check": "token absent from API responses and headers",
+   "expected": "none",
+   "actual": "[]",
+   "result": "PASS"
+  },
+  {
+   "id": "SEC2-08",
+   "check": "token not present in source, built frontend, docs or scripts",
+   "expected": "no file contains it",
+   "actual": "[]",
+   "result": "PASS"
+  },
+  {
+   "id": "SEC2-09",
+   "check": "runtime/api_token.txt is git-ignored",
+   "expected": "ignored",
+   "actual": "exit 0",
+   "result": "PASS"
+  },
+  {
+   "id": "SEC2-10",
+   "check": "traversal attempts with a valid token",
+   "expected": "404 (never file contents)",
+   "actual": "[('/api/images/..%2F..%2F.env/file', 404), ('/api/images/..%5C..%5Csetup.py/file', 404), ('/api/evaluations/..%2F..%2Fsetup', 404), ('/api/evaluations/eval_x%2F..%2F..%2Fsetup', 404), ('/api/reports/..%2F..%2Fx/export?format=json', 404)]",
+   "result": "PASS"
+  },
+  {
+   "id": "SEC2-11",
+   "check": "training experiment_name with path separators",
+   "expected": "422",
+   "actual": "422",
+   "result": "PASS"
+  },
+  {
+   "id": "SEC2-12",
+   "check": "resume_checkpoint='../../.env'",
+   "expected": "4xx, never accepted",
+   "actual": "400 {\"error\":{\"code\":\"prerequisites_unmet\",\"message\":\"Training prerequisites are not met.\",\"hi",
+   "result": "PASS"
+  },
+  {
+   "id": "SEC2-12",
+   "check": "resume_checkpoint='..\\\\..\\\\.env'",
+   "expected": "4xx, never accepted",
+   "actual": "400 {\"error\":{\"code\":\"prerequisites_unmet\",\"message\":\"Training prerequisites are not met.\",\"hi",
+   "result": "PASS"
+  },
+  {
+   "id": "SEC2-12",
+   "check": "resume_checkpoint='C:/Windows/win.ini'",
+   "expected": "4xx, never accepted",
+   "actual": "400 {\"error\":{\"code\":\"prerequisites_unmet\",\"message\":\"Training prerequisites are not met.\",\"hi",
+   "result": "PASS"
+  },
+  {
+   "id": "SEC2-12",
+   "check": "resume_checkpoint='dentex_teeth_detection_v1.pth'",
+   "expected": "4xx, never accepted",
+   "actual": "400 {\"error\":{\"code\":\"prerequisites_unmet\",\"message\":\"Training prerequisites are not met.\",\"hi",
+   "result": "PASS"
+  },
+  {
+   "id": "SEC2-13",
+   "check": "valid dry run through the API",
+   "expected": "200, dry_run true, nothing started",
+   "actual": "200 {'dry_run': True, 'valid': True, 'config': {'task': 'classification', 'architecture': 'resnet18', 'e",
+   "result": "PASS"
+  },
+  {
+   "id": "SEC2-14",
+   "check": "the dry run created no job",
+   "expected": "job list unchanged (no 'queued'/'running')",
+   "actual": "['failed', 'failed', 'failed', 'failed', 'failed', 'succeeded', 'succeeded', 'succeeded', 'failed', 'succeeded', 'succeeded', 'interrupted']",
+   "result": "PASS"
+  },
+  {
+   "id": "SEC2-15",
+   "check": "upload without a token",
+   "expected": "401 before the body is read",
+   "actual": "401",
+   "result": "PASS"
+  },
+  {
+   "id": "SEC2-16",
+   "check": "control bucket: 26 rapid POST /api/training/stop calls",
+   "expected": "404 for the first 20, then 429 with Retry-After",
+   "actual": "first 429 at call 21; [404, 429]",
+   "result": "PASS"
+  },
+  {
+   "id": "SEC2-17",
+   "check": "429 carries Retry-After and the JSON envelope",
+   "expected": "present",
+   "actual": "429 retry-after=60",
+   "result": "PASS"
+  },
+  {
+   "id": "SEC2-18",
+   "check": "other buckets unaffected by the control limit",
+   "expected": "200",
+   "actual": "200",
+   "result": "PASS"
+  },
+  {
+   "id": "SEC2-19",
+   "check": "24 bad-token attempts",
+   "expected": "401 first 20 (some already used above), then 429",
+   "actual": "20x401 4x429",
+   "result": "PASS"
+  },
+  {
+   "id": "SEC2-20",
+   "check": "valid token still works after the failed-auth throttle",
+   "expected": "200",
+   "actual": "200",
+   "result": "PASS"
+  }
+ ]
+}

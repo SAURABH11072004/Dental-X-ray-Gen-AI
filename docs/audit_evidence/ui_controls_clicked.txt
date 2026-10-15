@@ -1,0 +1,54 @@
+CLICKED
+/ 'Upload X-ray': dom=true url=true api=2
+/analysis 'Analyze X-ray': dom=true url=false api=1
+/analysis 'Browse files': dom=false url=false api=0
+/analysis 'Zoom in': dom=true url=false api=0
+/analysis 'Zoom out': dom=true url=false api=0
+/analysis 'Fit to screen': dom=true url=false api=0
+/analysis 'Reset view to 100%': dom=true url=false api=0
+/segmentation 'Browse files': dom=false url=false api=0
+/segmentation 'Run Segmentation': dom=true url=false api=1
+/segmentation 'Zoom in': dom=true url=false api=0
+/segmentation 'Zoom out': dom=true url=false api=0
+/segmentation 'Fit to screen': dom=true url=false api=0
+/segmentation 'Reset view to 100%': dom=true url=false api=0
+/active-learning '1. Dataset & pool': current wizard step (idempotent by design)
+/active-learning '2. Strategy': dom=true url=false api=0
+/active-learning '3. Parameters': dom=true url=false api=0
+/active-learning '4. Run selection': dom=true url=false api=0
+/active-learning 'Score pool images': dom=true url=false api=1
+/active-learning 'Next': dom=true url=false api=0
+/annotations 'Label config (XML)': dom=false url=false api=1
+/annotations 'up_6c461ec61f59 26/32 regions to review · overall ': dom=true url=false api=3
+/annotations 'Upload Label Studio JSON': dom=false url=false api=0
+/reports 'Open': dom=true url=true api=1
+/reports 'Open': dom=true url=true api=1
+/review 'up_6c461ec61f59 26/32 regions to review · overall ': dom=true url=false api=3
+/training 'Validate only (no training)': dom=true url=false api=2
+/models 'Use': dom=true url=false api=1
+/models 'Evaluate': dom=true url=false api=1
+/models 'Use': dom=true url=false api=1
+/models 'Evaluate': dom=true url=false api=1
+/models 'Use': dom=true url=false api=1
+/models 'Evaluate': dom=true url=false api=1
+/models 'Use': dom=true url=false api=1
+/models 'Evaluate': dom=true url=false api=1
+/settings 'Refresh': dom=false url=false api=4
+/settings 'Re-process dataset': dom=true url=false api=1
+
+NO EFFECT
+
+SKIPPED (not clicked by the crawler)
+/segmentation 'Export instances (JSON)' (disabled: no title)
+/uncertainty 'Calculate uncertainty' (disabled: no title)
+/active-learning '5. Review' (disabled: Available after you run a selection (step 4))
+/active-learning '6. Export' (disabled: Available after you run a selection (step 4))
+/active-learning 'Back' (disabled: You are on the first step)
+/annotations 'Approve for training (0)' (disabled: Zoom in)
+/annotations 'Reject' (disabled: Zoom out)
+/annotations 'Pull' (disabled: Fit to screen)
+/training 'Start training' (state-changing, covered by explicit workflow/API tests)
+/models 'Promote' (state-changing, covered by explicit workflow/API tests)
+/models 'Promote' (state-changing, covered by explicit workflow/API tests)
+/models 'Promote' (state-changing, covered by explicit workflow/API tests)
+/models 'Promote' (state-changing, covered by explicit workflow/API tests)

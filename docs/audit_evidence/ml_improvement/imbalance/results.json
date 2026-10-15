@@ -1,0 +1,3667 @@
+{
+ "generated": "2026-10-15T07:01:16.008689+00:00",
+ "split": "validation (331 crops; supports 205/45/72/9)",
+ "protocol": "ResNet-50 ImageNet, 15 epochs, batch 32, AdamW lr 3e-4 wd 1e-4, cosine; best epoch by validation macro-F1; seeds 42-46; only the listed factor differs from C0. Validation is used for epoch selection AND reporting (same optimistic bias for every method).",
+ "sd": "sample SD (ddof=1) across seeds; the earlier cls_summary.md used population SD (ddof=0)",
+ "methods": {
+  "C0": {
+   "label": "C0 baseline (original runs)",
+   "change_vs_C0": "inverse-frequency class weights (cap 5), baseline aug",
+   "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+   ],
+   "per_seed": {
+    "42": {
+     "accuracy": 0.8308157099697885,
+     "macro_f1": 0.7467371577080036,
+     "balanced_accuracy": 0.7741869918699187,
+     "macro_precision": 0.7263941349762245,
+     "macro_recall": 0.7741869918699187,
+     "Caries|precision": 0.8805970149253731,
+     "Caries|recall": 0.8634146341463415,
+     "Caries|f1": 0.8719211822660099,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.5227272727272727,
+     "Deep Caries|recall": 0.5111111111111111,
+     "Deep Caries|f1": 0.5168539325842696,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.918918918918919,
+     "Impacted|recall": 0.9444444444444444,
+     "Impacted|f1": 0.9315068493150684,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.5833333333333334,
+     "Periapical Lesion|recall": 0.7777777777777778,
+     "Periapical Lesion|f1": 0.6666666666666666,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 14,
+     "duration_s": 220.5
+    },
+    "43": {
+     "accuracy": 0.8277945619335347,
+     "macro_f1": 0.7299662641438486,
+     "balanced_accuracy": 0.7615006775067751,
+     "macro_precision": 0.7060748755460733,
+     "macro_recall": 0.7615006775067751,
+     "Caries|precision": 0.9015544041450777,
+     "Caries|recall": 0.848780487804878,
+     "Caries|f1": 0.8743718592964824,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.5294117647058824,
+     "Deep Caries|recall": 0.6,
+     "Deep Caries|f1": 0.5625,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.8933333333333333,
+     "Impacted|recall": 0.9305555555555556,
+     "Impacted|f1": 0.9115646258503401,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.5,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.5714285714285715,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 11,
+     "duration_s": 225.1
+    },
+    "44": {
+     "accuracy": 0.851963746223565,
+     "macro_f1": 0.7989653391773093,
+     "balanced_accuracy": 0.808739837398374,
+     "macro_precision": 0.7918556311413454,
+     "macro_recall": 0.808739837398374,
+     "Caries|precision": 0.9081632653061225,
+     "Caries|recall": 0.8682926829268293,
+     "Caries|f1": 0.8877805486284289,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.5370370370370371,
+     "Deep Caries|recall": 0.6444444444444445,
+     "Deep Caries|f1": 0.585858585858586,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9444444444444444,
+     "Impacted|recall": 0.9444444444444444,
+     "Impacted|f1": 0.9444444444444444,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.7777777777777778,
+     "Periapical Lesion|recall": 0.7777777777777778,
+     "Periapical Lesion|f1": 0.7777777777777778,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 14,
+     "duration_s": 227.0
+    },
+    "45": {
+     "accuracy": 0.8670694864048338,
+     "macro_f1": 0.7763337484808847,
+     "balanced_accuracy": 0.7730182926829269,
+     "macro_precision": 0.7800289987789987,
+     "macro_recall": 0.7730182926829269,
+     "Caries|precision": 0.9038461538461539,
+     "Caries|recall": 0.9170731707317074,
+     "Caries|f1": 0.910411622276029,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.6190476190476191,
+     "Deep Caries|recall": 0.5777777777777777,
+     "Deep Caries|f1": 0.5977011494252873,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9305555555555556,
+     "Impacted|recall": 0.9305555555555556,
+     "Impacted|f1": 0.9305555555555556,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.6666666666666666,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.6666666666666666,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 13,
+     "duration_s": 227.7
+    },
+    "46": {
+     "accuracy": 0.8700906344410876,
+     "macro_f1": 0.7680133519762108,
+     "balanced_accuracy": 0.7785738482384824,
+     "macro_precision": 0.7616188312547753,
+     "macro_recall": 0.7785738482384824,
+     "Caries|precision": 0.9082125603864735,
+     "Caries|recall": 0.9170731707317074,
+     "Caries|f1": 0.9126213592233011,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.675,
+     "Deep Caries|recall": 0.6,
+     "Deep Caries|f1": 0.6352941176470589,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9178082191780822,
+     "Impacted|recall": 0.9305555555555556,
+     "Impacted|f1": 0.9241379310344828,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.5454545454545454,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.6,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 14,
+     "duration_s": 227.2
+    }
+   },
+   "aggregate": {
+    "accuracy": [
+     0.8495468277945619,
+     0.019741763447377093
+    ],
+    "macro_f1": [
+     0.7640031722972513,
+     0.02667913107405409
+    ],
+    "balanced_accuracy": [
+     0.7792039295392954,
+     0.01767486743182126
+    ],
+    "macro_precision": [
+     0.7531944943394835,
+     0.036139525858210654
+    ],
+    "macro_recall": [
+     0.7792039295392954,
+     0.01767486743182126
+    ],
+    "Caries|precision": [
+     0.90047467972184,
+     0.0114743556009553
+    ],
+    "Caries|recall": [
+     0.8829268292682928,
+     0.031987504996595154
+    ],
+    "Caries|f1": [
+     0.8914213143380503,
+     0.01932788103821604
+    ],
+    "Caries|support": [
+     205.0,
+     0.0
+    ],
+    "Deep Caries|precision": [
+     0.5766447387035623,
+     0.06741397979543498
+    ],
+    "Deep Caries|recall": [
+     0.5866666666666667,
+     0.04868644955601479
+    ],
+    "Deep Caries|f1": [
+     0.5796415571030404,
+     0.04386948423769542
+    ],
+    "Deep Caries|support": [
+     45.0,
+     0.0
+    ],
+    "Impacted|precision": [
+     0.9210120942860668,
+     0.01884749780243265
+    ],
+    "Impacted|recall": [
+     0.9361111111111111,
+     0.00760725774312728
+    ],
+    "Impacted|f1": [
+     0.9284418812399782,
+     0.011971940260302842
+    ],
+    "Impacted|support": [
+     72.0,
+     0.0
+    ],
+    "Periapical Lesion|precision": [
+     0.6146464646464647,
+     0.10980638924055913
+    ],
+    "Periapical Lesion|recall": [
+     0.711111111111111,
+     0.060858061945018485
+    ],
+    "Periapical Lesion|f1": [
+     0.6565079365079365,
+     0.07959965334280851
+    ],
+    "Periapical Lesion|support": [
+     9.0,
+     0.0
+    ],
+    "best_epoch": [
+     13.2,
+     1.30384048104053
+    ],
+    "duration_s": [
+     225.5,
+     2.963950067055783
+    ]
+   },
+   "paired_vs_C0r": {
+    "macro_f1": {
+     "mean": 0.0,
+     "min": 0.0,
+     "max": 0.0,
+     "n_positive": 0,
+     "n": 5
+    },
+    "balanced_accuracy": {
+     "mean": 0.0,
+     "min": 0.0,
+     "max": 0.0,
+     "n_positive": 0,
+     "n": 5
+    },
+    "accuracy": {
+     "mean": 0.0,
+     "min": 0.0,
+     "max": 0.0,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Caries|precision": {
+     "mean": 0.0,
+     "min": 0.0,
+     "max": 0.0,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Caries|recall": {
+     "mean": 0.0,
+     "min": 0.0,
+     "max": 0.0,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Caries|f1": {
+     "mean": 0.0,
+     "min": 0.0,
+     "max": 0.0,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Deep Caries|precision": {
+     "mean": 0.0,
+     "min": 0.0,
+     "max": 0.0,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Deep Caries|recall": {
+     "mean": 0.0,
+     "min": 0.0,
+     "max": 0.0,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Deep Caries|f1": {
+     "mean": 0.0,
+     "min": 0.0,
+     "max": 0.0,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Impacted|precision": {
+     "mean": 0.0,
+     "min": 0.0,
+     "max": 0.0,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Impacted|recall": {
+     "mean": 0.0,
+     "min": 0.0,
+     "max": 0.0,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Impacted|f1": {
+     "mean": 0.0,
+     "min": 0.0,
+     "max": 0.0,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Periapical Lesion|precision": {
+     "mean": 0.0,
+     "min": 0.0,
+     "max": 0.0,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Periapical Lesion|recall": {
+     "mean": 0.0,
+     "min": 0.0,
+     "max": 0.0,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Periapical Lesion|f1": {
+     "mean": 0.0,
+     "min": 0.0,
+     "max": 0.0,
+     "n_positive": 0,
+     "n": 5
+    }
+   },
+   "verdict": {
+    "improves_macro_f1": false,
+    "acceptable_side_effects": true,
+    "worst_class_mean_f1_change": 0.0,
+    "minority_precision_change_min": 0.0,
+    "supported": false
+   },
+   "config": {
+    "exp": "C0",
+    "preproc": "none",
+    "aug": "baseline",
+    "imbalance": "weights",
+    "gamma": 2.0,
+    "epochs": 15,
+    "batch_size": 32,
+    "lr": 0.0003,
+    "wd": 0.0001,
+    "freeze_epochs": 0,
+    "save": false
+   },
+   "inputs": null,
+   "duration_s_total": 1127.5
+  },
+  "C0r": {
+   "label": "C0r baseline re-run (same code as new runs)",
+   "change_vs_C0": "identical to C0; re-run to check reproducibility and save probabilities",
+   "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+   ],
+   "per_seed": {
+    "42": {
+     "accuracy": 0.8308157099697885,
+     "macro_f1": 0.7467371577080036,
+     "balanced_accuracy": 0.7741869918699187,
+     "macro_precision": 0.7263941349762245,
+     "macro_recall": 0.7741869918699187,
+     "Caries|precision": 0.8805970149253731,
+     "Caries|recall": 0.8634146341463415,
+     "Caries|f1": 0.8719211822660099,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.5227272727272727,
+     "Deep Caries|recall": 0.5111111111111111,
+     "Deep Caries|f1": 0.5168539325842696,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.918918918918919,
+     "Impacted|recall": 0.9444444444444444,
+     "Impacted|f1": 0.9315068493150684,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.5833333333333334,
+     "Periapical Lesion|recall": 0.7777777777777778,
+     "Periapical Lesion|f1": 0.6666666666666666,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 14,
+     "duration_s": 217.7
+    },
+    "43": {
+     "accuracy": 0.8277945619335347,
+     "macro_f1": 0.7299662641438486,
+     "balanced_accuracy": 0.7615006775067751,
+     "macro_precision": 0.7060748755460733,
+     "macro_recall": 0.7615006775067751,
+     "Caries|precision": 0.9015544041450777,
+     "Caries|recall": 0.848780487804878,
+     "Caries|f1": 0.8743718592964824,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.5294117647058824,
+     "Deep Caries|recall": 0.6,
+     "Deep Caries|f1": 0.5625,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.8933333333333333,
+     "Impacted|recall": 0.9305555555555556,
+     "Impacted|f1": 0.9115646258503401,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.5,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.5714285714285715,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 11,
+     "duration_s": 221.0
+    },
+    "44": {
+     "accuracy": 0.851963746223565,
+     "macro_f1": 0.7989653391773093,
+     "balanced_accuracy": 0.808739837398374,
+     "macro_precision": 0.7918556311413454,
+     "macro_recall": 0.808739837398374,
+     "Caries|precision": 0.9081632653061225,
+     "Caries|recall": 0.8682926829268293,
+     "Caries|f1": 0.8877805486284289,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.5370370370370371,
+     "Deep Caries|recall": 0.6444444444444445,
+     "Deep Caries|f1": 0.585858585858586,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9444444444444444,
+     "Impacted|recall": 0.9444444444444444,
+     "Impacted|f1": 0.9444444444444444,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.7777777777777778,
+     "Periapical Lesion|recall": 0.7777777777777778,
+     "Periapical Lesion|f1": 0.7777777777777778,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 14,
+     "duration_s": 216.1
+    },
+    "45": {
+     "accuracy": 0.8670694864048338,
+     "macro_f1": 0.7763337484808847,
+     "balanced_accuracy": 0.7730182926829269,
+     "macro_precision": 0.7800289987789987,
+     "macro_recall": 0.7730182926829269,
+     "Caries|precision": 0.9038461538461539,
+     "Caries|recall": 0.9170731707317074,
+     "Caries|f1": 0.910411622276029,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.6190476190476191,
+     "Deep Caries|recall": 0.5777777777777777,
+     "Deep Caries|f1": 0.5977011494252873,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9305555555555556,
+     "Impacted|recall": 0.9305555555555556,
+     "Impacted|f1": 0.9305555555555556,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.6666666666666666,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.6666666666666666,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 13,
+     "duration_s": 215.6
+    },
+    "46": {
+     "accuracy": 0.8700906344410876,
+     "macro_f1": 0.7680133519762108,
+     "balanced_accuracy": 0.7785738482384824,
+     "macro_precision": 0.7616188312547753,
+     "macro_recall": 0.7785738482384824,
+     "Caries|precision": 0.9082125603864735,
+     "Caries|recall": 0.9170731707317074,
+     "Caries|f1": 0.9126213592233011,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.675,
+     "Deep Caries|recall": 0.6,
+     "Deep Caries|f1": 0.6352941176470589,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9178082191780822,
+     "Impacted|recall": 0.9305555555555556,
+     "Impacted|f1": 0.9241379310344828,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.5454545454545454,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.6,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 14,
+     "duration_s": 216.5
+    }
+   },
+   "aggregate": {
+    "accuracy": [
+     0.8495468277945619,
+     0.019741763447377093
+    ],
+    "macro_f1": [
+     0.7640031722972513,
+     0.02667913107405409
+    ],
+    "balanced_accuracy": [
+     0.7792039295392954,
+     0.01767486743182126
+    ],
+    "macro_precision": [
+     0.7531944943394835,
+     0.036139525858210654
+    ],
+    "macro_recall": [
+     0.7792039295392954,
+     0.01767486743182126
+    ],
+    "Caries|precision": [
+     0.90047467972184,
+     0.0114743556009553
+    ],
+    "Caries|recall": [
+     0.8829268292682928,
+     0.031987504996595154
+    ],
+    "Caries|f1": [
+     0.8914213143380503,
+     0.01932788103821604
+    ],
+    "Caries|support": [
+     205.0,
+     0.0
+    ],
+    "Deep Caries|precision": [
+     0.5766447387035623,
+     0.06741397979543498
+    ],
+    "Deep Caries|recall": [
+     0.5866666666666667,
+     0.04868644955601479
+    ],
+    "Deep Caries|f1": [
+     0.5796415571030404,
+     0.04386948423769542
+    ],
+    "Deep Caries|support": [
+     45.0,
+     0.0
+    ],
+    "Impacted|precision": [
+     0.9210120942860668,
+     0.01884749780243265
+    ],
+    "Impacted|recall": [
+     0.9361111111111111,
+     0.00760725774312728
+    ],
+    "Impacted|f1": [
+     0.9284418812399782,
+     0.011971940260302842
+    ],
+    "Impacted|support": [
+     72.0,
+     0.0
+    ],
+    "Periapical Lesion|precision": [
+     0.6146464646464647,
+     0.10980638924055913
+    ],
+    "Periapical Lesion|recall": [
+     0.711111111111111,
+     0.060858061945018485
+    ],
+    "Periapical Lesion|f1": [
+     0.6565079365079365,
+     0.07959965334280851
+    ],
+    "Periapical Lesion|support": [
+     9.0,
+     0.0
+    ],
+    "best_epoch": [
+     13.2,
+     1.30384048104053
+    ],
+    "duration_s": [
+     217.38000000000002,
+     2.1672563300172887
+    ]
+   },
+   "paired_vs_C0r": {},
+   "verdict": null,
+   "config": {
+    "exp": "C0r",
+    "preproc": "none",
+    "aug": "baseline",
+    "only_new": true,
+    "imbalance": "weights",
+    "gamma": 2.0,
+    "epochs": 15,
+    "batch_size": 32,
+    "lr": 0.0003,
+    "wd": 0.0001,
+    "freeze_epochs": 0,
+    "save": true
+   },
+   "inputs": {
+    "crops_train_sha256": "293cbc38b095e7b5dadad4233dfbaf4ad9e60afd564582342e19718e34686356",
+    "crops_val_sha256": "fc58b21c73835d850196f644e157a530dfb25a30ce01efb791a58a948ececd94",
+    "split_assignments_sha": "1c350480eed2ae96",
+    "manifest_sha256": "932b0b941f54643e2faa7077e52b314475c03cbe03cdf8d4f6b9ecbf1a12a76c",
+    "script_sha256": "9a8e1d18d0c5fcd7ceb89c168c8f350050e70fd4d435b9ee010e0bf3a802607a"
+   },
+   "duration_s_total": 1086.9
+  },
+  "I_sampler": {
+   "label": "A weighted sampler",
+   "change_vs_C0": "sampler p ~ n_c^-0.5, plain cross-entropy (no class weights)",
+   "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+   ],
+   "per_seed": {
+    "42": {
+     "accuracy": 0.8761329305135952,
+     "macro_f1": 0.765756693613505,
+     "balanced_accuracy": 0.7372798102981031,
+     "macro_precision": 0.8147296392313792,
+     "macro_recall": 0.7372798102981031,
+     "Caries|precision": 0.8899082568807339,
+     "Caries|recall": 0.9463414634146341,
+     "Caries|f1": 0.91725768321513,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.7586206896551724,
+     "Deep Caries|recall": 0.4888888888888889,
+     "Deep Caries|f1": 0.5945945945945945,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.8961038961038961,
+     "Impacted|recall": 0.9583333333333334,
+     "Impacted|f1": 0.9261744966442952,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.7142857142857143,
+     "Periapical Lesion|recall": 0.5555555555555556,
+     "Periapical Lesion|f1": 0.6250000000000001,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 11,
+     "duration_s": 238.6
+    },
+    "43": {
+     "accuracy": 0.8670694864048338,
+     "macro_f1": 0.7576278753306911,
+     "balanced_accuracy": 0.7377879403794039,
+     "macro_precision": 0.7836401473356267,
+     "macro_recall": 0.7377879403794039,
+     "Caries|precision": 0.880184331797235,
+     "Caries|recall": 0.9317073170731708,
+     "Caries|f1": 0.9052132701421801,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.6857142857142857,
+     "Deep Caries|recall": 0.5333333333333333,
+     "Deep Caries|f1": 0.6,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9436619718309859,
+     "Impacted|recall": 0.9305555555555556,
+     "Impacted|f1": 0.9370629370629372,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.625,
+     "Periapical Lesion|recall": 0.5555555555555556,
+     "Periapical Lesion|f1": 0.5882352941176471,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 15,
+     "duration_s": 222.1
+    },
+    "44": {
+     "accuracy": 0.8610271903323263,
+     "macro_f1": 0.7810445348352106,
+     "balanced_accuracy": 0.7488990514905148,
+     "macro_precision": 0.8240847920195746,
+     "macro_recall": 0.7488990514905148,
+     "Caries|precision": 0.8681818181818182,
+     "Caries|recall": 0.9317073170731708,
+     "Caries|f1": 0.8988235294117648,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.6,
+     "Deep Caries|recall": 0.4666666666666667,
+     "Deep Caries|f1": 0.5249999999999999,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9710144927536232,
+     "Impacted|recall": 0.9305555555555556,
+     "Impacted|f1": 0.9503546099290779,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.8571428571428571,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.75,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 14,
+     "duration_s": 225.3
+    },
+    "45": {
+     "accuracy": 0.8580060422960725,
+     "macro_f1": 0.7643359138465134,
+     "balanced_accuracy": 0.7455962059620597,
+     "macro_precision": 0.7923737389463196,
+     "macro_recall": 0.7455962059620597,
+     "Caries|precision": 0.8755760368663594,
+     "Caries|recall": 0.926829268292683,
+     "Caries|f1": 0.9004739336492892,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.625,
+     "Deep Caries|recall": 0.4444444444444444,
+     "Deep Caries|f1": 0.5194805194805195,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.918918918918919,
+     "Impacted|recall": 0.9444444444444444,
+     "Impacted|f1": 0.9315068493150684,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.75,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.7058823529411765,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 14,
+     "duration_s": 226.2
+    },
+    "46": {
+     "accuracy": 0.8761329305135952,
+     "macro_f1": 0.7631102096010819,
+     "balanced_accuracy": 0.7393631436314363,
+     "macro_precision": 0.8012479244499793,
+     "macro_recall": 0.7393631436314363,
+     "Caries|precision": 0.8818181818181818,
+     "Caries|recall": 0.9463414634146341,
+     "Caries|f1": 0.9129411764705883,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.7666666666666667,
+     "Deep Caries|recall": 0.5111111111111111,
+     "Deep Caries|f1": 0.6133333333333334,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9315068493150684,
+     "Impacted|recall": 0.9444444444444444,
+     "Impacted|f1": 0.9379310344827586,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.625,
+     "Periapical Lesion|recall": 0.5555555555555556,
+     "Periapical Lesion|f1": 0.5882352941176471,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 13,
+     "duration_s": 222.1
+    }
+   },
+   "aggregate": {
+    "accuracy": [
+     0.8676737160120848,
+     0.008383345574327274
+    ],
+    "macro_f1": [
+     0.7663750454454005,
+     0.008759373175766538
+    ],
+    "balanced_accuracy": [
+     0.7417852303523036,
+     0.005178649132743385
+    ],
+    "macro_precision": [
+     0.803215248396576,
+     0.016376143620722136
+    ],
+    "macro_recall": [
+     0.7417852303523036,
+     0.005178649132743385
+    ],
+    "Caries|precision": [
+     0.8791337251088656,
+     0.008015641398391272
+    ],
+    "Caries|recall": [
+     0.9365853658536585,
+     0.009125993626277855
+    ],
+    "Caries|f1": [
+     0.9069419185777905,
+     0.00795514601402109
+    ],
+    "Caries|support": [
+     205.0,
+     0.0
+    ],
+    "Deep Caries|precision": [
+     0.687200328407225,
+     0.07564845234426658
+    ],
+    "Deep Caries|recall": [
+     0.48888888888888893,
+     0.03513641844631532
+    ],
+    "Deep Caries|f1": [
+     0.5704816894816894,
+     0.044605856255722075
+    ],
+    "Deep Caries|support": [
+     45.0,
+     0.0
+    ],
+    "Impacted|precision": [
+     0.9322412257844984,
+     0.0279183158391648
+    ],
+    "Impacted|recall": [
+     0.9416666666666668,
+     0.011620278146306605
+    ],
+    "Impacted|f1": [
+     0.9366059854868276,
+     0.009025053778352117
+    ],
+    "Impacted|support": [
+     72.0,
+     0.0
+    ],
+    "Periapical Lesion|precision": [
+     0.7142857142857143,
+     0.09698911152857334
+    ],
+    "Periapical Lesion|recall": [
+     0.6,
+     0.06085806194501842
+    ],
+    "Periapical Lesion|f1": [
+     0.6514705882352942,
+     0.07308690376346574
+    ],
+    "Periapical Lesion|support": [
+     9.0,
+     0.0
+    ],
+    "best_epoch": [
+     13.4,
+     1.51657508881031
+    ],
+    "duration_s": [
+     226.85999999999999,
+     6.819310815617659
+    ]
+   },
+   "paired_vs_C0r": {
+    "macro_f1": {
+     "mean": 0.0023718731481490174,
+     "min": -0.01792080434209864,
+     "max": 0.027661611186842516,
+     "n_positive": 2,
+     "n": 5
+    },
+    "balanced_accuracy": {
+     "mean": -0.03741869918699185,
+     "min": -0.05984078590785913,
+     "max": -0.02371273712737121,
+     "n_positive": 0,
+     "n": 5
+    },
+    "accuracy": {
+     "mean": 0.018126888217522685,
+     "min": -0.009063444108761365,
+     "max": 0.04531722054380671,
+     "n_positive": 4,
+     "n": 5
+    },
+    "Caries|precision": {
+     "mean": -0.02134095461297445,
+     "min": -0.03998144712430429,
+     "max": 0.009311241955360816,
+     "n_positive": 1,
+     "n": 5
+    },
+    "Caries|recall": {
+     "mean": 0.05365853658536586,
+     "min": 0.009756097560975618,
+     "max": 0.08292682926829276,
+     "n_positive": 5,
+     "n": 5
+    },
+    "Caries|f1": {
+     "mean": 0.015520604239740199,
+     "min": -0.009937688626739827,
+     "max": 0.04533650094912012,
+     "n_positive": 4,
+     "n": 5
+    },
+    "Deep Caries|precision": {
+     "mean": 0.11055558970366271,
+     "min": 0.005952380952380931,
+     "max": 0.23589341692789967,
+     "n_positive": 5,
+     "n": 5
+    },
+    "Deep Caries|recall": {
+     "mean": -0.09777777777777777,
+     "min": -0.1777777777777778,
+     "max": -0.0222222222222222,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Deep Caries|f1": {
+     "mean": -0.00915986762135088,
+     "min": -0.07822062994476775,
+     "max": 0.07774066201032492,
+     "n_positive": 2,
+     "n": 5
+    },
+    "Impacted|precision": {
+     "mean": 0.01122913149843161,
+     "min": -0.0228150228150229,
+     "max": 0.05032863849765257,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Impacted|recall": {
+     "mean": 0.005555555555555558,
+     "min": -0.01388888888888884,
+     "max": 0.01388888888888895,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Impacted|f1": {
+     "mean": 0.00816410424684919,
+     "min": -0.005332352670773255,
+     "max": 0.025498311212597047,
+     "n_positive": 4,
+     "n": 5
+    },
+    "Periapical Lesion|precision": {
+     "mean": 0.09963924963924964,
+     "min": 0.0793650793650793,
+     "max": 0.13095238095238093,
+     "n_positive": 5,
+     "n": 5
+    },
+    "Periapical Lesion|recall": {
+     "mean": -0.11111111111111109,
+     "min": -0.2222222222222222,
+     "max": 0.0,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Periapical Lesion|f1": {
+     "mean": -0.00503734827264235,
+     "min": -0.04166666666666652,
+     "max": 0.03921568627450989,
+     "n_positive": 2,
+     "n": 5
+    }
+   },
+   "verdict": {
+    "improves_macro_f1": false,
+    "acceptable_side_effects": true,
+    "worst_class_mean_f1_change": -0.00915986762135088,
+    "minority_precision_change_min": 0.09963924963924964,
+    "supported": false
+   },
+   "config": {
+    "exp": "I_sampler",
+    "preproc": "none",
+    "aug": "baseline",
+    "only_new": true,
+    "imbalance": "sampler",
+    "gamma": 2.0,
+    "epochs": 15,
+    "batch_size": 32,
+    "lr": 0.0003,
+    "wd": 0.0001,
+    "freeze_epochs": 0,
+    "save": true
+   },
+   "inputs": {
+    "crops_train_sha256": "293cbc38b095e7b5dadad4233dfbaf4ad9e60afd564582342e19718e34686356",
+    "crops_val_sha256": "fc58b21c73835d850196f644e157a530dfb25a30ce01efb791a58a948ececd94",
+    "split_assignments_sha": "1c350480eed2ae96",
+    "manifest_sha256": "932b0b941f54643e2faa7077e52b314475c03cbe03cdf8d4f6b9ecbf1a12a76c",
+    "script_sha256": "9a8e1d18d0c5fcd7ceb89c168c8f350050e70fd4d435b9ee010e0bf3a802607a"
+   },
+   "duration_s_total": 1134.3
+  },
+  "C3b_oversample_baselineaug": {
+   "label": "B oversampling",
+   "change_vs_C0": "duplicate minority crops to min(3n, sqrt(n_max n)); class weights kept; longer epochs",
+   "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+   ],
+   "per_seed": {
+    "42": {
+     "accuracy": 0.8670694864048338,
+     "macro_f1": 0.76544453939768,
+     "balanced_accuracy": 0.775271002710027,
+     "macro_precision": 0.7597343628593628,
+     "macro_recall": 0.775271002710027,
+     "Caries|precision": 0.8990384615384616,
+     "Caries|recall": 0.9121951219512195,
+     "Caries|f1": 0.9055690072639226,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.65,
+     "Deep Caries|recall": 0.5777777777777777,
+     "Deep Caries|f1": 0.6117647058823529,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9444444444444444,
+     "Impacted|recall": 0.9444444444444444,
+     "Impacted|f1": 0.9444444444444444,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.5454545454545454,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.6,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 10,
+     "duration_s": 313.5
+    },
+    "43": {
+     "accuracy": 0.8610271903323263,
+     "macro_f1": 0.7676230478128365,
+     "balanced_accuracy": 0.8193597560975611,
+     "macro_precision": 0.754352594720636,
+     "macro_recall": 0.8193597560975611,
+     "Caries|precision": 0.893719806763285,
+     "Caries|recall": 0.9024390243902439,
+     "Caries|f1": 0.8980582524271845,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.7352941176470589,
+     "Deep Caries|recall": 0.5555555555555556,
+     "Deep Caries|f1": 0.6329113924050633,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9178082191780822,
+     "Impacted|recall": 0.9305555555555556,
+     "Impacted|f1": 0.9241379310344828,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.47058823529411764,
+     "Periapical Lesion|recall": 0.8888888888888888,
+     "Periapical Lesion|f1": 0.6153846153846153,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 8,
+     "duration_s": 314.2
+    },
+    "44": {
+     "accuracy": 0.8942598187311178,
+     "macro_f1": 0.7848070907671272,
+     "balanced_accuracy": 0.7662771002710027,
+     "macro_precision": 0.810018989283008,
+     "macro_recall": 0.7662771002710027,
+     "Caries|precision": 0.9112149532710281,
+     "Caries|recall": 0.9512195121951219,
+     "Caries|f1": 0.9307875894988067,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.7714285714285715,
+     "Deep Caries|recall": 0.6,
+     "Deep Caries|f1": 0.675,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9324324324324325,
+     "Impacted|recall": 0.9583333333333334,
+     "Impacted|f1": 0.9452054794520548,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.625,
+     "Periapical Lesion|recall": 0.5555555555555556,
+     "Periapical Lesion|f1": 0.5882352941176471,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 12,
+     "duration_s": 314.7
+    },
+    "45": {
+     "accuracy": 0.8549848942598187,
+     "macro_f1": 0.7574627893776831,
+     "balanced_accuracy": 0.7221544715447155,
+     "macro_precision": 0.8103464056510317,
+     "macro_recall": 0.7221544715447155,
+     "Caries|precision": 0.8669724770642202,
+     "Caries|recall": 0.9219512195121952,
+     "Caries|f1": 0.8936170212765958,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.5833333333333334,
+     "Deep Caries|recall": 0.4666666666666667,
+     "Deep Caries|f1": 0.5185185185185186,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9577464788732394,
+     "Impacted|recall": 0.9444444444444444,
+     "Impacted|f1": 0.951048951048951,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.8333333333333334,
+     "Periapical Lesion|recall": 0.5555555555555556,
+     "Periapical Lesion|f1": 0.6666666666666667,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 11,
+     "duration_s": 315.0
+    },
+    "46": {
+     "accuracy": 0.8700906344410876,
+     "macro_f1": 0.7967341994959692,
+     "balanced_accuracy": 0.7617716802168022,
+     "macro_precision": 0.8873575821738253,
+     "macro_recall": 0.7617716802168022,
+     "Caries|precision": 0.8491379310344828,
+     "Caries|recall": 0.9609756097560975,
+     "Caries|f1": 0.9016018306636157,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.8947368421052632,
+     "Deep Caries|recall": 0.37777777777777777,
+     "Deep Caries|f1": 0.53125,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9305555555555556,
+     "Impacted|recall": 0.9305555555555556,
+     "Impacted|f1": 0.9305555555555556,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.875,
+     "Periapical Lesion|recall": 0.7777777777777778,
+     "Periapical Lesion|f1": 0.823529411764706,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 11,
+     "duration_s": 314.9
+    }
+   },
+   "aggregate": {
+    "accuracy": [
+     0.8694864048338369,
+     0.015014832193098697
+    ],
+    "macro_f1": [
+     0.7744143333702592,
+     0.015969654327387558
+    ],
+    "balanced_accuracy": [
+     0.7689668021680216,
+     0.034747630583940474
+    ],
+    "macro_precision": [
+     0.8043619869375727,
+     0.05349917735878648
+    ],
+    "macro_recall": [
+     0.7689668021680216,
+     0.034747630583940474
+    ],
+    "Caries|precision": [
+     0.8840167259342955,
+     0.025330725619315705
+    ],
+    "Caries|recall": [
+     0.9297560975609755,
+     0.02525303240106296
+    ],
+    "Caries|f1": [
+     0.9059267402260252,
+     0.014580268541882225
+    ],
+    "Caries|support": [
+     205.0,
+     0.0
+    ],
+    "Deep Caries|precision": [
+     0.7269585729028454,
+     0.11910860703184102
+    ],
+    "Deep Caries|recall": [
+     0.5155555555555555,
+     0.09216196157034541
+    ],
+    "Deep Caries|f1": [
+     0.5938889233611869,
+     0.06712979236249748
+    ],
+    "Deep Caries|support": [
+     45.0,
+     0.0
+    ],
+    "Impacted|precision": [
+     0.9365974260967509,
+     0.015130629520815207
+    ],
+    "Impacted|recall": [
+     0.9416666666666667,
+     0.011620278146306603
+    ],
+    "Impacted|f1": [
+     0.9390784723070977,
+     0.011241509221571687
+    ],
+    "Impacted|support": [
+     72.0,
+     0.0
+    ],
+    "Periapical Lesion|precision": [
+     0.6698752228163993,
+     0.1774854374886135
+    ],
+    "Periapical Lesion|recall": [
+     0.6888888888888888,
+     0.14487116456005883
+    ],
+    "Periapical Lesion|f1": [
+     0.6587631975867271,
+     0.09684958713162789
+    ],
+    "Periapical Lesion|support": [
+     9.0,
+     0.0
+    ],
+    "best_epoch": [
+     10.4,
+     1.51657508881031
+    ],
+    "duration_s": [
+     314.46000000000004,
+     0.6188699378706282
+    ]
+   },
+   "paired_vs_C0r": {
+    "macro_f1": {
+     "mean": 0.010411161073007814,
+     "min": -0.01887095910320158,
+     "max": 0.03765678366898795,
+     "n_positive": 3,
+     "n": 5
+    },
+    "balanced_accuracy": {
+     "mean": -0.010237127371273714,
+     "min": -0.05086382113821142,
+     "max": 0.057859078590785984,
+     "n_positive": 2,
+     "n": 5
+    },
+    "accuracy": {
+     "mean": 0.019939577039274937,
+     "min": -0.012084592145015116,
+     "max": 0.04229607250755285,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Caries|precision": {
+     "mean": -0.0164579537875446,
+     "min": -0.059074629351990704,
+     "max": 0.01844144661308844,
+     "n_positive": 2,
+     "n": 5
+    },
+    "Caries|recall": {
+     "mean": 0.04682926829268293,
+     "min": 0.004878048780487809,
+     "max": 0.08292682926829265,
+     "n_positive": 5,
+     "n": 5
+    },
+    "Caries|f1": {
+     "mean": 0.014505425887974788,
+     "min": -0.016794600999433196,
+     "max": 0.043007040870377766,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Deep Caries|precision": {
+     "mean": 0.15031383419928313,
+     "min": -0.0357142857142857,
+     "max": 0.23439153439153437,
+     "n_positive": 4,
+     "n": 5
+    },
+    "Deep Caries|recall": {
+     "mean": -0.0711111111111111,
+     "min": -0.2222222222222222,
+     "max": 0.06666666666666665,
+     "n_positive": 1,
+     "n": 5
+    },
+    "Deep Caries|f1": {
+     "mean": 0.014247366258146621,
+     "min": -0.1040441176470589,
+     "max": 0.09491077329808328,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Impacted|precision": {
+     "mean": 0.015585331810683912,
+     "min": -0.012012012012011963,
+     "max": 0.0271909233176838,
+     "n_positive": 4,
+     "n": 5
+    },
+    "Impacted|recall": {
+     "mean": 0.005555555555555558,
+     "min": 0.0,
+     "max": 0.01388888888888895,
+     "n_positive": 2,
+     "n": 5
+    },
+    "Impacted|f1": {
+     "mean": 0.01063659106711945,
+     "min": 0.0007610350076103778,
+     "max": 0.02049339549339546,
+     "n_positive": 5,
+     "n": 5
+    },
+    "Periapical Lesion|precision": {
+     "mean": 0.055228758169934646,
+     "min": -0.1527777777777778,
+     "max": 0.3295454545454546,
+     "n_positive": 2,
+     "n": 5
+    },
+    "Periapical Lesion|recall": {
+     "mean": -0.02222222222222221,
+     "min": -0.2222222222222222,
+     "max": 0.2222222222222222,
+     "n_positive": 2,
+     "n": 5
+    },
+    "Periapical Lesion|f1": {
+     "mean": 0.0022552610787905047,
+     "min": -0.1895424836601307,
+     "max": 0.22352941176470598,
+     "n_positive": 3,
+     "n": 5
+    }
+   },
+   "verdict": {
+    "improves_macro_f1": false,
+    "acceptable_side_effects": true,
+    "worst_class_mean_f1_change": 0.0022552610787905047,
+    "minority_precision_change_min": 0.055228758169934646,
+    "supported": false
+   },
+   "config": {
+    "exp": "C3b_oversample_baselineaug",
+    "preproc": "none",
+    "aug": "baseline",
+    "imbalance": "oversample",
+    "gamma": 2.0,
+    "epochs": 15,
+    "batch_size": 32,
+    "lr": 0.0003,
+    "wd": 0.0001,
+    "freeze_epochs": 0,
+    "save": false
+   },
+   "inputs": null,
+   "duration_s_total": 1572.3
+  },
+  "I_focal": {
+   "label": "C focal loss",
+   "change_vs_C0": "focal loss gamma 2, no class weights",
+   "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+   ],
+   "per_seed": {
+    "42": {
+     "accuracy": 0.8338368580060423,
+     "macro_f1": 0.736720425902019,
+     "balanced_accuracy": 0.7445121951219512,
+     "macro_precision": 0.730194305804062,
+     "macro_recall": 0.7445121951219512,
+     "Caries|precision": 0.8780487804878049,
+     "Caries|recall": 0.8780487804878049,
+     "Caries|f1": 0.8780487804878049,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.5238095238095238,
+     "Deep Caries|recall": 0.4888888888888889,
+     "Deep Caries|f1": 0.5057471264367817,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.918918918918919,
+     "Impacted|recall": 0.9444444444444444,
+     "Impacted|f1": 0.9315068493150684,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.6,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.631578947368421,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 9,
+     "duration_s": 215.8
+    },
+    "43": {
+     "accuracy": 0.8610271903323263,
+     "macro_f1": 0.7237590652699436,
+     "balanced_accuracy": 0.6980352303523036,
+     "macro_precision": 0.7657686907686907,
+     "macro_recall": 0.6980352303523036,
+     "Caries|precision": 0.8727272727272727,
+     "Caries|recall": 0.9365853658536586,
+     "Caries|f1": 0.9035294117647059,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.7,
+     "Deep Caries|recall": 0.4666666666666667,
+     "Deep Caries|f1": 0.56,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.918918918918919,
+     "Impacted|recall": 0.9444444444444444,
+     "Impacted|f1": 0.9315068493150684,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.5714285714285714,
+     "Periapical Lesion|recall": 0.4444444444444444,
+     "Periapical Lesion|f1": 0.5,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 9,
+     "duration_s": 215.1
+    },
+    "44": {
+     "accuracy": 0.8580060422960725,
+     "macro_f1": 0.7808139114765047,
+     "balanced_accuracy": 0.7542682926829268,
+     "macro_precision": 0.8193607989186821,
+     "macro_recall": 0.7542682926829268,
+     "Caries|precision": 0.8785046728971962,
+     "Caries|recall": 0.9170731707317074,
+     "Caries|f1": 0.8973747016706444,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.6470588235294118,
+     "Deep Caries|recall": 0.4888888888888889,
+     "Deep Caries|f1": 0.5569620253164557,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.8947368421052632,
+     "Impacted|recall": 0.9444444444444444,
+     "Impacted|f1": 0.918918918918919,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.8571428571428571,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.75,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 14,
+     "duration_s": 214.9
+    },
+    "45": {
+     "accuracy": 0.8610271903323263,
+     "macro_f1": 0.7463231412913542,
+     "balanced_accuracy": 0.728929539295393,
+     "macro_precision": 0.7694113756613756,
+     "macro_recall": 0.728929539295393,
+     "Caries|precision": 0.8796296296296297,
+     "Caries|recall": 0.926829268292683,
+     "Caries|f1": 0.9026128266033254,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.6285714285714286,
+     "Deep Caries|recall": 0.4888888888888889,
+     "Deep Caries|f1": 0.5499999999999999,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9444444444444444,
+     "Impacted|recall": 0.9444444444444444,
+     "Impacted|f1": 0.9444444444444444,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.625,
+     "Periapical Lesion|recall": 0.5555555555555556,
+     "Periapical Lesion|f1": 0.5882352941176471,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 9,
+     "duration_s": 215.1
+    },
+    "46": {
+     "accuracy": 0.8459214501510574,
+     "macro_f1": 0.7638802227734234,
+     "balanced_accuracy": 0.7407181571815719,
+     "macro_precision": 0.7949340140253746,
+     "macro_recall": 0.7407181571815719,
+     "Caries|precision": 0.8773584905660378,
+     "Caries|recall": 0.9073170731707317,
+     "Caries|f1": 0.8920863309352518,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.5263157894736842,
+     "Deep Caries|recall": 0.4444444444444444,
+     "Deep Caries|f1": 0.4819277108433735,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.918918918918919,
+     "Impacted|recall": 0.9444444444444444,
+     "Impacted|f1": 0.9315068493150684,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.8571428571428571,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.75,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 7,
+     "duration_s": 215.4
+    }
+   },
+   "aggregate": {
+    "accuracy": [
+     0.851963746223565,
+     0.011894271713008777
+    ],
+    "macro_f1": [
+     0.7502993533426489,
+     0.02247311002229745
+    ],
+    "balanced_accuracy": [
+     0.7332926829268294,
+     0.021697444036325442
+    ],
+    "macro_precision": [
+     0.775933837035637,
+     0.033484642607933615
+    ],
+    "macro_recall": [
+     0.7332926829268294,
+     0.021697444036325442
+    ],
+    "Caries|precision": [
+     0.8772537692615883,
+     0.0026618439412648717
+    ],
+    "Caries|recall": [
+     0.9131707317073172,
+     0.02246022328433434
+    ],
+    "Caries|f1": [
+     0.8947304102923465,
+     0.010390080838062518
+    ],
+    "Caries|support": [
+     205.0,
+     0.0
+    ],
+    "Deep Caries|precision": [
+     0.6051511130768097,
+     0.07767325974225639
+    ],
+    "Deep Caries|recall": [
+     0.47555555555555556,
+     0.01987615979999813
+    ],
+    "Deep Caries|f1": [
+     0.5309273725193222,
+     0.035077762083152456
+    ],
+    "Deep Caries|support": [
+     45.0,
+     0.0
+    ],
+    "Impacted|precision": [
+     0.9191876086612929,
+     0.017578142119458445
+    ],
+    "Impacted|recall": [
+     0.9444444444444444,
+     0.0
+    ],
+    "Impacted|f1": [
+     0.9315767822617138,
+     0.009025144130494874
+    ],
+    "Impacted|support": [
+     72.0,
+     0.0
+    ],
+    "Periapical Lesion|precision": [
+     0.7021428571428572,
+     0.14275889478703707
+    ],
+    "Periapical Lesion|recall": [
+     0.5999999999999999,
+     0.09938079899999064
+    ],
+    "Periapical Lesion|f1": [
+     0.6439628482972136,
+     0.10778680122048419
+    ],
+    "Periapical Lesion|support": [
+     9.0,
+     0.0
+    ],
+    "best_epoch": [
+     9.6,
+     2.6076809620810595
+    ],
+    "duration_s": [
+     215.26,
+     0.35071355833500845
+    ]
+   },
+   "paired_vs_C0r": {
+    "macro_f1": {
+     "mean": -0.013703818954602398,
+     "min": -0.030010607189530414,
+     "max": -0.004133129202787411,
+     "n_positive": 0,
+     "n": 5
+    },
+    "balanced_accuracy": {
+     "mean": -0.04591124661246611,
+     "min": -0.06346544715447144,
+     "max": -0.02967479674796747,
+     "n_positive": 0,
+     "n": 5
+    },
+    "accuracy": {
+     "mean": 0.0024169184290030454,
+     "min": -0.024169184290030232,
+     "max": 0.0332326283987916,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Caries|precision": {
+     "mean": -0.023220910460251876,
+     "min": -0.030854069820435703,
+     "max": -0.002548234437568242,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Caries|recall": {
+     "mean": 0.030243902439024417,
+     "min": -0.009756097560975618,
+     "max": 0.08780487804878057,
+     "n_positive": 4,
+     "n": 5
+    },
+    "Caries|f1": {
+     "mean": 0.003309095954296204,
+     "min": -0.020535028288049317,
+     "max": 0.02915755246822349,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Deep Caries|precision": {
+     "mean": 0.028506374373247413,
+     "min": -0.14868421052631586,
+     "max": 0.1705882352941176,
+     "n_positive": 4,
+     "n": 5
+    },
+    "Deep Caries|recall": {
+     "mean": -0.11111111111111112,
+     "min": -0.1555555555555556,
+     "max": -0.0222222222222222,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Deep Caries|f1": {
+     "mean": -0.04871418458371819,
+     "min": -0.1533664068036854,
+     "max": -0.0024999999999999467,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Impacted|precision": {
+     "mean": -0.0018244856247739971,
+     "min": -0.049707602339181256,
+     "max": 0.025585585585585657,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Impacted|recall": {
+     "mean": 0.008333333333333304,
+     "min": 0.0,
+     "max": 0.01388888888888884,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Impacted|f1": {
+     "mean": 0.0031349010217354588,
+     "min": -0.02552552552552545,
+     "max": 0.019942223464728293,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Periapical Lesion|precision": {
+     "mean": 0.08749639249639247,
+     "min": -0.04166666666666663,
+     "max": 0.3116883116883117,
+     "n_positive": 4,
+     "n": 5
+    },
+    "Periapical Lesion|recall": {
+     "mean": -0.11111111111111112,
+     "min": -0.2222222222222222,
+     "max": 0.0,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Periapical Lesion|f1": {
+     "mean": -0.012545088210722888,
+     "min": -0.07843137254901955,
+     "max": 0.15000000000000002,
+     "n_positive": 1,
+     "n": 5
+    }
+   },
+   "verdict": {
+    "improves_macro_f1": false,
+    "acceptable_side_effects": true,
+    "worst_class_mean_f1_change": -0.04871418458371819,
+    "minority_precision_change_min": 0.028506374373247413,
+    "supported": false
+   },
+   "config": {
+    "exp": "I_focal",
+    "preproc": "none",
+    "aug": "baseline",
+    "only_new": true,
+    "imbalance": "focal",
+    "gamma": 2.0,
+    "epochs": 15,
+    "batch_size": 32,
+    "lr": 0.0003,
+    "wd": 0.0001,
+    "freeze_epochs": 0,
+    "save": true
+   },
+   "inputs": {
+    "crops_train_sha256": "293cbc38b095e7b5dadad4233dfbaf4ad9e60afd564582342e19718e34686356",
+    "crops_val_sha256": "fc58b21c73835d850196f644e157a530dfb25a30ce01efb791a58a948ececd94",
+    "split_assignments_sha": "1c350480eed2ae96",
+    "manifest_sha256": "932b0b941f54643e2faa7077e52b314475c03cbe03cdf8d4f6b9ecbf1a12a76c",
+    "script_sha256": "9a8e1d18d0c5fcd7ceb89c168c8f350050e70fd4d435b9ee010e0bf3a802607a"
+   },
+   "duration_s_total": 1076.3
+  },
+  "I_weights_sqrt": {
+   "label": "D sqrt class weights",
+   "change_vs_C0": "class weights = sqrt(inverse frequency)",
+   "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+   ],
+   "per_seed": {
+    "42": {
+     "accuracy": 0.8610271903323263,
+     "macro_f1": 0.7754185155393309,
+     "balanced_accuracy": 0.7971375338753388,
+     "macro_precision": 0.7610252941597807,
+     "macro_recall": 0.7971375338753388,
+     "Caries|precision": 0.8980582524271845,
+     "Caries|recall": 0.9024390243902439,
+     "Caries|f1": 0.900243309002433,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.6190476190476191,
+     "Deep Caries|recall": 0.5777777777777777,
+     "Deep Caries|f1": 0.5977011494252873,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9436619718309859,
+     "Impacted|recall": 0.9305555555555556,
+     "Impacted|f1": 0.9370629370629372,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.5833333333333334,
+     "Periapical Lesion|recall": 0.7777777777777778,
+     "Periapical Lesion|f1": 0.6666666666666666,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 12,
+     "duration_s": 222.5
+    },
+    "43": {
+     "accuracy": 0.8429003021148036,
+     "macro_f1": 0.7172716671783519,
+     "balanced_accuracy": 0.7086043360433605,
+     "macro_precision": 0.7352165471923537,
+     "macro_recall": 0.7086043360433605,
+     "Caries|precision": 0.8657407407407407,
+     "Caries|recall": 0.9121951219512195,
+     "Caries|f1": 0.8883610451306413,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.6129032258064516,
+     "Deep Caries|recall": 0.4222222222222222,
+     "Deep Caries|f1": 0.5,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9066666666666666,
+     "Impacted|recall": 0.9444444444444444,
+     "Impacted|f1": 0.9251700680272109,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.5555555555555556,
+     "Periapical Lesion|recall": 0.5555555555555556,
+     "Periapical Lesion|f1": 0.5555555555555556,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 9,
+     "duration_s": 219.9
+    },
+    "44": {
+     "accuracy": 0.8549848942598187,
+     "macro_f1": 0.733490222336005,
+     "balanced_accuracy": 0.7415819783197832,
+     "macro_precision": 0.7290183701217055,
+     "macro_recall": 0.7415819783197832,
+     "Caries|precision": 0.893719806763285,
+     "Caries|recall": 0.9024390243902439,
+     "Caries|f1": 0.8980582524271845,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.65,
+     "Deep Caries|recall": 0.5777777777777777,
+     "Deep Caries|f1": 0.6117647058823529,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9178082191780822,
+     "Impacted|recall": 0.9305555555555556,
+     "Impacted|f1": 0.9241379310344828,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.45454545454545453,
+     "Periapical Lesion|recall": 0.5555555555555556,
+     "Periapical Lesion|f1": 0.5,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 6,
+     "duration_s": 220.6
+    },
+    "45": {
+     "accuracy": 0.8429003021148036,
+     "macro_f1": 0.7269540362561132,
+     "balanced_accuracy": 0.74800135501355,
+     "macro_precision": 0.7179712642041409,
+     "macro_recall": 0.74800135501355,
+     "Caries|precision": 0.8846153846153846,
+     "Caries|recall": 0.8975609756097561,
+     "Caries|f1": 0.891041162227603,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.6216216216216216,
+     "Deep Caries|recall": 0.5111111111111111,
+     "Deep Caries|f1": 0.5609756097560976,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9041095890410958,
+     "Impacted|recall": 0.9166666666666666,
+     "Impacted|f1": 0.9103448275862068,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.46153846153846156,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.5454545454545455,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 11,
+     "duration_s": 219.7
+    },
+    "46": {
+     "accuracy": 0.8580060422960725,
+     "macro_f1": 0.758145224379064,
+     "balanced_accuracy": 0.7450542005420053,
+     "macro_precision": 0.7763211924017551,
+     "macro_recall": 0.7450542005420053,
+     "Caries|precision": 0.9068627450980392,
+     "Caries|recall": 0.9024390243902439,
+     "Caries|f1": 0.9046454767726161,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.5652173913043478,
+     "Deep Caries|recall": 0.5777777777777777,
+     "Deep Caries|f1": 0.5714285714285713,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.918918918918919,
+     "Impacted|recall": 0.9444444444444444,
+     "Impacted|f1": 0.9315068493150684,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.7142857142857143,
+     "Periapical Lesion|recall": 0.5555555555555556,
+     "Periapical Lesion|f1": 0.6250000000000001,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 10,
+     "duration_s": 214.3
+    }
+   },
+   "aggregate": {
+    "accuracy": [
+     0.851963746223565,
+     0.008545097053613884
+    ],
+    "macro_f1": [
+     0.742255933137773,
+     0.023913519854148173
+    ],
+    "balanced_accuracy": [
+     0.7480758807588076,
+     0.031687361530495346
+    ],
+    "macro_precision": [
+     0.7439105336159472,
+     0.02404981009537264
+    ],
+    "macro_recall": [
+     0.7480758807588076,
+     0.031687361530495346
+    ],
+    "Caries|precision": [
+     0.8897993859289268,
+     0.01565590207715994
+    ],
+    "Caries|recall": [
+     0.9034146341463416,
+     0.00534363470736748
+    ],
+    "Caries|f1": [
+     0.8964698491120956,
+     0.0066862967249881585
+    ],
+    "Caries|support": [
+     205.0,
+     0.0
+    ],
+    "Deep Caries|precision": [
+     0.613757971556008,
+     0.030660318451295108
+    ],
+    "Deep Caries|recall": [
+     0.5333333333333332,
+     0.0684934889218775
+    ],
+    "Deep Caries|f1": [
+     0.5683740072984618,
+     0.0432490043561555
+    ],
+    "Deep Caries|support": [
+     45.0,
+     0.0
+    ],
+    "Impacted|precision": [
+     0.9182330731271499,
+     0.015656742443402847
+    ],
+    "Impacted|recall": [
+     0.9333333333333332,
+     0.011620278146306603
+    ],
+    "Impacted|f1": [
+     0.9256445226051813,
+     0.010016519557256827
+    ],
+    "Impacted|support": [
+     72.0,
+     0.0
+    ],
+    "Periapical Lesion|precision": [
+     0.5538517038517039,
+     0.1060596614518443
+    ],
+    "Periapical Lesion|recall": [
+     0.6222222222222223,
+     0.09938079899999064
+    ],
+    "Periapical Lesion|f1": [
+     0.5785353535353536,
+     0.0665513043800208
+    ],
+    "Periapical Lesion|support": [
+     9.0,
+     0.0
+    ],
+    "best_epoch": [
+     9.6,
+     2.3021728866442674
+    ],
+    "duration_s": [
+     219.4,
+     3.0577769702841255
+    ]
+   },
+   "paired_vs_C0r": {
+    "macro_f1": {
+     "mean": -0.021747239159478383,
+     "min": -0.06547511684130425,
+     "max": 0.028681357831327303,
+     "n_positive": 1,
+     "n": 5
+    },
+    "balanced_accuracy": {
+     "mean": -0.031128048780487826,
+     "min": -0.06715785907859073,
+     "max": 0.022950542005420127,
+     "n_positive": 1,
+     "n": 5
+    },
+    "accuracy": {
+     "mean": 0.0024169184290030233,
+     "min": -0.024169184290030232,
+     "max": 0.030211480362537846,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Caries|precision": {
+     "mean": -0.01067529379291332,
+     "min": -0.035813663404337004,
+     "max": 0.01746123750181139,
+     "n_positive": 1,
+     "n": 5
+    },
+    "Caries|recall": {
+     "mean": 0.0204878048780488,
+     "min": -0.019512195121951237,
+     "max": 0.06341463414634152,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Caries|f1": {
+     "mean": 0.005048534774045299,
+     "min": -0.01937046004842602,
+     "max": 0.028322126736423092,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Deep Caries|precision": {
+     "mean": 0.03711323285244576,
+     "min": -0.10978260869565226,
+     "max": 0.11296296296296293,
+     "n_positive": 4,
+     "n": 5
+    },
+    "Deep Caries|recall": {
+     "mean": -0.05333333333333336,
+     "min": -0.17777777777777776,
+     "max": 0.06666666666666665,
+     "n_positive": 1,
+     "n": 5
+    },
+    "Deep Caries|f1": {
+     "mean": -0.011267549804578536,
+     "min": -0.06386554621848761,
+     "max": 0.0808472168410177,
+     "n_positive": 2,
+     "n": 5
+    },
+    "Impacted|precision": {
+     "mean": -0.0027790211589169946,
+     "min": -0.026636225266362223,
+     "max": 0.02474305291206691,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Impacted|recall": {
+     "mean": -0.00277777777777779,
+     "min": -0.01388888888888895,
+     "max": 0.01388888888888884,
+     "n_positive": 2,
+     "n": 5
+    },
+    "Impacted|f1": {
+     "mean": -0.0027973586347970424,
+     "min": -0.02030651340996159,
+     "max": 0.013605442176870763,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Periapical Lesion|precision": {
+     "mean": -0.060794760794760774,
+     "min": -0.32323232323232326,
+     "max": 0.1688311688311689,
+     "n_positive": 2,
+     "n": 5
+    },
+    "Periapical Lesion|recall": {
+     "mean": -0.08888888888888886,
+     "min": -0.2222222222222222,
+     "max": 0.0,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Periapical Lesion|f1": {
+     "mean": -0.07797258297258294,
+     "min": -0.2777777777777778,
+     "max": 0.025000000000000133,
+     "n_positive": 1,
+     "n": 5
+    }
+   },
+   "verdict": {
+    "improves_macro_f1": false,
+    "acceptable_side_effects": false,
+    "worst_class_mean_f1_change": -0.07797258297258294,
+    "minority_precision_change_min": -0.060794760794760774,
+    "supported": false
+   },
+   "config": {
+    "exp": "I_weights_sqrt",
+    "preproc": "none",
+    "aug": "baseline",
+    "only_new": true,
+    "imbalance": "weights_sqrt",
+    "gamma": 2.0,
+    "epochs": 15,
+    "batch_size": 32,
+    "lr": 0.0003,
+    "wd": 0.0001,
+    "freeze_epochs": 0,
+    "save": true
+   },
+   "inputs": {
+    "crops_train_sha256": "293cbc38b095e7b5dadad4233dfbaf4ad9e60afd564582342e19718e34686356",
+    "crops_val_sha256": "fc58b21c73835d850196f644e157a530dfb25a30ce01efb791a58a948ececd94",
+    "split_assignments_sha": "1c350480eed2ae96",
+    "manifest_sha256": "932b0b941f54643e2faa7077e52b314475c03cbe03cdf8d4f6b9ecbf1a12a76c",
+    "script_sha256": "9a8e1d18d0c5fcd7ceb89c168c8f350050e70fd4d435b9ee010e0bf3a802607a"
+   },
+   "duration_s_total": 1097.0
+  },
+  "I_minority_geom": {
+   "label": "E minority-only geometric aug",
+   "change_vs_C0": "baseline aug + rotation 5 deg / shift 3% / scale 0.95-1.05 for Deep Caries & Periapical Lesion only",
+   "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+   ],
+   "per_seed": {
+    "42": {
+     "accuracy": 0.8398791540785498,
+     "macro_f1": 0.7462691284541932,
+     "balanced_accuracy": 0.7740514905149051,
+     "macro_precision": 0.743865723317778,
+     "macro_recall": 0.7740514905149051,
+     "Caries|precision": 0.8571428571428571,
+     "Caries|recall": 0.9073170731707317,
+     "Caries|f1": 0.8815165876777251,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.5714285714285714,
+     "Deep Caries|recall": 0.35555555555555557,
+     "Deep Caries|f1": 0.4383561643835616,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9315068493150684,
+     "Impacted|recall": 0.9444444444444444,
+     "Impacted|f1": 0.9379310344827586,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.6153846153846154,
+     "Periapical Lesion|recall": 0.8888888888888888,
+     "Periapical Lesion|f1": 0.7272727272727274,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 11,
+     "duration_s": 225.9
+    },
+    "43": {
+     "accuracy": 0.8670694864048338,
+     "macro_f1": 0.7860065999163743,
+     "balanced_accuracy": 0.7867378048780488,
+     "macro_precision": 0.7934976525821595,
+     "macro_recall": 0.7867378048780488,
+     "Caries|precision": 0.8873239436619719,
+     "Caries|recall": 0.9219512195121952,
+     "Caries|f1": 0.9043062200956937,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.6666666666666666,
+     "Deep Caries|recall": 0.4888888888888889,
+     "Deep Caries|f1": 0.5641025641025641,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.92,
+     "Impacted|recall": 0.9583333333333334,
+     "Impacted|f1": 0.9387755102040817,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.7,
+     "Periapical Lesion|recall": 0.7777777777777778,
+     "Periapical Lesion|f1": 0.7368421052631577,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 12,
+     "duration_s": 228.3
+    },
+    "44": {
+     "accuracy": 0.8398791540785498,
+     "macro_f1": 0.7340068779449765,
+     "balanced_accuracy": 0.7755928184281842,
+     "macro_precision": 0.7124558619354666,
+     "macro_recall": 0.7755928184281842,
+     "Caries|precision": 0.8916256157635468,
+     "Caries|recall": 0.8829268292682927,
+     "Caries|f1": 0.8872549019607844,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.5609756097560976,
+     "Deep Caries|recall": 0.5111111111111111,
+     "Deep Caries|f1": 0.5348837209302325,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9305555555555556,
+     "Impacted|recall": 0.9305555555555556,
+     "Impacted|f1": 0.9305555555555556,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.4666666666666667,
+     "Periapical Lesion|recall": 0.7777777777777778,
+     "Periapical Lesion|f1": 0.5833333333333334,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 10,
+     "duration_s": 231.8
+    },
+    "45": {
+     "accuracy": 0.8640483383685801,
+     "macro_f1": 0.7432379782379783,
+     "balanced_accuracy": 0.7546239837398374,
+     "macro_precision": 0.7499783790462071,
+     "macro_recall": 0.7546239837398374,
+     "Caries|precision": 0.892018779342723,
+     "Caries|recall": 0.926829268292683,
+     "Caries|f1": 0.9090909090909092,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.7,
+     "Deep Caries|recall": 0.4666666666666667,
+     "Deep Caries|f1": 0.56,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9078947368421053,
+     "Impacted|recall": 0.9583333333333334,
+     "Impacted|f1": 0.9324324324324325,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.5,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.5714285714285715,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 13,
+     "duration_s": 237.2
+    },
+    "46": {
+     "accuracy": 0.8398791540785498,
+     "macro_f1": 0.7437686294829152,
+     "balanced_accuracy": 0.7469512195121951,
+     "macro_precision": 0.7408030803080308,
+     "macro_recall": 0.7469512195121951,
+     "Caries|precision": 0.900990099009901,
+     "Caries|recall": 0.8878048780487805,
+     "Caries|f1": 0.8943488943488944,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.4888888888888889,
+     "Deep Caries|recall": 0.4888888888888889,
+     "Deep Caries|f1": 0.4888888888888889,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9066666666666666,
+     "Impacted|recall": 0.9444444444444444,
+     "Impacted|f1": 0.9251700680272109,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.6666666666666666,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.6666666666666666,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 13,
+     "duration_s": 249.0
+    }
+   },
+   "aggregate": {
+    "accuracy": [
+     0.8501510574018127,
+     0.014105882211394267
+    ],
+    "macro_f1": [
+     0.7506578428072876,
+     0.020301266734687917
+    ],
+    "balanced_accuracy": [
+     0.7675914634146341,
+     0.016328741692880115
+    ],
+    "macro_precision": [
+     0.7481201394379285,
+     0.02918112341138986
+    ],
+    "macro_recall": [
+     0.7675914634146341,
+     0.016328741692880115
+    ],
+    "Caries|precision": [
+     0.8858202589841999,
+     0.016784682841477196
+    ],
+    "Caries|recall": [
+     0.9053658536585367,
+     0.019694272427498896
+    ],
+    "Caries|f1": [
+     0.8953035026348013,
+     0.011477279428173962
+    ],
+    "Caries|support": [
+     205.0,
+     0.0
+    ],
+    "Deep Caries|precision": [
+     0.5975919473480449,
+     0.0852941373035653
+    ],
+    "Deep Caries|recall": [
+     0.46222222222222226,
+     0.061664164113384906
+    ],
+    "Deep Caries|f1": [
+     0.5172462676610494,
+     0.05329695870523201
+    ],
+    "Deep Caries|support": [
+     45.0,
+     0.0
+    ],
+    "Impacted|precision": [
+     0.9193247616758791,
+     0.011893935158032913
+    ],
+    "Impacted|recall": [
+     0.9472222222222222,
+     0.011620278146306617
+    ],
+    "Impacted|f1": [
+     0.9329729201404078,
+     0.005596276192207254
+    ],
+    "Impacted|support": [
+     72.0,
+     0.0
+    ],
+    "Periapical Lesion|precision": [
+     0.5897435897435896,
+     0.10238766875949437
+    ],
+    "Periapical Lesion|recall": [
+     0.7555555555555554,
+     0.09296222517045283
+    ],
+    "Periapical Lesion|f1": [
+     0.6571086807928913,
+     0.07771044093878872
+    ],
+    "Periapical Lesion|support": [
+     9.0,
+     0.0
+    ],
+    "best_epoch": [
+     11.8,
+     1.3038404810405297
+    ],
+    "duration_s": [
+     234.44,
+     9.181666515399037
+    ]
+   },
+   "paired_vs_C0r": {
+    "macro_f1": {
+     "mean": -0.013345329489963854,
+     "min": -0.06495846123233273,
+     "max": 0.05604033577252576,
+     "n_positive": 1,
+     "n": 5
+    },
+    "balanced_accuracy": {
+     "mean": -0.011612466124661292,
+     "min": -0.03314701897018979,
+     "max": 0.025237127371273704,
+     "n_positive": 1,
+     "n": 5
+    },
+    "accuracy": {
+     "mean": 0.0006042296072507724,
+     "min": -0.030211480362537735,
+     "max": 0.0392749244712991,
+     "n_positive": 2,
+     "n": 5
+    },
+    "Caries|precision": {
+     "mean": -0.014654420737640162,
+     "min": -0.023454157782516027,
+     "max": -0.007222461376572453,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Caries|recall": {
+     "mean": 0.022439024390243922,
+     "min": -0.029268292682926855,
+     "max": 0.07317073170731714,
+     "n_positive": 4,
+     "n": 5
+    },
+    "Caries|f1": {
+     "mean": 0.003882188296751088,
+     "min": -0.018272464874406702,
+     "max": 0.0299343607992113,
+     "n_positive": 2,
+     "n": 5
+    },
+    "Deep Caries|precision": {
+     "mean": 0.02094720864448264,
+     "min": -0.18611111111111117,
+     "max": 0.13725490196078427,
+     "n_positive": 4,
+     "n": 5
+    },
+    "Deep Caries|recall": {
+     "mean": -0.12444444444444444,
+     "min": -0.1555555555555555,
+     "max": -0.11111111111111105,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Deep Caries|f1": {
+     "mean": -0.06239528944199092,
+     "min": -0.14640522875817003,
+     "max": 0.0016025641025640969,
+     "n_positive": 1,
+     "n": 5
+    },
+    "Impacted|precision": {
+     "mean": -0.0016873326101876974,
+     "min": -0.02266081871345027,
+     "max": 0.026666666666666727,
+     "n_positive": 2,
+     "n": 5
+    },
+    "Impacted|recall": {
+     "mean": 0.011111111111111117,
+     "min": -0.01388888888888884,
+     "max": 0.02777777777777779,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Impacted|f1": {
+     "mean": 0.004531038900429563,
+     "min": -0.01388888888888884,
+     "max": 0.027210884353741527,
+     "n_positive": 4,
+     "n": 5
+    },
+    "Periapical Lesion|precision": {
+     "mean": -0.024902874902874905,
+     "min": -0.3111111111111111,
+     "max": 0.19999999999999996,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Periapical Lesion|recall": {
+     "mean": 0.04444444444444444,
+     "min": 0.0,
+     "max": 0.11111111111111116,
+     "n_positive": 2,
+     "n": 5
+    },
+    "Periapical Lesion|f1": {
+     "mean": 0.0006007442849548239,
+     "min": -0.19444444444444442,
+     "max": 0.16541353383458623,
+     "n_positive": 3,
+     "n": 5
+    }
+   },
+   "verdict": {
+    "improves_macro_f1": false,
+    "acceptable_side_effects": false,
+    "worst_class_mean_f1_change": -0.06239528944199092,
+    "minority_precision_change_min": -0.024902874902874905,
+    "supported": false
+   },
+   "config": {
+    "exp": "I_minority_geom",
+    "preproc": "none",
+    "aug": "minority_geom",
+    "only_new": true,
+    "imbalance": "weights",
+    "gamma": 2.0,
+    "epochs": 15,
+    "batch_size": 32,
+    "lr": 0.0003,
+    "wd": 0.0001,
+    "freeze_epochs": 0,
+    "save": true
+   },
+   "inputs": {
+    "crops_train_sha256": "293cbc38b095e7b5dadad4233dfbaf4ad9e60afd564582342e19718e34686356",
+    "crops_val_sha256": "fc58b21c73835d850196f644e157a530dfb25a30ce01efb791a58a948ececd94",
+    "split_assignments_sha": "1c350480eed2ae96",
+    "manifest_sha256": "932b0b941f54643e2faa7077e52b314475c03cbe03cdf8d4f6b9ecbf1a12a76c",
+    "script_sha256": "9a8e1d18d0c5fcd7ceb89c168c8f350050e70fd4d435b9ee010e0bf3a802607a"
+   },
+   "duration_s_total": 1172.2
+  },
+  "C_unweighted": {
+   "label": "ref: no rebalancing",
+   "change_vs_C0": "plain cross-entropy, no weights (reference)",
+   "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+   ],
+   "per_seed": {
+    "42": {
+     "accuracy": 0.8338368580060423,
+     "macro_f1": 0.7352624290309798,
+     "balanced_accuracy": 0.7264566395663956,
+     "macro_precision": 0.7452251552795031,
+     "macro_recall": 0.7264566395663956,
+     "Caries|precision": 0.8695652173913043,
+     "Caries|recall": 0.8780487804878049,
+     "Caries|f1": 0.8737864077669902,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.5434782608695652,
+     "Deep Caries|recall": 0.5555555555555556,
+     "Deep Caries|f1": 0.5494505494505495,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9428571428571428,
+     "Impacted|recall": 0.9166666666666666,
+     "Impacted|f1": 0.9295774647887323,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.625,
+     "Periapical Lesion|recall": 0.5555555555555556,
+     "Periapical Lesion|f1": 0.5882352941176471,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 7,
+     "duration_s": 227.1
+    },
+    "43": {
+     "accuracy": 0.8549848942598187,
+     "macro_f1": 0.7574414990629508,
+     "balanced_accuracy": 0.7594681571815718,
+     "macro_precision": 0.7570557491289199,
+     "macro_recall": 0.7594681571815718,
+     "Caries|precision": 0.8857142857142857,
+     "Caries|recall": 0.9073170731707317,
+     "Caries|f1": 0.8963855421686747,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.5853658536585366,
+     "Deep Caries|recall": 0.5333333333333333,
+     "Deep Caries|f1": 0.5581395348837209,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9571428571428572,
+     "Impacted|recall": 0.9305555555555556,
+     "Impacted|f1": 0.943661971830986,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.6,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.631578947368421,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 14,
+     "duration_s": 227.1
+    },
+    "44": {
+     "accuracy": 0.8640483383685801,
+     "macro_f1": 0.7647990742421567,
+     "balanced_accuracy": 0.7695460704607046,
+     "macro_precision": 0.7616171227227461,
+     "macro_recall": 0.7695460704607046,
+     "Caries|precision": 0.9082125603864735,
+     "Caries|recall": 0.9170731707317074,
+     "Caries|f1": 0.9126213592233011,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.6341463414634146,
+     "Deep Caries|recall": 0.5777777777777777,
+     "Deep Caries|f1": 0.6046511627906976,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9041095890410958,
+     "Impacted|recall": 0.9166666666666666,
+     "Impacted|f1": 0.9103448275862068,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.6,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.631578947368421,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 9,
+     "duration_s": 227.1
+    },
+    "45": {
+     "accuracy": 0.8549848942598187,
+     "macro_f1": 0.7683931430815778,
+     "balanced_accuracy": 0.7572154471544715,
+     "macro_precision": 0.7809611657722123,
+     "macro_recall": 0.7572154471544715,
+     "Caries|precision": 0.8990384615384616,
+     "Caries|recall": 0.9121951219512195,
+     "Caries|f1": 0.9055690072639226,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.5581395348837209,
+     "Deep Caries|recall": 0.5333333333333333,
+     "Deep Caries|f1": 0.5454545454545454,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9166666666666666,
+     "Impacted|recall": 0.9166666666666666,
+     "Impacted|f1": 0.9166666666666666,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.75,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.7058823529411765,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 7,
+     "duration_s": 226.9
+    },
+    "46": {
+     "accuracy": 0.8459214501510574,
+     "macro_f1": 0.7303911728082344,
+     "balanced_accuracy": 0.7341294037940379,
+     "macro_precision": 0.7373064910725349,
+     "macro_recall": 0.7341294037940379,
+     "Caries|precision": 0.8663594470046083,
+     "Caries|recall": 0.9170731707317074,
+     "Caries|f1": 0.8909952606635071,
+     "Caries|support": 205,
+     "Deep Caries|precision": 0.59375,
+     "Deep Caries|recall": 0.4222222222222222,
+     "Deep Caries|f1": 0.49350649350649345,
+     "Deep Caries|support": 45,
+     "Impacted|precision": 0.9436619718309859,
+     "Impacted|recall": 0.9305555555555556,
+     "Impacted|f1": 0.9370629370629372,
+     "Impacted|support": 72,
+     "Periapical Lesion|precision": 0.5454545454545454,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.6,
+     "Periapical Lesion|support": 9,
+     "best_epoch": 8,
+     "duration_s": 227.0
+    }
+   },
+   "aggregate": {
+    "accuracy": [
+     0.8507552870090634,
+     0.011424574260537173
+    ],
+    "macro_f1": [
+     0.75125746364518,
+     0.017367298631025218
+    ],
+    "balanced_accuracy": [
+     0.7493631436314363,
+     0.018220148618885868
+    ],
+    "macro_precision": [
+     0.7564331367951833,
+     0.016735687825488378
+    ],
+    "macro_recall": [
+     0.7493631436314363,
+     0.018220148618885868
+    ],
+    "Caries|precision": [
+     0.8857779944070266,
+     0.018159624994813706
+    ],
+    "Caries|recall": [
+     0.9063414634146343,
+     0.016325073688469784
+    ],
+    "Caries|f1": [
+     0.8958715154172792,
+     0.01488617378216725
+    ],
+    "Caries|support": [
+     205.0,
+     0.0
+    ],
+    "Deep Caries|precision": [
+     0.5829759981750475,
+     0.035061074277179825
+    ],
+    "Deep Caries|recall": [
+     0.5244444444444445,
+     0.060041138160472414
+    ],
+    "Deep Caries|f1": [
+     0.5502404572172013,
+     0.03957648245168801
+    ],
+    "Deep Caries|support": [
+     45.0,
+     0.0
+    ],
+    "Impacted|precision": [
+     0.9328876455077497,
+     0.021766309776485845
+    ],
+    "Impacted|recall": [
+     0.9222222222222222,
+     0.007607257743127341
+    ],
+    "Impacted|f1": [
+     0.9274627735871057,
+     0.013862080303048873
+    ],
+    "Impacted|support": [
+     72.0,
+     0.0
+    ],
+    "Periapical Lesion|precision": [
+     0.6240909090909091,
+     0.07615501806748855
+    ],
+    "Periapical Lesion|recall": [
+     0.6444444444444444,
+     0.0496903994999953
+    ],
+    "Periapical Lesion|f1": [
+     0.6314551083591331,
+     0.045817086314030045
+    ],
+    "Periapical Lesion|support": [
+     9.0,
+     0.0
+    ],
+    "best_epoch": [
+     9.0,
+     2.9154759474226504
+    ],
+    "duration_s": [
+     227.03999999999996,
+     0.0894427190999865
+    ]
+   },
+   "paired_vs_C0r": {
+    "macro_f1": {
+     "mean": -0.012745708652071497,
+     "min": -0.03762217916797639,
+     "max": 0.0274752349191022,
+     "n_positive": 1,
+     "n": 5
+    },
+    "balanced_accuracy": {
+     "mean": -0.029840785907859123,
+     "min": -0.04773035230352307,
+     "max": -0.002032520325203291,
+     "n_positive": 0,
+     "n": 5
+    },
+    "accuracy": {
+     "mean": 0.0012084592145015227,
+     "min": -0.024169184290030232,
+     "max": 0.027190332326283984,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Caries|precision": {
+     "mean": -0.01469668531481345,
+     "min": -0.04185311338186515,
+     "max": 4.929508035100838e-05,
+     "n_positive": 1,
+     "n": 5
+    },
+    "Caries|recall": {
+     "mean": 0.023414634146341484,
+     "min": -0.004878048780487809,
+     "max": 0.05853658536585371,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Caries|f1": {
+     "mean": 0.004450201079228888,
+     "min": -0.021626098559794027,
+     "max": 0.024840810594872198,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Deep Caries|precision": {
+     "mean": 0.0063312594714852065,
+     "min": -0.08125000000000004,
+     "max": 0.09710930442637755,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Deep Caries|recall": {
+     "mean": -0.062222222222222213,
+     "min": -0.17777777777777776,
+     "max": 0.04444444444444451,
+     "n_positive": 1,
+     "n": 5
+    },
+    "Deep Caries|f1": {
+     "mean": -0.029401099885838965,
+     "min": -0.14178762414056545,
+     "max": 0.032596616866279904,
+     "n_positive": 2,
+     "n": 5
+    },
+    "Impacted|precision": {
+     "mean": 0.011875551221682778,
+     "min": -0.04033485540334858,
+     "max": 0.06380952380952387,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Impacted|recall": {
+     "mean": -0.013888888888888905,
+     "min": -0.02777777777777779,
+     "max": 0.0,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Impacted|f1": {
+     "mean": -0.0009791076528725018,
+     "min": -0.03409961685823759,
+     "max": 0.03209734598064584,
+     "n_positive": 2,
+     "n": 5
+    },
+    "Periapical Lesion|precision": {
+     "mean": 0.009444444444444432,
+     "min": -0.1777777777777778,
+     "max": 0.09999999999999998,
+     "n_positive": 3,
+     "n": 5
+    },
+    "Periapical Lesion|recall": {
+     "mean": -0.06666666666666668,
+     "min": -0.2222222222222222,
+     "max": 0.0,
+     "n_positive": 0,
+     "n": 5
+    },
+    "Periapical Lesion|f1": {
+     "mean": -0.025052828148803385,
+     "min": -0.14619883040935677,
+     "max": 0.06015037593984951,
+     "n_positive": 2,
+     "n": 5
+    }
+   },
+   "verdict": {
+    "improves_macro_f1": false,
+    "acceptable_side_effects": true,
+    "worst_class_mean_f1_change": -0.029401099885838965,
+    "minority_precision_change_min": 0.0063312594714852065,
+    "supported": false
+   },
+   "config": {
+    "exp": "C_unweighted",
+    "preproc": "none",
+    "aug": "baseline",
+    "imbalance": "none",
+    "gamma": 2.0,
+    "epochs": 15,
+    "batch_size": 32,
+    "lr": 0.0003,
+    "wd": 0.0001,
+    "freeze_epochs": 0,
+    "save": false
+   },
+   "inputs": null,
+   "duration_s_total": 1135.2
+  }
+ },
+ "not_run": [],
+ "reproducibility": [
+  {
+   "seed": 42,
+   "C0_macro_f1": 0.7467371577080036,
+   "C0r_macro_f1": 0.7467371577080036,
+   "C0_best_epoch": 14,
+   "C0r_best_epoch": 14,
+   "identical_confusion": true
+  },
+  {
+   "seed": 43,
+   "C0_macro_f1": 0.7299662641438486,
+   "C0r_macro_f1": 0.7299662641438486,
+   "C0_best_epoch": 11,
+   "C0r_best_epoch": 11,
+   "identical_confusion": true
+  },
+  {
+   "seed": 44,
+   "C0_macro_f1": 0.7989653391773093,
+   "C0r_macro_f1": 0.7989653391773093,
+   "C0_best_epoch": 14,
+   "C0r_best_epoch": 14,
+   "identical_confusion": true
+  },
+  {
+   "seed": 45,
+   "C0_macro_f1": 0.7763337484808847,
+   "C0r_macro_f1": 0.7763337484808847,
+   "C0_best_epoch": 13,
+   "C0r_best_epoch": 13,
+   "identical_confusion": true
+  },
+  {
+   "seed": 46,
+   "C0_macro_f1": 0.7680133519762108,
+   "C0r_macro_f1": 0.7680133519762108,
+   "C0_best_epoch": 14,
+   "C0r_best_epoch": 14,
+   "identical_confusion": true
+  }
+ ],
+ "supported_methods": [],
+ "thresholds": {
+  "C0r": [
+   {
+    "seed": 42,
+    "weights_fit_on_full_val": [
+     1.0,
+     2.2449,
+     1.0,
+     1.0
+    ],
+    "argmax": {
+     "macro_f1": 0.7467371577080036,
+     "balanced_accuracy": 0.7741869918699187,
+     "accuracy": 0.8308157099697885,
+     "Caries|precision": 0.8805970149253731,
+     "Caries|recall": 0.8634146341463415,
+     "Caries|f1": 0.8719211822660099,
+     "Deep Caries|precision": 0.5227272727272727,
+     "Deep Caries|recall": 0.5111111111111111,
+     "Deep Caries|f1": 0.5168539325842696,
+     "Impacted|precision": 0.918918918918919,
+     "Impacted|recall": 0.9444444444444444,
+     "Impacted|f1": 0.9315068493150684,
+     "Periapical Lesion|precision": 0.5833333333333334,
+     "Periapical Lesion|recall": 0.7777777777777778,
+     "Periapical Lesion|f1": 0.6666666666666666
+    },
+    "in_sample_tuned": {
+     "macro_f1": 0.7810299683535644,
+     "balanced_accuracy": 0.8026422764227642,
+     "accuracy": 0.8368580060422961,
+     "Caries|precision": 0.8963730569948186,
+     "Caries|recall": 0.8439024390243902,
+     "Caries|f1": 0.8693467336683416,
+     "Deep Caries|precision": 0.5272727272727272,
+     "Deep Caries|recall": 0.6444444444444445,
+     "Deep Caries|f1": 0.58,
+     "Impacted|precision": 0.9315068493150684,
+     "Impacted|recall": 0.9444444444444444,
+     "Impacted|f1": 0.9379310344827586,
+     "Periapical Lesion|precision": 0.7,
+     "Periapical Lesion|recall": 0.7777777777777778,
+     "Periapical Lesion|f1": 0.7368421052631577
+    },
+    "crossfit_mean": {
+     "macro_f1": 0.7633692918415489,
+     "balanced_accuracy": 0.7794986449864498,
+     "Caries|precision": 0.8937055573933854,
+     "Caries|recall": 0.842439024390244,
+     "Caries|f1": 0.8672874237993353,
+     "Deep Caries|precision": 0.5147629208946375,
+     "Deep Caries|recall": 0.631111111111111,
+     "Deep Caries|f1": 0.5667081451447304,
+     "Impacted|precision": 0.9302480562754534,
+     "Impacted|recall": 0.9444444444444441,
+     "Impacted|f1": 0.9372886159659896,
+     "Periapical Lesion|precision": 0.6671212121212121,
+     "Periapical Lesion|recall": 0.7,
+     "Periapical Lesion|f1": 0.6821929824561402
+    },
+    "crossfit_reps": 20,
+    "tradeoff": [
+     {
+      "class": "Deep Caries",
+      "weight": 0.5,
+      "precision": 0.5428571428571428,
+      "recall": 0.4222222222222222,
+      "macro_f1": 0.7365159469584935
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 0.75,
+      "precision": 0.5263157894736842,
+      "recall": 0.4444444444444444,
+      "macro_f1": 0.7384719086480246
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 1.0,
+      "precision": 0.5227272727272727,
+      "recall": 0.5111111111111111,
+      "macro_f1": 0.7467371577080036
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 1.5,
+      "precision": 0.5208333333333334,
+      "recall": 0.5555555555555556,
+      "macro_f1": 0.7539203103163059
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 2.0,
+      "precision": 0.52,
+      "recall": 0.5777777777777777,
+      "macro_f1": 0.7639865554261361
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 3.0,
+      "precision": 0.5,
+      "recall": 0.6444444444444445,
+      "macro_f1": 0.7578352152255734
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 4.0,
+      "precision": 0.47619047619047616,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.754872073767038
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 0.5,
+      "precision": 0.6666666666666666,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7510139672307279
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 0.75,
+      "precision": 0.5833333333333334,
+      "recall": 0.7777777777777778,
+      "macro_f1": 0.7467371577080036
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 1.0,
+      "precision": 0.5833333333333334,
+      "recall": 0.7777777777777778,
+      "macro_f1": 0.7467371577080036
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 1.5,
+      "precision": 0.5384615384615384,
+      "recall": 0.7777777777777778,
+      "macro_f1": 0.7384650551830275
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 2.0,
+      "precision": 0.5,
+      "recall": 0.7777777777777778,
+      "macro_f1": 0.7308482669341543
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 3.0,
+      "precision": 0.4117647058823529,
+      "recall": 0.7777777777777778,
+      "macro_f1": 0.7076662262973855
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 4.0,
+      "precision": 0.3888888888888889,
+      "recall": 0.7777777777777778,
+      "macro_f1": 0.7019701823573993
+     }
+    ]
+   },
+   {
+    "seed": 43,
+    "weights_fit_on_full_val": [
+     1.0,
+     3.5636,
+     0.4454,
+     1.0
+    ],
+    "argmax": {
+     "macro_f1": 0.7299662641438486,
+     "balanced_accuracy": 0.7615006775067751,
+     "accuracy": 0.8277945619335347,
+     "Caries|precision": 0.9015544041450777,
+     "Caries|recall": 0.848780487804878,
+     "Caries|f1": 0.8743718592964824,
+     "Deep Caries|precision": 0.5294117647058824,
+     "Deep Caries|recall": 0.6,
+     "Deep Caries|f1": 0.5625,
+     "Impacted|precision": 0.8933333333333333,
+     "Impacted|recall": 0.9305555555555556,
+     "Impacted|f1": 0.9115646258503401,
+     "Periapical Lesion|precision": 0.5,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.5714285714285715
+    },
+    "in_sample_tuned": {
+     "macro_f1": 0.7506978880690222,
+     "balanced_accuracy": 0.7887364498644985,
+     "accuracy": 0.8308157099697885,
+     "Caries|precision": 0.9234972677595629,
+     "Caries|recall": 0.824390243902439,
+     "Caries|f1": 0.8711340206185567,
+     "Deep Caries|precision": 0.5,
+     "Deep Caries|recall": 0.7333333333333333,
+     "Deep Caries|f1": 0.5945945945945945,
+     "Impacted|precision": 0.9436619718309859,
+     "Impacted|recall": 0.9305555555555556,
+     "Impacted|f1": 0.9370629370629372,
+     "Periapical Lesion|precision": 0.5454545454545454,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.6
+    },
+    "crossfit_mean": {
+     "macro_f1": 0.7318692227263958,
+     "balanced_accuracy": 0.768899051490515,
+     "Caries|precision": 0.910151089580971,
+     "Caries|recall": 0.8217073170731707,
+     "Caries|f1": 0.8636183432596874,
+     "Deep Caries|precision": 0.4870136432337889,
+     "Deep Caries|recall": 0.6566666666666665,
+     "Deep Caries|f1": 0.5587278665131225,
+     "Impacted|precision": 0.9086046785790837,
+     "Impacted|recall": 0.9305555555555557,
+     "Impacted|f1": 0.9194163954184873,
+     "Periapical Lesion|precision": 0.5227272727272727,
+     "Periapical Lesion|recall": 0.6666666666666665,
+     "Periapical Lesion|f1": 0.5857142857142856
+    },
+    "crossfit_reps": 20,
+    "tradeoff": [
+     {
+      "class": "Deep Caries",
+      "weight": 0.5,
+      "precision": 0.5116279069767442,
+      "recall": 0.4888888888888889,
+      "macro_f1": 0.7127270127270128
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 0.75,
+      "precision": 0.5217391304347826,
+      "recall": 0.5333333333333333,
+      "macro_f1": 0.7209787140662718
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 1.0,
+      "precision": 0.5294117647058824,
+      "recall": 0.6,
+      "macro_f1": 0.7299662641438486
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 1.5,
+      "precision": 0.509090909090909,
+      "recall": 0.6222222222222222,
+      "macro_f1": 0.7300307166390051
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 2.0,
+      "precision": 0.49122807017543857,
+      "recall": 0.6222222222222222,
+      "macro_f1": 0.7258490868898014
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 3.0,
+      "precision": 0.49230769230769234,
+      "recall": 0.7111111111111111,
+      "macro_f1": 0.7422513021149749
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 4.0,
+      "precision": 0.4852941176470588,
+      "recall": 0.7333333333333333,
+      "macro_f1": 0.741895931873665
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 0.5,
+      "precision": 0.5,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7299662641438486
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 0.75,
+      "precision": 0.5,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7299662641438486
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 1.0,
+      "precision": 0.5,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7299662641438486
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 1.5,
+      "precision": 0.5,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7299662641438486
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 2.0,
+      "precision": 0.46153846153846156,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7227639238085891
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 3.0,
+      "precision": 0.4,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7121681367921969
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 4.0,
+      "precision": 0.4,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7121681367921969
+     }
+    ]
+   },
+   {
+    "seed": 44,
+    "weights_fit_on_full_val": [
+     1.0,
+     0.3536,
+     0.7937,
+     1.0
+    ],
+    "argmax": {
+     "macro_f1": 0.7989653391773093,
+     "balanced_accuracy": 0.808739837398374,
+     "accuracy": 0.851963746223565,
+     "Caries|precision": 0.9081632653061225,
+     "Caries|recall": 0.8682926829268293,
+     "Caries|f1": 0.8877805486284289,
+     "Deep Caries|precision": 0.5370370370370371,
+     "Deep Caries|recall": 0.6444444444444445,
+     "Deep Caries|f1": 0.585858585858586,
+     "Impacted|precision": 0.9444444444444444,
+     "Impacted|recall": 0.9444444444444444,
+     "Impacted|f1": 0.9444444444444444,
+     "Periapical Lesion|precision": 0.7777777777777778,
+     "Periapical Lesion|recall": 0.7777777777777778,
+     "Periapical Lesion|f1": 0.7777777777777778
+    },
+    "in_sample_tuned": {
+     "macro_f1": 0.8087714863498483,
+     "balanced_accuracy": 0.8042682926829268,
+     "accuracy": 0.8731117824773413,
+     "Caries|precision": 0.8995215311004785,
+     "Caries|recall": 0.9170731707317074,
+     "Caries|f1": 0.9082125603864735,
+     "Deep Caries|precision": 0.6341463414634146,
+     "Deep Caries|recall": 0.5777777777777777,
+     "Deep Caries|f1": 0.6046511627906976,
+     "Impacted|precision": 0.9444444444444444,
+     "Impacted|recall": 0.9444444444444444,
+     "Impacted|f1": 0.9444444444444444,
+     "Periapical Lesion|precision": 0.7777777777777778,
+     "Periapical Lesion|recall": 0.7777777777777778,
+     "Periapical Lesion|f1": 0.7777777777777778
+    },
+    "crossfit_mean": {
+     "macro_f1": 0.7685969081064286,
+     "balanced_accuracy": 0.7647222222222221,
+     "Caries|precision": 0.901512207817529,
+     "Caries|recall": 0.8799999999999999,
+     "Caries|f1": 0.8905082775317998,
+     "Deep Caries|precision": 0.5414257000152711,
+     "Deep Caries|recall": 0.6011111111111112,
+     "Deep Caries|f1": 0.5682492318007475,
+     "Impacted|precision": 0.931646715208359,
+     "Impacted|recall": 0.9444444444444441,
+     "Impacted|f1": 0.9379667244003567,
+     "Periapical Lesion|precision": 0.7353174603174603,
+     "Periapical Lesion|recall": 0.6333333333333333,
+     "Periapical Lesion|f1": 0.6776633986928104
+    },
+    "crossfit_reps": 20,
+    "tradeoff": [
+     {
+      "class": "Deep Caries",
+      "weight": 0.5,
+      "precision": 0.5777777777777777,
+      "recall": 0.5777777777777777,
+      "macro_f1": 0.7970880289276714
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 0.75,
+      "precision": 0.5625,
+      "recall": 0.6,
+      "macro_f1": 0.7969948973286014
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 1.0,
+      "precision": 0.5370370370370371,
+      "recall": 0.6444444444444445,
+      "macro_f1": 0.7989653391773093
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 1.5,
+      "precision": 0.5084745762711864,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7957459207459208
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 2.0,
+      "precision": 0.5084745762711864,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7957459207459208
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 3.0,
+      "precision": 0.5151515151515151,
+      "recall": 0.7555555555555555,
+      "macro_f1": 0.7875297242944301
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 4.0,
+      "precision": 0.5074626865671642,
+      "recall": 0.7555555555555555,
+      "macro_f1": 0.7659416971916971
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 0.5,
+      "precision": 0.8571428571428571,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7921601248214152
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 0.75,
+      "precision": 0.75,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7804393806369223
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 1.0,
+      "precision": 0.7777777777777778,
+      "recall": 0.7777777777777778,
+      "macro_f1": 0.7989653391773093
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 1.5,
+      "precision": 0.6363636363636364,
+      "recall": 0.7777777777777778,
+      "macro_f1": 0.7793802688539531
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 2.0,
+      "precision": 0.5833333333333334,
+      "recall": 0.7777777777777778,
+      "macro_f1": 0.7716042332876504
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 3.0,
+      "precision": 0.5384615384615384,
+      "recall": 0.7777777777777778,
+      "macro_f1": 0.7633291351805206
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 4.0,
+      "precision": 0.5384615384615384,
+      "recall": 0.7777777777777778,
+      "macro_f1": 0.7633291351805206
+     }
+    ]
+   },
+   {
+    "seed": 45,
+    "weights_fit_on_full_val": [
+     1.0,
+     0.7937,
+     1.0,
+     0.5612
+    ],
+    "argmax": {
+     "macro_f1": 0.7763337484808847,
+     "balanced_accuracy": 0.7730182926829269,
+     "accuracy": 0.8670694864048338,
+     "Caries|precision": 0.9038461538461539,
+     "Caries|recall": 0.9170731707317074,
+     "Caries|f1": 0.910411622276029,
+     "Deep Caries|precision": 0.6190476190476191,
+     "Deep Caries|recall": 0.5777777777777777,
+     "Deep Caries|f1": 0.5977011494252873,
+     "Impacted|precision": 0.9305555555555556,
+     "Impacted|recall": 0.9305555555555556,
+     "Impacted|f1": 0.9305555555555556,
+     "Periapical Lesion|precision": 0.6666666666666666,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.6666666666666666
+    },
+    "in_sample_tuned": {
+     "macro_f1": 0.8032893197066625,
+     "balanced_accuracy": 0.7789295392953929,
+     "accuracy": 0.8761329305135952,
+     "Caries|precision": 0.9004739336492891,
+     "Caries|recall": 0.926829268292683,
+     "Caries|f1": 0.9134615384615384,
+     "Deep Caries|precision": 0.65,
+     "Deep Caries|recall": 0.5777777777777777,
+     "Deep Caries|f1": 0.6117647058823529,
+     "Impacted|precision": 0.9315068493150684,
+     "Impacted|recall": 0.9444444444444444,
+     "Impacted|f1": 0.9379310344827586,
+     "Periapical Lesion|precision": 0.8571428571428571,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.75
+    },
+    "crossfit_mean": {
+     "macro_f1": 0.7686248074660919,
+     "balanced_accuracy": 0.764088753387534,
+     "Caries|precision": 0.9035553120608139,
+     "Caries|recall": 0.9002439024390245,
+     "Caries|f1": 0.9018603795744184,
+     "Deep Caries|precision": 0.5787951079259523,
+     "Deep Caries|recall": 0.5922222222222221,
+     "Deep Caries|f1": 0.5849316787793931,
+     "Impacted|precision": 0.9255255255255257,
+     "Impacted|recall": 0.9305555555555557,
+     "Impacted|f1": 0.928006088280061,
+     "Periapical Lesion|precision": 0.7064102564102563,
+     "Periapical Lesion|recall": 0.6333333333333332,
+     "Periapical Lesion|f1": 0.6597010832304949
+    },
+    "crossfit_reps": 20,
+    "tradeoff": [
+     {
+      "class": "Deep Caries",
+      "weight": 0.5,
+      "precision": 0.65625,
+      "recall": 0.4666666666666667,
+      "macro_f1": 0.7522812004750743
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 0.75,
+      "precision": 0.65,
+      "recall": 0.5777777777777777,
+      "macro_f1": 0.782351471323162
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 1.0,
+      "precision": 0.6190476190476191,
+      "recall": 0.5777777777777777,
+      "macro_f1": 0.7763337484808847
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 1.5,
+      "precision": 0.5869565217391305,
+      "recall": 0.6,
+      "macro_f1": 0.7738185731003578
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 2.0,
+      "precision": 0.5833333333333334,
+      "recall": 0.6222222222222222,
+      "macro_f1": 0.7758874160083836
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 3.0,
+      "precision": 0.5555555555555556,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7752596098138492
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 4.0,
+      "precision": 0.5535714285714286,
+      "recall": 0.6888888888888889,
+      "macro_f1": 0.7770816790325649
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 0.5,
+      "precision": 0.8333333333333334,
+      "recall": 0.5555555555555556,
+      "macro_f1": 0.775894304450339
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 0.75,
+      "precision": 0.75,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7867956340457223
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 1.0,
+      "precision": 0.6666666666666666,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7763337484808847
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 1.5,
+      "precision": 0.6,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7681142528931413
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 2.0,
+      "precision": 0.42857142857142855,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7403978313884131
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 3.0,
+      "precision": 0.35294117647058826,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7257804055598174
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 4.0,
+      "precision": 0.3333333333333333,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7233276295776296
+     }
+    ]
+   },
+   {
+    "seed": 46,
+    "weights_fit_on_full_val": [
+     1.0,
+     1.4142,
+     1.0,
+     0.5
+    ],
+    "argmax": {
+     "macro_f1": 0.7680133519762108,
+     "balanced_accuracy": 0.7785738482384824,
+     "accuracy": 0.8700906344410876,
+     "Caries|precision": 0.9082125603864735,
+     "Caries|recall": 0.9170731707317074,
+     "Caries|f1": 0.9126213592233011,
+     "Deep Caries|precision": 0.675,
+     "Deep Caries|recall": 0.6,
+     "Deep Caries|f1": 0.6352941176470589,
+     "Impacted|precision": 0.9178082191780822,
+     "Impacted|recall": 0.9305555555555556,
+     "Impacted|f1": 0.9241379310344828,
+     "Periapical Lesion|precision": 0.5454545454545454,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.6
+    },
+    "in_sample_tuned": {
+     "macro_f1": 0.7911843389851193,
+     "balanced_accuracy": 0.7896849593495935,
+     "accuracy": 0.8761329305135952,
+     "Caries|precision": 0.912621359223301,
+     "Caries|recall": 0.9170731707317074,
+     "Caries|f1": 0.9148418491484186,
+     "Deep Caries|precision": 0.6744186046511628,
+     "Deep Caries|recall": 0.6444444444444445,
+     "Deep Caries|f1": 0.6590909090909091,
+     "Impacted|precision": 0.9178082191780822,
+     "Impacted|recall": 0.9305555555555556,
+     "Impacted|f1": 0.9241379310344828,
+     "Periapical Lesion|precision": 0.6666666666666666,
+     "Periapical Lesion|recall": 0.6666666666666666,
+     "Periapical Lesion|f1": 0.6666666666666666
+    },
+    "crossfit_mean": {
+     "macro_f1": 0.7629334835478059,
+     "balanced_accuracy": 0.7741141598915989,
+     "Caries|precision": 0.9038811479703546,
+     "Caries|recall": 0.9195121951219513,
+     "Caries|f1": 0.9116131768357943,
+     "Deep Caries|precision": 0.679730363571827,
+     "Deep Caries|recall": 0.5644444444444444,
+     "Deep Caries|f1": 0.6159733574136588,
+     "Impacted|precision": 0.9084399570320849,
+     "Impacted|recall": 0.9291666666666669,
+     "Impacted|f1": 0.9186512138243025,
+     "Periapical Lesion|precision": 0.5474810606060606,
+     "Periapical Lesion|recall": 0.6833333333333333,
+     "Periapical Lesion|f1": 0.6054961861174675
+    },
+    "crossfit_reps": 20,
+    "tradeoff": [
+     {
+      "class": "Deep Caries",
+      "weight": 0.5,
+      "precision": 0.7272727272727273,
+      "recall": 0.5333333333333333,
+      "macro_f1": 0.7639975817121731
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 0.75,
+      "precision": 0.6842105263157895,
+      "recall": 0.5777777777777777,
+      "macro_f1": 0.7659218583479345
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 1.0,
+      "precision": 0.675,
+      "recall": 0.6,
+      "macro_f1": 0.7680133519762108
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 1.5,
+      "precision": 0.6744186046511628,
+      "recall": 0.6444444444444445,
+      "macro_f1": 0.7744135669995632
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 2.0,
+      "precision": 0.5576923076923077,
+      "recall": 0.6444444444444445,
+      "macro_f1": 0.7530190188410949
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 3.0,
+      "precision": 0.5263157894736842,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7483464708449945
+     },
+     {
+      "class": "Deep Caries",
+      "weight": 4.0,
+      "precision": 0.5,
+      "recall": 0.6888888888888889,
+      "macro_f1": 0.7415202954588802
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 0.5,
+      "precision": 0.6666666666666666,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7847855484022694
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 0.75,
+      "precision": 0.5454545454545454,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7680133519762108
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 1.0,
+      "precision": 0.5454545454545454,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7680133519762108
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 1.5,
+      "precision": 0.42857142857142855,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7464541639722352
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 2.0,
+      "precision": 0.4,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7403482082488168
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 3.0,
+      "precision": 0.375,
+      "recall": 0.6666666666666666,
+      "macro_f1": 0.7346737369861103
+     },
+     {
+      "class": "Periapical Lesion",
+      "weight": 4.0,
+      "precision": 0.3888888888888889,
+      "recall": 0.7777777777777778,
+      "macro_f1": 0.7441789998247065
+     }
+    ]
+   }
+  ]
+ }
+}

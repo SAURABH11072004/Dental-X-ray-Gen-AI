@@ -1,0 +1,14 @@
+# Active checkpoints. Paths are relative to MODEL_CHECKPOINT_DIR (default <data>/checkpoints).
+# Leave null until a dental-specific checkpoint exists - the app then shows "model setup required".
+active:
+  detection: null
+  segmentation: null
+  classification: null
+architectures:
+  detection: fasterrcnn_resnet50_fpn
+  segmentation: maskrcnn_resnet50_fpn
+  classification: resnet50
+inference:
+  score_threshold: 0.3
+  device: auto          # auto | cpu | cuda
+  mixed_precision: true

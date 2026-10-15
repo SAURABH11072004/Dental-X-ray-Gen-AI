@@ -1,0 +1,100 @@
+{
+ "generated": "2026-10-14T18:01:24.782106+00:00",
+ "model_version": "dentex_findings_classification_v1",
+ "model_id": "dentex_findings_classification_v1.pth",
+ "task": "classification",
+ "split": "val",
+ "n_images": 65,
+ "dataset_version": {
+  "fingerprint": "7f66d59d9cbad925",
+  "manifest_sha": "932b0b941f54643e",
+  "splits_sha": "ee88dc6835eb9a20",
+  "assignments_sha": "1c350480eed2ae96"
+ },
+ "final_test": false,
+ "metrics": {
+  "classification": {
+   "accuracy": 0.824773413897281,
+   "macro_f1": 0.7179182193530328,
+   "macro_precision": 0.6926463963963965,
+   "macro_recall": 0.7630758807588076,
+   "per_class": {
+    "Caries": {
+     "precision": 0.885,
+     "recall": 0.8634146341463415,
+     "f1": 0.874074074074074,
+     "support": 205,
+     "sensitivity": 0.8634146341463415,
+     "specificity": 0.8174603174603174,
+     "roc_auc_ovr": 0.9040263259775455
+    },
+    "Deep Caries": {
+     "precision": 0.5,
+     "recall": 0.4666666666666667,
+     "f1": 0.4827586206896552,
+     "support": 45,
+     "sensitivity": 0.4666666666666667,
+     "specificity": 0.9265734265734266,
+     "roc_auc_ovr": 0.7944832944832945
+    },
+    "Impacted": {
+     "precision": 0.918918918918919,
+     "recall": 0.9444444444444444,
+     "f1": 0.9315068493150684,
+     "support": 72,
+     "sensitivity": 0.9444444444444444,
+     "specificity": 0.9768339768339769,
+     "roc_auc_ovr": 0.9952809952809952
+    },
+    "Periapical Lesion": {
+     "precision": 0.4666666666666667,
+     "recall": 0.7777777777777778,
+     "f1": 0.5833333333333334,
+     "support": 9,
+     "sensitivity": 0.7777777777777778,
+     "specificity": 0.9751552795031055,
+     "roc_auc_ovr": 0.9682539682539683
+    }
+   },
+   "classes_without_support": [],
+   "confusion_matrix": [
+    [
+     177,
+     18,
+     5,
+     5
+    ],
+    [
+     20,
+     21,
+     1,
+     3
+    ],
+    [
+     2,
+     2,
+     68,
+     0
+    ],
+    [
+     1,
+     1,
+     0,
+     7
+    ]
+   ],
+   "n_crops": 331,
+   "macro_roc_auc_ovr": 0.9155111459989509,
+   "unknown_labels_skipped": 0
+  }
+ },
+ "software": {
+  "python": "3.13.0",
+  "torch": "2.6.0+cu124",
+  "torchvision": "0.21.0+cu124",
+  "numpy": "2.5.4",
+  "cuda": "12.4",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU"
+ }
+}

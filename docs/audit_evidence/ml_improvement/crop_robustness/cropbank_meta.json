@@ -1,0 +1,29 @@
+{
+ "created": "2026-10-15 13:44:24",
+ "split": "train",
+ "n_crops": 2520,
+ "k_jittered": 8,
+ "seed": 0,
+ "variant_0": "exact ground-truth box (byte-identical to crops_train_224.npz)",
+ "jitter": {
+  "source": "joint edge-offset vectors of production-detector boxes vs ground-truth finding boxes on TRAINING radiographs (IoU >= 0.5)",
+  "n_offset_vectors": 2474,
+  "offsets_sha256": "878401b7db0035e8dfeff106face2a6b82ebea0906765541234998c70e1f627e",
+  "scale": [
+   0.75,
+   1.25
+  ],
+  "min_iou_to_original": 0.6,
+  "max_tries": 10
+ },
+ "accepted_iou_to_original": {
+  "min": 0.6002,
+  "p5": 0.6904,
+  "p50": 0.8349,
+  "p95": 0.9329
+ },
+ "fallbacks_to_exact_box": 0,
+ "crop": "trainers.crop_region pad 0.10, 224x224 bilinear",
+ "duration_s": 129.5,
+ "bank_file": "cropbank_train_224_k8.npy"
+}

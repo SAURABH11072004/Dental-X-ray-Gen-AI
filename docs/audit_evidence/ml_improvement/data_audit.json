@@ -1,0 +1,142 @@
+{
+ "tasks": {
+  "classification": {
+   "level": "quadrant_enumeration_disease",
+   "splits": {
+    "train": {
+     "images": 476,
+     "unique_radiographs_by_pixels": 476,
+     "annotations": 2520,
+     "polygon_masks": 2520,
+     "class_counts": {
+      "Impacted": 412,
+      "Caries": 1550,
+      "Periapical Lesion": 120,
+      "Deep Caries": 438
+     }
+    },
+    "val": {
+     "images": 65,
+     "unique_radiographs_by_pixels": 65,
+     "annotations": 331,
+     "polygon_masks": 331,
+     "class_counts": {
+      "Deep Caries": 45,
+      "Periapical Lesion": 9,
+      "Caries": 205,
+      "Impacted": 72
+     }
+    },
+    "calibration": {
+     "images": 64,
+     "unique_radiographs_by_pixels": 64,
+     "annotations": 324,
+     "polygon_masks": 324,
+     "class_counts": {
+      "Impacted": 55,
+      "Caries": 206,
+      "Periapical Lesion": 16,
+      "Deep Caries": 47
+     }
+    },
+    "test": {
+     "images": 73,
+     "unique_radiographs_by_pixels": 73,
+     "annotations": 354,
+     "polygon_masks": 354,
+     "class_counts": {
+      "Caries": 228,
+      "Impacted": 65,
+      "Deep Caries": 48,
+      "Periapical Lesion": 13
+     }
+    }
+   },
+   "issue_counts": {},
+   "duplicate_boxes_same_image": 3,
+   "conflicting_labels_same_box": 2,
+   "crop_generation_failures": {},
+   "bbox_aspect_w_over_h": {
+    "p5": 0.304,
+    "median": 0.623,
+    "p95": 1.079
+   },
+   "instances_per_image": {
+    "min": 1,
+    "median": 5.0,
+    "max": 23
+   }
+  },
+  "segmentation": {
+   "level": "quadrant_enumeration",
+   "splits": {
+    "train": {
+     "images": 440,
+     "unique_radiographs_by_pixels": 434,
+     "annotations": 12507,
+     "polygon_masks": 12507,
+     "class_counts": {}
+    },
+    "val": {
+     "images": 69,
+     "unique_radiographs_by_pixels": 67,
+     "annotations": 2000,
+     "polygon_masks": 2000,
+     "class_counts": {}
+    },
+    "calibration": {
+     "images": 62,
+     "unique_radiographs_by_pixels": 62,
+     "annotations": 1798,
+     "polygon_masks": 1798,
+     "class_counts": {}
+    },
+    "test": {
+     "images": 63,
+     "unique_radiographs_by_pixels": 60,
+     "annotations": 1790,
+     "polygon_masks": 1790,
+     "class_counts": {}
+    }
+   },
+   "issue_counts": {
+    "mask_bbox_mismatch_iou_lt0.7": 1
+   },
+   "duplicate_boxes_same_image": 0,
+   "conflicting_labels_same_box": 0,
+   "crop_generation_failures": {},
+   "bbox_aspect_w_over_h": {
+    "p5": 0.215,
+    "median": 0.347,
+    "p95": 0.919
+   },
+   "mask_area_px": {
+    "min": 368,
+    "p5": 10768,
+    "median": 24688,
+    "p95": 43796,
+    "max": 76720
+   },
+   "sqrt_area_px_percentiles": {
+    "1": 85.4,
+    "5": 103.8,
+    "25": 136.4,
+    "50": 157.1,
+    "75": 177.6,
+    "95": 209.3,
+    "99": 227.3
+   },
+   "instances_per_image": {
+    "min": 6,
+    "median": 29.0,
+    "max": 40
+   }
+  }
+ },
+ "split_isolation": {
+  "distinct_radiographs": 1133,
+  "hashes_in_more_than_one_split": 0,
+  "note": "identical pixels in different splits across ALL annotated rows (any source)"
+ },
+ "classification_cross_split_pixel_duplicates": 0
+}

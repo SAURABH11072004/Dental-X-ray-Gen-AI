@@ -1,0 +1,417 @@
+[
+ {
+  "id": "D01",
+  "severity": "high",
+  "status": "fixed",
+  "title": "Reports page crashed (blank page, TypeError 'Cannot read properties of null (reading report)') when a report was clicked in the list while none was selected",
+  "root_cause": "useApi keeps the previous state until its effect runs; with the new ?id the first render had data=null and loading=false, and the page dereferenced data.report",
+  "fix": "render the loading state whenever data is not yet available",
+  "files": [
+   "frontend/src/pages/Reports.jsx"
+  ],
+  "evidence": "UI-E-010b (browser regression test); first crawl logged the pageerror",
+  "regression_test": "browser UI-E-010b"
+ },
+ {
+  "id": "D02",
+  "severity": "high",
+  "status": "fixed",
+  "title": "'Evaluate' started unlimited concurrent GPU evaluations; four clicks produced four failed jobs (CUDA out of memory, 'paging file is too small', array allocation failure) and the UI gave no feedback",
+  "root_cause": "POST /api/models/{id}/evaluate spawned a subprocess per call with no check for running jobs on a 4 GB GPU; the Models page showed nothing on success",
+  "fix": "409 job_already_running while any job is running/queued (ConflictError); UI shows 'Evaluation started ... one job runs at a time'",
+  "files": [
+   "backend/api/experiments.py",
+   "src/dentexmodel/errors.py",
+   "frontend/src/pages/Models.jsx"
+  ],
+  "evidence": "jobs job-89b879436e, job-82c79d0718, job-74efa27ace, job-f27703cc07 (failed); unit test",
+  "regression_test": "tests/test_audit_regressions.py::test_evaluate_is_refused_while_another_job_runs"
+ },
+ {
+  "id": "D03",
+  "severity": "medium",
+  "status": "fixed",
+  "title": "Models page 'Use' for the numbering checkpoint returned HTTP 422",
+  "root_cause": "ModelSelectRequest.task Literal lacked 'numbering' although the registry supports it",
+  "fix": "added 'numbering'",
+  "files": [
+   "backend/schemas/models.py"
+  ],
+  "evidence": "POST /api/models/select numbering -> 200 after fix",
+  "regression_test": "test_model_select_schema_accepts_numbering"
+ },
+ {
+  "id": "D04",
+  "severity": "medium",
+  "status": "fixed",
+  "title": "GET /api/analyses/{id}/overlay returned 404 'no detections' for every full-pipeline analysis",
+  "root_cause": "overlay_png only understood the older 'detections' payload, full analyses store 'regions'",
+  "fix": "draw regions with FDI number, candidate class and a review marker; no class drawn for abstained regions",
+  "files": [
+   "backend/services/analysis.py",
+   "src/dentexmodel/inference/visualize.py"
+  ],
+  "evidence": "INF-013 (overlay size == original)",
+  "regression_test": "test_overlay_png_works_for_full_pipeline_analyses"
+ },
+ {
+  "id": "D05",
+  "severity": "medium",
+  "status": "fixed",
+  "title": "Report validator accepted impossible evidence (probability 1.7, label 'Healthy') and flagged Deep-Caries-only reports for mentioning 'caries'",
+  "root_cause": "validate_report compared report to evidence but never validated the evidence; the vocabulary scan matched 'caries' inside 'Deep Caries'",
+  "fix": "range and category checks (spelling-insensitive), vocabulary scan removes the evidence's own labels first",
+  "files": [
+   "src/dentexmodel/reporting/reports.py"
+  ],
+  "evidence": "RPT-E05/E06, live check of the Deep Caries report",
+  "regression_test": "tests/test_audit_regressions.py::ReportValidatorEvidenceTests"
+ },
+ {
+  "id": "D06",
+  "severity": "medium",
+  "status": "fixed",
+  "title": "POST /api/reviews accepted an image-level review for an image id that does not exist and stored an orphan row",
+  "root_cause": "image existence was only checked for region-level actions",
+  "fix": "route validates the image id (404)",
+  "files": [
+   "backend/api/reviews.py"
+  ],
+  "evidence": "REV-001",
+  "regression_test": "live REV-001"
+ },
+ {
+  "id": "D07",
+  "severity": "medium",
+  "status": "fixed",
+  "title": "A checkpoint whose bytes did not match the sha256 in its sidecar was still registered as dental-trained",
+  "root_cause": "registry validated sidecar fields only; the recorded checkpoint_sha256 was never compared with the file",
+  "fix": "cached sha256 comparison during the scan; mismatch -> rejected with a reason",
+  "files": [
+   "src/dentexmodel/inference/registry.py"
+  ],
+  "evidence": "MOD-MISS-badsha-v",
+  "regression_test": "tests/test_audit_regressions.py::CheckpointIntegrityTests"
+ },
+ {
+  "id": "D08",
+  "severity": "low",
+  "status": "fixed",
+  "title": "Job errors and log tails exposed raw tracebacks and absolute local paths through GET /api/training/jobs",
+  "root_cause": "stderr tails were stored and served verbatim",
+  "fix": "short_error serves the final exception line; strip_paths reduces absolute paths (including paths with spaces) to file names; raw text stays in the DB",
+  "files": [
+   "src/dentexmodel/training/jobs.py"
+  ],
+  "evidence": "SWEEP-001",
+  "regression_test": "JobErrorSanitisingTests"
+ },
+ {
+  "id": "D09",
+  "severity": "low",
+  "status": "fixed",
+  "title": "/api/health with service probes took 6.5-8 s when TensorBoard/Label Studio were not running",
+  "root_cause": "'localhost' tried over IPv6 first on Windows; the two probes ran one after the other",
+  "fix": "probe 127.0.0.1 and run both probes concurrently (about 2 s)",
+  "files": [
+   "backend/services/system.py"
+  ],
+  "evidence": "timing 6.5 s -> 2.2 s",
+  "regression_test": "-"
+ },
+ {
+  "id": "D10",
+  "severity": "low",
+  "status": "fixed",
+  "title": "Wrong HTTP status codes: unknown job id -> 400 (should be 404); explaining a too-small region -> 503 (should be 422)",
+  "root_cause": "generic DentaMindError / ModelUnavailableError used",
+  "fix": "NotFoundError and ImageValidationError",
+  "files": [
+   "src/dentexmodel/training/jobs.py",
+   "src/dentexmodel/inference/torch_models.py"
+  ],
+  "evidence": "TRN-009/010, INF-032",
+  "regression_test": "test_unknown_job_is_404_for_status_and_cancel"
+ },
+ {
+  "id": "D11",
+  "severity": "low",
+  "status": "fixed",
+  "title": "Upload-limit message said 'the limit is 26 MB' for a 25 MiB limit",
+  "root_cause": "bytes divided by 1e6 for the limit and the file size",
+  "fix": "MiB arithmetic",
+  "files": [
+   "src/dentexmodel/data/preprocess.py"
+  ],
+  "evidence": "UPL-021",
+  "regression_test": "-"
+ },
+ {
+  "id": "D12",
+  "severity": "low",
+  "status": "fixed",
+  "title": "Active-learning rounds did not record which model produced the uncertainty signals (model_version null)",
+  "root_cause": "model_version only taken from the request body",
+  "fix": "store the model(s) behind the selected images' signals; random draws record none",
+  "files": [
+   "backend/services/active_learning.py"
+  ],
+  "evidence": "rounds created before the fix show null",
+  "regression_test": "-"
+ },
+ {
+  "id": "D13",
+  "severity": "low",
+  "status": "fixed",
+  "title": "Controls that silently did nothing or were disabled without explanation: Active Learning steps 5/6 before a selection, Back on step 1, Annotations Pull / Approve / Reject",
+  "root_cause": "click handlers ignored the click; no title on disabled buttons",
+  "fix": "disabled with an explanatory title",
+  "files": [
+   "frontend/src/pages/ActiveLearning.jsx",
+   "frontend/src/pages/Annotations.jsx"
+  ],
+  "evidence": "UI-B-001, UI-C-001",
+  "regression_test": "browser crawl"
+ },
+ {
+  "id": "D14",
+  "severity": "low",
+  "status": "fixed",
+  "title": "Recorded dataset provenance (splits_sha) changed whenever the dataset was re-processed, even though no image moved",
+  "root_cause": "sha256 of the whole splits file, which contains an 'updated' timestamp",
+  "fix": "added assignments_sha (canonical hash of image id -> split); the historical sidecars carry the old file hashes and cannot be re-verified byte-for-byte",
+  "files": [
+   "src/dentexmodel/training/trainers.py"
+  ],
+  "evidence": "dataset_version of the AL reproduction differs from the original in manifest_sha/splits_sha only; split sizes and the 65-radiograph/331-crop validation set are identical",
+  "regression_test": "SplitProvenanceTests"
+ },
+ {
+  "id": "D15",
+  "severity": "low",
+  "status": "fixed",
+  "title": "run_al_experiment.py and evaluate_model.py could only overwrite Data/reports; AL runs stored no selection manifests, so selections were not reproducible or auditable",
+  "root_cause": "fixed output folder, metrics-only records",
+  "fix": "--out-dir, --device, --no-db; per-round labeled_sha and selected_next manifest; evaluation reproduction skips the numbering registration write-back",
+  "files": [
+   "scripts/run_al_experiment.py",
+   "scripts/evaluate_model.py"
+  ],
+  "evidence": "al_reproduction_cpu_seed0.json",
+  "regression_test": "-"
+ },
+ {
+  "id": "D16",
+  "severity": "info",
+  "status": "fixed",
+  "title": "/api/health returns version 'unknown' (also printed by check_running.ps1)",
+  "root_cause": "version comes from installed package metadata; the project is run from source",
+  "fix": "backend/version.py APP_VERSION = '0.2.0' (same as FastAPI and frontend/package.json) used by main.py and /api/health",
+  "files": [
+   "backend/version.py",
+   "backend/main.py",
+   "backend/services/system.py"
+  ],
+  "evidence": "API-002 PASS; SEC2-03; check_running.ps1 prints version=0.2.0",
+  "regression_test": "live API-002, SEC2-03"
+ },
+ {
+  "id": "D17",
+  "severity": "info",
+  "status": "open",
+  "title": "Stopping the supervisor of start_backend.ps1 (--reload) on Windows leaves an orphan worker holding the port",
+  "root_cause": "uvicorn reload spawns a worker that inherits the listening socket",
+  "fix": "documented: stop the process tree (taskkill /T)",
+  "files": [
+   "scripts/windows/start_backend.ps1"
+  ],
+  "evidence": "port 8031 listener after cleanup",
+  "regression_test": "-"
+ },
+ {
+  "id": "D18",
+  "severity": "info",
+  "status": "open",
+  "title": "Documentation recommends -ExecutionPolicy Bypass although local scripts run under RemoteSigned; Bypass is blocked by some managed environments",
+  "root_cause": "-",
+  "fix": "-",
+  "files": [
+   "docs/WINDOWS_SETUP.md",
+   "README.md"
+  ],
+  "evidence": "scripts ran with powershell -NoProfile -File",
+  "regression_test": "-"
+ },
+ {
+  "id": "D19",
+  "severity": "info",
+  "status": "open",
+  "title": "Git repository root is the whole D:\\ drive and has no commits",
+  "root_cause": "repository initialised at the drive root",
+  "fix": "-",
+  "files": [],
+  "evidence": "git rev-parse --show-toplevel -> D:/",
+  "regression_test": "-"
+ },
+ {
+  "id": "D20",
+  "severity": "info",
+  "status": "open",
+  "title": "Original DENTEX modules import undeclared packages (detectron2, cv2, lightning, tqdm, albumentations, skimage)",
+  "root_cause": "legacy research code outside the DentaMind app",
+  "fix": "-",
+  "files": [
+   "src/dentexmodel/detector.py",
+   "src/dentexmodel/imageproc.py",
+   "src/dentexmodel/fileutils.py"
+  ],
+  "evidence": "static import scan",
+  "regression_test": "-"
+ },
+ {
+  "id": "D21",
+  "severity": "info",
+  "status": "open",
+  "title": "Segmentation mask run-length encoding is row-major ('order':'C'), not COCO column-major",
+  "root_cause": "self-describing app format",
+  "fix": "documented in the end-to-end report",
+  "files": [
+   "src/dentexmodel/utils/geometry.py"
+  ],
+  "evidence": "MOD-SEG-*",
+  "regression_test": "-"
+ },
+ {
+  "id": "D22",
+  "severity": "info",
+  "status": "open",
+  "title": "Original active-learning grid and detection/segmentation/numbering metrics were not re-executed in this audit; a CPU reproduction of one AL cell differs by up to 0.09 macro-F1 from the GPU run",
+  "root_cause": "cost, occupied GPU; device nondeterminism not isolated",
+  "fix": "-",
+  "files": [],
+  "evidence": "al_reproduction_cpu_seed0.json, eval_repro_classification_val_cpu.json",
+  "regression_test": "-"
+ },
+ {
+  "id": "D23",
+  "severity": "info",
+  "status": "disclosed",
+  "title": "Side effects of the audit's own first UI crawl (it clicked state-changing buttons before the crawler blocked POSTs)",
+  "root_cause": "audit tooling",
+  "fix": "effects: active_models.json created (removed afterwards), 4 failed evaluation jobs (kept as history), one real pool-scoring job (kept), dataset re-process (manifests and splits file rewritten with unchanged counts), leakage_check report regenerated with unchanged results",
+  "files": [],
+  "evidence": "FINAL_ACCEPTANCE_REPORT.md section 'What the audit changed'",
+  "regression_test": "-"
+ },
+ {
+  "id": "D24",
+  "severity": "medium",
+  "status": "fixed",
+  "title": "A cancelled training job still wrote a checkpoint and sidecar, so a half-trained model was registered as a verified dental model",
+  "root_cause": "_save_checkpoint ran after the loop even when the job was cancelled",
+  "fix": "no checkpoint is written when the job is cancelled",
+  "files": [
+   "src/dentexmodel/training/trainers.py"
+  ],
+  "evidence": "TAPI-12 (failed before the fix, passes after)",
+  "regression_test": "CancelledRunTests"
+ },
+ {
+  "id": "D25",
+  "severity": "medium",
+  "status": "fixed",
+  "title": "resume_checkpoint accepted any EXISTING file reachable with '..' and any registry file regardless of task or verification",
+  "root_cause": "only Path.is_file() was checked",
+  "fix": "must be a registered, verified checkpoint of the same task; '..' refused",
+  "files": [
+   "src/dentexmodel/training/config.py"
+  ],
+  "evidence": "SEC2-12, TAPI-15/16",
+  "regression_test": "TrainingSafetyTests"
+ },
+ {
+  "id": "D26",
+  "severity": "medium",
+  "status": "fixed",
+  "title": "Starting a training job did not check for another running job (GPU / experiment-name race)",
+  "root_cause": "only evaluate had a guard",
+  "fix": "JobManager.running_jobs(); start (and dry run) answer 409 job_already_running; dead-process jobs do not block",
+  "files": [
+   "src/dentexmodel/training/jobs.py"
+  ],
+  "evidence": "TAPI-04/05",
+  "regression_test": "TrainingSafetyTests"
+ },
+ {
+  "id": "D27",
+  "severity": "medium",
+  "status": "fixed",
+  "title": "No authentication, loopback restriction or rate limiting on any route (D-security open item from the first audit)",
+  "root_cause": "not implemented",
+  "fix": "backend/security.py: token auth (runtime/api_token.txt or DENTAMIND_API_TOKEN, injected server-side by the Vite proxy), loopback-only, per-client rate limits, failed-auth throttle",
+  "files": [
+   "backend/security.py",
+   "backend/main.py",
+   "frontend/vite.config.js"
+  ],
+  "evidence": "security_live.json 23/23, 19 unit tests",
+  "regression_test": "tests/test_security_and_training_api.py"
+ },
+ {
+  "id": "D28",
+  "severity": "low",
+  "status": "fixed",
+  "title": "Training page showed a TensorBoard link although TensorBoard is not installed and no event files exist",
+  "root_cause": "static link",
+  "fix": "backend reports installed/event files; UI shows the truthful state",
+  "files": [
+   "backend/api/training.py",
+   "frontend/src/pages/Training.jsx"
+  ],
+  "evidence": "UI-N-004",
+  "regression_test": "browser"
+ },
+ {
+  "id": "D29",
+  "severity": "low",
+  "status": "fixed",
+  "title": "Uncertainty signals were shown without any statement of how well each was validated; mask/detection instability had never been measured against ground truth",
+  "root_cause": "validation measured only for entropy/flip disagreement",
+  "fix": "scripts/evaluate_instability.py (val split): AUROC 0.59 (mask, very weak) and 0.64 (detection, weak) are measured and displayed next to each signal; API record carries signal_validation",
+  "files": [
+   "scripts/evaluate_instability.py",
+   "backend/services/pipeline.py",
+   "frontend/src/components/UncertaintyScoreCard.jsx",
+   "frontend/src/pages/Uncertainty.jsx"
+  ],
+  "evidence": "instability_validation.json, UI-N-005",
+  "regression_test": "SignalValidationTests"
+ },
+ {
+  "id": "D30",
+  "severity": "low",
+  "status": "fixed",
+  "title": "Hindi/Marathi 'not reviewed' status was only small print at the bottom of reports",
+  "root_cause": "note placed in the footer",
+  "fix": "prominent bilingual 'awaiting linguistic review' line at the top of HTML, TXT and the on-screen report, plus a machine-readable linguistic_review field",
+  "files": [
+   "src/dentexmodel/reporting/i18n.py",
+   "frontend/src/components/ReportPreview.jsx"
+  ],
+  "evidence": "RPT-C10-hi/mr, UI-N-001/002",
+  "regression_test": "tests/test_i18n_reports.py"
+ },
+ {
+  "id": "D31",
+  "severity": "low",
+  "status": "fixed",
+  "title": "Training prerequisites route rejected task 'numbering'",
+  "root_cause": "regex allow-list",
+  "fix": "added",
+  "files": [
+   "backend/api/training.py"
+  ],
+  "evidence": "unit/live",
+  "regression_test": "-"
+ }
+]

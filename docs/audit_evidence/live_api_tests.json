@@ -1,0 +1,1409 @@
+{
+ "run_at": "2026-10-14T23:13:11",
+ "base": "http://127.0.0.1:8000",
+ "summary": {
+  "PASS": 139,
+  "FAIL": 0,
+  "PARTIAL": 0,
+  "BLOCKED": 0
+ },
+ "uploads_created": {
+  "png": "up_22736273675e",
+  "jpeg": "up_4d0981b36dec",
+  "traversal_name": "up_d02567b36667"
+ },
+ "report_created": "RPT-5969557C37",
+ "analysis_created": "an-fd975b8c4d",
+ "results": [
+  {
+   "id": "API-001",
+   "area": "health",
+   "input": "GET /api/health",
+   "expected": "200, backend ok, database ok",
+   "actual": "200 backend=ok db=ok ckpts=4 (1.73s)",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-002",
+   "area": "health",
+   "input": "health reports app version",
+   "expected": "a version string (app declares 0.2.0)",
+   "actual": "version='0.2.0'",
+   "result": "PASS",
+   "evidence": "",
+   "note": "cosmetic: /api/health returns 'unknown' while the OpenAPI document declares 0.2.0"
+  },
+  {
+   "id": "API-003",
+   "area": "security",
+   "input": "GET /api/system/settings exposes no secrets",
+   "expected": "no api key value, no absolute home paths",
+   "actual": "200; label_studio_api_key_set=False; abs-path leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-004",
+   "area": "health",
+   "input": "GET /api/system/gpu",
+   "expected": "200 with device facts",
+   "actual": "200 NVIDIA GeForce RTX 3050 Laptop GPU used=3608/4096 MB",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-010",
+   "area": "registry",
+   "input": "GET /api/models",
+   "expected": "4 registered checkpoints (detection, segmentation, classification, numbering) with sidecar sha",
+   "actual": "200 tasks=['classification', 'detection', 'numbering', 'segmentation']",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-011-num",
+   "area": "registry",
+   "input": "dentex_fdi_numbering_v1.pth sidecar sha256 equals actual file sha256",
+   "expected": "equal",
+   "actual": "file=83f97b2e1ce44b0c sidecar=83f97b2e1ce44b0c dental_specific=True",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-011-cla",
+   "area": "registry",
+   "input": "dentex_findings_classification_v1.pth sidecar sha256 equals actual file sha256",
+   "expected": "equal",
+   "actual": "file=5aa878e1fc9ef097 sidecar=5aa878e1fc9ef097 dental_specific=True",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-011-det",
+   "area": "registry",
+   "input": "dentex_teeth_detection_v1.pth sidecar sha256 equals actual file sha256",
+   "expected": "equal",
+   "actual": "file=a68ce4884066ad80 sidecar=a68ce4884066ad80 dental_specific=True",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-011-seg",
+   "area": "registry",
+   "input": "dentex_teeth_segmentation_v1.pth sidecar sha256 equals actual file sha256",
+   "expected": "equal",
+   "actual": "file=dd13568c8de5c2cc sidecar=dd13568c8de5c2cc dental_specific=True",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-020",
+   "area": "images",
+   "input": "GET /api/images?source=dataset&limit=3",
+   "expected": "200, items",
+   "actual": "200 total=3603",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-021",
+   "area": "validation",
+   "input": "GET /api/images?source=evil",
+   "expected": "422",
+   "actual": "422",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-021",
+   "area": "validation",
+   "input": "GET /api/images?limit=0",
+   "expected": "422",
+   "actual": "422",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-021",
+   "area": "validation",
+   "input": "GET /api/images?limit=100000",
+   "expected": "422",
+   "actual": "422",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-021",
+   "area": "validation",
+   "input": "GET /api/images?offset=-1",
+   "expected": "422",
+   "actual": "422",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-022",
+   "area": "security",
+   "input": "GET /api/images/..%2F..%2Fsetup.py",
+   "expected": "404 (or 4xx), no file content / path leak",
+   "actual": "404 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-022",
+   "area": "security",
+   "input": "GET /api/images/..%2F..%2Fsetup.py/file",
+   "expected": "404 (or 4xx), no file content / path leak",
+   "actual": "404 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-022",
+   "area": "security",
+   "input": "GET /api/images/..%2F..%2Fsetup.py/thumbnail",
+   "expected": "404 (or 4xx), no file content / path leak",
+   "actual": "404 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-022",
+   "area": "security",
+   "input": "GET /api/images/..%2F..%2Fsetup.py/quality",
+   "expected": "404 (or 4xx), no file content / path leak",
+   "actual": "404 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-022",
+   "area": "security",
+   "input": "GET /api/images/nope",
+   "expected": "404 (or 4xx), no file content / path leak",
+   "actual": "404 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-022",
+   "area": "security",
+   "input": "GET /api/images/nope/file",
+   "expected": "404 (or 4xx), no file content / path leak",
+   "actual": "404 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-022",
+   "area": "security",
+   "input": "GET /api/images/nope/thumbnail",
+   "expected": "404 (or 4xx), no file content / path leak",
+   "actual": "404 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-022",
+   "area": "security",
+   "input": "GET /api/images/nope/quality",
+   "expected": "404 (or 4xx), no file content / path leak",
+   "actual": "404 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-022",
+   "area": "security",
+   "input": "GET /api/images/%27%3B%20DROP%20TABLE%20images%3B--",
+   "expected": "404 (or 4xx), no file content / path leak",
+   "actual": "404 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-022",
+   "area": "security",
+   "input": "GET /api/images/%27%3B%20DROP%20TABLE%20images%3B--/file",
+   "expected": "404 (or 4xx), no file content / path leak",
+   "actual": "404 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-022",
+   "area": "security",
+   "input": "GET /api/images/%27%3B%20DROP%20TABLE%20images%3B--/thumbnail",
+   "expected": "404 (or 4xx), no file content / path leak",
+   "actual": "404 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-022",
+   "area": "security",
+   "input": "GET /api/images/%27%3B%20DROP%20TABLE%20images%3B--/quality",
+   "expected": "404 (or 4xx), no file content / path leak",
+   "actual": "404 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-022",
+   "area": "security",
+   "input": "GET /api/images/up_000000000000",
+   "expected": "404 (or 4xx), no file content / path leak",
+   "actual": "404 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-022",
+   "area": "security",
+   "input": "GET /api/images/up_000000000000/file",
+   "expected": "404 (or 4xx), no file content / path leak",
+   "actual": "404 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-022",
+   "area": "security",
+   "input": "GET /api/images/up_000000000000/thumbnail",
+   "expected": "404 (or 4xx), no file content / path leak",
+   "actual": "404 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "API-022",
+   "area": "security",
+   "input": "GET /api/images/up_000000000000/quality",
+   "expected": "404 (or 4xx), no file content / path leak",
+   "actual": "404 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UPL-001",
+   "area": "upload",
+   "input": "valid PNG, filename with spaces + Unicode",
+   "expected": "200, image id, width/height equal the file's",
+   "actual": "200 id=up_22736273675e 1976x976 dup=False (0.10s)",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UPL-002",
+   "area": "upload",
+   "input": "reported size equals decoded size",
+   "expected": "1976x976",
+   "actual": "1976x976",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UPL-003",
+   "area": "upload",
+   "input": "same bytes uploaded again",
+   "expected": "same id, duplicate=true, no second file",
+   "actual": "200 id=up_22736273675e dup=True",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UPL-004",
+   "area": "upload",
+   "input": "downloaded bytes equal uploaded bytes",
+   "expected": "byte-identical",
+   "actual": "200 equal=True content-type=image/png",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UPL-005",
+   "area": "upload",
+   "input": "valid JPEG (.JPEG, upper-case extension)",
+   "expected": "200",
+   "actual": "200 id=up_4d0981b36dec",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UPL-006",
+   "area": "security",
+   "input": "filename '../../../evil_traversal.png'",
+   "expected": "stored only inside Data/uploads under a hash name; nothing written outside",
+   "actual": "200 id=up_d02567b36667 stored_in_uploads=True escaped=False filename_kept=evil_traversal.png",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UPL-010",
+   "area": "upload",
+   "input": "corrupt PNG (valid signature, garbage body)",
+   "expected": "400 (400/413/422) with a clear message, no stack trace/path",
+   "actual": "422 code={'code': 'corrupt_image', 'message': 'Image is corrupt or unreadable: cannot identify image file <_io.BytesIO object at 0x0000022219702700>', 'hint': None, 'details': {}} leak=False msg='{\"error\":{\"code\":\"corrupt_image\",\"message\":\"Image is corrupt or unreadable: cann'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UPL-011",
+   "area": "upload",
+   "input": "random bytes named .png",
+   "expected": "400 (400/413/422) with a clear message, no stack trace/path",
+   "actual": "422 code={'code': 'bad_signature', 'message': 'File content is not a PNG or JPEG image (signature mismatch).', 'hint': None, 'details': {}} leak=False msg='{\"error\":{\"code\":\"bad_signature\",\"message\":\"File content is not a PNG or JPEG im'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UPL-012",
+   "area": "upload",
+   "input": "text file named .txt",
+   "expected": "400 (400/413/422) with a clear message, no stack trace/path",
+   "actual": "422 code={'code': 'unsupported_type', 'message': \"Unsupported file type '.txt'.\", 'hint': 'Upload a PNG or JPEG panoramic radiograph.', 'details': {}} leak=False msg='{\"error\":{\"code\":\"unsupported_type\",\"message\":\"Unsupported file type \\'.txt\\'.\",\"h'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UPL-013",
+   "area": "upload",
+   "input": "empty file",
+   "expected": "400 (400/413/422) with a clear message, no stack trace/path",
+   "actual": "422 code={'code': 'empty_file', 'message': 'The uploaded file is empty.', 'hint': None, 'details': {}} leak=False msg='{\"error\":{\"code\":\"empty_file\",\"message\":\"The uploaded file is empty.\",\"hint\":nul'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UPL-014",
+   "area": "upload",
+   "input": "PNG renamed .exe",
+   "expected": "400 (400/413/422) with a clear message, no stack trace/path",
+   "actual": "422 code={'code': 'unsupported_type', 'message': \"Unsupported file type '.exe'.\", 'hint': 'Upload a PNG or JPEG panoramic radiograph.', 'details': {}} leak=False msg='{\"error\":{\"code\":\"unsupported_type\",\"message\":\"Unsupported file type \\'.exe\\'.\",\"h'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UPL-015",
+   "area": "upload",
+   "input": "truncated PNG (first 5000 bytes of a real film)",
+   "expected": "400 (400/413/422) with a clear message, no stack trace/path",
+   "actual": "422 code={'code': 'corrupt_image', 'message': 'Image is corrupt or unreadable: image file is truncated', 'hint': None, 'details': {}} leak=False msg='{\"error\":{\"code\":\"corrupt_image\",\"message\":\"Image is corrupt or unreadable: imag'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UPL-016",
+   "area": "upload",
+   "input": "tiny image 8x8",
+   "expected": "400 (400/413/422) with a clear message, no stack trace/path",
+   "actual": "422 code={'code': 'bad_dimensions', 'message': 'Image size 8x8 is outside the supported range (256-12000 px per side).', 'hint': None, 'details': {}} leak=False msg='{\"error\":{\"code\":\"bad_dimensions\",\"message\":\"Image size 8x8 is outside the suppo'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UPL-017",
+   "area": "upload",
+   "input": "HTML disguised as image",
+   "expected": "400 (400/413/422) with a clear message, no stack trace/path",
+   "actual": "422 code={'code': 'bad_signature', 'message': 'File content is not a PNG or JPEG image (signature mismatch).', 'hint': None, 'details': {}} leak=False msg='{\"error\":{\"code\":\"bad_signature\",\"message\":\"File content is not a PNG or JPEG im'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UPL-018",
+   "area": "upload",
+   "input": "SVG",
+   "expected": "400 (400/413/422) with a clear message, no stack trace/path",
+   "actual": "422 code={'code': 'unsupported_type', 'message': \"Unsupported file type '.svg'.\", 'hint': 'Upload a PNG or JPEG panoramic radiograph.', 'details': {}} leak=False msg='{\"error\":{\"code\":\"unsupported_type\",\"message\":\"Unsupported file type \\'.svg\\'.\",\"h'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UPL-020",
+   "area": "upload",
+   "input": "POST /upload with JSON body and no file",
+   "expected": "422",
+   "actual": "422",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UPL-021",
+   "area": "upload",
+   "input": "26.2 MB file (limit 25 MB)",
+   "expected": "413/400 rejected, not stored",
+   "actual": "422 '{\"error\":{\"code\":\"file_too_large\",\"message\":\"File is 25.0 MB; the limit is 25 MB.\",\"hint\":' (0.1s)",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UPL-022",
+   "area": "upload",
+   "input": "20000x20000 solid PNG (426 kB on disk)",
+   "expected": "rejected before decoding to memory (too many pixels / bad dimensions)",
+   "actual": "422 '{\"error\":{\"code\":\"corrupt_image\",\"message\":\"Image is corrupt or unreadable: Image size (400000000 pi'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UPL-030",
+   "area": "upload",
+   "input": "Data/uploads after all of the above (rejected payloads must leave nothing behind)",
+   "expected": "the three valid uploads exist under hash names; no other new file; nothing outside uploads",
+   "actual": "new_this_run=['up_22736273675e.png', 'up_4d0981b36dec.jpg', 'up_d02567b36667.png'] unexpected=[] expected_present=True",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "PRED-001",
+   "area": "validation",
+   "input": "POST /api/predict {}",
+   "expected": "422",
+   "actual": "422 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "PRED-002",
+   "area": "validation",
+   "input": "POST /api/predict {\"image_id\": \"\"}",
+   "expected": "422",
+   "actual": "422 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "PRED-003",
+   "area": "validation",
+   "input": "POST /api/predict {\"image_id\": \"does_not_exist\"}",
+   "expected": "404",
+   "actual": "404 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "PRED-004",
+   "area": "validation",
+   "input": "POST /api/predict {\"image_id\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "expected": "422",
+   "actual": "422 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "PRED-005",
+   "area": "validation",
+   "input": "POST /api/predict/batch {\"image_ids\": []}",
+   "expected": "422",
+   "actual": "422 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "PRED-006",
+   "area": "validation",
+   "input": "POST /api/predict/batch {\"image_ids\": [\"a0\", \"a1\", \"a2\", \"a3\", \"a4\", \"a5\", \"a6\", \"a7",
+   "expected": "422",
+   "actual": "422 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "PRED-007",
+   "area": "validation",
+   "input": "POST /api/analyze/full {\"image_id\": \"nope\"}",
+   "expected": "404",
+   "actual": "404 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "PRED-008",
+   "area": "validation",
+   "input": "POST /api/segment {\"image_id\": \"nope\"}",
+   "expected": "404",
+   "actual": "404 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "PRED-009",
+   "area": "validation",
+   "input": "POST /api/uncertainty/image {}",
+   "expected": "422",
+   "actual": "422 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "PRED-010",
+   "area": "validation",
+   "input": "POST /api/explain {\"image_id\": \"up_22736273675e\", \"box\": [1, 2, 3]}",
+   "expected": "422",
+   "actual": "422 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "PRED-011",
+   "area": "validation",
+   "input": "POST /api/explain {\"image_id\": \"nope\", \"box\": [1, 2, 30, 40]}",
+   "expected": "404",
+   "actual": "404 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "PRED-012",
+   "area": "validation",
+   "input": "predict with an unknown model_version",
+   "expected": "clear refusal (4xx, or 503 model_mismatch); must not silently use another model",
+   "actual": "503 '{\"error\":{\"code\":\"model_mismatch\",\"message\":\"Requested model \\'no_such_model_v9\\' is not the active detection model (\\'dent'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "PRED-013",
+   "area": "validation",
+   "input": "batch with one unknown id",
+   "expected": "4xx for the unknown id (or per-item error), never a 500",
+   "actual": "200 '{\"count\":2,\"succeeded\":1,\"results\":[{\"image_id\":\"up_22736273675e\",\"ok\":true,\"result\":{\"image_id\":\"up_22736273675e\",\"imag'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "INF-001",
+   "area": "inference",
+   "input": "POST /api/predict on the uploaded real radiograph",
+   "expected": "200 with detections list, model version, timing",
+   "actual": "200 keys=['image_id', 'image_size', 'model_version', 'model_id', 'task', 'detections', 'duration_s', 'device', 'classification', 'numbering'] (0.38s)",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "INF-002",
+   "area": "inference",
+   "input": "detector output on upload: boxes finite, x1<x2, y1<y2, inside 1976x976, scores in [0,1]",
+   "expected": "0 malformed",
+   "actual": "n=33 bad=[]",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "INF-003",
+   "area": "inference",
+   "input": "predict response carries model provenance",
+   "expected": "model version + device + seconds",
+   "actual": "model=dentex_teeth_detection_v1 device=cuda secs=None",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "INF-010",
+   "area": "inference",
+   "input": "POST /api/analyze/full on the upload",
+   "expected": "200, every step reports ok/unavailable/failed",
+   "actual": "200 steps={'preprocess': 'ok', 'detect': 'ok', 'number': 'ok', 'segment': 'ok', 'match': 'ok', 'classify': 'ok', 'classify_tta': 'ok', 'detect_tta': 'ok', 'segment_tta': 'ok'} (1.18s)",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "INF-011",
+   "area": "inference",
+   "input": "no step silently failed",
+   "expected": "all ok (or explicitly unavailable with reason)",
+   "actual": "{\"preprocess\": \"ok\", \"detect\": \"ok\", \"number\": \"ok\", \"segment\": \"ok\", \"match\": \"ok\", \"classify\": \"ok\", \"classify_tta\": \"ok\", \"detect_tta\": \"ok\", \"segment_tta\": \"ok\"}",
+   "result": "PASS",
+   "evidence": "",
+   "note": "a failed step is reported honestly in the response"
+  },
+  {
+   "id": "INF-012",
+   "area": "inference",
+   "input": "full-pipeline regions: unique ids, boxes in bounds, unique FDI, RLE masks sized H*W, match IoU >= 0.5 (n=33)",
+   "expected": "no problems",
+   "actual": "[]",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "INF-013",
+   "area": "overlay",
+   "input": "overlay PNG dimensions equal the original image",
+   "expected": "1976x976",
+   "actual": "200 (1976, 976) image/png",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "INF-020",
+   "area": "alignment",
+   "input": "predicted boxes vs. DENTEX ground-truth boxes on an annotated test-split film (coordinates in original pixels)",
+   "expected": "recall@IoU0.5 >= 0.9 (a systematic shift/scale error would collapse it; the detector reports test AP50 0.966) and median best-IoU >= 0.55",
+   "actual": "[{\"image_id\": \"qe_train_119\", \"n_gt\": 20, \"n_pred\": 21, \"median_best_iou\": 0.662970080482027, \"recall_iou50\": 0.95}, {\"image_id\": \"qe_train_121\", \"n_gt\": 21, \"n_pred\": 22, \"median_best_iou\": 0.7530380948619754, \"recall_iou50\": 0.8571428571428571}, {\"image_id\":",
+   "result": "PASS",
+   "evidence": "docs/audit_evidence/alignment.json",
+   "note": ""
+  },
+  {
+   "id": "INF-030",
+   "area": "explainability",
+   "input": "POST /api/explain for a detected region",
+   "expected": "200, heatmap + method name + target class",
+   "actual": "200 keys=['image_id', 'model_version', 'box', 'class_index', 'label', 'probability', 'heatmap_png_base64', 'heatmap_format'] method='Grad-CAM on the last convolutional block (ResNet layer4) for the top-scoring class of the crop' (0.11s)",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "INF-031",
+   "area": "explainability",
+   "input": "explain with an out-of-image box",
+   "expected": "4xx or safe clipping, never 500",
+   "actual": "200 '{\"image_id\":\"up_22736273675e\",\"model_version\":\"dentex_findings_classification_v1\",\"box\":[0,0,1976,97'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "INF-032",
+   "area": "explainability",
+   "input": "explain with a zero-area box",
+   "expected": "4xx, never 500",
+   "actual": "422 '{\"error\":{\"code\":\"bad_region\",\"message\":\"Region is too small to explain.\",\"hint\":null,\"details\":{}}}'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UNC-001",
+   "area": "uncertainty",
+   "input": "POST /api/uncertainty/image",
+   "expected": "saved record; each signal has value+status+reason; methods listed",
+   "actual": "200 signals={'entropy': 'computed', 'disagreement': 'computed', 'mask_instability': 'computed', 'detection_instability': 'computed'} combined=None",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UNC-002",
+   "area": "uncertainty",
+   "input": "computed signal values are finite and in [0,1]",
+   "expected": "true",
+   "actual": "True",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UNC-003",
+   "area": "uncertainty",
+   "input": "uniform 4-class softmax -> normalised entropy 1.0",
+   "expected": "entropy.value = 1.0",
+   "actual": "200 {\"value\": 0.9999999999971146, \"status\": \"computed\", \"reason\": null}",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UNC-004",
+   "area": "uncertainty",
+   "input": "one-hot softmax -> entropy 0.0",
+   "expected": "0.0",
+   "actual": "200 {\"value\": 0.0, \"status\": \"computed\", \"reason\": null}",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UNC-005",
+   "area": "uncertainty",
+   "input": "score with invalid input {\"probabilities\": [[]]}",
+   "expected": "4xx or 'unavailable' (never a fake 0)",
+   "actual": "400 '{\"error\":{\"code\":\"invalid_uncertainty_input\",\"message\":\"Invalid uncertainty input: probabilities nee'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UNC-006",
+   "area": "uncertainty",
+   "input": "score with invalid input {\"probabilities\": [[\"a\", \"b\"]]}",
+   "expected": "4xx or 'unavailable' (never a fake 0)",
+   "actual": "400 '{\"error\":{\"code\":\"invalid_uncertainty_input\",\"message\":\"Invalid uncertainty input: could not convert'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UNC-007",
+   "area": "uncertainty",
+   "input": "score with invalid input {}",
+   "expected": "4xx or 'unavailable' (never a fake 0)",
+   "actual": "200 '{\"image_id\":\"adhoc\",\"model_version\":null,\"entropy\":{\"value\":null,\"status\":\"unavailable\",\"reason\":\"no'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "UNC-008",
+   "area": "uncertainty",
+   "input": "GET /api/uncertainty/table after the call above",
+   "expected": "contains the record just computed with values",
+   "actual": "200 rows=200",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REP-001",
+   "area": "reports",
+   "input": "generate with neither analysis_id nor image_id nor findings",
+   "expected": "4xx, no empty fabricated report",
+   "actual": "400 '{\"error\":{\"code\":\"no_evidence\",\"message\":\"No model findings to report on.\",\"hint\":\"Run an analysis w'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REP-002",
+   "area": "reports",
+   "input": "generate for a non-existent analysis",
+   "expected": "404",
+   "actual": "404",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REP-003",
+   "area": "reports",
+   "input": "generate an English template report from the full analysis",
+   "expected": "200 with report id linked to image + analysis",
+   "actual": "200 id=RPT-5969557C37 image=up_22736273675e analysis=None keys=['report_id', 'image_id', 'model_version', 'model_versions', 'generated_by', 'status', 'created', 'findings']",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REP-003b",
+   "area": "reports",
+   "input": "GET /api/reports rows carry what the compact list shows",
+   "expected": "id, image_id, image_name (file name), status, created, languages",
+   "actual": "{\"id\": \"RPT-5969557C37\", \"image_name\": \"audit sample \\u00fc \\u4f8b.png\", \"status\": \"unconfirmed_research_draft\", \"languages\": [\"en\", \"hi\", \"mr\"]}",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REP-004",
+   "area": "reports",
+   "input": "GET invalid report id",
+   "expected": "404",
+   "actual": "404",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REP-005",
+   "area": "reports",
+   "input": "unsupported language 'xx'",
+   "expected": "4xx with supported list; must not return an English report labelled as translated",
+   "actual": "422 '{\"error\":{\"code\":\"validation_error\",\"message\":\"lang: String should match pattern \\'^(en|hi|mr)$\\'\",\"hint\":\"Check the highlighted fields.\",\"det'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REP-006",
+   "area": "reports",
+   "input": "GET report in en/hi/mr",
+   "expected": "200 each, localization_check ok for hi and mr",
+   "actual": "{\"en\": {\"passed\": true, \"problems\": [], \"lang\": \"en\"}, \"hi\": {\"passed\": true, \"problems\": [], \"lang\": \"hi\"}, \"mr\": {\"passed\": true, \"problems\": [], \"lang\": \"mr\"}}",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REP-007",
+   "area": "reports",
+   "input": "language switching does not run new inference",
+   "expected": "analysis row count unchanged",
+   "actual": "before=14 after=14",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REP-01-enj",
+   "area": "reports",
+   "input": "export format=json lang=en",
+   "expected": "200, non-empty, correct content-type",
+   "actual": "200 93947 B application/json; charset=utf-8",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REP-01-enh",
+   "area": "reports",
+   "input": "export format=html lang=en",
+   "expected": "200, non-empty, correct content-type",
+   "actual": "200 12379 B text/html; charset=utf-8",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REP-01-ent",
+   "area": "reports",
+   "input": "export format=txt lang=en",
+   "expected": "200, non-empty, correct content-type",
+   "actual": "200 7444 B text/plain; charset=utf-8",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REP-01-hij",
+   "area": "reports",
+   "input": "export format=json lang=hi",
+   "expected": "200, non-empty, correct content-type",
+   "actual": "200 108258 B application/json; charset=utf-8",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REP-01-hih",
+   "area": "reports",
+   "input": "export format=html lang=hi",
+   "expected": "200, non-empty, correct content-type",
+   "actual": "200 26709 B text/html; charset=utf-8",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REP-01-hit",
+   "area": "reports",
+   "input": "export format=txt lang=hi",
+   "expected": "200, non-empty, correct content-type",
+   "actual": "200 20026 B text/plain; charset=utf-8",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REP-01-mrj",
+   "area": "reports",
+   "input": "export format=json lang=mr",
+   "expected": "200, non-empty, correct content-type",
+   "actual": "200 109793 B application/json; charset=utf-8",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REP-01-mrh",
+   "area": "reports",
+   "input": "export format=html lang=mr",
+   "expected": "200, non-empty, correct content-type",
+   "actual": "200 28243 B text/html; charset=utf-8",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REP-01-mrt",
+   "area": "reports",
+   "input": "export format=txt lang=mr",
+   "expected": "200, non-empty, correct content-type",
+   "actual": "200 20932 B text/plain; charset=utf-8",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REP-020",
+   "area": "reports",
+   "input": "export format=pdf (not implemented)",
+   "expected": "4xx with an explicit 'not supported' message",
+   "actual": "422 '{\"error\":{\"code\":\"validation_error\",\"message\":\"format: String should match pattern \\'^(json|html|txt)'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REP-021",
+   "area": "reports",
+   "input": "review with an empty reviewer name",
+   "expected": "422",
+   "actual": "422",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REP-022",
+   "area": "reports",
+   "input": "review with a whitespace-only reviewer name",
+   "expected": "4xx (name must contain characters)",
+   "actual": "400 '{\"error\":{\"code\":\"reviewer_required\",\"message\":\"reviewer name is required\",\"hint\":null,\"details\":{}}'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REP-030",
+   "area": "reports",
+   "input": "report with an explicitly empty findings list",
+   "expected": "200; findings == []; summary says nothing was supplied; no invented finding; validation flags the missing model version",
+   "actual": "200 findings=[] validation_failed=True summary='No model findings were supplied for this image; no statements about the radiograph are mad'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REP-031",
+   "area": "security",
+   "input": "reviewer name containing <script> must be HTML-escaped in the HTML export",
+   "expected": "no raw <script> tag in exported HTML",
+   "actual": "review=200; raw_script_in_html=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": "This test marks the test report as reviewed by a test name; it is a report created by this audit."
+  },
+  {
+   "id": "TRN-001",
+   "area": "training",
+   "input": "GET /api/training/prerequisites",
+   "expected": "200 with checks",
+   "actual": "200 '{\"ready\":true,\"unmet\":[],\"main_dataset_available\":true,\"architectures\":{\"classification\":[\"resnet50\",\"resnet18\"],\"detection\":[\"fasterrcnn_re'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "TRN-002",
+   "area": "training",
+   "input": "start with invalid config {\"epochs\": 0}",
+   "expected": "422 and no job created",
+   "actual": "422 '{\"error\":{\"code\":\"validation_error\",\"message\":\"epochs: Input should be greater than or equal to 1\",\"'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "TRN-003",
+   "area": "training",
+   "input": "start with invalid config {\"learning_rate\": -1}",
+   "expected": "422 and no job created",
+   "actual": "422 '{\"error\":{\"code\":\"validation_error\",\"message\":\"learning_rate: Input should be greater than 0\",\"hint\"'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "TRN-004",
+   "area": "training",
+   "input": "start with invalid config {\"task\": \"bogus\"}",
+   "expected": "422 and no job created",
+   "actual": "422 '{\"error\":{\"code\":\"validation_error\",\"message\":\"task: Input should be \\'classification\\', \\'detection\\', '",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "TRN-005",
+   "area": "training",
+   "input": "start with invalid config {\"experiment_name\": \"\"}",
+   "expected": "422 and no job created",
+   "actual": "422 '{\"error\":{\"code\":\"validation_error\",\"message\":\"experiment_name: String should have at least 1 charac'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "TRN-006",
+   "area": "training",
+   "input": "start with invalid config {\"image_size\": 8}",
+   "expected": "422 and no job created",
+   "actual": "422 '{\"error\":{\"code\":\"validation_error\",\"message\":\"image_size: Input should be greater than or equal to '",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "TRN-007",
+   "area": "training",
+   "input": "start with invalid config {\"architecture\": \"no_such_arch\"}",
+   "expected": "400 and no job created",
+   "actual": "422 '{\"error\":{\"code\":\"invalid_configuration\",\"message\":\"architecture for classification must be one of ['",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "TRN-008",
+   "area": "training",
+   "input": "start with invalid config {\"resume_checkpoint\": \"../../etc/passwd\"}",
+   "expected": "400 and no job created",
+   "actual": "400 '{\"error\":{\"code\":\"prerequisites_unmet\",\"message\":\"Training prerequisites are not met.\",\"hint\":\"Resum'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "TRN-009",
+   "area": "training",
+   "input": "status of an unknown job",
+   "expected": "404",
+   "actual": "404",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "TRN-010",
+   "area": "training",
+   "input": "stop an unknown job",
+   "expected": "404",
+   "actual": "404",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "TRN-011",
+   "area": "training",
+   "input": "GET /api/training/jobs",
+   "expected": "200, list incl. historical real runs",
+   "actual": "200 n=13",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "EXP-001",
+   "area": "experiments",
+   "input": "GET /api/experiments",
+   "expected": "real experiments from training runs and AL runs",
+   "actual": "200 n=50 first=None",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "EXP-002",
+   "area": "experiments",
+   "input": "GET /api/experiments/compare (no params)",
+   "expected": "200 or a clean 4xx",
+   "actual": "422",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "EXP-002",
+   "area": "experiments",
+   "input": "GET /api/experiments/series (no params)",
+   "expected": "200 or a clean 4xx",
+   "actual": "200",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "EXP-002",
+   "area": "experiments",
+   "input": "GET /api/experiments/export (no params)",
+   "expected": "200 or a clean 4xx",
+   "actual": "200",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "EXP-003",
+   "area": "experiments",
+   "input": "GET /api/evaluations",
+   "expected": "evaluation reports on disk are listed",
+   "actual": "200 {'items': [{'name': 'eval_dentex_teeth_segmentation_v1_test', 'model_version': 'dentex_teeth_segmentation_v1', 'task': 'segmentation', 'spli",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "AL-001",
+   "area": "active-learning",
+   "input": "GET /api/active-learning/info",
+   "expected": "200",
+   "actual": "200 '{\"strategies\":[{\"id\":\"random\",\"description\":\"Seeded uniform sampling. The baseline every other strategy is compared against.\"},{\"id\":\"entropy\",\"description\":\"Hi'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "AL-002",
+   "area": "active-learning",
+   "input": "GET pool (eligible unlabeled)",
+   "expected": "200",
+   "actual": "200 {'key': 'main', 'is_test_data': False, 'size': 1558, 'excluded_test_split': 206, 'labeled': 0, 'scored': 0, 'excluded_duplicates_of_labeled': 40}",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "AL-003",
+   "area": "active-learning",
+   "input": "select with invalid {\"strategy\": \"bogus\"}",
+   "expected": "422",
+   "actual": "422",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "AL-004",
+   "area": "active-learning",
+   "input": "select with invalid {\"budget\": -1}",
+   "expected": "422",
+   "actual": "422",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "AL-005",
+   "area": "active-learning",
+   "input": "select with invalid {\"batch_size\": 0}",
+   "expected": "422",
+   "actual": "422",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "ANN-001",
+   "area": "annotation",
+   "input": "GET /api/annotations/connection while Label Studio is not running",
+   "expected": "truthful 'not reachable / setup required' state",
+   "actual": "200 '{\"reachable\":false,\"error\":\"[WinError 10061] No connection could be made because the target machine actively refused it\",\"url\":\"http://localhost:8080\",\"api_key_configured\":false,\"message\":\"Label Studi'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "ANN-002",
+   "area": "annotation",
+   "input": "import from Label Studio without a configured server/key",
+   "expected": "clear 4xx/5xx-service message, no fake import",
+   "actual": "502 '{\"error\":{\"code\":\"external_service_unavailable\",\"message\":\"Label Studio API key is not configured.\",\"hint\":\"Set LABEL_STUDIO_API_KEY in .env'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "ANN-003",
+   "area": "annotation",
+   "input": "import malformed Label Studio tasks",
+   "expected": "4xx or reported skipped, not stored as approved",
+   "actual": "400 '{\"error\":{\"code\":\"empty_import\",\"message\":\"No completed annotations found in the uploaded Label Studio export.\",\"hint\":\"Export from Label St'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "ANN-004",
+   "area": "annotation",
+   "input": "approve a non-existent annotation",
+   "expected": "4xx / zero approved",
+   "actual": "200 '{\"approved\":[],\"version\":null}'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REV-001",
+   "area": "reviews",
+   "input": "review an unknown image",
+   "expected": "404",
+   "actual": "404",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REV-002",
+   "area": "reviews",
+   "input": "unknown review action",
+   "expected": "4xx",
+   "actual": "400",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "REV-003",
+   "area": "reviews",
+   "input": "review without a reviewer name",
+   "expected": "4xx",
+   "actual": "422",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "SEC-001",
+   "area": "cors",
+   "input": "preflight from the Vite origin",
+   "expected": "allowed (ACAO == origin)",
+   "actual": "200 ACAO=http://localhost:5173",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "SEC-002",
+   "area": "cors",
+   "input": "preflight from a foreign origin",
+   "expected": "not allowed (no ACAO for that origin)",
+   "actual": "400 ACAO=None",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "SEC-003",
+   "area": "exposure",
+   "input": "/docs (Swagger UI) is enabled",
+   "expected": "informational: dev-only route reachable on localhost",
+   "actual": "200",
+   "result": "PASS",
+   "evidence": "",
+   "note": "Swagger UI and /openapi.json are on by default; bind to 127.0.0.1 only (documented). Not a defect for local use."
+  },
+  {
+   "id": "SEC-004",
+   "area": "security",
+   "input": "encoded path traversal on a route",
+   "expected": "404, no file",
+   "actual": "404 leak=False",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "SEC-005",
+   "area": "security",
+   "input": "SQL meta-characters in an image id",
+   "expected": "404, no DB error text",
+   "actual": "404 leak=False '{\"error\":{\"code\":\"not_found\",\"message\":\"Image \\'up_x\\' OR \\'1\\'=\\'1\\' was not found.\",'",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "SEC-006",
+   "area": "exposure",
+   "input": "unknown route",
+   "expected": "404 JSON, no stack trace",
+   "actual": "404",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "SWEEP-001",
+   "area": "sweep",
+   "input": "GET every parameterless route in /openapi.json (32 routes)",
+   "expected": "no 5xx, no stack trace / local-path leak, valid JSON",
+   "actual": "swept=32 bad=[]",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  },
+  {
+   "id": "DB-001",
+   "area": "database",
+   "input": "image registry count after uploads",
+   "expected": "+3 distinct valid uploads vs 3656",
+   "actual": "3659",
+   "result": "PASS",
+   "evidence": "",
+   "note": ""
+  }
+ ]
+}

@@ -1,0 +1,1151 @@
+{
+ "generated": "2026-10-14T20:20:51",
+ "project": "DentaMind AI (D:\\Dentex-Gen Ai)",
+ "total_features": 60,
+ "summary": {
+  "PASS": 46,
+  "FAIL": 0,
+  "BLOCKED": 5,
+  "PARTIAL": 6,
+  "NOT IMPLEMENTED": 3
+ },
+ "features": [
+  {
+   "id": "F01",
+   "name": "Dataset discovery and manifest",
+   "area": "data",
+   "entry": "src/dentexmodel/data/{discovery,manifest}.py; GET /api/dataset/status|manifest",
+   "deps": "Pillow, numpy",
+   "data": "Data/training_data (3 annotated sub-sets + unlabelled)",
+   "status": "PASS",
+   "tests": "tests/test_dataset_pipeline.py, tests/test_real_dentex_layout.py",
+   "verification": "live GET /api/dataset/status (3,603 main image entries, 50 test-data images); check_running.ps1; sweep SWEEP-001",
+   "limits": "Counts are image ENTRIES across overlapping sub-sets, not distinct radiographs (1,133 distinct annotated films after pixel-hash de-duplication)."
+  },
+  {
+   "id": "F02",
+   "name": "COCO annotation parsing and FDI mapping",
+   "area": "data",
+   "entry": "src/dentexmodel/data/{coco,fdi}.py",
+   "deps": "stdlib",
+   "data": "train_quadrant_enumeration*.json",
+   "status": "PASS",
+   "tests": "tests/test_geometry_fdi.py, tests/test_real_dentex_layout.py",
+   "verification": "ground-truth boxes parsed from the real COCO file and matched to API predictions in INF-020 (docs/audit_evidence/alignment.json)",
+   "limits": "Quadrant/enumeration categories only; no periapical or bitewing formats."
+  },
+  {
+   "id": "F03",
+   "name": "Grouped splits and leakage check",
+   "area": "data",
+   "entry": "src/dentexmodel/data/splits.py; scripts/check_leakage.py; GET /api/dataset/leakage",
+   "deps": "numpy, Pillow",
+   "data": "Data/splits/dentex_splits.json",
+   "status": "PASS",
+   "tests": "tests/test_dataset_pipeline.py",
+   "verification": "scripts/check_leakage.py re-executed by this audit: distinct radiographs per split 794/113/113/113; every pairwise overlap = 0; classification/detection/segmentation training sets vs ALL test radiographs = 0",
+   "limits": "Near-duplicate screening (dHash then pixel correlation) found 0 confirmed pairs; cannot exclude same-patient films with different pixels (no patient id in DENTEX). The audit's UI 'Re-process dataset' click regenerated the splits file (same counts 1396/202/201/206)."
+  },
+  {
+   "id": "F04",
+   "name": "Dataset audit/validation endpoints",
+   "area": "data",
+   "entry": "GET /api/dataset/audit|validation|manifest",
+   "deps": "-",
+   "data": "processed manifests",
+   "status": "PASS",
+   "tests": "tests/test_real_dentex_layout.py",
+   "verification": "sweep SWEEP-001 (no 5xx, valid JSON, no path leak)",
+   "limits": ""
+  },
+  {
+   "id": "F05",
+   "name": "Image upload and validation",
+   "area": "images",
+   "entry": "POST /api/images/upload; src/dentexmodel/data/preprocess.py",
+   "deps": "Pillow, python-multipart",
+   "data": "-",
+   "status": "PASS",
+   "tests": "tests/test_preprocess.py, tests/test_backend_services.py",
+   "verification": "live UPL-001..030: PNG, JPEG, Unicode+space filename, duplicate (same id), 9 invalid payloads (corrupt, truncated, wrong signature, .txt, .exe, SVG, HTML, empty, 8x8) -> 422 with codes; 26 MB -> file_too_large; 20000x20000 -> rejected",
+   "limits": "Defect found and fixed: the size message said '26 MB' for a 25 MiB limit (now MiB). Limits are configurable; no per-user quota."
+  },
+  {
+   "id": "F06",
+   "name": "Safe storage and path handling",
+   "area": "images",
+   "entry": "backend/services/images.py; src/dentexmodel/utils/paths.py",
+   "deps": "-",
+   "data": "Data/uploads",
+   "status": "PASS",
+   "tests": "tests/test_backend_services.py",
+   "verification": "traversal filename '../../../evil_traversal.png' stored only as up_<sha>.png inside Data/uploads (UPL-006); encoded-traversal and SQL-meta ids -> 404 (API-022, SEC-004/005); rejected payloads leave no files (UPL-030)",
+   "limits": "The app has no delete route for uploads (uploads accumulate)."
+  },
+  {
+   "id": "F07",
+   "name": "Image quality flags and preprocessing",
+   "area": "images",
+   "entry": "GET /api/images/{id}/quality; src/dentexmodel/uncertainty/quality.py",
+   "deps": "numpy",
+   "data": "-",
+   "status": "PASS",
+   "tests": "tests/test_uncertainty_eval.py, tests/test_preprocess.py",
+   "verification": "quality block returned on every upload; models receive original pixels (overlay geometry check UI-GEO)",
+   "limits": "Quality thresholds are heuristic."
+  },
+  {
+   "id": "F10",
+   "name": "Tooth detection (Faster R-CNN R50-FPN)",
+   "area": "models",
+   "entry": "POST /api/predict; src/dentexmodel/inference/torch_models.py",
+   "deps": "torch, torchvision",
+   "data": "Data/checkpoints/dentex_teeth_detection_v1.pth",
+   "status": "PASS",
+   "tests": "tests/test_training_registry.py (registry), live tests",
+   "verification": "MOD-DET-* real inference on 2 test-split films + 1 upload; boxes finite/ordered/in-bounds, scores in [0,1]; same image twice -> identical output; INF-020 pooled recall@IoU0.5 vs DENTEX ground truth",
+   "limits": "Stored test mAP 0.515 / AP50 0.966 (one split, one seed)."
+  },
+  {
+   "id": "F11",
+   "name": "Tooth segmentation (Mask R-CNN)",
+   "area": "models",
+   "entry": "POST /api/segment",
+   "deps": "torch, torchvision",
+   "data": "Data/checkpoints/dentex_teeth_segmentation_v1.pth",
+   "status": "PASS",
+   "tests": "live tests",
+   "verification": "MOD-SEG-*: RLE decodes to HxW, area == pixel count, non-empty, mask inside its box",
+   "limits": "Stored test mask AP50 0.974, IoU 0.780, Dice 0.873 (matched teeth)."
+  },
+  {
+   "id": "F12",
+   "name": "Finding classification (ResNet-50, 4 classes, no healthy class)",
+   "area": "models",
+   "entry": "POST /api/predict (with_classification); classify_regions",
+   "deps": "torch",
+   "data": "Data/checkpoints/dentex_findings_classification_v1.pth",
+   "status": "PASS",
+   "tests": "live tests; tests/test_review_pipeline.py",
+   "verification": "MOD-CLS-*: softmax rows finite, sum to 1, width = 4, one row per detection; validation-split re-evaluation on CPU reproduces stored metrics within 0.007 macro-F1",
+   "limits": "No 'healthy' class: output is a candidate class, not a finding; stored test macro-F1 0.646 and Periapical Lesion recall 0.31. High-entropy regions are abstained."
+  },
+  {
+   "id": "F13",
+   "name": "FDI tooth numbering (Faster R-CNN, 32 classes)",
+   "area": "models",
+   "entry": "number_teeth; POST /api/analyze/full",
+   "deps": "torch",
+   "data": "Data/checkpoints/dentex_fdi_numbering_v1.pth",
+   "status": "PASS",
+   "tests": "tests/test_geometry_fdi.py, test_review_pipeline.py",
+   "verification": "MOD-NUM-*: codes valid and unique per film; unnumbered regions labelled, not guessed; registered only after evaluated_on.passed",
+   "limits": "Stored test exact accuracy 0.968 among localised teeth, coverage 0.969."
+  },
+  {
+   "id": "F14",
+   "name": "Full pipeline and region association",
+   "area": "models",
+   "entry": "POST /api/analyze/full; backend/services/pipeline.py",
+   "deps": "all of the above",
+   "data": "four checkpoints",
+   "status": "PASS",
+   "tests": "tests/test_review_pipeline.py",
+   "verification": "INF-010..012; UI-E-003: all 32 table rows equal the API response; regions linked by content-derived ids and one-to-one IoU matching",
+   "limits": "Typical 2-6 s per film on the RTX 3050."
+  },
+  {
+   "id": "F15",
+   "name": "Overlay alignment after resizing",
+   "area": "models",
+   "entry": "GET /api/analyses/{id}/overlay; frontend DetectionOverlay",
+   "deps": "Pillow",
+   "data": "-",
+   "status": "PASS",
+   "tests": "tests/test_audit_regressions.py",
+   "verification": "INF-013 (overlay PNG size == original); INF-020 (boxes vs ground truth); browser geometry check: 32 drawn rects == 32 API boxes, viewBox == image size, on-screen offset < 0.3 px",
+   "limits": "Defect found and fixed: overlay endpoint returned 404 for full-pipeline analyses."
+  },
+  {
+   "id": "F16",
+   "name": "Model registry and sidecar verification",
+   "area": "models",
+   "entry": "GET /api/models; src/dentexmodel/inference/registry.py",
+   "deps": "-",
+   "data": "*.json sidecars",
+   "status": "PASS",
+   "tests": "tests/test_training_registry.py",
+   "verification": "API-010/011: four tasks listed, sidecar sha256 equals file sha256; MOD-MISS-badsha: tampered sidecar -> rejected, not dental-verified",
+   "limits": ""
+  },
+  {
+   "id": "F17",
+   "name": "Missing / incompatible checkpoint handling",
+   "area": "models",
+   "entry": "registry + inference wrappers",
+   "deps": "-",
+   "data": "temp checkpoint dirs",
+   "status": "PASS",
+   "tests": "tests/test_training_registry.py",
+   "verification": "MOD-MISS-empty/garbage/badsha on separate server processes: clear unavailable state (503), no synthetic predictions, no traceback",
+   "limits": ""
+  },
+  {
+   "id": "F18",
+   "name": "Explainability (Grad-CAM)",
+   "area": "models",
+   "entry": "POST /api/explain",
+   "deps": "torch",
+   "data": "classification checkpoint",
+   "status": "PASS",
+   "tests": "live tests",
+   "verification": "INF-030..032, UI-E-006: heatmap + method text shown; bad box -> 422 (fixed from 503)",
+   "limits": "No quantitative faithfulness evaluation; the heatmap is a visual aid, not evidence of causality."
+  },
+  {
+   "id": "F19",
+   "name": "CPU fallback",
+   "area": "models",
+   "entry": "device selection",
+   "deps": "torch",
+   "data": "-",
+   "status": "PASS",
+   "tests": "-",
+   "verification": "MOD-CPU-*: server with CUDA hidden runs real inference on the CPU and reports device=cpu",
+   "limits": "CPU is several times slower (see performance table)."
+  },
+  {
+   "id": "F20",
+   "name": "Uncertainty: entropy and flip-TTA disagreement",
+   "area": "research",
+   "entry": "POST /api/uncertainty/image|score",
+   "deps": "numpy",
+   "data": "classification checkpoint",
+   "status": "PASS",
+   "tests": "tests/test_uncertainty_eval.py, test_review_pipeline.py",
+   "verification": "UNC-001..008: uniform softmax -> 1.0, one-hot -> 0.0, missing input -> unavailable (never 0); stored evaluation on held-out test: AUROC 0.768 (entropy) and 0.745 (flip) for detecting classifier errors",
+   "limits": "Thresholds (entropy 0.397, flip 0.076) are provisional, chosen on one calibration split; the score is NOT a calibrated probability of error."
+  },
+  {
+   "id": "F21",
+   "name": "Uncertainty: mask and detection instability (flip pass)",
+   "area": "research",
+   "entry": "pipeline segment_tta/detect_tta",
+   "deps": "torch",
+   "data": "seg + det checkpoints",
+   "status": "PARTIAL",
+   "tests": "tests/test_uncertainty_eval.py",
+   "verification": "computed and range-checked (UNC-002); NEW measurement on the validation split with DENTEX ground truth (30 films, 851 mask regions, 878 boxes): AUROC 0.59 for mask IoU < 0.8 and 0.64 for false-positive boxes (27 of them) - both WEAK; the API record and the UI now show this next to each signal",
+   "limits": "Weak evidence: do not present mask/detection instability as validated error detectors. Test-time augmentation of one network, not an ensemble."
+  },
+  {
+   "id": "F22",
+   "name": "Ensemble disagreement",
+   "area": "research",
+   "entry": "-",
+   "deps": "-",
+   "data": "needs >= 2 independently trained models",
+   "status": "NOT IMPLEMENTED",
+   "tests": "-",
+   "verification": "reported as 'unavailable' with a reason",
+   "limits": "Only one checkpoint per task exists."
+  },
+  {
+   "id": "F23",
+   "name": "Probability calibration",
+   "area": "research",
+   "entry": "scripts/evaluate_uncertainty.py",
+   "deps": "numpy",
+   "data": "calibration split",
+   "status": "PARTIAL",
+   "tests": "tests/test_uncertainty_eval.py",
+   "verification": "ECE 0.048 on test (measured). Temperature scaling (T = 0.95) lowered test ECE to 0.036 but RAISED calibration-split ECE (0.071 -> 0.076), so it was NOT applied; the API/UI state that scores are uncalibrated",
+   "limits": "No calibrated probability of error is offered anywhere."
+  },
+  {
+   "id": "F24",
+   "name": "Active-learning selection",
+   "area": "research",
+   "entry": "POST /api/active-learning/select; src/dentexmodel/active_learning/selection.py",
+   "deps": "numpy",
+   "data": "unlabelled pool (1,558 images; 206 test + 40 duplicates excluded)",
+   "status": "PASS",
+   "tests": "tests/test_active_learning.py",
+   "verification": "AL-001..005 and docs/audit_evidence/al_selection_runs.json: same seed -> identical ids (random and entropy), different seed -> different, budget respected, no id from the test split, reasons recorded, leak guard raises LeakageError, unavailable signal skipped with reason",
+   "limits": "Defect found and fixed: rounds did not record the model that produced the signals (model_version null)."
+  },
+  {
+   "id": "F25",
+   "name": "Active-learning pool scoring job",
+   "area": "research",
+   "entry": "POST /api/active-learning/score-pool",
+   "deps": "torch",
+   "data": "pool images",
+   "status": "PASS",
+   "tests": "tests/test_review_pipeline.py",
+   "verification": "job-d6bba731b1 (started by the audit's first UI crawl) ran to 'succeeded' and wrote real uncertainty records; later crawl runs abort all POSTs",
+   "limits": "One scoring job at a time; 4 GB GPU."
+  },
+  {
+   "id": "F26",
+   "name": "Random vs entropy experiment (reproduction)",
+   "area": "research",
+   "entry": "scripts/run_al_experiment.py",
+   "deps": "torch",
+   "data": "disease sub-set, val split",
+   "status": "PARTIAL",
+   "tests": "-",
+   "verification": "reduced CPU reproduction (seed 0, budgets 60/120, random vs entropy, original hyper-parameters) - see docs/RESEARCH_TOOLS_VALIDATION.md",
+   "limits": "Original 3-seed x 5-budget run not repeated (~30 min GPU). Original finding stands: no consistent benefit of uncertainty selection; CPU vs GPU runs of the same seed differ by up to 0.04 macro-F1, larger than the strategy differences."
+  },
+  {
+   "id": "F27",
+   "name": "Label Studio task export (file)",
+   "area": "research",
+   "entry": "POST /api/active-learning/export",
+   "deps": "-",
+   "data": "stored rounds",
+   "status": "PASS",
+   "tests": "tests/test_annotation_reporting.py",
+   "verification": "tasks reference real image urls with width/height/score/reason; unknown round -> 404",
+   "limits": ""
+  },
+  {
+   "id": "F28",
+   "name": "Label Studio push / pull (live service)",
+   "area": "research",
+   "entry": "/api/annotations/*, push_to_label_studio",
+   "deps": "Label Studio service + API key",
+   "data": "-",
+   "status": "BLOCKED",
+   "tests": "tests/tests_labelstudio_fixture.py (fixture only)",
+   "verification": "ANN-001/002: truthful 'not reachable / API key not configured' state; push returns 502 with setup hint",
+   "limits": "Label Studio is not installed/running here; import logic verified only with a synthetic fixture."
+  },
+  {
+   "id": "F29",
+   "name": "In-app region review with audit history",
+   "area": "research",
+   "entry": "/api/reviews*; frontend RegionReview",
+   "deps": "-",
+   "data": "analyses",
+   "status": "PASS",
+   "tests": "tests/test_review_pipeline.py",
+   "verification": "browser workflow: review saved (rev 1), identical resubmission refused, changed decision = rev 2 with history, self-approval refused, second person approves, export counts; API: unknown image -> 404 (fixed), bad action/empty reviewer -> 4xx",
+   "limits": "Reviewer names are self-declared; no authentication."
+  },
+  {
+   "id": "F30",
+   "name": "Retraining on approved annotations",
+   "area": "research",
+   "entry": "TrainRequest.use_approved_annotations",
+   "deps": "torch",
+   "data": "approved reviews",
+   "status": "PARTIAL",
+   "tests": "tests/test_review_pipeline.py, tests/test_training_registry.py; audit_approved_training.py (9 checks)",
+   "verification": "approved_training_dry_run.json 9/9: with no approved reviews a dry run is refused (400); a real review on a pool image approved by a second person is exported and makes the dry run valid; a review on a validation-split film is excluded (usable_for_training false); no job is created",
+   "limits": "Training on approved annotations was still never executed, so its effect on accuracy is unmeasured."
+  },
+  {
+   "id": "F31",
+   "name": "Training job management (API)",
+   "area": "research",
+   "entry": "POST /api/training/start|stop, GET status|jobs",
+   "deps": "torch",
+   "data": "dataset",
+   "status": "PASS",
+   "tests": "tests/test_security_and_training_api.py (19), tests/test_training_registry.py",
+   "verification": "training_api.json 20/20 on a separate server (temp checkpoint dir + DB, CPU): dry run creates nothing; real SMOKE training started through the API (8 train / 4 val images, 1 epoch) runs to 'succeeded' with progress states, sidecar sha256 == file sha256, experiment row; a second start and a dry run while it runs -> 409; repeating the name writes v2 and leaves v1 byte-identical; cancellation -> 'cancelled' and (after the D24 fix) no checkpoint; invalid architecture 422; resume path traversal / unverified / other-task checkpoint 400; unknown job 404; no token 401",
+   "limits": "Only tiny smoke runs were executed through the API. A full-size run through the API on the real registry was not repeated (the CLI produced the real checkpoints)."
+  },
+  {
+   "id": "F32",
+   "name": "Training CLI smoke test",
+   "area": "research",
+   "entry": "scripts/train_model.py",
+   "deps": "torch",
+   "data": "real DENTEX crops",
+   "status": "PASS",
+   "tests": "-",
+   "verification": "docs/audit_evidence/training_smoke.log: classification resnet18, 8 train / 4 val images, 1 epoch, CPU, temporary checkpoint dir and DB: exit 0, 11 s, sidecar + .pth written; real checkpoints byte-identical afterwards",
+   "limits": "Smoke test only (labelled as such); not a model."
+  },
+  {
+   "id": "F33",
+   "name": "Experiment tracking",
+   "area": "research",
+   "entry": "GET /api/experiments*, /api/evaluations",
+   "deps": "sqlite",
+   "data": "50 real experiment rows",
+   "status": "PASS",
+   "tests": "tests/test_training_registry.py",
+   "verification": "EXP-001..003; Experiments page renders real runs (UI-R)",
+   "limits": "Rows come from real training and AL runs only; no synthetic rows."
+  },
+  {
+   "id": "F34",
+   "name": "TensorBoard integration",
+   "area": "research",
+   "entry": "health.tensorboard; training page link",
+   "deps": "tensorboard (not installed)",
+   "data": "Data/runs event files (none)",
+   "status": "BLOCKED",
+   "tests": "-",
+   "verification": "health reports TensorBoard unreachable; `import tensorboard` fails; Data/runs has no event files. The Training page now says so (UI-N-004) instead of showing a dead link",
+   "limits": "Recovery: pip install tensorboard; it is not needed for the current demonstration."
+  },
+  {
+   "id": "F35",
+   "name": "Evaluation scripts and stored metrics",
+   "area": "research",
+   "entry": "scripts/evaluate_model.py, evaluate_uncertainty.py",
+   "deps": "torch",
+   "data": "Data/reports/eval_*",
+   "status": "PARTIAL",
+   "tests": "tests/test_uncertainty_eval.py",
+   "verification": "classification validation split re-run on CPU into a scratch folder: accuracy 0.8218 vs 0.8248 stored, macro-F1 0.7114 vs 0.7179; originals untouched",
+   "limits": "Detection/segmentation/numbering metrics were not re-run (cost, GPU occupied); test-split numbers are the stored one-time results."
+  },
+  {
+   "id": "F36",
+   "name": "Model 'Evaluate' button / endpoint",
+   "area": "research",
+   "entry": "POST /api/models/{id}/evaluate",
+   "deps": "torch",
+   "data": "val split",
+   "status": "PASS",
+   "tests": "tests/test_audit_regressions.py",
+   "verification": "DEFECT FOUND then FIXED: four concurrent evaluations on the shared 4 GB GPU failed (out-of-memory / paging file); now refused with 409 while another job runs; UI shows a start confirmation",
+   "limits": "Re-running evaluation overwrites the val report for that model by design."
+  },
+  {
+   "id": "F37",
+   "name": "Model select / promote",
+   "area": "research",
+   "entry": "POST /api/models/select|promote",
+   "deps": "-",
+   "data": "registry",
+   "status": "PASS",
+   "tests": "tests/test_audit_regressions.py",
+   "verification": "DEFECT FOUND then FIXED: 'Use' for the numbering checkpoint returned 422 (schema lacked 'numbering'); promote requires approver + confirm",
+   "limits": ""
+  },
+  {
+   "id": "F40",
+   "name": "Report generation from structured findings",
+   "area": "reports",
+   "entry": "POST /api/reports/generate",
+   "deps": "-",
+   "data": "analysis",
+   "status": "PASS",
+   "tests": "tests/test_annotation_reporting.py, test_review_pipeline.py",
+   "verification": "docs/MULTILINGUAL_REPORT_TEST_REPORT.md: RPT-A01..A03, C01..C09, E01..E10",
+   "limits": "Template text only unless an LLM is configured."
+  },
+  {
+   "id": "F41",
+   "name": "English / Hindi / Marathi localisation integrity",
+   "area": "reports",
+   "entry": "GET /api/reports/{id}?lang=",
+   "deps": "-",
+   "data": "-",
+   "status": "PASS",
+   "tests": "tests/test_i18n_reports.py",
+   "verification": "finding ids, FDI, kinds, labels, scores, uncertainty, review status, model versions, ids identical across languages; no English prose leaks; no treatment words; language switch triggers no inference (UI-E-008)",
+   "limits": "Only en/hi/mr exist; any other code -> 422."
+  },
+  {
+   "id": "F42",
+   "name": "Hindi / Marathi linguistic quality",
+   "area": "reports",
+   "entry": "-",
+   "deps": "a native dental-domain reviewer",
+   "data": "-",
+   "status": "BLOCKED",
+   "tests": "-",
+   "verification": "every Hindi/Marathi output now carries a prominent bilingual 'awaiting linguistic review' line (HTML, TXT, on-screen, JSON field linguistic_review); flag translation_reviewed_by_native_dental_professional = false",
+   "limits": "Still needs a native-speaking dental professional; no claim of native-language clinical accuracy is made."
+  },
+  {
+   "id": "F43",
+   "name": "Report export (HTML / TXT / JSON)",
+   "area": "reports",
+   "entry": "GET /api/reports/{id}/export",
+   "deps": "-",
+   "data": "-",
+   "status": "PASS",
+   "tests": "tests/test_i18n_reports.py",
+   "verification": "REP-01-*, RPT-D01..D03: 9 exports well-formed, utf-8, no script/handlers, contain ids and versions; browser download of the Marathi HTML export (UI-E-009)",
+   "limits": ""
+  },
+  {
+   "id": "F44",
+   "name": "PDF / print export",
+   "area": "reports",
+   "entry": "-",
+   "deps": "-",
+   "data": "-",
+   "status": "NOT IMPLEMENTED",
+   "tests": "-",
+   "verification": "format=pdf -> 422 with the supported list (REP-020)",
+   "limits": "Use the browser's print from the HTML export."
+  },
+  {
+   "id": "F45",
+   "name": "Draft editing of report text",
+   "area": "reports",
+   "entry": "-",
+   "deps": "-",
+   "data": "-",
+   "status": "NOT IMPLEMENTED",
+   "tests": "-",
+   "verification": "no edit route in /openapi.json",
+   "limits": "Reports are regenerated, not edited (by design: findings must come from model outputs)."
+  },
+  {
+   "id": "F46",
+   "name": "Report validation and reviewer sign-off",
+   "area": "reports",
+   "entry": "POST /api/reports/{id}/validate|review",
+   "deps": "-",
+   "data": "-",
+   "status": "PASS",
+   "tests": "tests/test_annotation_reporting.py, tests/test_audit_regressions.py",
+   "verification": "empty / whitespace reviewer refused; failed validation blocks sign-off; DEFECTS FOUND then FIXED: validator accepted probability 1.7 and label 'Healthy', and flagged 'Deep Caries'-only reports for mentioning 'caries'",
+   "limits": "Reviewer identity is self-declared."
+  },
+  {
+   "id": "F47",
+   "name": "Report persistence across restarts",
+   "area": "reports",
+   "entry": "reports table",
+   "deps": "sqlite",
+   "data": "-",
+   "status": "PASS",
+   "tests": "-",
+   "verification": "RPT-G01/G02: a fresh server process on :8011 returns the reviewed Marathi report and the same list",
+   "limits": ""
+  },
+  {
+   "id": "F48",
+   "name": "Optional LLM report mode",
+   "area": "reports",
+   "entry": "mode=llm",
+   "deps": "LLM_BASE_URL/KEY/MODEL (not configured)",
+   "data": "-",
+   "status": "BLOCKED",
+   "tests": "tests/test_annotation_reporting.py (transport stub)",
+   "verification": "RPT-E08: 502 'LLM is not configured' with hint; local template mode needs no key",
+   "limits": "No image or finding leaves the machine unless an endpoint is configured."
+  },
+  {
+   "id": "F50",
+   "name": "Navigation and all 12 routes render",
+   "area": "frontend",
+   "entry": "frontend/src/App.jsx",
+   "deps": "React, Vite",
+   "data": "-",
+   "status": "PASS",
+   "tests": "vite build",
+   "verification": "UI-R-*: 12 routes + unknown route: content rendered, zero console errors, zero HTTP>=400",
+   "limits": "No ESLint config; build + browser run are the only static checks."
+  },
+  {
+   "id": "F51",
+   "name": "Visible controls act or explain",
+   "area": "frontend",
+   "entry": "all pages",
+   "deps": "-",
+   "data": "-",
+   "status": "PASS",
+   "tests": "-",
+   "verification": "final crawl clicked 56 controls (157 when the review queue and report list were populated) with all non-GET API calls aborted: every enabled control changed the DOM/URL or fired a request; disabled controls carry a title; DEFECTS FOUND then FIXED: Reports list click crashed the page, locked AL steps silently ignored clicks, Evaluate gave no feedback, unexplained disabled buttons",
+   "limits": "Start training / Stop / Promote were deliberately not clicked (covered by API validation)."
+  },
+  {
+   "id": "F52",
+   "name": "Browser upload and error display",
+   "area": "frontend",
+   "entry": "ImageUploader",
+   "deps": "-",
+   "data": "-",
+   "status": "PASS",
+   "tests": "-",
+   "verification": "UI-D-001/002 (corrupt PNG, .txt) show the server's message; UI-E-001 real radiograph uploaded",
+   "limits": ""
+  },
+  {
+   "id": "F53",
+   "name": "Result display fidelity",
+   "area": "frontend",
+   "entry": "Analysis page",
+   "deps": "-",
+   "data": "-",
+   "status": "PASS",
+   "tests": "-",
+   "verification": "UI-E-003 table == API (id, FDI, score, class/abstain wording, entropy); UI-GEO overlay geometry; UI-E-005 uncertainty text derives from the response",
+   "limits": ""
+  },
+  {
+   "id": "F54",
+   "name": "Browser <-> API wiring (proxy, CORS, download)",
+   "area": "frontend",
+   "entry": "vite.config.js, CORSMiddleware",
+   "deps": "-",
+   "data": "-",
+   "status": "PASS",
+   "tests": "-",
+   "verification": "real Vite :5173 proxies /api to uvicorn :8000; check_running.ps1 'Frontend proxy -> backend'; SEC-001/002 preflight allowed for the Vite origin, not for a foreign origin",
+   "limits": ""
+  },
+  {
+   "id": "F55",
+   "name": "Other pages show real data (Home, Uncertainty, AL, Annotations, Models, Training, Experiments, Settings)",
+   "area": "frontend",
+   "entry": "pages/*",
+   "deps": "-",
+   "data": "-",
+   "status": "PASS",
+   "tests": "-",
+   "verification": "UI-R-* and review_workflow_run.log: tables populated from live endpoints, empty/error states present",
+   "limits": ""
+  },
+  {
+   "id": "F60",
+   "name": "API validation and error format",
+   "area": "platform",
+   "entry": "backend/api, error handlers",
+   "deps": "FastAPI, pydantic",
+   "data": "-",
+   "status": "PASS",
+   "tests": "tests/test_backend_services.py",
+   "verification": "138 live checks plus a 32-route GET sweep: 422 for bad input, 404 for unknown ids, JSON error envelope, no stack trace or local path in any response; DEFECTS FOUND then FIXED: wrong status codes (503/400) for bad region and unknown job",
+   "limits": ""
+  },
+  {
+   "id": "F61",
+   "name": "Security controls (traversal, SQL, XSS, CORS)",
+   "area": "platform",
+   "entry": "-",
+   "deps": "-",
+   "data": "-",
+   "status": "PASS",
+   "tests": "tests/test_backend_services.py",
+   "verification": "see SECURITY_AND_DEPLOYMENT_AUDIT.md: parameterised SQL, no raw HTML sinks in React, HTML export escapes a <script> reviewer name, CORS allow-list",
+   "limits": "Not a security certification; /docs is enabled (local use)."
+  },
+  {
+   "id": "F62",
+   "name": "Authentication / authorisation",
+   "area": "platform",
+   "entry": "-",
+   "deps": "-",
+   "data": "-",
+   "status": "PASS",
+   "tests": "tests/test_security_and_training_api.py (AuthTests, TokenSourceTests)",
+   "verification": "security_live.json 23/23: every one of 19 protected routes (upload, predict, reports, review sign-off, training start/stop, model select/promote/evaluate, dataset process, docs) answers 401 without the token and works with it; wrong scheme/token 401; non-loopback clients 403; token absent from responses, source, built frontend, docs; token file git-ignored; Vite proxy injects the token server-side",
+   "limits": "Single shared token for one local user: no accounts or roles; reviewer/approver names remain self-declared text. Keep the API on 127.0.0.1."
+  },
+  {
+   "id": "F63",
+   "name": "Rate limiting / request controls",
+   "area": "platform",
+   "entry": "-",
+   "deps": "-",
+   "data": "-",
+   "status": "PASS",
+   "tests": "tests/test_security_and_training_api.py (RateLimitTests)",
+   "verification": "SEC2-16..20: control bucket (training, model management, dataset processing) 20/min -> 429 with Retry-After from the 21st call; other buckets unaffected; 20 failed authentications/min then 429 while a valid token still works",
+   "limits": "In-memory, per process and per client address; resets on restart. Limits are generous defaults for a single user, not DoS protection."
+  },
+  {
+   "id": "F64",
+   "name": "Windows runbook scripts",
+   "area": "platform",
+   "entry": "scripts/windows/*.ps1",
+   "deps": "PowerShell 5.1",
+   "data": "-",
+   "status": "PARTIAL",
+   "tests": "-",
+   "verification": "all 6 scripts parse; check_running.ps1 exit 0 on :8000/:5173 and on :8031/:5190; start_backend/start_frontend started real servers on alternate ports; busy-port refusal verified (exit 1, clear message)",
+   "limits": "setup.ps1 and start_all.ps1 were not executed (they reinstall packages / open windows and a browser). Pitfall found: stopping the --reload supervisor on Windows leaves an orphan worker holding the port - stop the process TREE."
+  },
+  {
+   "id": "F65",
+   "name": "Docker / compose deployment",
+   "area": "platform",
+   "entry": "Dockerfile*, docker-compose*.yml",
+   "deps": "Docker (29.1.3 installed), multi-GB image build",
+   "data": "-",
+   "status": "BLOCKED",
+   "tests": "-",
+   "verification": "not executed",
+   "limits": "Image build/pull needs several GB and network; out of scope for this audit."
+  },
+  {
+   "id": "F66",
+   "name": "Automated test suite",
+   "area": "platform",
+   "entry": "tests/",
+   "deps": "unittest/pytest",
+   "data": "synthetic fixtures (labelled TEST DATA)",
+   "status": "PASS",
+   "tests": "180 tests",
+   "verification": "docs/TEST_EXECUTION_LOG.md",
+   "limits": "Unit tests use synthetic fixtures and a fake trainer; they never stand in for the real-inference tests."
+  },
+  {
+   "id": "F67",
+   "name": "Health and system endpoints",
+   "area": "platform",
+   "entry": "GET /api/health, /api/system/*",
+   "deps": "-",
+   "data": "-",
+   "status": "PASS",
+   "tests": "-",
+   "verification": "API-001/003/004; DEFECT FOUND then FIXED: health with probes took 6.5-8 s (IPv6 'localhost' + sequential probes), now ~2 s",
+   "limits": ""
+  },
+  {
+   "id": "F68",
+   "name": "Health endpoint reports the application version",
+   "area": "platform",
+   "entry": "GET /api/health",
+   "deps": "-",
+   "data": "-",
+   "status": "PASS",
+   "tests": "-",
+   "verification": "API-002 and SEC2-03 PASS: GET /api/health returns version 0.2.0 from backend/version.py (same as FastAPI and package.json); check_running.ps1 prints it",
+   "limits": ""
+  },
+  {
+   "id": "F69",
+   "name": "Data protection (originals, checkpoints, reports preserved)",
+   "area": "platform",
+   "entry": "-",
+   "deps": "-",
+   "data": "-",
+   "status": "PASS",
+   "tests": "-",
+   "verification": "before/after SHA-256 of all 8 checkpoint files and sidecars identical; training/validation image counts and sizes unchanged; Data/reports eval files untouched (see FINAL_ACCEPTANCE_REPORT.md)",
+   "limits": "Regenerated by design: processed manifests, splits file (same assignments counts), leakage_check report (same results)."
+  }
+ ],
+ "defects": [
+  {
+   "id": "D01",
+   "severity": "high",
+   "status": "fixed",
+   "title": "Reports page crashed (blank page, TypeError 'Cannot read properties of null (reading report)') when a report was clicked in the list while none was selected",
+   "root_cause": "useApi keeps the previous state until its effect runs; with the new ?id the first render had data=null and loading=false, and the page dereferenced data.report",
+   "fix": "render the loading state whenever data is not yet available",
+   "files": [
+    "frontend/src/pages/Reports.jsx"
+   ],
+   "evidence": "UI-E-010b (browser regression test); first crawl logged the pageerror",
+   "regression_test": "browser UI-E-010b"
+  },
+  {
+   "id": "D02",
+   "severity": "high",
+   "status": "fixed",
+   "title": "'Evaluate' started unlimited concurrent GPU evaluations; four clicks produced four failed jobs (CUDA out of memory, 'paging file is too small', array allocation failure) and the UI gave no feedback",
+   "root_cause": "POST /api/models/{id}/evaluate spawned a subprocess per call with no check for running jobs on a 4 GB GPU; the Models page showed nothing on success",
+   "fix": "409 job_already_running while any job is running/queued (ConflictError); UI shows 'Evaluation started ... one job runs at a time'",
+   "files": [
+    "backend/api/experiments.py",
+    "src/dentexmodel/errors.py",
+    "frontend/src/pages/Models.jsx"
+   ],
+   "evidence": "jobs job-89b879436e, job-82c79d0718, job-74efa27ace, job-f27703cc07 (failed); unit test",
+   "regression_test": "tests/test_audit_regressions.py::test_evaluate_is_refused_while_another_job_runs"
+  },
+  {
+   "id": "D03",
+   "severity": "medium",
+   "status": "fixed",
+   "title": "Models page 'Use' for the numbering checkpoint returned HTTP 422",
+   "root_cause": "ModelSelectRequest.task Literal lacked 'numbering' although the registry supports it",
+   "fix": "added 'numbering'",
+   "files": [
+    "backend/schemas/models.py"
+   ],
+   "evidence": "POST /api/models/select numbering -> 200 after fix",
+   "regression_test": "test_model_select_schema_accepts_numbering"
+  },
+  {
+   "id": "D04",
+   "severity": "medium",
+   "status": "fixed",
+   "title": "GET /api/analyses/{id}/overlay returned 404 'no detections' for every full-pipeline analysis",
+   "root_cause": "overlay_png only understood the older 'detections' payload, full analyses store 'regions'",
+   "fix": "draw regions with FDI number, candidate class and a review marker; no class drawn for abstained regions",
+   "files": [
+    "backend/services/analysis.py",
+    "src/dentexmodel/inference/visualize.py"
+   ],
+   "evidence": "INF-013 (overlay size == original)",
+   "regression_test": "test_overlay_png_works_for_full_pipeline_analyses"
+  },
+  {
+   "id": "D05",
+   "severity": "medium",
+   "status": "fixed",
+   "title": "Report validator accepted impossible evidence (probability 1.7, label 'Healthy') and flagged Deep-Caries-only reports for mentioning 'caries'",
+   "root_cause": "validate_report compared report to evidence but never validated the evidence; the vocabulary scan matched 'caries' inside 'Deep Caries'",
+   "fix": "range and category checks (spelling-insensitive), vocabulary scan removes the evidence's own labels first",
+   "files": [
+    "src/dentexmodel/reporting/reports.py"
+   ],
+   "evidence": "RPT-E05/E06, live check of the Deep Caries report",
+   "regression_test": "tests/test_audit_regressions.py::ReportValidatorEvidenceTests"
+  },
+  {
+   "id": "D06",
+   "severity": "medium",
+   "status": "fixed",
+   "title": "POST /api/reviews accepted an image-level review for an image id that does not exist and stored an orphan row",
+   "root_cause": "image existence was only checked for region-level actions",
+   "fix": "route validates the image id (404)",
+   "files": [
+    "backend/api/reviews.py"
+   ],
+   "evidence": "REV-001",
+   "regression_test": "live REV-001"
+  },
+  {
+   "id": "D07",
+   "severity": "medium",
+   "status": "fixed",
+   "title": "A checkpoint whose bytes did not match the sha256 in its sidecar was still registered as dental-trained",
+   "root_cause": "registry validated sidecar fields only; the recorded checkpoint_sha256 was never compared with the file",
+   "fix": "cached sha256 comparison during the scan; mismatch -> rejected with a reason",
+   "files": [
+    "src/dentexmodel/inference/registry.py"
+   ],
+   "evidence": "MOD-MISS-badsha-v",
+   "regression_test": "tests/test_audit_regressions.py::CheckpointIntegrityTests"
+  },
+  {
+   "id": "D08",
+   "severity": "low",
+   "status": "fixed",
+   "title": "Job errors and log tails exposed raw tracebacks and absolute local paths through GET /api/training/jobs",
+   "root_cause": "stderr tails were stored and served verbatim",
+   "fix": "short_error serves the final exception line; strip_paths reduces absolute paths (including paths with spaces) to file names; raw text stays in the DB",
+   "files": [
+    "src/dentexmodel/training/jobs.py"
+   ],
+   "evidence": "SWEEP-001",
+   "regression_test": "JobErrorSanitisingTests"
+  },
+  {
+   "id": "D09",
+   "severity": "low",
+   "status": "fixed",
+   "title": "/api/health with service probes took 6.5-8 s when TensorBoard/Label Studio were not running",
+   "root_cause": "'localhost' tried over IPv6 first on Windows; the two probes ran one after the other",
+   "fix": "probe 127.0.0.1 and run both probes concurrently (about 2 s)",
+   "files": [
+    "backend/services/system.py"
+   ],
+   "evidence": "timing 6.5 s -> 2.2 s",
+   "regression_test": "-"
+  },
+  {
+   "id": "D10",
+   "severity": "low",
+   "status": "fixed",
+   "title": "Wrong HTTP status codes: unknown job id -> 400 (should be 404); explaining a too-small region -> 503 (should be 422)",
+   "root_cause": "generic DentaMindError / ModelUnavailableError used",
+   "fix": "NotFoundError and ImageValidationError",
+   "files": [
+    "src/dentexmodel/training/jobs.py",
+    "src/dentexmodel/inference/torch_models.py"
+   ],
+   "evidence": "TRN-009/010, INF-032",
+   "regression_test": "test_unknown_job_is_404_for_status_and_cancel"
+  },
+  {
+   "id": "D11",
+   "severity": "low",
+   "status": "fixed",
+   "title": "Upload-limit message said 'the limit is 26 MB' for a 25 MiB limit",
+   "root_cause": "bytes divided by 1e6 for the limit and the file size",
+   "fix": "MiB arithmetic",
+   "files": [
+    "src/dentexmodel/data/preprocess.py"
+   ],
+   "evidence": "UPL-021",
+   "regression_test": "-"
+  },
+  {
+   "id": "D12",
+   "severity": "low",
+   "status": "fixed",
+   "title": "Active-learning rounds did not record which model produced the uncertainty signals (model_version null)",
+   "root_cause": "model_version only taken from the request body",
+   "fix": "store the model(s) behind the selected images' signals; random draws record none",
+   "files": [
+    "backend/services/active_learning.py"
+   ],
+   "evidence": "rounds created before the fix show null",
+   "regression_test": "-"
+  },
+  {
+   "id": "D13",
+   "severity": "low",
+   "status": "fixed",
+   "title": "Controls that silently did nothing or were disabled without explanation: Active Learning steps 5/6 before a selection, Back on step 1, Annotations Pull / Approve / Reject",
+   "root_cause": "click handlers ignored the click; no title on disabled buttons",
+   "fix": "disabled with an explanatory title",
+   "files": [
+    "frontend/src/pages/ActiveLearning.jsx",
+    "frontend/src/pages/Annotations.jsx"
+   ],
+   "evidence": "UI-B-001, UI-C-001",
+   "regression_test": "browser crawl"
+  },
+  {
+   "id": "D14",
+   "severity": "low",
+   "status": "fixed",
+   "title": "Recorded dataset provenance (splits_sha) changed whenever the dataset was re-processed, even though no image moved",
+   "root_cause": "sha256 of the whole splits file, which contains an 'updated' timestamp",
+   "fix": "added assignments_sha (canonical hash of image id -> split); the historical sidecars carry the old file hashes and cannot be re-verified byte-for-byte",
+   "files": [
+    "src/dentexmodel/training/trainers.py"
+   ],
+   "evidence": "dataset_version of the AL reproduction differs from the original in manifest_sha/splits_sha only; split sizes and the 65-radiograph/331-crop validation set are identical",
+   "regression_test": "SplitProvenanceTests"
+  },
+  {
+   "id": "D15",
+   "severity": "low",
+   "status": "fixed",
+   "title": "run_al_experiment.py and evaluate_model.py could only overwrite Data/reports; AL runs stored no selection manifests, so selections were not reproducible or auditable",
+   "root_cause": "fixed output folder, metrics-only records",
+   "fix": "--out-dir, --device, --no-db; per-round labeled_sha and selected_next manifest; evaluation reproduction skips the numbering registration write-back",
+   "files": [
+    "scripts/run_al_experiment.py",
+    "scripts/evaluate_model.py"
+   ],
+   "evidence": "al_reproduction_cpu_seed0.json",
+   "regression_test": "-"
+  },
+  {
+   "id": "D16",
+   "severity": "info",
+   "status": "fixed",
+   "title": "/api/health returns version 'unknown' (also printed by check_running.ps1)",
+   "root_cause": "version comes from installed package metadata; the project is run from source",
+   "fix": "backend/version.py APP_VERSION = '0.2.0' (same as FastAPI and frontend/package.json) used by main.py and /api/health",
+   "files": [
+    "backend/version.py",
+    "backend/main.py",
+    "backend/services/system.py"
+   ],
+   "evidence": "API-002 PASS; SEC2-03; check_running.ps1 prints version=0.2.0",
+   "regression_test": "live API-002, SEC2-03"
+  },
+  {
+   "id": "D17",
+   "severity": "info",
+   "status": "open",
+   "title": "Stopping the supervisor of start_backend.ps1 (--reload) on Windows leaves an orphan worker holding the port",
+   "root_cause": "uvicorn reload spawns a worker that inherits the listening socket",
+   "fix": "documented: stop the process tree (taskkill /T)",
+   "files": [
+    "scripts/windows/start_backend.ps1"
+   ],
+   "evidence": "port 8031 listener after cleanup",
+   "regression_test": "-"
+  },
+  {
+   "id": "D18",
+   "severity": "info",
+   "status": "open",
+   "title": "Documentation recommends -ExecutionPolicy Bypass although local scripts run under RemoteSigned; Bypass is blocked by some managed environments",
+   "root_cause": "-",
+   "fix": "-",
+   "files": [
+    "docs/WINDOWS_SETUP.md",
+    "README.md"
+   ],
+   "evidence": "scripts ran with powershell -NoProfile -File",
+   "regression_test": "-"
+  },
+  {
+   "id": "D19",
+   "severity": "info",
+   "status": "open",
+   "title": "Git repository root is the whole D:\\ drive and has no commits",
+   "root_cause": "repository initialised at the drive root",
+   "fix": "-",
+   "files": [],
+   "evidence": "git rev-parse --show-toplevel -> D:/",
+   "regression_test": "-"
+  },
+  {
+   "id": "D20",
+   "severity": "info",
+   "status": "open",
+   "title": "Original DENTEX modules import undeclared packages (detectron2, cv2, lightning, tqdm, albumentations, skimage)",
+   "root_cause": "legacy research code outside the DentaMind app",
+   "fix": "-",
+   "files": [
+    "src/dentexmodel/detector.py",
+    "src/dentexmodel/imageproc.py",
+    "src/dentexmodel/fileutils.py"
+   ],
+   "evidence": "static import scan",
+   "regression_test": "-"
+  },
+  {
+   "id": "D21",
+   "severity": "info",
+   "status": "open",
+   "title": "Segmentation mask run-length encoding is row-major ('order':'C'), not COCO column-major",
+   "root_cause": "self-describing app format",
+   "fix": "documented in the end-to-end report",
+   "files": [
+    "src/dentexmodel/utils/geometry.py"
+   ],
+   "evidence": "MOD-SEG-*",
+   "regression_test": "-"
+  },
+  {
+   "id": "D22",
+   "severity": "info",
+   "status": "open",
+   "title": "Original active-learning grid and detection/segmentation/numbering metrics were not re-executed in this audit; a CPU reproduction of one AL cell differs by up to 0.09 macro-F1 from the GPU run",
+   "root_cause": "cost, occupied GPU; device nondeterminism not isolated",
+   "fix": "-",
+   "files": [],
+   "evidence": "al_reproduction_cpu_seed0.json, eval_repro_classification_val_cpu.json",
+   "regression_test": "-"
+  },
+  {
+   "id": "D23",
+   "severity": "info",
+   "status": "disclosed",
+   "title": "Side effects of the audit's own first UI crawl (it clicked state-changing buttons before the crawler blocked POSTs)",
+   "root_cause": "audit tooling",
+   "fix": "effects: active_models.json created (removed afterwards), 4 failed evaluation jobs (kept as history), one real pool-scoring job (kept), dataset re-process (manifests and splits file rewritten with unchanged counts), leakage_check report regenerated with unchanged results",
+   "files": [],
+   "evidence": "FINAL_ACCEPTANCE_REPORT.md section 'What the audit changed'",
+   "regression_test": "-"
+  },
+  {
+   "id": "D24",
+   "severity": "medium",
+   "status": "fixed",
+   "title": "A cancelled training job still wrote a checkpoint and sidecar, so a half-trained model was registered as a verified dental model",
+   "root_cause": "_save_checkpoint ran after the loop even when the job was cancelled",
+   "fix": "no checkpoint is written when the job is cancelled",
+   "files": [
+    "src/dentexmodel/training/trainers.py"
+   ],
+   "evidence": "TAPI-12 (failed before the fix, passes after)",
+   "regression_test": "CancelledRunTests"
+  },
+  {
+   "id": "D25",
+   "severity": "medium",
+   "status": "fixed",
+   "title": "resume_checkpoint accepted any EXISTING file reachable with '..' and any registry file regardless of task or verification",
+   "root_cause": "only Path.is_file() was checked",
+   "fix": "must be a registered, verified checkpoint of the same task; '..' refused",
+   "files": [
+    "src/dentexmodel/training/config.py"
+   ],
+   "evidence": "SEC2-12, TAPI-15/16",
+   "regression_test": "TrainingSafetyTests"
+  },
+  {
+   "id": "D26",
+   "severity": "medium",
+   "status": "fixed",
+   "title": "Starting a training job did not check for another running job (GPU / experiment-name race)",
+   "root_cause": "only evaluate had a guard",
+   "fix": "JobManager.running_jobs(); start (and dry run) answer 409 job_already_running; dead-process jobs do not block",
+   "files": [
+    "src/dentexmodel/training/jobs.py"
+   ],
+   "evidence": "TAPI-04/05",
+   "regression_test": "TrainingSafetyTests"
+  },
+  {
+   "id": "D27",
+   "severity": "medium",
+   "status": "fixed",
+   "title": "No authentication, loopback restriction or rate limiting on any route (D-security open item from the first audit)",
+   "root_cause": "not implemented",
+   "fix": "backend/security.py: token auth (runtime/api_token.txt or DENTAMIND_API_TOKEN, injected server-side by the Vite proxy), loopback-only, per-client rate limits, failed-auth throttle",
+   "files": [
+    "backend/security.py",
+    "backend/main.py",
+    "frontend/vite.config.js"
+   ],
+   "evidence": "security_live.json 23/23, 24 unit tests",
+   "regression_test": "tests/test_security_and_training_api.py"
+  },
+  {
+   "id": "D28",
+   "severity": "low",
+   "status": "fixed",
+   "title": "Training page showed a TensorBoard link although TensorBoard is not installed and no event files exist",
+   "root_cause": "static link",
+   "fix": "backend reports installed/event files; UI shows the truthful state",
+   "files": [
+    "backend/api/training.py",
+    "frontend/src/pages/Training.jsx"
+   ],
+   "evidence": "UI-N-004",
+   "regression_test": "browser"
+  },
+  {
+   "id": "D29",
+   "severity": "low",
+   "status": "fixed",
+   "title": "Uncertainty signals were shown without any statement of how well each was validated; mask/detection instability had never been measured against ground truth",
+   "root_cause": "validation measured only for entropy/flip disagreement",
+   "fix": "scripts/evaluate_instability.py (val split): AUROC 0.59 (mask, very weak) and 0.64 (detection, weak) are measured and displayed next to each signal; API record carries signal_validation",
+   "files": [
+    "scripts/evaluate_instability.py",
+    "backend/services/pipeline.py",
+    "frontend/src/components/UncertaintyScoreCard.jsx",
+    "frontend/src/pages/Uncertainty.jsx"
+   ],
+   "evidence": "instability_validation.json, UI-N-005",
+   "regression_test": "SignalValidationTests"
+  },
+  {
+   "id": "D30",
+   "severity": "low",
+   "status": "fixed",
+   "title": "Hindi/Marathi 'not reviewed' status was only small print at the bottom of reports",
+   "root_cause": "note placed in the footer",
+   "fix": "prominent bilingual 'awaiting linguistic review' line at the top of HTML, TXT and the on-screen report, plus a machine-readable linguistic_review field",
+   "files": [
+    "src/dentexmodel/reporting/i18n.py",
+    "frontend/src/components/ReportPreview.jsx"
+   ],
+   "evidence": "RPT-C10-hi/mr, UI-N-001/002",
+   "regression_test": "tests/test_i18n_reports.py"
+  },
+  {
+   "id": "D31",
+   "severity": "low",
+   "status": "fixed",
+   "title": "Training prerequisites route rejected task 'numbering'",
+   "root_cause": "regex allow-list",
+   "fix": "added",
+   "files": [
+    "backend/api/training.py"
+   ],
+   "evidence": "unit/live",
+   "regression_test": "-"
+  }
+ ]
+}

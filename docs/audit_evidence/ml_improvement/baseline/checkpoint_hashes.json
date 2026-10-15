@@ -1,0 +1,43 @@
+{
+ "dentex_fdi_numbering_v1.json": {
+  "bytes": 6345,
+  "sha256": "7b9f85ac02f6ed9fa1448199c302d7c67c44d8cea99f63eae840d44f28d0dcd1"
+ },
+ "dentex_fdi_numbering_v1.pth": {
+  "bytes": 166367700,
+  "sha256": "83f97b2e1ce44b0cd740619930c467a0e32441994a9686fd632293bcb90dd649"
+ },
+ "dentex_findings_classification_v1.json": {
+  "bytes": 5076,
+  "sha256": "8b07912ca2590beadda4f6f611eb8c179f432e29e4f29de4834445234148f089"
+ },
+ "dentex_findings_classification_v1.pth": {
+  "bytes": 94391002,
+  "sha256": "5aa878e1fc9ef0976270e14ddc3b5a2a653bfe045a18db37eeb898ebf7a63930"
+ },
+ "dentex_teeth_detection_v1.json": {
+  "bytes": 3925,
+  "sha256": "aa086018b9d7e358e03e198d8f18acdbfec90f92d38e09bccfac9e121f97ef4d"
+ },
+ "dentex_teeth_detection_v1.pth": {
+  "bytes": 165732778,
+  "sha256": "a68ce4884066ad80e9f6ea358d7ea56d101c6f7e65445b2f89cef9653e786921"
+ },
+ "dentex_teeth_segmentation_v1.json": {
+  "bytes": 3283,
+  "sha256": "b906589e0a83f7bad5220110306d954f48a3add9f887b442d4e04fcc35168992"
+ },
+ "dentex_teeth_segmentation_v1.pth": {
+  "bytes": 176231695,
+  "sha256": "dd13568c8de5c2cc2c6ff6819cd41bf85669e6f23f5f2845b0d5c40452b618a7"
+ },
+ "Data/splits/dentex_splits.json": {
+  "bytes": 56787,
+  "sha256": "ee88dc6835eb9a205089b72505445f306786d4f06988de34c64927da78c80b4f"
+ },
+ "Data/processed/manifest.json": {
+  "bytes": 2475370,
+  "sha256": "932b0b941f54643e2faa7077e52b314475c03cbe03cdf8d4f6b9ecbf1a12a76c"
+ },
+ "assignments_sha16": "1c350480eed2ae96"
+}

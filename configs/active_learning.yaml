@@ -1,0 +1,9 @@
+strategies: [random, entropy, disagreement, combined]
+defaults:
+  strategy: combined
+  budget: 20
+  batch_size: 10
+  seed: 42
+  diversity_weight: 0.3
+  weights: {entropy: 0.4, disagreement: 0.4, mask_instability: 0.2}
+  near_duplicate_cosine: 0.995

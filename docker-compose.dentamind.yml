@@ -1,0 +1,41 @@
+# DentaMind AI stack (separate from the original research docker-compose.yml).
+#   docker compose -f docker-compose.dentamind.yml up --build              # API + UI
+#   docker compose -f docker-compose.dentamind.yml --profile annotation up  # + Label Studio
+#   docker compose -f docker-compose.dentamind.yml --profile training up    # + TensorBoard
+# The dataset is mounted from ./data and never copied into an image. Secrets come from .env (see .env.example).
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+      args: { WITH_ML: "0" }
+    env_file: [{ path: .env, required: false }]
+    environment:
+      DATA_ROOT: /app/data
+      LABEL_STUDIO_URL: http://label-studio:8080
+      TENSORBOARD_URL: http://localhost:6006
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./runtime:/app/runtime
+    ports: ["8000:8000"]
+
+  frontend:
+    build: ./frontend
+    depends_on: [backend]
+    ports: ["8080:80"]
+
+  label-studio:
+    profiles: ["annotation"]
+    image: heartexlabs/label-studio:latest
+    ports: ["8081:8080"]
+    volumes: ["./data/label_studio:/label-studio/data"]
+    environment:
+      LABEL_STUDIO_LOCAL_FILES_SERVING_ENABLED: "true"
+
+  tensorboard:
+    profiles: ["training"]
+    image: tensorflow/tensorflow:2.15.0.post1
+    command: tensorboard --logdir /runs --host 0.0.0.0 --port 6006
+    volumes: ["./data/runs:/runs:ro"]
+    ports: ["6006:6006"]

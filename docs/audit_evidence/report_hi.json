@@ -1,0 +1,3296 @@
+{
+ "report": {
+  "report_id": "RPT-5969557C37",
+  "image_id": "up_22736273675e",
+  "model_version": "dentex_teeth_detection_v1",
+  "model_versions": {
+   "detection": "dentex_teeth_detection_v1",
+   "segmentation": "dentex_teeth_segmentation_v1",
+   "numbering": "dentex_fdi_numbering_v1",
+   "classification": "dentex_findings_classification_v1"
+  },
+  "generated_by": "template",
+  "status": "unconfirmed_research_draft",
+  "created": "2026-10-14T17:42:47.364869+00:00",
+  "findings": [
+   {
+    "finding_id": "F1",
+    "tooth_fdi": 48,
+    "label": "Impacted",
+    "probability": 0.9798924922943115,
+    "uncertainty": 0.08251910280841614,
+    "evidence_region": {
+     "box": [
+      455.7868347167969,
+      491.8700866699219,
+      601.1433715820312,
+      633.9414672851562
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:295d0fbc",
+    "region_no": 1,
+    "numbering_status": "assigned",
+    "review_reasons": [],
+    "needs_review": false,
+    "mask_matched": true,
+    "mask_iou": 0.8673,
+    "segmentation_score": 0.9976310729980469,
+    "detection_score": 0.9975703358650208,
+    "tta_disagreement": 0.007413495844843608,
+    "mask_instability": 0.15181023720349562,
+    "detection_instability": 0.05064111082889711,
+    "narrative": "F1: tooth 48 - closest trained class 'Impacted' (score 0.98, normalised uncertainty 0.08); not evidence that the finding is present. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F2",
+    "tooth_fdi": 18,
+    "label": "Caries",
+    "probability": 0.9322982430458069,
+    "uncertainty": 0.1910014956012305,
+    "evidence_region": {
+     "box": [
+      516.4102783203125,
+      294.54058837890625,
+      607.2266235351562,
+      480.4745788574219
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:3ae85ef1",
+    "region_no": 2,
+    "numbering_status": "assigned",
+    "review_reasons": [],
+    "needs_review": false,
+    "mask_matched": true,
+    "mask_iou": 0.9297,
+    "segmentation_score": 0.9976859092712402,
+    "detection_score": 0.9985590577125549,
+    "tta_disagreement": 0.0016320961492758135,
+    "mask_instability": 0.04030922142462723,
+    "detection_instability": 0.07321004683266341,
+    "narrative": "F2: tooth 18 - closest trained class 'Caries' (score 0.93, normalised uncertainty 0.19); not evidence that the finding is present. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F3",
+    "tooth_fdi": null,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.6076209157628785,
+    "evidence_region": {
+     "box": [
+      498.40899658203125,
+      497.3368225097656,
+      649.6870727539062,
+      664.8151245117188
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:c0004ef7",
+    "region_no": 3,
+    "numbering_status": "unassigned",
+    "review_reasons": [
+     "no_matching_mask",
+     "high_entropy",
+     "unstable_under_flip",
+     "not_found_on_flipped_image",
+     "low_detection_score"
+    ],
+    "needs_review": true,
+    "mask_matched": false,
+    "mask_iou": null,
+    "segmentation_score": null,
+    "detection_score": 0.38995301723480225,
+    "tta_disagreement": 0.3304843129659713,
+    "mask_instability": null,
+    "detection_instability": null,
+    "narrative": "F3: an unnumbered region - no reliable candidate class (normalised uncertainty 0.61); manual review required. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F4",
+    "tooth_fdi": 47,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.5617506880294653,
+    "evidence_region": {
+     "box": [
+      550.5092163085938,
+      497.0679626464844,
+      689.4937744140625,
+      688.0748901367188
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:c999f3ac",
+    "region_no": 4,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9374,
+    "segmentation_score": 0.9957103729248047,
+    "detection_score": 0.9948704242706299,
+    "tta_disagreement": 0.04657703782148055,
+    "mask_instability": 0.055413966358406785,
+    "detection_instability": 0.02346639375522308,
+    "narrative": "F4: tooth 47 - no reliable candidate class (normalised uncertainty 0.56); manual review required. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F5",
+    "tooth_fdi": 17,
+    "label": "Caries",
+    "probability": 0.9859278202056885,
+    "uncertainty": 0.0545934434237701,
+    "evidence_region": {
+     "box": [
+      579.8370361328125,
+      310.2904357910156,
+      665.3543090820312,
+      486.97406005859375
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:26a31a46",
+    "region_no": 5,
+    "numbering_status": "assigned",
+    "review_reasons": [],
+    "needs_review": false,
+    "mask_matched": true,
+    "mask_iou": 0.899,
+    "segmentation_score": 0.9959535598754883,
+    "detection_score": 0.9954967498779297,
+    "tta_disagreement": 5.669461540171781e-05,
+    "mask_instability": 0.11015190503859884,
+    "detection_instability": 0.16156544331837397,
+    "narrative": "F5: tooth 17 - closest trained class 'Caries' (score 0.99, normalised uncertainty 0.05); not evidence that the finding is present. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F6",
+    "tooth_fdi": 46,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.6210880107634908,
+    "evidence_region": {
+     "box": [
+      609.8674926757812,
+      520.0664672851562,
+      780.5961303710938,
+      731.0824584960938
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:7d33fde3",
+    "region_no": 6,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.8793,
+    "segmentation_score": 0.9971272349357605,
+    "detection_score": 0.9970130920410156,
+    "tta_disagreement": 0.05957681527591153,
+    "mask_instability": 0.030059893773307755,
+    "detection_instability": 0.05640981068056916,
+    "narrative": "F6: tooth 46 - no reliable candidate class (normalised uncertainty 0.62); manual review required. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F7",
+    "tooth_fdi": 16,
+    "label": "Caries",
+    "probability": 0.9814667105674744,
+    "uncertainty": 0.0677954628704927,
+    "evidence_region": {
+     "box": [
+      653.3001708984375,
+      313.0492248535156,
+      737.9046020507812,
+      505.7228088378906
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:50a11ac1",
+    "region_no": 7,
+    "numbering_status": "assigned",
+    "review_reasons": [],
+    "needs_review": false,
+    "mask_matched": true,
+    "mask_iou": 0.9261,
+    "segmentation_score": 0.9994766116142273,
+    "detection_score": 0.9994093179702759,
+    "tta_disagreement": 0.00011658308027694367,
+    "mask_instability": 0.07631033933407683,
+    "detection_instability": 0.016275359845657977,
+    "narrative": "F7: tooth 16 - closest trained class 'Caries' (score 0.98, normalised uncertainty 0.07); not evidence that the finding is present. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F8",
+    "tooth_fdi": 15,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.39905413116299404,
+    "evidence_region": {
+     "box": [
+      723.2606201171875,
+      315.8205261230469,
+      793.2045288085938,
+      515.5594482421875
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:53ba4cdb",
+    "region_no": 8,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9112,
+    "segmentation_score": 0.9973989725112915,
+    "detection_score": 0.9953814744949341,
+    "tta_disagreement": 0.02001324081756687,
+    "mask_instability": 0.05457746478873238,
+    "detection_instability": 0.0589952068656634,
+    "narrative": "F8: tooth 15 - no reliable candidate class (normalised uncertainty 0.40); manual review required. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F9",
+    "tooth_fdi": 45,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.4986060146160918,
+    "evidence_region": {
+     "box": [
+      712.0257568359375,
+      534.40625,
+      825.1925659179688,
+      759.0162353515625
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:6ff76716",
+    "region_no": 9,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.945,
+    "segmentation_score": 0.9954172372817993,
+    "detection_score": 0.9952907562255859,
+    "tta_disagreement": 0.024876697106853193,
+    "mask_instability": 0.05691422406042079,
+    "detection_instability": 0.043701338675767754,
+    "narrative": "F9: tooth 45 - no reliable candidate class (normalised uncertainty 0.50); manual review required. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F10",
+    "tooth_fdi": 14,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.5177895258550975,
+    "evidence_region": {
+     "box": [
+      774.2435913085938,
+      320.82965087890625,
+      834.1285400390625,
+      522.4165649414062
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:df0d8994",
+    "region_no": 10,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9727,
+    "segmentation_score": 0.9983158111572266,
+    "detection_score": 0.9974139928817749,
+    "tta_disagreement": 0.0062185491139901,
+    "mask_instability": 0.08152966244252546,
+    "detection_instability": 0.08786637963569688,
+    "narrative": "F10: tooth 14 - no reliable candidate class (normalised uncertainty 0.52); manual review required. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F11",
+    "tooth_fdi": 44,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.5256804667498451,
+    "evidence_region": {
+     "box": [
+      787.1236572265625,
+      543.9336547851562,
+      864.2371826171875,
+      758.3885498046875
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:f2f0ee79",
+    "region_no": 11,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.8658,
+    "segmentation_score": 0.9952999353408813,
+    "detection_score": 0.9936240911483765,
+    "tta_disagreement": 0.004193703292128572,
+    "mask_instability": 0.06631416611588459,
+    "detection_instability": 0.11573372216147548,
+    "narrative": "F11: tooth 44 - no reliable candidate class (normalised uncertainty 0.53); manual review required. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F12",
+    "tooth_fdi": 13,
+    "label": "Caries",
+    "probability": 0.8797311782836914,
+    "uncertainty": 0.317435236494025,
+    "evidence_region": {
+     "box": [
+      817.694580078125,
+      324.04742431640625,
+      872.2078857421875,
+      525.87353515625
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:cb690cea",
+    "region_no": 12,
+    "numbering_status": "assigned",
+    "review_reasons": [],
+    "needs_review": false,
+    "mask_matched": true,
+    "mask_iou": 0.9422,
+    "segmentation_score": 0.9987792372703552,
+    "detection_score": 0.9978172779083252,
+    "tta_disagreement": 0.029457278744328557,
+    "mask_instability": 0.05256139571063456,
+    "detection_instability": 0.12171116567674523,
+    "narrative": "F12: tooth 13 - closest trained class 'Caries' (score 0.88, normalised uncertainty 0.32); not evidence that the finding is present. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F13",
+    "tooth_fdi": 43,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.5100603931909313,
+    "evidence_region": {
+     "box": [
+      835.145263671875,
+      549.68017578125,
+      888.8517456054688,
+      759.3167724609375
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:9b998b7b",
+    "region_no": 13,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9388,
+    "segmentation_score": 0.9968273043632507,
+    "detection_score": 0.9966036081314087,
+    "tta_disagreement": 0.01601642561769081,
+    "mask_instability": 0.04485257371314344,
+    "detection_instability": 0.06058631433766848,
+    "narrative": "F13: tooth 43 - no reliable candidate class (normalised uncertainty 0.51); manual review required. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F14",
+    "tooth_fdi": 12,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.7637260484880649,
+    "evidence_region": {
+     "box": [
+      862.4144287109375,
+      325.1296081542969,
+      910.5007934570312,
+      524.0497436523438
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:042d2063",
+    "region_no": 14,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9326,
+    "segmentation_score": 0.9983059167861938,
+    "detection_score": 0.9968884587287903,
+    "tta_disagreement": 0.004931531624993431,
+    "mask_instability": 0.046298651742559094,
+    "detection_instability": 0.09130186188885392,
+    "narrative": "F14: tooth 12 - no reliable candidate class (normalised uncertainty 0.76); manual review required. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F15",
+    "tooth_fdi": 42,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.527563377644788,
+    "evidence_region": {
+     "box": [
+      878.3369140625,
+      546.9939575195312,
+      925.7081298828125,
+      750.13671875
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:4b6dc53c",
+    "region_no": 15,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9057,
+    "segmentation_score": 0.9963286519050598,
+    "detection_score": 0.9949396848678589,
+    "tta_disagreement": 0.004096562423858332,
+    "mask_instability": 0.044189129474149325,
+    "detection_instability": 0.07192213121016056,
+    "narrative": "F15: tooth 42 - no reliable candidate class (normalised uncertainty 0.53); manual review required. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F16",
+    "tooth_fdi": 11,
+    "label": "Caries",
+    "probability": 0.9036614298820496,
+    "uncertainty": 0.27618142559397507,
+    "evidence_region": {
+     "box": [
+      902.325439453125,
+      322.4759826660156,
+      962.496826171875,
+      537.0863647460938
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:b335ecb4",
+    "region_no": 16,
+    "numbering_status": "assigned",
+    "review_reasons": [],
+    "needs_review": false,
+    "mask_matched": true,
+    "mask_iou": 0.9219,
+    "segmentation_score": 0.997992753982544,
+    "detection_score": 0.9968580007553101,
+    "tta_disagreement": 0.008349679496953854,
+    "mask_instability": 0.06680564768312325,
+    "detection_instability": 0.061576103974049556,
+    "narrative": "F16: tooth 11 - closest trained class 'Caries' (score 0.90, normalised uncertainty 0.28); not evidence that the finding is present. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F17",
+    "tooth_fdi": 41,
+    "label": "Periapical Lesion",
+    "probability": 0.9822649955749512,
+    "uncertainty": 0.07142915018855954,
+    "evidence_region": {
+     "box": [
+      914.0263671875,
+      554.945556640625,
+      956.7254028320312,
+      745.8933715820312
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:24d55701",
+    "region_no": 17,
+    "numbering_status": "assigned",
+    "review_reasons": [],
+    "needs_review": false,
+    "mask_matched": true,
+    "mask_iou": 0.941,
+    "segmentation_score": 0.9922294020652771,
+    "detection_score": 0.982624351978302,
+    "tta_disagreement": 0.0006134519763519731,
+    "mask_instability": 0.0836079791847355,
+    "detection_instability": 0.11364989482176424,
+    "narrative": "F17: tooth 41 - closest trained class 'Periapical Lesion' (score 0.98, normalised uncertainty 0.07); not evidence that the finding is present. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F18",
+    "tooth_fdi": 31,
+    "label": "Periapical Lesion",
+    "probability": 0.9669249653816223,
+    "uncertainty": 0.11774369193790316,
+    "evidence_region": {
+     "box": [
+      941.5542602539062,
+      549.6787109375,
+      989.9746704101562,
+      751.90185546875
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:9d384923",
+    "region_no": 18,
+    "numbering_status": "needs_review",
+    "review_reasons": [
+     "tooth_number_needs_review"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.849,
+    "segmentation_score": 0.9928091764450073,
+    "detection_score": 0.9769347906112671,
+    "tta_disagreement": 3.555698565098686e-05,
+    "mask_instability": 0.106653049314269,
+    "detection_instability": 0.10967272884352863,
+    "narrative": "F18: tooth 31 - closest trained class 'Periapical Lesion' (score 0.97, normalised uncertainty 0.12); not evidence that the finding is present. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F19",
+    "tooth_fdi": 21,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.5064217403633304,
+    "evidence_region": {
+     "box": [
+      957.3006591796875,
+      315.0914306640625,
+      1017.217041015625,
+      540.0210571289062
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:077fc196",
+    "region_no": 19,
+    "numbering_status": "needs_review",
+    "review_reasons": [
+     "high_entropy",
+     "tooth_number_needs_review"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9485,
+    "segmentation_score": 0.998279333114624,
+    "detection_score": 0.9980505704879761,
+    "tta_disagreement": 0.029449449815197797,
+    "mask_instability": 0.06060606060606055,
+    "detection_instability": 0.11727260975294695,
+    "narrative": "F19: tooth 21 - no reliable candidate class (normalised uncertainty 0.51); manual review required. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F20",
+    "tooth_fdi": 32,
+    "label": "Periapical Lesion",
+    "probability": 0.8802062273025513,
+    "uncertainty": 0.31487973629589316,
+    "evidence_region": {
+     "box": [
+      979.93603515625,
+      551.9044799804688,
+      1024.2291259765625,
+      751.9010009765625
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:6d4ac065",
+    "region_no": 20,
+    "numbering_status": "assigned",
+    "review_reasons": [],
+    "needs_review": false,
+    "mask_matched": true,
+    "mask_iou": 0.8595,
+    "segmentation_score": 0.9980881810188293,
+    "detection_score": 0.9955489635467529,
+    "tta_disagreement": 0.00024355622410903019,
+    "mask_instability": 0.04230648699467254,
+    "detection_instability": 0.018701695543199892,
+    "narrative": "F20: tooth 32 - closest trained class 'Periapical Lesion' (score 0.88, normalised uncertainty 0.31); not evidence that the finding is present. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F21",
+    "tooth_fdi": 22,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.7369544371368655,
+    "evidence_region": {
+     "box": [
+      1006.59033203125,
+      319.1363220214844,
+      1055.38720703125,
+      530.78466796875
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:7513ded2",
+    "region_no": 21,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9228,
+    "segmentation_score": 0.9980881810188293,
+    "detection_score": 0.9959535598754883,
+    "tta_disagreement": 0.006078118031671366,
+    "mask_instability": 0.03813763233878731,
+    "detection_instability": 0.0725180020935593,
+    "narrative": "F21: tooth 22 - no reliable candidate class (normalised uncertainty 0.74); manual review required. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F22",
+    "tooth_fdi": 33,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.5562319284288959,
+    "evidence_region": {
+     "box": [
+      1016.140625,
+      551.9047241210938,
+      1069.5548095703125,
+      760.8004150390625
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:5ff19eb8",
+    "region_no": 22,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9114,
+    "segmentation_score": 0.9965029954910278,
+    "detection_score": 0.9944666028022766,
+    "tta_disagreement": 0.020092857515713592,
+    "mask_instability": 0.0781655935840958,
+    "detection_instability": 0.06200344177355921,
+    "narrative": "F22: tooth 33 - no reliable candidate class (normalised uncertainty 0.56); manual review required. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F23",
+    "tooth_fdi": 23,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.6566662416585043,
+    "evidence_region": {
+     "box": [
+      1044.9127197265625,
+      325.8888244628906,
+      1097.1129150390625,
+      532.931884765625
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:532218a2",
+    "region_no": 23,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9139,
+    "segmentation_score": 0.9978843331336975,
+    "detection_score": 0.9971103668212891,
+    "tta_disagreement": 0.012738686612052385,
+    "mask_instability": 0.05281650232347279,
+    "detection_instability": 0.04478867754214022,
+    "narrative": "F23: tooth 23 - no reliable candidate class (normalised uncertainty 0.66); manual review required. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F24",
+    "tooth_fdi": 34,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.4608431980730427,
+    "evidence_region": {
+     "box": [
+      1051.3577880859375,
+      551.5966796875,
+      1123.2799072265625,
+      771.4915161132812
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:1e65a5ea",
+    "region_no": 24,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9091,
+    "segmentation_score": 0.9965165853500366,
+    "detection_score": 0.9917323589324951,
+    "tta_disagreement": 0.02193660401270378,
+    "mask_instability": 0.12204458455302858,
+    "detection_instability": 0.15637212115228782,
+    "narrative": "F24: tooth 34 - no reliable candidate class (normalised uncertainty 0.46); manual review required. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F25",
+    "tooth_fdi": 24,
+    "label": "Caries",
+    "probability": 0.8930613398551941,
+    "uncertainty": 0.28072691385189796,
+    "evidence_region": {
+     "box": [
+      1083.151611328125,
+      330.2303466796875,
+      1135.9571533203125,
+      528.59033203125
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:a4519cdc",
+    "region_no": 25,
+    "numbering_status": "assigned",
+    "review_reasons": [],
+    "needs_review": false,
+    "mask_matched": true,
+    "mask_iou": 0.8606,
+    "segmentation_score": 0.9978172779083252,
+    "detection_score": 0.9955920577049255,
+    "tta_disagreement": 0.0016257517876589731,
+    "mask_instability": 0.05466309683177151,
+    "detection_instability": 0.04148066441946463,
+    "narrative": "F25: tooth 24 - closest trained class 'Caries' (score 0.89, normalised uncertainty 0.28); not evidence that the finding is present. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F26",
+    "tooth_fdi": 35,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.6789320575419686,
+    "evidence_region": {
+     "box": [
+      1084.3016357421875,
+      543.0682983398438,
+      1186.690185546875,
+      781.5031127929688
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:a4624272",
+    "region_no": 26,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9089,
+    "segmentation_score": 0.9970878958702087,
+    "detection_score": 0.9973529577255249,
+    "tta_disagreement": 0.010200945157303205,
+    "mask_instability": 0.06451006206507426,
+    "detection_instability": 0.04119824182952392,
+    "narrative": "F26: tooth 35 - no reliable candidate class (normalised uncertainty 0.68); manual review required. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F27",
+    "tooth_fdi": 25,
+    "label": "Caries",
+    "probability": 0.9483287334442139,
+    "uncertainty": 0.1592048972118385,
+    "evidence_region": {
+     "box": [
+      1118.4327392578125,
+      329.4346618652344,
+      1177.7593994140625,
+      527.1610717773438
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:f0fe1d43",
+    "region_no": 27,
+    "numbering_status": "assigned",
+    "review_reasons": [],
+    "needs_review": false,
+    "mask_matched": true,
+    "mask_iou": 0.9323,
+    "segmentation_score": 0.9983674883842468,
+    "detection_score": 0.997512936592102,
+    "tta_disagreement": 0.001858272471088345,
+    "mask_instability": 0.03600370456124102,
+    "detection_instability": 0.06881342763994114,
+    "narrative": "F27: tooth 25 - closest trained class 'Caries' (score 0.95, normalised uncertainty 0.16); not evidence that the finding is present. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F28",
+    "tooth_fdi": 26,
+    "label": "Caries",
+    "probability": 0.842671275138855,
+    "uncertainty": 0.38836768608558386,
+    "evidence_region": {
+     "box": [
+      1162.287109375,
+      324.59368896484375,
+      1248.0474853515625,
+      514.20263671875
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:df010b6a",
+    "region_no": 28,
+    "numbering_status": "assigned",
+    "review_reasons": [],
+    "needs_review": false,
+    "mask_matched": true,
+    "mask_iou": 0.9615,
+    "segmentation_score": 0.9993423819541931,
+    "detection_score": 0.998498797416687,
+    "tta_disagreement": 0.0030262983948402896,
+    "mask_instability": 0.03611510791366912,
+    "detection_instability": 0.110862763681424,
+    "narrative": "F28: tooth 26 - closest trained class 'Caries' (score 0.84, normalised uncertainty 0.39); not evidence that the finding is present. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F29",
+    "tooth_fdi": 36,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.7463384015594167,
+    "evidence_region": {
+     "box": [
+      1129.6480712890625,
+      533.5623779296875,
+      1302.922119140625,
+      747.252197265625
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:5058529f",
+    "region_no": 29,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.8941,
+    "segmentation_score": 0.9975177049636841,
+    "detection_score": 0.9968024492263794,
+    "tta_disagreement": 0.07322402740842743,
+    "mask_instability": 0.0731412799723995,
+    "detection_instability": 0.10756546807350187,
+    "narrative": "F29: tooth 36 - no reliable candidate class (normalised uncertainty 0.75); manual review required. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F30",
+    "tooth_fdi": 27,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.49889162141292775,
+    "evidence_region": {
+     "box": [
+      1231.6470947265625,
+      319.5272216796875,
+      1315.0655517578125,
+      499.9864501953125
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:5a708d50",
+    "region_no": 30,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9725,
+    "segmentation_score": 0.9986060261726379,
+    "detection_score": 0.9983834028244019,
+    "tta_disagreement": 0.070731363655255,
+    "mask_instability": 0.059024961701360734,
+    "detection_instability": 0.027092236335590658,
+    "narrative": "F30: tooth 27 - no reliable candidate class (normalised uncertainty 0.50); manual review required. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F31",
+    "tooth_fdi": 37,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.6122806815655174,
+    "evidence_region": {
+     "box": [
+      1208.97119140625,
+      512.8505859375,
+      1362.94189453125,
+      688.6083984375
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:45ddd223",
+    "region_no": 31,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.8572,
+    "segmentation_score": 0.9935494065284729,
+    "detection_score": 0.9958741068840027,
+    "tta_disagreement": 0.04240973586764834,
+    "mask_instability": 0.058126106705674085,
+    "detection_instability": 0.13429086714073402,
+    "narrative": "F31: tooth 37 - no reliable candidate class (normalised uncertainty 0.61); manual review required. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F32",
+    "tooth_fdi": 28,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.6648283680572732,
+    "evidence_region": {
+     "box": [
+      1284.1578369140625,
+      305.8436584472656,
+      1376.6973876953125,
+      473.6213684082031
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:32d1dcd7",
+    "region_no": 32,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9713,
+    "segmentation_score": 0.9976632595062256,
+    "detection_score": 0.9984869956970215,
+    "tta_disagreement": 0.013198927430115668,
+    "mask_instability": 0.026149968494013853,
+    "detection_instability": 0.07287785804742852,
+    "narrative": "F32: tooth 28 - no reliable candidate class (normalised uncertainty 0.66); manual review required. Review status: unreviewed."
+   },
+   {
+    "finding_id": "F33",
+    "tooth_fdi": 38,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.6331305881675771,
+    "evidence_region": {
+     "box": [
+      1287.2235107421875,
+      482.9989013671875,
+      1413.65576171875,
+      638.36279296875
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:4434cbb1",
+    "region_no": 33,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.8081,
+    "segmentation_score": 0.9854544401168823,
+    "detection_score": 0.9865458011627197,
+    "tta_disagreement": 0.031173303680105627,
+    "mask_instability": 0.11201651455888739,
+    "detection_instability": 0.1596569568692684,
+    "narrative": "F33: tooth 38 - no reliable candidate class (normalised uncertainty 0.63); manual review required. Review status: unreviewed."
+   }
+  ],
+  "analysis": {
+   "analysis_id": "an-fd975b8c4d",
+   "summary_counts": {
+    "n_regions": 33,
+    "n_numbered": 32,
+    "n_with_mask": 32,
+    "n_review_required": 22,
+    "n_abstained": 21
+   },
+   "image_quality_flags": [],
+   "combined_uncertainty": 0.20100136302343674,
+   "thresholds_provisional": true,
+   "steps": [
+    {
+     "step": "preprocess",
+     "status": "ok"
+    },
+    {
+     "step": "detect",
+     "status": "ok"
+    },
+    {
+     "step": "number",
+     "status": "ok"
+    },
+    {
+     "step": "segment",
+     "status": "ok"
+    },
+    {
+     "step": "match",
+     "status": "ok"
+    },
+    {
+     "step": "classify",
+     "status": "ok"
+    },
+    {
+     "step": "classify_tta",
+     "status": "ok"
+    },
+    {
+     "step": "detect_tta",
+     "status": "ok"
+    },
+    {
+     "step": "segment_tta",
+     "status": "ok"
+    }
+   ]
+  },
+  "summary": "The detection model (dentex_teeth_detection_v1) located 33 tooth region(s). Of these, 32 have a tooth number from the numbering model, 32 have a matched segmentation mask, and 22 are flagged for manual review. Segmentation masks come from the segmentation model (dentex_teeth_segmentation_v1) and are matched to regions by overlap. Tooth numbers (FDI) come from the numbering model (dentex_fdi_numbering_v1); regions it did not match stay unnumbered. The classification model (dentex_findings_classification_v1) gave each region its closest class among four trained findings. It has no healthy class, so a class name here is not a statement that the finding is present.",
+  "limitations": [
+   "Findings are model predictions and may be wrong; uncertainty values are not guarantees of correctness.",
+   "The classification model has no healthy class and was trained only on teeth labelled with one of four findings; its closest-class output does not indicate that a tooth is affected.",
+   "No clinical history or other examinations were considered.",
+   "Tooth numbers marked 'unassigned' or 'needs_review' were not confirmed."
+  ],
+  "disclaimer": "Research draft generated from model outputs. Not a clinical diagnosis and not clinically validated. Requires review by a qualified professional.",
+  "evidence_refs": [
+   "F1",
+   "F2",
+   "F3",
+   "F4",
+   "F5",
+   "F6",
+   "F7",
+   "F8",
+   "F9",
+   "F10",
+   "F11",
+   "F12",
+   "F13",
+   "F14",
+   "F15",
+   "F16",
+   "F17",
+   "F18",
+   "F19",
+   "F20",
+   "F21",
+   "F22",
+   "F23",
+   "F24",
+   "F25",
+   "F26",
+   "F27",
+   "F28",
+   "F29",
+   "F30",
+   "F31",
+   "F32",
+   "F33"
+  ]
+ },
+ "evidence": {
+  "image_id": "up_22736273675e",
+  "model_version": "dentex_teeth_detection_v1",
+  "model_versions": {
+   "detection": "dentex_teeth_detection_v1",
+   "segmentation": "dentex_teeth_segmentation_v1",
+   "numbering": "dentex_fdi_numbering_v1",
+   "classification": "dentex_findings_classification_v1"
+  },
+  "findings": [
+   {
+    "finding_id": "F1",
+    "tooth_fdi": 48,
+    "label": "Impacted",
+    "probability": 0.9798924922943115,
+    "uncertainty": 0.08251910280841614,
+    "evidence_region": {
+     "box": [
+      455.7868347167969,
+      491.8700866699219,
+      601.1433715820312,
+      633.9414672851562
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:295d0fbc",
+    "region_no": 1,
+    "numbering_status": "assigned",
+    "review_reasons": [],
+    "needs_review": false,
+    "mask_matched": true,
+    "mask_iou": 0.8673,
+    "segmentation_score": 0.9976310729980469,
+    "detection_score": 0.9975703358650208,
+    "tta_disagreement": 0.007413495844843608,
+    "mask_instability": 0.15181023720349562,
+    "detection_instability": 0.05064111082889711
+   },
+   {
+    "finding_id": "F2",
+    "tooth_fdi": 18,
+    "label": "Caries",
+    "probability": 0.9322982430458069,
+    "uncertainty": 0.1910014956012305,
+    "evidence_region": {
+     "box": [
+      516.4102783203125,
+      294.54058837890625,
+      607.2266235351562,
+      480.4745788574219
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:3ae85ef1",
+    "region_no": 2,
+    "numbering_status": "assigned",
+    "review_reasons": [],
+    "needs_review": false,
+    "mask_matched": true,
+    "mask_iou": 0.9297,
+    "segmentation_score": 0.9976859092712402,
+    "detection_score": 0.9985590577125549,
+    "tta_disagreement": 0.0016320961492758135,
+    "mask_instability": 0.04030922142462723,
+    "detection_instability": 0.07321004683266341
+   },
+   {
+    "finding_id": "F3",
+    "tooth_fdi": null,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.6076209157628785,
+    "evidence_region": {
+     "box": [
+      498.40899658203125,
+      497.3368225097656,
+      649.6870727539062,
+      664.8151245117188
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:c0004ef7",
+    "region_no": 3,
+    "numbering_status": "unassigned",
+    "review_reasons": [
+     "no_matching_mask",
+     "high_entropy",
+     "unstable_under_flip",
+     "not_found_on_flipped_image",
+     "low_detection_score"
+    ],
+    "needs_review": true,
+    "mask_matched": false,
+    "mask_iou": null,
+    "segmentation_score": null,
+    "detection_score": 0.38995301723480225,
+    "tta_disagreement": 0.3304843129659713,
+    "mask_instability": null,
+    "detection_instability": null
+   },
+   {
+    "finding_id": "F4",
+    "tooth_fdi": 47,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.5617506880294653,
+    "evidence_region": {
+     "box": [
+      550.5092163085938,
+      497.0679626464844,
+      689.4937744140625,
+      688.0748901367188
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:c999f3ac",
+    "region_no": 4,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9374,
+    "segmentation_score": 0.9957103729248047,
+    "detection_score": 0.9948704242706299,
+    "tta_disagreement": 0.04657703782148055,
+    "mask_instability": 0.055413966358406785,
+    "detection_instability": 0.02346639375522308
+   },
+   {
+    "finding_id": "F5",
+    "tooth_fdi": 17,
+    "label": "Caries",
+    "probability": 0.9859278202056885,
+    "uncertainty": 0.0545934434237701,
+    "evidence_region": {
+     "box": [
+      579.8370361328125,
+      310.2904357910156,
+      665.3543090820312,
+      486.97406005859375
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:26a31a46",
+    "region_no": 5,
+    "numbering_status": "assigned",
+    "review_reasons": [],
+    "needs_review": false,
+    "mask_matched": true,
+    "mask_iou": 0.899,
+    "segmentation_score": 0.9959535598754883,
+    "detection_score": 0.9954967498779297,
+    "tta_disagreement": 5.669461540171781e-05,
+    "mask_instability": 0.11015190503859884,
+    "detection_instability": 0.16156544331837397
+   },
+   {
+    "finding_id": "F6",
+    "tooth_fdi": 46,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.6210880107634908,
+    "evidence_region": {
+     "box": [
+      609.8674926757812,
+      520.0664672851562,
+      780.5961303710938,
+      731.0824584960938
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:7d33fde3",
+    "region_no": 6,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.8793,
+    "segmentation_score": 0.9971272349357605,
+    "detection_score": 0.9970130920410156,
+    "tta_disagreement": 0.05957681527591153,
+    "mask_instability": 0.030059893773307755,
+    "detection_instability": 0.05640981068056916
+   },
+   {
+    "finding_id": "F7",
+    "tooth_fdi": 16,
+    "label": "Caries",
+    "probability": 0.9814667105674744,
+    "uncertainty": 0.0677954628704927,
+    "evidence_region": {
+     "box": [
+      653.3001708984375,
+      313.0492248535156,
+      737.9046020507812,
+      505.7228088378906
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:50a11ac1",
+    "region_no": 7,
+    "numbering_status": "assigned",
+    "review_reasons": [],
+    "needs_review": false,
+    "mask_matched": true,
+    "mask_iou": 0.9261,
+    "segmentation_score": 0.9994766116142273,
+    "detection_score": 0.9994093179702759,
+    "tta_disagreement": 0.00011658308027694367,
+    "mask_instability": 0.07631033933407683,
+    "detection_instability": 0.016275359845657977
+   },
+   {
+    "finding_id": "F8",
+    "tooth_fdi": 15,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.39905413116299404,
+    "evidence_region": {
+     "box": [
+      723.2606201171875,
+      315.8205261230469,
+      793.2045288085938,
+      515.5594482421875
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:53ba4cdb",
+    "region_no": 8,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9112,
+    "segmentation_score": 0.9973989725112915,
+    "detection_score": 0.9953814744949341,
+    "tta_disagreement": 0.02001324081756687,
+    "mask_instability": 0.05457746478873238,
+    "detection_instability": 0.0589952068656634
+   },
+   {
+    "finding_id": "F9",
+    "tooth_fdi": 45,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.4986060146160918,
+    "evidence_region": {
+     "box": [
+      712.0257568359375,
+      534.40625,
+      825.1925659179688,
+      759.0162353515625
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:6ff76716",
+    "region_no": 9,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.945,
+    "segmentation_score": 0.9954172372817993,
+    "detection_score": 0.9952907562255859,
+    "tta_disagreement": 0.024876697106853193,
+    "mask_instability": 0.05691422406042079,
+    "detection_instability": 0.043701338675767754
+   },
+   {
+    "finding_id": "F10",
+    "tooth_fdi": 14,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.5177895258550975,
+    "evidence_region": {
+     "box": [
+      774.2435913085938,
+      320.82965087890625,
+      834.1285400390625,
+      522.4165649414062
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:df0d8994",
+    "region_no": 10,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9727,
+    "segmentation_score": 0.9983158111572266,
+    "detection_score": 0.9974139928817749,
+    "tta_disagreement": 0.0062185491139901,
+    "mask_instability": 0.08152966244252546,
+    "detection_instability": 0.08786637963569688
+   },
+   {
+    "finding_id": "F11",
+    "tooth_fdi": 44,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.5256804667498451,
+    "evidence_region": {
+     "box": [
+      787.1236572265625,
+      543.9336547851562,
+      864.2371826171875,
+      758.3885498046875
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:f2f0ee79",
+    "region_no": 11,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.8658,
+    "segmentation_score": 0.9952999353408813,
+    "detection_score": 0.9936240911483765,
+    "tta_disagreement": 0.004193703292128572,
+    "mask_instability": 0.06631416611588459,
+    "detection_instability": 0.11573372216147548
+   },
+   {
+    "finding_id": "F12",
+    "tooth_fdi": 13,
+    "label": "Caries",
+    "probability": 0.8797311782836914,
+    "uncertainty": 0.317435236494025,
+    "evidence_region": {
+     "box": [
+      817.694580078125,
+      324.04742431640625,
+      872.2078857421875,
+      525.87353515625
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:cb690cea",
+    "region_no": 12,
+    "numbering_status": "assigned",
+    "review_reasons": [],
+    "needs_review": false,
+    "mask_matched": true,
+    "mask_iou": 0.9422,
+    "segmentation_score": 0.9987792372703552,
+    "detection_score": 0.9978172779083252,
+    "tta_disagreement": 0.029457278744328557,
+    "mask_instability": 0.05256139571063456,
+    "detection_instability": 0.12171116567674523
+   },
+   {
+    "finding_id": "F13",
+    "tooth_fdi": 43,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.5100603931909313,
+    "evidence_region": {
+     "box": [
+      835.145263671875,
+      549.68017578125,
+      888.8517456054688,
+      759.3167724609375
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:9b998b7b",
+    "region_no": 13,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9388,
+    "segmentation_score": 0.9968273043632507,
+    "detection_score": 0.9966036081314087,
+    "tta_disagreement": 0.01601642561769081,
+    "mask_instability": 0.04485257371314344,
+    "detection_instability": 0.06058631433766848
+   },
+   {
+    "finding_id": "F14",
+    "tooth_fdi": 12,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.7637260484880649,
+    "evidence_region": {
+     "box": [
+      862.4144287109375,
+      325.1296081542969,
+      910.5007934570312,
+      524.0497436523438
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:042d2063",
+    "region_no": 14,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9326,
+    "segmentation_score": 0.9983059167861938,
+    "detection_score": 0.9968884587287903,
+    "tta_disagreement": 0.004931531624993431,
+    "mask_instability": 0.046298651742559094,
+    "detection_instability": 0.09130186188885392
+   },
+   {
+    "finding_id": "F15",
+    "tooth_fdi": 42,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.527563377644788,
+    "evidence_region": {
+     "box": [
+      878.3369140625,
+      546.9939575195312,
+      925.7081298828125,
+      750.13671875
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:4b6dc53c",
+    "region_no": 15,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9057,
+    "segmentation_score": 0.9963286519050598,
+    "detection_score": 0.9949396848678589,
+    "tta_disagreement": 0.004096562423858332,
+    "mask_instability": 0.044189129474149325,
+    "detection_instability": 0.07192213121016056
+   },
+   {
+    "finding_id": "F16",
+    "tooth_fdi": 11,
+    "label": "Caries",
+    "probability": 0.9036614298820496,
+    "uncertainty": 0.27618142559397507,
+    "evidence_region": {
+     "box": [
+      902.325439453125,
+      322.4759826660156,
+      962.496826171875,
+      537.0863647460938
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:b335ecb4",
+    "region_no": 16,
+    "numbering_status": "assigned",
+    "review_reasons": [],
+    "needs_review": false,
+    "mask_matched": true,
+    "mask_iou": 0.9219,
+    "segmentation_score": 0.997992753982544,
+    "detection_score": 0.9968580007553101,
+    "tta_disagreement": 0.008349679496953854,
+    "mask_instability": 0.06680564768312325,
+    "detection_instability": 0.061576103974049556
+   },
+   {
+    "finding_id": "F17",
+    "tooth_fdi": 41,
+    "label": "Periapical Lesion",
+    "probability": 0.9822649955749512,
+    "uncertainty": 0.07142915018855954,
+    "evidence_region": {
+     "box": [
+      914.0263671875,
+      554.945556640625,
+      956.7254028320312,
+      745.8933715820312
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:24d55701",
+    "region_no": 17,
+    "numbering_status": "assigned",
+    "review_reasons": [],
+    "needs_review": false,
+    "mask_matched": true,
+    "mask_iou": 0.941,
+    "segmentation_score": 0.9922294020652771,
+    "detection_score": 0.982624351978302,
+    "tta_disagreement": 0.0006134519763519731,
+    "mask_instability": 0.0836079791847355,
+    "detection_instability": 0.11364989482176424
+   },
+   {
+    "finding_id": "F18",
+    "tooth_fdi": 31,
+    "label": "Periapical Lesion",
+    "probability": 0.9669249653816223,
+    "uncertainty": 0.11774369193790316,
+    "evidence_region": {
+     "box": [
+      941.5542602539062,
+      549.6787109375,
+      989.9746704101562,
+      751.90185546875
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:9d384923",
+    "region_no": 18,
+    "numbering_status": "needs_review",
+    "review_reasons": [
+     "tooth_number_needs_review"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.849,
+    "segmentation_score": 0.9928091764450073,
+    "detection_score": 0.9769347906112671,
+    "tta_disagreement": 3.555698565098686e-05,
+    "mask_instability": 0.106653049314269,
+    "detection_instability": 0.10967272884352863
+   },
+   {
+    "finding_id": "F19",
+    "tooth_fdi": 21,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.5064217403633304,
+    "evidence_region": {
+     "box": [
+      957.3006591796875,
+      315.0914306640625,
+      1017.217041015625,
+      540.0210571289062
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:077fc196",
+    "region_no": 19,
+    "numbering_status": "needs_review",
+    "review_reasons": [
+     "high_entropy",
+     "tooth_number_needs_review"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9485,
+    "segmentation_score": 0.998279333114624,
+    "detection_score": 0.9980505704879761,
+    "tta_disagreement": 0.029449449815197797,
+    "mask_instability": 0.06060606060606055,
+    "detection_instability": 0.11727260975294695
+   },
+   {
+    "finding_id": "F20",
+    "tooth_fdi": 32,
+    "label": "Periapical Lesion",
+    "probability": 0.8802062273025513,
+    "uncertainty": 0.31487973629589316,
+    "evidence_region": {
+     "box": [
+      979.93603515625,
+      551.9044799804688,
+      1024.2291259765625,
+      751.9010009765625
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:6d4ac065",
+    "region_no": 20,
+    "numbering_status": "assigned",
+    "review_reasons": [],
+    "needs_review": false,
+    "mask_matched": true,
+    "mask_iou": 0.8595,
+    "segmentation_score": 0.9980881810188293,
+    "detection_score": 0.9955489635467529,
+    "tta_disagreement": 0.00024355622410903019,
+    "mask_instability": 0.04230648699467254,
+    "detection_instability": 0.018701695543199892
+   },
+   {
+    "finding_id": "F21",
+    "tooth_fdi": 22,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.7369544371368655,
+    "evidence_region": {
+     "box": [
+      1006.59033203125,
+      319.1363220214844,
+      1055.38720703125,
+      530.78466796875
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:7513ded2",
+    "region_no": 21,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9228,
+    "segmentation_score": 0.9980881810188293,
+    "detection_score": 0.9959535598754883,
+    "tta_disagreement": 0.006078118031671366,
+    "mask_instability": 0.03813763233878731,
+    "detection_instability": 0.0725180020935593
+   },
+   {
+    "finding_id": "F22",
+    "tooth_fdi": 33,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.5562319284288959,
+    "evidence_region": {
+     "box": [
+      1016.140625,
+      551.9047241210938,
+      1069.5548095703125,
+      760.8004150390625
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:5ff19eb8",
+    "region_no": 22,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9114,
+    "segmentation_score": 0.9965029954910278,
+    "detection_score": 0.9944666028022766,
+    "tta_disagreement": 0.020092857515713592,
+    "mask_instability": 0.0781655935840958,
+    "detection_instability": 0.06200344177355921
+   },
+   {
+    "finding_id": "F23",
+    "tooth_fdi": 23,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.6566662416585043,
+    "evidence_region": {
+     "box": [
+      1044.9127197265625,
+      325.8888244628906,
+      1097.1129150390625,
+      532.931884765625
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:532218a2",
+    "region_no": 23,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9139,
+    "segmentation_score": 0.9978843331336975,
+    "detection_score": 0.9971103668212891,
+    "tta_disagreement": 0.012738686612052385,
+    "mask_instability": 0.05281650232347279,
+    "detection_instability": 0.04478867754214022
+   },
+   {
+    "finding_id": "F24",
+    "tooth_fdi": 34,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.4608431980730427,
+    "evidence_region": {
+     "box": [
+      1051.3577880859375,
+      551.5966796875,
+      1123.2799072265625,
+      771.4915161132812
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:1e65a5ea",
+    "region_no": 24,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9091,
+    "segmentation_score": 0.9965165853500366,
+    "detection_score": 0.9917323589324951,
+    "tta_disagreement": 0.02193660401270378,
+    "mask_instability": 0.12204458455302858,
+    "detection_instability": 0.15637212115228782
+   },
+   {
+    "finding_id": "F25",
+    "tooth_fdi": 24,
+    "label": "Caries",
+    "probability": 0.8930613398551941,
+    "uncertainty": 0.28072691385189796,
+    "evidence_region": {
+     "box": [
+      1083.151611328125,
+      330.2303466796875,
+      1135.9571533203125,
+      528.59033203125
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:a4519cdc",
+    "region_no": 25,
+    "numbering_status": "assigned",
+    "review_reasons": [],
+    "needs_review": false,
+    "mask_matched": true,
+    "mask_iou": 0.8606,
+    "segmentation_score": 0.9978172779083252,
+    "detection_score": 0.9955920577049255,
+    "tta_disagreement": 0.0016257517876589731,
+    "mask_instability": 0.05466309683177151,
+    "detection_instability": 0.04148066441946463
+   },
+   {
+    "finding_id": "F26",
+    "tooth_fdi": 35,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.6789320575419686,
+    "evidence_region": {
+     "box": [
+      1084.3016357421875,
+      543.0682983398438,
+      1186.690185546875,
+      781.5031127929688
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:a4624272",
+    "region_no": 26,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9089,
+    "segmentation_score": 0.9970878958702087,
+    "detection_score": 0.9973529577255249,
+    "tta_disagreement": 0.010200945157303205,
+    "mask_instability": 0.06451006206507426,
+    "detection_instability": 0.04119824182952392
+   },
+   {
+    "finding_id": "F27",
+    "tooth_fdi": 25,
+    "label": "Caries",
+    "probability": 0.9483287334442139,
+    "uncertainty": 0.1592048972118385,
+    "evidence_region": {
+     "box": [
+      1118.4327392578125,
+      329.4346618652344,
+      1177.7593994140625,
+      527.1610717773438
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:f0fe1d43",
+    "region_no": 27,
+    "numbering_status": "assigned",
+    "review_reasons": [],
+    "needs_review": false,
+    "mask_matched": true,
+    "mask_iou": 0.9323,
+    "segmentation_score": 0.9983674883842468,
+    "detection_score": 0.997512936592102,
+    "tta_disagreement": 0.001858272471088345,
+    "mask_instability": 0.03600370456124102,
+    "detection_instability": 0.06881342763994114
+   },
+   {
+    "finding_id": "F28",
+    "tooth_fdi": 26,
+    "label": "Caries",
+    "probability": 0.842671275138855,
+    "uncertainty": 0.38836768608558386,
+    "evidence_region": {
+     "box": [
+      1162.287109375,
+      324.59368896484375,
+      1248.0474853515625,
+      514.20263671875
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "closest_class",
+    "region_id": "up_22736273675e:df010b6a",
+    "region_no": 28,
+    "numbering_status": "assigned",
+    "review_reasons": [],
+    "needs_review": false,
+    "mask_matched": true,
+    "mask_iou": 0.9615,
+    "segmentation_score": 0.9993423819541931,
+    "detection_score": 0.998498797416687,
+    "tta_disagreement": 0.0030262983948402896,
+    "mask_instability": 0.03611510791366912,
+    "detection_instability": 0.110862763681424
+   },
+   {
+    "finding_id": "F29",
+    "tooth_fdi": 36,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.7463384015594167,
+    "evidence_region": {
+     "box": [
+      1129.6480712890625,
+      533.5623779296875,
+      1302.922119140625,
+      747.252197265625
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:5058529f",
+    "region_no": 29,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.8941,
+    "segmentation_score": 0.9975177049636841,
+    "detection_score": 0.9968024492263794,
+    "tta_disagreement": 0.07322402740842743,
+    "mask_instability": 0.0731412799723995,
+    "detection_instability": 0.10756546807350187
+   },
+   {
+    "finding_id": "F30",
+    "tooth_fdi": 27,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.49889162141292775,
+    "evidence_region": {
+     "box": [
+      1231.6470947265625,
+      319.5272216796875,
+      1315.0655517578125,
+      499.9864501953125
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:5a708d50",
+    "region_no": 30,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9725,
+    "segmentation_score": 0.9986060261726379,
+    "detection_score": 0.9983834028244019,
+    "tta_disagreement": 0.070731363655255,
+    "mask_instability": 0.059024961701360734,
+    "detection_instability": 0.027092236335590658
+   },
+   {
+    "finding_id": "F31",
+    "tooth_fdi": 37,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.6122806815655174,
+    "evidence_region": {
+     "box": [
+      1208.97119140625,
+      512.8505859375,
+      1362.94189453125,
+      688.6083984375
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:45ddd223",
+    "region_no": 31,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.8572,
+    "segmentation_score": 0.9935494065284729,
+    "detection_score": 0.9958741068840027,
+    "tta_disagreement": 0.04240973586764834,
+    "mask_instability": 0.058126106705674085,
+    "detection_instability": 0.13429086714073402
+   },
+   {
+    "finding_id": "F32",
+    "tooth_fdi": 28,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.6648283680572732,
+    "evidence_region": {
+     "box": [
+      1284.1578369140625,
+      305.8436584472656,
+      1376.6973876953125,
+      473.6213684082031
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:32d1dcd7",
+    "region_no": 32,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.9713,
+    "segmentation_score": 0.9976632595062256,
+    "detection_score": 0.9984869956970215,
+    "tta_disagreement": 0.013198927430115668,
+    "mask_instability": 0.026149968494013853,
+    "detection_instability": 0.07287785804742852
+   },
+   {
+    "finding_id": "F33",
+    "tooth_fdi": 38,
+    "label": null,
+    "probability": null,
+    "uncertainty": 0.6331305881675771,
+    "evidence_region": {
+     "box": [
+      1287.2235107421875,
+      482.9989013671875,
+      1413.65576171875,
+      638.36279296875
+     ]
+    },
+    "review_status": "unreviewed",
+    "kind": "abstained",
+    "region_id": "up_22736273675e:4434cbb1",
+    "region_no": 33,
+    "numbering_status": "assigned",
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "needs_review": true,
+    "mask_matched": true,
+    "mask_iou": 0.8081,
+    "segmentation_score": 0.9854544401168823,
+    "detection_score": 0.9865458011627197,
+    "tta_disagreement": 0.031173303680105627,
+    "mask_instability": 0.11201651455888739,
+    "detection_instability": 0.1596569568692684
+   }
+  ],
+  "context": {
+   "analysis_id": "an-fd975b8c4d",
+   "summary_counts": {
+    "n_regions": 33,
+    "n_numbered": 32,
+    "n_with_mask": 32,
+    "n_review_required": 22,
+    "n_abstained": 21
+   },
+   "image_quality_flags": [],
+   "combined_uncertainty": 0.20100136302343674,
+   "thresholds_provisional": true,
+   "steps": [
+    {
+     "step": "preprocess",
+     "status": "ok"
+    },
+    {
+     "step": "detect",
+     "status": "ok"
+    },
+    {
+     "step": "number",
+     "status": "ok"
+    },
+    {
+     "step": "segment",
+     "status": "ok"
+    },
+    {
+     "step": "match",
+     "status": "ok"
+    },
+    {
+     "step": "classify",
+     "status": "ok"
+    },
+    {
+     "step": "classify_tta",
+     "status": "ok"
+    },
+    {
+     "step": "detect_tta",
+     "status": "ok"
+    },
+    {
+     "step": "segment_tta",
+     "status": "ok"
+    }
+   ]
+  }
+ },
+ "validation": {
+  "schema_valid": true,
+  "evidence_refs_valid": true,
+  "unsupported_claims_free": true,
+  "required_fields_present": true,
+  "passed": true,
+  "errors": [],
+  "warnings": []
+ },
+ "localized": {
+  "lang": "hi",
+  "lang_name": "हिन्दी",
+  "title": "डेंटामाइंड एआई - शोध मसौदा रिपोर्ट",
+  "status": "unconfirmed_research_draft",
+  "status_text": "असत्यापित शोध मसौदा",
+  "disclaimer": "यह मॉडल के आउटपुट से तैयार किया गया शोध मसौदा है। यह नैदानिक निदान नहीं है और नैदानिक रूप से प्रमाणित नहीं है। किसी योग्य विशेषज्ञ द्वारा समीक्षा आवश्यक है।",
+  "summary": "डिटेक्शन मॉडल (dentex_teeth_detection_v1) ने 33 दाँत क्षेत्र पहचाने। सेगमेंटेशन मास्क सेगमेंटेशन मॉडल (dentex_teeth_segmentation_v1) से लिए गए हैं और ओवरलैप के आधार पर क्षेत्रों से मिलाए गए हैं। दाँत क्रमांक (FDI) क्रमांकन मॉडल (dentex_fdi_numbering_v1) से लिए गए हैं; जिन क्षेत्रों का मिलान नहीं हुआ वे बिना क्रमांक के रहते हैं। वर्गीकरण मॉडल (dentex_findings_classification_v1) ने प्रत्येक क्षेत्र को प्रशिक्षित चार निष्कर्षों में से निकटतम श्रेणी दी। इस मॉडल में कोई स्वस्थ श्रेणी नहीं है, इसलिए यहाँ श्रेणी का नाम इस बात का कथन नहीं है कि वह निष्कर्ष मौजूद है। इनमें से 32 को क्रमांकन मॉडल से दाँत क्रमांक मिला, 32 का मिलान सेगमेंटेशन मास्क से हुआ, और 22 को मैन्युअल समीक्षा के लिए चिह्नित किया गया है।",
+  "findings": [
+   {
+    "finding_id": "F1",
+    "tooth_fdi": 48,
+    "kind": "closest_class",
+    "label": "Impacted",
+    "label_display": "दबा हुआ (इम्पैक्टेड) दाँत (Impacted)",
+    "probability": 0.9798924922943115,
+    "uncertainty": 0.08251910280841614,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F1: दाँत 48 - निकटतम प्रशिक्षित श्रेणी 'दबा हुआ (इम्पैक्टेड) दाँत (Impacted)' (स्कोर 0.98, सामान्यीकृत अनिश्चितता 0.08); यह निष्कर्ष के मौजूद होने का प्रमाण नहीं है। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:295d0fbc",
+    "region_no": 1,
+    "needs_review": false,
+    "review_reasons": [],
+    "review_reasons_text": [],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      455.7868347167969,
+      491.8700866699219,
+      601.1433715820312,
+      633.9414672851562
+     ]
+    }
+   },
+   {
+    "finding_id": "F2",
+    "tooth_fdi": 18,
+    "kind": "closest_class",
+    "label": "Caries",
+    "label_display": "दंत क्षय (Caries)",
+    "probability": 0.9322982430458069,
+    "uncertainty": 0.1910014956012305,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F2: दाँत 18 - निकटतम प्रशिक्षित श्रेणी 'दंत क्षय (Caries)' (स्कोर 0.93, सामान्यीकृत अनिश्चितता 0.19); यह निष्कर्ष के मौजूद होने का प्रमाण नहीं है। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:3ae85ef1",
+    "region_no": 2,
+    "needs_review": false,
+    "review_reasons": [],
+    "review_reasons_text": [],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      516.4102783203125,
+      294.54058837890625,
+      607.2266235351562,
+      480.4745788574219
+     ]
+    }
+   },
+   {
+    "finding_id": "F3",
+    "tooth_fdi": null,
+    "kind": "abstained",
+    "label": null,
+    "label_display": "-",
+    "probability": null,
+    "uncertainty": 0.6076209157628785,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F3: बिना क्रमांक वाला क्षेत्र - कोई विश्वसनीय संभावित श्रेणी नहीं (सामान्यीकृत अनिश्चितता 0.61); मैन्युअल समीक्षा आवश्यक। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:c0004ef7",
+    "region_no": 3,
+    "needs_review": true,
+    "review_reasons": [
+     "no_matching_mask",
+     "high_entropy",
+     "unstable_under_flip",
+     "not_found_on_flipped_image",
+     "low_detection_score"
+    ],
+    "review_reasons_text": [
+     "कोई मिलान मास्क नहीं",
+     "वर्गीकरण में उच्च अनिश्चितता",
+     "फ़्लिप करने पर अस्थिर",
+     "फ़्लिप की गई छवि में नहीं मिला",
+     "कम डिटेक्शन स्कोर"
+    ],
+    "numbering_status": "unassigned",
+    "evidence_region": {
+     "box": [
+      498.40899658203125,
+      497.3368225097656,
+      649.6870727539062,
+      664.8151245117188
+     ]
+    }
+   },
+   {
+    "finding_id": "F4",
+    "tooth_fdi": 47,
+    "kind": "abstained",
+    "label": null,
+    "label_display": "-",
+    "probability": null,
+    "uncertainty": 0.5617506880294653,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F4: दाँत 47 - कोई विश्वसनीय संभावित श्रेणी नहीं (सामान्यीकृत अनिश्चितता 0.56); मैन्युअल समीक्षा आवश्यक। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:c999f3ac",
+    "region_no": 4,
+    "needs_review": true,
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "review_reasons_text": [
+     "वर्गीकरण में उच्च अनिश्चितता"
+    ],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      550.5092163085938,
+      497.0679626464844,
+      689.4937744140625,
+      688.0748901367188
+     ]
+    }
+   },
+   {
+    "finding_id": "F5",
+    "tooth_fdi": 17,
+    "kind": "closest_class",
+    "label": "Caries",
+    "label_display": "दंत क्षय (Caries)",
+    "probability": 0.9859278202056885,
+    "uncertainty": 0.0545934434237701,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F5: दाँत 17 - निकटतम प्रशिक्षित श्रेणी 'दंत क्षय (Caries)' (स्कोर 0.99, सामान्यीकृत अनिश्चितता 0.05); यह निष्कर्ष के मौजूद होने का प्रमाण नहीं है। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:26a31a46",
+    "region_no": 5,
+    "needs_review": false,
+    "review_reasons": [],
+    "review_reasons_text": [],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      579.8370361328125,
+      310.2904357910156,
+      665.3543090820312,
+      486.97406005859375
+     ]
+    }
+   },
+   {
+    "finding_id": "F6",
+    "tooth_fdi": 46,
+    "kind": "abstained",
+    "label": null,
+    "label_display": "-",
+    "probability": null,
+    "uncertainty": 0.6210880107634908,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F6: दाँत 46 - कोई विश्वसनीय संभावित श्रेणी नहीं (सामान्यीकृत अनिश्चितता 0.62); मैन्युअल समीक्षा आवश्यक। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:7d33fde3",
+    "region_no": 6,
+    "needs_review": true,
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "review_reasons_text": [
+     "वर्गीकरण में उच्च अनिश्चितता"
+    ],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      609.8674926757812,
+      520.0664672851562,
+      780.5961303710938,
+      731.0824584960938
+     ]
+    }
+   },
+   {
+    "finding_id": "F7",
+    "tooth_fdi": 16,
+    "kind": "closest_class",
+    "label": "Caries",
+    "label_display": "दंत क्षय (Caries)",
+    "probability": 0.9814667105674744,
+    "uncertainty": 0.0677954628704927,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F7: दाँत 16 - निकटतम प्रशिक्षित श्रेणी 'दंत क्षय (Caries)' (स्कोर 0.98, सामान्यीकृत अनिश्चितता 0.07); यह निष्कर्ष के मौजूद होने का प्रमाण नहीं है। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:50a11ac1",
+    "region_no": 7,
+    "needs_review": false,
+    "review_reasons": [],
+    "review_reasons_text": [],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      653.3001708984375,
+      313.0492248535156,
+      737.9046020507812,
+      505.7228088378906
+     ]
+    }
+   },
+   {
+    "finding_id": "F8",
+    "tooth_fdi": 15,
+    "kind": "abstained",
+    "label": null,
+    "label_display": "-",
+    "probability": null,
+    "uncertainty": 0.39905413116299404,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F8: दाँत 15 - कोई विश्वसनीय संभावित श्रेणी नहीं (सामान्यीकृत अनिश्चितता 0.40); मैन्युअल समीक्षा आवश्यक। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:53ba4cdb",
+    "region_no": 8,
+    "needs_review": true,
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "review_reasons_text": [
+     "वर्गीकरण में उच्च अनिश्चितता"
+    ],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      723.2606201171875,
+      315.8205261230469,
+      793.2045288085938,
+      515.5594482421875
+     ]
+    }
+   },
+   {
+    "finding_id": "F9",
+    "tooth_fdi": 45,
+    "kind": "abstained",
+    "label": null,
+    "label_display": "-",
+    "probability": null,
+    "uncertainty": 0.4986060146160918,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F9: दाँत 45 - कोई विश्वसनीय संभावित श्रेणी नहीं (सामान्यीकृत अनिश्चितता 0.50); मैन्युअल समीक्षा आवश्यक। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:6ff76716",
+    "region_no": 9,
+    "needs_review": true,
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "review_reasons_text": [
+     "वर्गीकरण में उच्च अनिश्चितता"
+    ],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      712.0257568359375,
+      534.40625,
+      825.1925659179688,
+      759.0162353515625
+     ]
+    }
+   },
+   {
+    "finding_id": "F10",
+    "tooth_fdi": 14,
+    "kind": "abstained",
+    "label": null,
+    "label_display": "-",
+    "probability": null,
+    "uncertainty": 0.5177895258550975,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F10: दाँत 14 - कोई विश्वसनीय संभावित श्रेणी नहीं (सामान्यीकृत अनिश्चितता 0.52); मैन्युअल समीक्षा आवश्यक। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:df0d8994",
+    "region_no": 10,
+    "needs_review": true,
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "review_reasons_text": [
+     "वर्गीकरण में उच्च अनिश्चितता"
+    ],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      774.2435913085938,
+      320.82965087890625,
+      834.1285400390625,
+      522.4165649414062
+     ]
+    }
+   },
+   {
+    "finding_id": "F11",
+    "tooth_fdi": 44,
+    "kind": "abstained",
+    "label": null,
+    "label_display": "-",
+    "probability": null,
+    "uncertainty": 0.5256804667498451,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F11: दाँत 44 - कोई विश्वसनीय संभावित श्रेणी नहीं (सामान्यीकृत अनिश्चितता 0.53); मैन्युअल समीक्षा आवश्यक। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:f2f0ee79",
+    "region_no": 11,
+    "needs_review": true,
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "review_reasons_text": [
+     "वर्गीकरण में उच्च अनिश्चितता"
+    ],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      787.1236572265625,
+      543.9336547851562,
+      864.2371826171875,
+      758.3885498046875
+     ]
+    }
+   },
+   {
+    "finding_id": "F12",
+    "tooth_fdi": 13,
+    "kind": "closest_class",
+    "label": "Caries",
+    "label_display": "दंत क्षय (Caries)",
+    "probability": 0.8797311782836914,
+    "uncertainty": 0.317435236494025,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F12: दाँत 13 - निकटतम प्रशिक्षित श्रेणी 'दंत क्षय (Caries)' (स्कोर 0.88, सामान्यीकृत अनिश्चितता 0.32); यह निष्कर्ष के मौजूद होने का प्रमाण नहीं है। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:cb690cea",
+    "region_no": 12,
+    "needs_review": false,
+    "review_reasons": [],
+    "review_reasons_text": [],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      817.694580078125,
+      324.04742431640625,
+      872.2078857421875,
+      525.87353515625
+     ]
+    }
+   },
+   {
+    "finding_id": "F13",
+    "tooth_fdi": 43,
+    "kind": "abstained",
+    "label": null,
+    "label_display": "-",
+    "probability": null,
+    "uncertainty": 0.5100603931909313,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F13: दाँत 43 - कोई विश्वसनीय संभावित श्रेणी नहीं (सामान्यीकृत अनिश्चितता 0.51); मैन्युअल समीक्षा आवश्यक। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:9b998b7b",
+    "region_no": 13,
+    "needs_review": true,
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "review_reasons_text": [
+     "वर्गीकरण में उच्च अनिश्चितता"
+    ],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      835.145263671875,
+      549.68017578125,
+      888.8517456054688,
+      759.3167724609375
+     ]
+    }
+   },
+   {
+    "finding_id": "F14",
+    "tooth_fdi": 12,
+    "kind": "abstained",
+    "label": null,
+    "label_display": "-",
+    "probability": null,
+    "uncertainty": 0.7637260484880649,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F14: दाँत 12 - कोई विश्वसनीय संभावित श्रेणी नहीं (सामान्यीकृत अनिश्चितता 0.76); मैन्युअल समीक्षा आवश्यक। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:042d2063",
+    "region_no": 14,
+    "needs_review": true,
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "review_reasons_text": [
+     "वर्गीकरण में उच्च अनिश्चितता"
+    ],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      862.4144287109375,
+      325.1296081542969,
+      910.5007934570312,
+      524.0497436523438
+     ]
+    }
+   },
+   {
+    "finding_id": "F15",
+    "tooth_fdi": 42,
+    "kind": "abstained",
+    "label": null,
+    "label_display": "-",
+    "probability": null,
+    "uncertainty": 0.527563377644788,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F15: दाँत 42 - कोई विश्वसनीय संभावित श्रेणी नहीं (सामान्यीकृत अनिश्चितता 0.53); मैन्युअल समीक्षा आवश्यक। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:4b6dc53c",
+    "region_no": 15,
+    "needs_review": true,
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "review_reasons_text": [
+     "वर्गीकरण में उच्च अनिश्चितता"
+    ],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      878.3369140625,
+      546.9939575195312,
+      925.7081298828125,
+      750.13671875
+     ]
+    }
+   },
+   {
+    "finding_id": "F16",
+    "tooth_fdi": 11,
+    "kind": "closest_class",
+    "label": "Caries",
+    "label_display": "दंत क्षय (Caries)",
+    "probability": 0.9036614298820496,
+    "uncertainty": 0.27618142559397507,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F16: दाँत 11 - निकटतम प्रशिक्षित श्रेणी 'दंत क्षय (Caries)' (स्कोर 0.90, सामान्यीकृत अनिश्चितता 0.28); यह निष्कर्ष के मौजूद होने का प्रमाण नहीं है। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:b335ecb4",
+    "region_no": 16,
+    "needs_review": false,
+    "review_reasons": [],
+    "review_reasons_text": [],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      902.325439453125,
+      322.4759826660156,
+      962.496826171875,
+      537.0863647460938
+     ]
+    }
+   },
+   {
+    "finding_id": "F17",
+    "tooth_fdi": 41,
+    "kind": "closest_class",
+    "label": "Periapical Lesion",
+    "label_display": "पेरिएपिकल घाव (Periapical Lesion)",
+    "probability": 0.9822649955749512,
+    "uncertainty": 0.07142915018855954,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F17: दाँत 41 - निकटतम प्रशिक्षित श्रेणी 'पेरिएपिकल घाव (Periapical Lesion)' (स्कोर 0.98, सामान्यीकृत अनिश्चितता 0.07); यह निष्कर्ष के मौजूद होने का प्रमाण नहीं है। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:24d55701",
+    "region_no": 17,
+    "needs_review": false,
+    "review_reasons": [],
+    "review_reasons_text": [],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      914.0263671875,
+      554.945556640625,
+      956.7254028320312,
+      745.8933715820312
+     ]
+    }
+   },
+   {
+    "finding_id": "F18",
+    "tooth_fdi": 31,
+    "kind": "closest_class",
+    "label": "Periapical Lesion",
+    "label_display": "पेरिएपिकल घाव (Periapical Lesion)",
+    "probability": 0.9669249653816223,
+    "uncertainty": 0.11774369193790316,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F18: दाँत 31 - निकटतम प्रशिक्षित श्रेणी 'पेरिएपिकल घाव (Periapical Lesion)' (स्कोर 0.97, सामान्यीकृत अनिश्चितता 0.12); यह निष्कर्ष के मौजूद होने का प्रमाण नहीं है। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:9d384923",
+    "region_no": 18,
+    "needs_review": true,
+    "review_reasons": [
+     "tooth_number_needs_review"
+    ],
+    "review_reasons_text": [
+     "दाँत क्रमांक की समीक्षा आवश्यक"
+    ],
+    "numbering_status": "needs_review",
+    "evidence_region": {
+     "box": [
+      941.5542602539062,
+      549.6787109375,
+      989.9746704101562,
+      751.90185546875
+     ]
+    }
+   },
+   {
+    "finding_id": "F19",
+    "tooth_fdi": 21,
+    "kind": "abstained",
+    "label": null,
+    "label_display": "-",
+    "probability": null,
+    "uncertainty": 0.5064217403633304,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F19: दाँत 21 - कोई विश्वसनीय संभावित श्रेणी नहीं (सामान्यीकृत अनिश्चितता 0.51); मैन्युअल समीक्षा आवश्यक। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:077fc196",
+    "region_no": 19,
+    "needs_review": true,
+    "review_reasons": [
+     "high_entropy",
+     "tooth_number_needs_review"
+    ],
+    "review_reasons_text": [
+     "वर्गीकरण में उच्च अनिश्चितता",
+     "दाँत क्रमांक की समीक्षा आवश्यक"
+    ],
+    "numbering_status": "needs_review",
+    "evidence_region": {
+     "box": [
+      957.3006591796875,
+      315.0914306640625,
+      1017.217041015625,
+      540.0210571289062
+     ]
+    }
+   },
+   {
+    "finding_id": "F20",
+    "tooth_fdi": 32,
+    "kind": "closest_class",
+    "label": "Periapical Lesion",
+    "label_display": "पेरिएपिकल घाव (Periapical Lesion)",
+    "probability": 0.8802062273025513,
+    "uncertainty": 0.31487973629589316,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F20: दाँत 32 - निकटतम प्रशिक्षित श्रेणी 'पेरिएपिकल घाव (Periapical Lesion)' (स्कोर 0.88, सामान्यीकृत अनिश्चितता 0.31); यह निष्कर्ष के मौजूद होने का प्रमाण नहीं है। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:6d4ac065",
+    "region_no": 20,
+    "needs_review": false,
+    "review_reasons": [],
+    "review_reasons_text": [],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      979.93603515625,
+      551.9044799804688,
+      1024.2291259765625,
+      751.9010009765625
+     ]
+    }
+   },
+   {
+    "finding_id": "F21",
+    "tooth_fdi": 22,
+    "kind": "abstained",
+    "label": null,
+    "label_display": "-",
+    "probability": null,
+    "uncertainty": 0.7369544371368655,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F21: दाँत 22 - कोई विश्वसनीय संभावित श्रेणी नहीं (सामान्यीकृत अनिश्चितता 0.74); मैन्युअल समीक्षा आवश्यक। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:7513ded2",
+    "region_no": 21,
+    "needs_review": true,
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "review_reasons_text": [
+     "वर्गीकरण में उच्च अनिश्चितता"
+    ],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      1006.59033203125,
+      319.1363220214844,
+      1055.38720703125,
+      530.78466796875
+     ]
+    }
+   },
+   {
+    "finding_id": "F22",
+    "tooth_fdi": 33,
+    "kind": "abstained",
+    "label": null,
+    "label_display": "-",
+    "probability": null,
+    "uncertainty": 0.5562319284288959,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F22: दाँत 33 - कोई विश्वसनीय संभावित श्रेणी नहीं (सामान्यीकृत अनिश्चितता 0.56); मैन्युअल समीक्षा आवश्यक। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:5ff19eb8",
+    "region_no": 22,
+    "needs_review": true,
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "review_reasons_text": [
+     "वर्गीकरण में उच्च अनिश्चितता"
+    ],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      1016.140625,
+      551.9047241210938,
+      1069.5548095703125,
+      760.8004150390625
+     ]
+    }
+   },
+   {
+    "finding_id": "F23",
+    "tooth_fdi": 23,
+    "kind": "abstained",
+    "label": null,
+    "label_display": "-",
+    "probability": null,
+    "uncertainty": 0.6566662416585043,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F23: दाँत 23 - कोई विश्वसनीय संभावित श्रेणी नहीं (सामान्यीकृत अनिश्चितता 0.66); मैन्युअल समीक्षा आवश्यक। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:532218a2",
+    "region_no": 23,
+    "needs_review": true,
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "review_reasons_text": [
+     "वर्गीकरण में उच्च अनिश्चितता"
+    ],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      1044.9127197265625,
+      325.8888244628906,
+      1097.1129150390625,
+      532.931884765625
+     ]
+    }
+   },
+   {
+    "finding_id": "F24",
+    "tooth_fdi": 34,
+    "kind": "abstained",
+    "label": null,
+    "label_display": "-",
+    "probability": null,
+    "uncertainty": 0.4608431980730427,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F24: दाँत 34 - कोई विश्वसनीय संभावित श्रेणी नहीं (सामान्यीकृत अनिश्चितता 0.46); मैन्युअल समीक्षा आवश्यक। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:1e65a5ea",
+    "region_no": 24,
+    "needs_review": true,
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "review_reasons_text": [
+     "वर्गीकरण में उच्च अनिश्चितता"
+    ],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      1051.3577880859375,
+      551.5966796875,
+      1123.2799072265625,
+      771.4915161132812
+     ]
+    }
+   },
+   {
+    "finding_id": "F25",
+    "tooth_fdi": 24,
+    "kind": "closest_class",
+    "label": "Caries",
+    "label_display": "दंत क्षय (Caries)",
+    "probability": 0.8930613398551941,
+    "uncertainty": 0.28072691385189796,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F25: दाँत 24 - निकटतम प्रशिक्षित श्रेणी 'दंत क्षय (Caries)' (स्कोर 0.89, सामान्यीकृत अनिश्चितता 0.28); यह निष्कर्ष के मौजूद होने का प्रमाण नहीं है। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:a4519cdc",
+    "region_no": 25,
+    "needs_review": false,
+    "review_reasons": [],
+    "review_reasons_text": [],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      1083.151611328125,
+      330.2303466796875,
+      1135.9571533203125,
+      528.59033203125
+     ]
+    }
+   },
+   {
+    "finding_id": "F26",
+    "tooth_fdi": 35,
+    "kind": "abstained",
+    "label": null,
+    "label_display": "-",
+    "probability": null,
+    "uncertainty": 0.6789320575419686,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F26: दाँत 35 - कोई विश्वसनीय संभावित श्रेणी नहीं (सामान्यीकृत अनिश्चितता 0.68); मैन्युअल समीक्षा आवश्यक। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:a4624272",
+    "region_no": 26,
+    "needs_review": true,
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "review_reasons_text": [
+     "वर्गीकरण में उच्च अनिश्चितता"
+    ],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      1084.3016357421875,
+      543.0682983398438,
+      1186.690185546875,
+      781.5031127929688
+     ]
+    }
+   },
+   {
+    "finding_id": "F27",
+    "tooth_fdi": 25,
+    "kind": "closest_class",
+    "label": "Caries",
+    "label_display": "दंत क्षय (Caries)",
+    "probability": 0.9483287334442139,
+    "uncertainty": 0.1592048972118385,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F27: दाँत 25 - निकटतम प्रशिक्षित श्रेणी 'दंत क्षय (Caries)' (स्कोर 0.95, सामान्यीकृत अनिश्चितता 0.16); यह निष्कर्ष के मौजूद होने का प्रमाण नहीं है। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:f0fe1d43",
+    "region_no": 27,
+    "needs_review": false,
+    "review_reasons": [],
+    "review_reasons_text": [],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      1118.4327392578125,
+      329.4346618652344,
+      1177.7593994140625,
+      527.1610717773438
+     ]
+    }
+   },
+   {
+    "finding_id": "F28",
+    "tooth_fdi": 26,
+    "kind": "closest_class",
+    "label": "Caries",
+    "label_display": "दंत क्षय (Caries)",
+    "probability": 0.842671275138855,
+    "uncertainty": 0.38836768608558386,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F28: दाँत 26 - निकटतम प्रशिक्षित श्रेणी 'दंत क्षय (Caries)' (स्कोर 0.84, सामान्यीकृत अनिश्चितता 0.39); यह निष्कर्ष के मौजूद होने का प्रमाण नहीं है। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:df010b6a",
+    "region_no": 28,
+    "needs_review": false,
+    "review_reasons": [],
+    "review_reasons_text": [],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      1162.287109375,
+      324.59368896484375,
+      1248.0474853515625,
+      514.20263671875
+     ]
+    }
+   },
+   {
+    "finding_id": "F29",
+    "tooth_fdi": 36,
+    "kind": "abstained",
+    "label": null,
+    "label_display": "-",
+    "probability": null,
+    "uncertainty": 0.7463384015594167,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F29: दाँत 36 - कोई विश्वसनीय संभावित श्रेणी नहीं (सामान्यीकृत अनिश्चितता 0.75); मैन्युअल समीक्षा आवश्यक। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:5058529f",
+    "region_no": 29,
+    "needs_review": true,
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "review_reasons_text": [
+     "वर्गीकरण में उच्च अनिश्चितता"
+    ],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      1129.6480712890625,
+      533.5623779296875,
+      1302.922119140625,
+      747.252197265625
+     ]
+    }
+   },
+   {
+    "finding_id": "F30",
+    "tooth_fdi": 27,
+    "kind": "abstained",
+    "label": null,
+    "label_display": "-",
+    "probability": null,
+    "uncertainty": 0.49889162141292775,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F30: दाँत 27 - कोई विश्वसनीय संभावित श्रेणी नहीं (सामान्यीकृत अनिश्चितता 0.50); मैन्युअल समीक्षा आवश्यक। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:5a708d50",
+    "region_no": 30,
+    "needs_review": true,
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "review_reasons_text": [
+     "वर्गीकरण में उच्च अनिश्चितता"
+    ],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      1231.6470947265625,
+      319.5272216796875,
+      1315.0655517578125,
+      499.9864501953125
+     ]
+    }
+   },
+   {
+    "finding_id": "F31",
+    "tooth_fdi": 37,
+    "kind": "abstained",
+    "label": null,
+    "label_display": "-",
+    "probability": null,
+    "uncertainty": 0.6122806815655174,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F31: दाँत 37 - कोई विश्वसनीय संभावित श्रेणी नहीं (सामान्यीकृत अनिश्चितता 0.61); मैन्युअल समीक्षा आवश्यक। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:45ddd223",
+    "region_no": 31,
+    "needs_review": true,
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "review_reasons_text": [
+     "वर्गीकरण में उच्च अनिश्चितता"
+    ],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      1208.97119140625,
+      512.8505859375,
+      1362.94189453125,
+      688.6083984375
+     ]
+    }
+   },
+   {
+    "finding_id": "F32",
+    "tooth_fdi": 28,
+    "kind": "abstained",
+    "label": null,
+    "label_display": "-",
+    "probability": null,
+    "uncertainty": 0.6648283680572732,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F32: दाँत 28 - कोई विश्वसनीय संभावित श्रेणी नहीं (सामान्यीकृत अनिश्चितता 0.66); मैन्युअल समीक्षा आवश्यक। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:32d1dcd7",
+    "region_no": 32,
+    "needs_review": true,
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "review_reasons_text": [
+     "वर्गीकरण में उच्च अनिश्चितता"
+    ],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      1284.1578369140625,
+      305.8436584472656,
+      1376.6973876953125,
+      473.6213684082031
+     ]
+    }
+   },
+   {
+    "finding_id": "F33",
+    "tooth_fdi": 38,
+    "kind": "abstained",
+    "label": null,
+    "label_display": "-",
+    "probability": null,
+    "uncertainty": 0.6331305881675771,
+    "review_status": "unreviewed",
+    "review_status_text": "समीक्षा नहीं हुई",
+    "narrative": "F33: दाँत 38 - कोई विश्वसनीय संभावित श्रेणी नहीं (सामान्यीकृत अनिश्चितता 0.63); मैन्युअल समीक्षा आवश्यक। समीक्षा स्थिति: समीक्षा नहीं हुई।",
+    "region_id": "up_22736273675e:4434cbb1",
+    "region_no": 33,
+    "needs_review": true,
+    "review_reasons": [
+     "high_entropy"
+    ],
+    "review_reasons_text": [
+     "वर्गीकरण में उच्च अनिश्चितता"
+    ],
+    "numbering_status": "assigned",
+    "evidence_region": {
+     "box": [
+      1287.2235107421875,
+      482.9989013671875,
+      1413.65576171875,
+      638.36279296875
+     ]
+    }
+   }
+  ],
+  "limitations": [
+   "निष्कर्ष मॉडल के पूर्वानुमान हैं और गलत हो सकते हैं; अनिश्चितता के मान सही होने की गारंटी नहीं हैं।",
+   "वर्गीकरण मॉडल में कोई स्वस्थ श्रेणी नहीं है और उसे केवल उन दाँतों पर प्रशिक्षित किया गया जिन पर चार निष्कर्षों में से कोई एक अंकित था; उसकी निकटतम श्रेणी का अर्थ यह नहीं है कि दाँत प्रभावित है।",
+   "किसी नैदानिक इतिहास या अन्य जाँच पर विचार नहीं किया गया है।",
+   "जिन दाँत क्रमांकों को 'unassigned' या 'needs_review' चिह्नित किया गया है, उनकी पुष्टि नहीं की गई है।"
+  ],
+  "headings": {
+   "summary": "सारांश",
+   "findings": "निष्कर्ष",
+   "limitations": "सीमाएँ",
+   "models": "मॉडल",
+   "image": "छवि",
+   "report": "रिपोर्ट",
+   "generated": "निर्माण",
+   "reviewed_by": "समीक्षक",
+   "not_reviewed": "समीक्षा नहीं हुई"
+  },
+  "columns": [
+   "आईडी",
+   "दाँत (FDI)",
+   "श्रेणी / क्षेत्र",
+   "स्कोर",
+   "अनिश्चितता",
+   "समीक्षा"
+  ],
+  "unassigned": "क्रमांक नहीं दिया गया",
+  "report_id": "RPT-5969557C37",
+  "image_id": "up_22736273675e",
+  "model_versions": {
+   "detection": "dentex_teeth_detection_v1",
+   "segmentation": "dentex_teeth_segmentation_v1",
+   "numbering": "dentex_fdi_numbering_v1",
+   "classification": "dentex_findings_classification_v1"
+  },
+  "analysis": {
+   "analysis_id": "an-fd975b8c4d",
+   "summary_counts": {
+    "n_regions": 33,
+    "n_numbered": 32,
+    "n_with_mask": 32,
+    "n_review_required": 22,
+    "n_abstained": 21
+   },
+   "image_quality_flags": [],
+   "combined_uncertainty": 0.20100136302343674,
+   "thresholds_provisional": true,
+   "steps": [
+    {
+     "step": "preprocess",
+     "status": "ok"
+    },
+    {
+     "step": "detect",
+     "status": "ok"
+    },
+    {
+     "step": "number",
+     "status": "ok"
+    },
+    {
+     "step": "segment",
+     "status": "ok"
+    },
+    {
+     "step": "match",
+     "status": "ok"
+    },
+    {
+     "step": "classify",
+     "status": "ok"
+    },
+    {
+     "step": "classify_tta",
+     "status": "ok"
+    },
+    {
+     "step": "detect_tta",
+     "status": "ok"
+    },
+    {
+     "step": "segment_tta",
+     "status": "ok"
+    }
+   ]
+  },
+  "headings_review": "मैन्युअल समीक्षा आवश्यक क्षेत्र",
+  "generated_by": "template",
+  "reviewed_by": null,
+  "note": "यह अनुवाद निश्चित वाक्य-साँचों से बनाया गया है; मान, आईडी और मॉडल संस्करण अंग्रेज़ी रिपोर्ट से अक्षरशः लिए गए हैं। शब्दावली की समीक्षा किसी योग्य दंत विशेषज्ञ/हिंदी भाषी समीक्षक से कराएँ; संदर्भ के लिए अंग्रेज़ी रिपोर्ट मान्य है।",
+  "translation_reviewed_by_native_dental_professional": false,
+  "linguistic_review": {
+   "status": "awaiting_linguistic_review",
+   "text": "भाषाई समीक्षा लंबित: इस अनुवाद की किसी हिंदी-भाषी दंत विशेषज्ञ ने समीक्षा नहीं की है; संदर्भ के लिए अंग्रेज़ी रिपोर्ट मान्य है।",
+   "text_en": "Awaiting linguistic review: this translation has not been reviewed by a native-speaking dental professional; the English report is the reference."
+  }
+ },
+ "localization_check": {
+  "passed": true,
+  "problems": [],
+  "lang": "hi"
+ }
+}

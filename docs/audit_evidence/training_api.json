@@ -1,0 +1,150 @@
+{
+ "run_at": "2026-10-14T23:14:58",
+ "note": "SMOKE tests on a separate server with temp dirs; not models",
+ "summary": {
+  "PASS": 20,
+  "FAIL": 0
+ },
+ "results": [
+  {
+   "id": "TAPI-01",
+   "check": "dry run",
+   "expected": "200, valid, would write api_smoke_classification_v1.pth, no job",
+   "actual": "200 api_smoke_classification_v1.pth",
+   "result": "PASS"
+  },
+  {
+   "id": "TAPI-02",
+   "check": "dry run created nothing",
+   "expected": "[] jobs, empty checkpoint folder",
+   "actual": "0 jobs, ckpt files=[]",
+   "result": "PASS"
+  },
+  {
+   "id": "TAPI-03",
+   "check": "real smoke training started through the API",
+   "expected": "200, queued/running",
+   "actual": "200 job-f47e5de7aa running",
+   "result": "PASS"
+  },
+  {
+   "id": "TAPI-04",
+   "check": "second start while the first runs",
+   "expected": "409 job_already_running",
+   "actual": "409 job_already_running",
+   "result": "PASS"
+  },
+  {
+   "id": "TAPI-05",
+   "check": "dry run while a job runs",
+   "expected": "409 as well (the GPU/slot is taken)",
+   "actual": "409",
+   "result": "PASS"
+  },
+  {
+   "id": "TAPI-06",
+   "check": "stop an unknown job",
+   "expected": "404",
+   "actual": "404",
+   "result": "PASS"
+  },
+  {
+   "id": "TAPI-07",
+   "check": "job finishes and reports state",
+   "expected": "succeeded, checkpoint named, progress seen",
+   "actual": "succeeded ckpt=api_smoke_classification_v1.pth states=[('running', 0), ('running', 1), ('succeeded', 1)]",
+   "result": "PASS"
+  },
+  {
+   "id": "TAPI-08",
+   "check": "checkpoint and sidecar written with matching sha256",
+   "expected": "sidecar sha == file sha, config recorded",
+   "actual": "True 57df6ed483ec2f04 vs 57df6ed483ec2f04 epochs=1",
+   "result": "PASS"
+  },
+  {
+   "id": "TAPI-09",
+   "check": "registry lists the new checkpoint as a verified dental model of the right task",
+   "expected": "present, task classification",
+   "actual": "[('api_smoke_classification_v1.pth', 'classification', True)]",
+   "result": "PASS"
+  },
+  {
+   "id": "TAPI-10",
+   "check": "an experiment row was written by the real run",
+   "expected": "1 row",
+   "actual": "1",
+   "result": "PASS"
+  },
+  {
+   "id": "TAPI-11",
+   "check": "same experiment name again never overwrites the earlier checkpoint",
+   "expected": "v1 byte-identical, v2 written",
+   "actual": "succeeded v1_same=True v2=True",
+   "result": "PASS"
+  },
+  {
+   "id": "TAPI-12",
+   "check": "cancellation",
+   "expected": "cancelled, no checkpoint named 'cancelme' written",
+   "actual": "stop=200 status=cancelled files=[]",
+   "result": "PASS"
+  },
+  {
+   "id": "TAPI-13",
+   "check": "approved-annotation training with no approved reviews",
+   "expected": "400 prerequisites_unmet with a clear hint",
+   "actual": "400 prerequisites_unmet No approved annotations to train on. Import, validate and approve annotations on",
+   "result": "PASS"
+  },
+  {
+   "id": "TAPI-14",
+   "check": "incompatible architecture for the task",
+   "expected": "422",
+   "actual": "422",
+   "result": "PASS"
+  },
+  {
+   "id": "TAPI-15",
+   "check": "resume from a checkpoint that does not exist in this registry",
+   "expected": "400",
+   "actual": "400",
+   "result": "PASS"
+  },
+  {
+   "id": "TAPI-16",
+   "check": "resume a classifier checkpoint into a detection job",
+   "expected": "400 incompatible",
+   "actual": "400 'api_smoke_classification_v1.pth' is not a verified detection checkpoint. Resume only from",
+   "result": "PASS"
+  },
+  {
+   "id": "TAPI-17",
+   "check": "start without a token",
+   "expected": "401",
+   "actual": "401",
+   "result": "PASS"
+  },
+  {
+   "id": "TAPI-18",
+   "check": "job list shows no absolute paths or traceback",
+   "expected": "none",
+   "actual": "[]",
+   "result": "PASS"
+  },
+  {
+   "id": "TAPI-19",
+   "check": "statuses recorded for every job",
+   "expected": "succeeded, succeeded, cancelled",
+   "actual": "['succeeded', 'succeeded', 'cancelled']",
+   "result": "PASS"
+  },
+  {
+   "id": "TAPI-20",
+   "check": "real Data\\checkpoints byte-identical and no new files",
+   "expected": "unchanged",
+   "actual": "files 8 -> 8; new Data/runs entries: []",
+   "result": "PASS"
+  }
+ ]
+}

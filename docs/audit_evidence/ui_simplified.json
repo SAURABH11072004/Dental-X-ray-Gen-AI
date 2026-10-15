@@ -1,0 +1,694 @@
+{
+ "run_at": "2026-10-14T17:32:37.634Z",
+ "report_created": "RPT-971B4DE415",
+ "results": [
+  {
+   "id": "S-NAV-1",
+   "area": "navigation",
+   "input": "default sidebar links",
+   "expected": "[\"Home\",\"X-ray Analysis\",\"Reports\",\"Review Findings\",\"About & Limitations\",\"Settings\"]",
+   "actual": "[\"Home\",\"X-ray Analysis\",\"Reports\",\"Review Findings\",\"About & Limitations\",\"Settings\"]",
+   "result": "PASS"
+  },
+  {
+   "id": "S-NAV-2",
+   "area": "navigation",
+   "input": "research links absent by default",
+   "expected": "none of 7 research labels in the sidebar",
+   "actual": "none",
+   "result": "PASS"
+  },
+  {
+   "id": "S-NAV-3",
+   "area": "navigation",
+   "input": "hidden page still reachable by URL: /uncertainty",
+   "expected": "renders with the Research / Developer Tool banner",
+   "actual": "h1='Uncertainty' banner=1",
+   "result": "PASS"
+  },
+  {
+   "id": "S-NAV-3",
+   "area": "navigation",
+   "input": "hidden page still reachable by URL: /active-learning",
+   "expected": "renders with the Research / Developer Tool banner",
+   "actual": "h1='Active Learning' banner=1",
+   "result": "PASS"
+  },
+  {
+   "id": "S-NAV-3",
+   "area": "navigation",
+   "input": "hidden page still reachable by URL: /annotations",
+   "expected": "renders with the Research / Developer Tool banner",
+   "actual": "h1='Annotation Studio' banner=1",
+   "result": "PASS"
+  },
+  {
+   "id": "S-NAV-3",
+   "area": "navigation",
+   "input": "hidden page still reachable by URL: /training",
+   "expected": "renders with the Research / Developer Tool banner",
+   "actual": "h1='Model Training' banner=1",
+   "result": "PASS"
+  },
+  {
+   "id": "S-NAV-3",
+   "area": "navigation",
+   "input": "hidden page still reachable by URL: /experiments",
+   "expected": "renders with the Research / Developer Tool banner",
+   "actual": "h1='Experiment Comparison' banner=1",
+   "result": "PASS"
+  },
+  {
+   "id": "S-NAV-3",
+   "area": "navigation",
+   "input": "hidden page still reachable by URL: /models",
+   "expected": "renders with the Research / Developer Tool banner",
+   "actual": "h1='Model Registry' banner=1",
+   "result": "PASS"
+  },
+  {
+   "id": "S-NAV-3",
+   "area": "navigation",
+   "input": "hidden page still reachable by URL: /segmentation",
+   "expected": "renders with the Research / Developer Tool banner",
+   "actual": "h1='Segmentation' banner=1",
+   "result": "PASS"
+  },
+  {
+   "id": "S-NAV-4",
+   "area": "navigation",
+   "input": "Settings -> Show Research / Developer Tools",
+   "expected": "7 research links appear under a clearly labelled heading",
+   "actual": "RESEARCH / DEVELOPER TOOLS Tooth Segmentation Uncertainty Active Learning Annotations Model Training Experiments Model Registry",
+   "result": "PASS"
+  },
+  {
+   "id": "S-NAV-5",
+   "area": "navigation",
+   "input": "preference persists after reload",
+   "expected": "research nav still visible",
+   "actual": "count=1",
+   "result": "PASS"
+  },
+  {
+   "id": "S-NAV-6",
+   "area": "navigation",
+   "input": "switch it off again",
+   "expected": "hidden",
+   "actual": "count=0",
+   "result": "PASS"
+  },
+  {
+   "id": "S-HOME-1",
+   "area": "home",
+   "input": "Home shows upload CTA, readiness, recent analyses, latest report, pending reviews, models",
+   "expected": "all present; no charts / experiments / dataset cards",
+   "actual": "cta=1 readiness=1",
+   "result": "PASS"
+  },
+  {
+   "id": "S-HOME-2",
+   "area": "home",
+   "input": "model availability equals the backend registry",
+   "expected": "[[\"detection\",true],[\"segmentation\",true],[\"classification\",true],[\"numbering\",true]]",
+   "actual": "[[\"detection\",true],[\"segmentation\",true],[\"classification\",true],[\"numbering\",true]]",
+   "result": "PASS"
+  },
+  {
+   "id": "S-HOME-3",
+   "area": "home",
+   "input": "no architecture names or checkpoint paths on Home",
+   "expected": "none",
+   "actual": "none",
+   "result": "PASS"
+  },
+  {
+   "id": "S-HOME-4",
+   "area": "home",
+   "input": "Upload X-ray button",
+   "expected": "goes to /analysis",
+   "actual": "http://localhost:5173/analysis",
+   "result": "PASS"
+  },
+  {
+   "id": "S-AN-1",
+   "area": "analysis",
+   "input": "upload shows dimensions, file size and quality",
+   "expected": "2794 x 1316 px, file size in MB, quality line",
+   "actual": "Image val_12.png Dimensions 2794 × 1316 px File size 2.8 MB Image quality no warnings",
+   "result": "PASS"
+  },
+  {
+   "id": "S-AN-2",
+   "area": "analysis",
+   "input": "primary button label",
+   "expected": "'Analyze X-ray'",
+   "actual": "Analyze X-ray",
+   "result": "PASS"
+  },
+  {
+   "id": "S-AN-3",
+   "area": "analysis",
+   "input": "one click runs the whole pipeline",
+   "expected": "one POST /api/analyze/full, 200, steps ok",
+   "actual": "200 calls=1 regions=32",
+   "result": "PASS"
+  },
+  {
+   "id": "S-AN-4",
+   "area": "labels",
+   "input": "overlay label text vs API numbering status",
+   "expected": "assigned -> '14', unconfirmed -> '14?', none -> 'R7'; never a bare region index as a tooth number",
+   "actual": "shown=27 omitted=5 tooth=26 proposed=1 regionOnly=5 mismatches=[]",
+   "result": "PASS"
+  },
+  {
+   "id": "S-AN-5",
+   "area": "labels",
+   "input": "rendered labels overlap each other",
+   "expected": "0 overlapping label pairs",
+   "actual": "labels=27 overlapping pairs=0",
+   "result": "PASS"
+  },
+  {
+   "id": "S-AN-6",
+   "area": "labels",
+   "input": "legend explains the labels",
+   "expected": "legend present with tooth / proposed / region / selected",
+   "actual": "14 tooth number from the numbering model 14? proposed number, needs checking R7 region without a tooth number (R = region, 7 = detection order) selected region",
+   "result": "PASS"
+  },
+  {
+   "id": "S-AN-7",
+   "area": "selection",
+   "input": "click a box -> same region highlighted in the list and the inspector",
+   "expected": "row, inspector title and box all refer to region 4",
+   "actual": "row='47' title='Region 4 (tooth 47)'",
+   "result": "PASS"
+  },
+  {
+   "id": "S-AN-8",
+   "area": "selection",
+   "input": "click a list row -> the box turns amber and the inspector follows",
+   "expected": "region 8, stroke #A75B04 (selected amber)",
+   "actual": "title='Region 8 (tooth 45)' stroke=#A75B04",
+   "result": "PASS"
+  },
+  {
+   "id": "S-AN-9",
+   "area": "inspector",
+   "input": "inspector shows tooth number, raw scores, candidate-class wording, uncertainty, review links",
+   "expected": "all parts present",
+   "actual": "all present",
+   "result": "PASS"
+  },
+  {
+   "id": "S-AN-10",
+   "area": "inspector",
+   "input": "tooth number in the inspector equals the API (or 'Unassigned')",
+   "expected": "45",
+   "actual": "45",
+   "result": "PASS"
+  },
+  {
+   "id": "S-AN-11",
+   "area": "wording",
+   "input": "no diagnosis wording: classes are 'candidate' / 'closest trained class'",
+   "expected": "no 'diagnos(ed|is)' claims, no 'healthy' result, 'not evidence' disclaimer present",
+   "actual": "disease-claim=false healthy-result=false",
+   "result": "PASS"
+  },
+  {
+   "id": "S-AN-12",
+   "area": "uncertainty",
+   "input": "uncertainty inside X-ray Analysis: explanation, 4 signals with measured reliability, review recommendation",
+   "expected": "short explanation + 4 sigval lines (mask/detection 'weak') + 'recommended for human review'",
+   "actual": "Uncertainty indicates model doubt, not a confirmed error. Th | sigval=4 weak=2 | rec=true",
+   "result": "PASS"
+  },
+  {
+   "id": "S-AN-TBL",
+   "area": "analysis",
+   "input": "findings table columns and help note",
+   "expected": "Region, Tooth number, Candidate class, Score, Review status, Action + an explanatory note",
+   "actual": "[\"Region\",\"Tooth number\",\"Candidate class\",\"Score\",\"Review status\",\"Action\"] help=1",
+   "result": "PASS"
+  },
+  {
+   "id": "S-AN-UNC",
+   "area": "uncertainty",
+   "input": "metric definitions and AUROC values sit in a collapsed 'How uncertainty is calculated'",
+   "expected": "details closed by default, definitions present inside",
+   "actual": "{\"open\":false,\"len\":1580}",
+   "result": "PASS"
+  },
+  {
+   "id": "S-AN-NODUP",
+   "area": "analysis",
+   "input": "no developer-style duplicate actions in the end-user workspace",
+   "expected": "0",
+   "actual": "0",
+   "result": "PASS"
+  },
+  {
+   "id": "S-AN-13",
+   "area": "analysis",
+   "input": "returning to the page keeps the valid analysis; no duplicate inference",
+   "expected": "'Analysis ready', analyze calls still 1",
+   "actual": "ready=1 calls=1",
+   "result": "PASS"
+  },
+  {
+   "id": "S-AN-14",
+   "area": "heatmap",
+   "input": "attention heatmap for a region with a candidate class",
+   "expected": "200 and heatmap image drawn",
+   "actual": "200 images=31",
+   "result": "PASS"
+  },
+  {
+   "id": "S-MOB-1",
+   "area": "mobile",
+   "input": "phone (390px) after an analysis: viewer position",
+   "expected": "viewer card starts within the first screen (top < 600px) and is at least 340px wide; upload section collapsed once an image is chosen",
+   "actual": "{\"viewerTop\":482,\"viewerWidth\":366,\"zoom\":[36,36,36,36],\"outside\":0,\"sw\":390,\"iw\":390,\"uploaderOpen\":false}",
+   "result": "PASS"
+  },
+  {
+   "id": "S-MOB-2",
+   "area": "mobile",
+   "input": "touch targets and horizontal overflow at 390px",
+   "expected": "zoom buttons >= 36px; no control outside the viewport; no horizontal page scroll",
+   "actual": "zoom=36,36,36,36 outside=0 scrollWidth=390",
+   "result": "PASS"
+  },
+  {
+   "id": "S-MOB-3",
+   "area": "mobile",
+   "input": "tap a region box on the phone",
+   "expected": "region details panel scrolls into view and names the region",
+   "actual": "{\"top\":76,\"h\":1237,\"vh\":844,\"title\":\"Region 6 (no tooth number)\"}",
+   "result": "PASS"
+  },
+  {
+   "id": "S-STALE-1",
+   "area": "analysis",
+   "input": "choose a different image after an analysis",
+   "expected": "no boxes, no region list, no 'Analysis ready', 'Analyze X-ray' offered again, and NO automatic inference",
+   "actual": "{\"boxes\":0,\"table\":0,\"analyze\":1,\"ready\":0,\"calls\":0}",
+   "result": "PASS"
+  },
+  {
+   "id": "S-STALE-2",
+   "area": "analysis",
+   "input": "go back to the first image",
+   "expected": "its analysis is not shown from the other image (stale data never reused for a different id)",
+   "actual": "boxes=0",
+   "result": "PASS"
+  },
+  {
+   "id": "S-ERR-1",
+   "area": "errors",
+   "input": "analysis request answered 503 (model missing; simulated at the network layer)",
+   "expected": "clear 'required model is not available' message with the backend hint; no crash; no invented result",
+   "actual": "A required model is not available No dental detection model is available. Place a trained detection checkpoint.",
+   "result": "PASS"
+  },
+  {
+   "id": "S-ERR-2",
+   "area": "errors",
+   "input": "analysis request answered 500 (simulated)",
+   "expected": "error text shown, button usable again",
+   "actual": "true enabled=true",
+   "result": "PASS"
+  },
+  {
+   "id": "S-STALE-3",
+   "area": "analysis",
+   "input": "re-run after the simulated errors",
+   "expected": "exactly one real request, results back",
+   "actual": "calls=1",
+   "result": "PASS"
+  },
+  {
+   "id": "S-REP-1",
+   "area": "reports",
+   "input": "Generate report from the analysis",
+   "expected": "200, report opens in English with status 'Awaiting review', ONE neutral safety note, limitations",
+   "actual": "200 RPT-971B4DE415",
+   "result": "PASS"
+  },
+  {
+   "id": "S-REP-CLEAN",
+   "area": "reports",
+   "input": "report body is clean: no big 'UNCONFIRMED RESEARCH DRAFT' banner, no 'Generated by: template' line, one safety note, technical details collapsed",
+   "expected": "banner text absent from the visible page, 1 safety note, details closed, sections in the required order",
+   "actual": "banner=false generatedBy=false notes=1 techOpen=false h3=[\"Summary\",\"Findings\",\"Regions requiring manual review\",\"Limitations · uncertainty\",\"Review\"]",
+   "result": "PASS"
+  },
+  {
+   "id": "S-REP-TECH",
+   "area": "reports",
+   "input": "technical details (ids, model versions, generator) are kept, inside the collapsed section",
+   "expected": "contains report id, model versions, 'template'",
+   "actual": "Technical detailsReport idRPT-971B4DE415Image idup_6c461ec61f59Modelsdetection: dentex_teeth_detection_v1 · segmentation: dentex_teeth_segmentation_v1 · numberi",
+   "result": "PASS"
+  },
+  {
+   "id": "S-REP-LIST",
+   "area": "reports",
+   "input": "report list rows are compact: id, image name, date, status, Open; no draft banner / generator / disclaimer text",
+   "expected": "row has id, an image name, a date, 'Awaiting review', an Open button, and none of the removed strings",
+   "actual": "{\"t\":\"RPT-971B4DE415 Awaiting review val_12.png 14/10/2026, 11:00:31 pm EN · HI · MR Open (viewing)\",\"open\":true}",
+   "result": "PASS"
+  },
+  {
+   "id": "S-REP-2",
+   "area": "reports",
+   "input": "saved reports list shows the new report",
+   "expected": "listed",
+   "actual": "true",
+   "result": "PASS"
+  },
+  {
+   "id": "S-REP-3",
+   "area": "reports",
+   "input": "language options are exactly the supported ones",
+   "expected": "English, हिन्दी, मराठी",
+   "actual": "[\"English\",\"हिन्दी — translation awaiting review\",\"मराठी — translation awaiting review\"]",
+   "result": "PASS"
+  },
+  {
+   "id": "S-REP-4",
+   "area": "reports",
+   "input": "EN -> HI -> MR -> EN: structured ids/versions kept, no inference, review label only on hi/mr",
+   "expected": "ids present in all, 0 inference requests, ling notice hi=1 mr=1 en=0",
+   "actual": "ids=66 missing(hi)=0 missing(mr)=0 infer=0 ling hi/mr/en=1/1/0",
+   "result": "PASS"
+  },
+  {
+   "id": "S-REP-5",
+   "area": "exports",
+   "input": "every export control shown works; no PDF / edit control is shown",
+   "expected": "HTML, TXT, JSON each 200 non-empty; 0 PDF/edit controls",
+   "actual": "HTML:200:28773 TXT:200:21603 JSON:200:108629 pdf/edit=0",
+   "result": "PASS"
+  },
+  {
+   "id": "S-REP-6",
+   "area": "exports",
+   "input": "browser download of the Marathi HTML export",
+   "expected": "contains report id, Marathi text and the review-pending notice",
+   "actual": "download=true ok=true",
+   "result": "PASS"
+  },
+  {
+   "id": "S-REP-7",
+   "area": "reports",
+   "input": "'Mark reviewed' needs a reviewer name",
+   "expected": "disabled until a name is typed",
+   "actual": "disabled=true",
+   "result": "PASS"
+  },
+  {
+   "id": "S-REP-8",
+   "area": "reports",
+   "input": "review action persists",
+   "expected": "status reviewed_research_draft, reviewer name stored, still not 'validated'",
+   "actual": "reviewed_research_draft by UI Test Reviewer",
+   "result": "PASS"
+  },
+  {
+   "id": "S-REV-1",
+   "area": "review",
+   "input": "Review Findings page lists regions needing review and explains why",
+   "expected": "queue shown with reasons; reviewer names are not verified",
+   "actual": "Review Findings Regions that need a person to look at them: uncertain candidate classes, tooth numbers that are unassigned or unconfirmed, and predictions that changed when the image was flipped. Pick",
+   "result": "PASS"
+  },
+  {
+   "id": "S-REV-2",
+   "area": "review",
+   "input": "'Review this region' link (href captured from the inspector) opens that image's review task",
+   "expected": "/review?image=<id> with the image's regions drawn in the review panel",
+   "actual": "/review?image=up_6c461ec61f59 boxes=32",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-desktop",
+   "area": "responsive",
+   "input": "/ at 1440px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=1440 innerWidth=1440 sidebar=true selector=false",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-desktop",
+   "area": "responsive",
+   "input": "/analysis at 1440px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=1440 innerWidth=1440 sidebar=true selector=false",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-desktop",
+   "area": "responsive",
+   "input": "/reports at 1440px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=1440 innerWidth=1440 sidebar=true selector=false",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-desktop",
+   "area": "responsive",
+   "input": "/review at 1440px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=1440 innerWidth=1440 sidebar=true selector=false",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-desktop",
+   "area": "responsive",
+   "input": "/about at 1440px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=1440 innerWidth=1440 sidebar=true selector=false",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-desktop",
+   "area": "responsive",
+   "input": "/settings at 1440px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=1440 innerWidth=1440 sidebar=true selector=false",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-tablet",
+   "area": "responsive",
+   "input": "/ at 1024px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=1024 innerWidth=1024 sidebar=true selector=false",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-tablet",
+   "area": "responsive",
+   "input": "/analysis at 1024px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=1024 innerWidth=1024 sidebar=true selector=false",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-tablet",
+   "area": "responsive",
+   "input": "/reports at 1024px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=1024 innerWidth=1024 sidebar=true selector=false",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-tablet",
+   "area": "responsive",
+   "input": "/review at 1024px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=1024 innerWidth=1024 sidebar=true selector=false",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-tablet",
+   "area": "responsive",
+   "input": "/about at 1024px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=1024 innerWidth=1024 sidebar=true selector=false",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-tablet",
+   "area": "responsive",
+   "input": "/settings at 1024px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=1024 innerWidth=1024 sidebar=true selector=false",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-view-tablet",
+   "area": "responsive",
+   "input": "viewer card size at 1024px",
+   "expected": "viewer at least 300px wide",
+   "actual": "[420,566]",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-tablet-portrait",
+   "area": "responsive",
+   "input": "/ at 768px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=768 innerWidth=768 sidebar=false selector=true",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-tablet-portrait",
+   "area": "responsive",
+   "input": "/analysis at 768px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=768 innerWidth=768 sidebar=false selector=true",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-tablet-portrait",
+   "area": "responsive",
+   "input": "/reports at 768px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=768 innerWidth=768 sidebar=false selector=true",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-tablet-portrait",
+   "area": "responsive",
+   "input": "/review at 768px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=768 innerWidth=768 sidebar=false selector=true",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-tablet-portrait",
+   "area": "responsive",
+   "input": "/about at 768px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=768 innerWidth=768 sidebar=false selector=true",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-tablet-portrait",
+   "area": "responsive",
+   "input": "/settings at 768px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=768 innerWidth=768 sidebar=false selector=true",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-view-tablet-portrait",
+   "area": "responsive",
+   "input": "viewer card size at 768px",
+   "expected": "viewer at least 300px wide",
+   "actual": "[720,566]",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-phone",
+   "area": "responsive",
+   "input": "/ at 390px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=390 innerWidth=390 sidebar=false selector=true",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-phone",
+   "area": "responsive",
+   "input": "/analysis at 390px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=390 innerWidth=390 sidebar=false selector=true",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-phone",
+   "area": "responsive",
+   "input": "/reports at 390px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=390 innerWidth=390 sidebar=false selector=true",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-phone",
+   "area": "responsive",
+   "input": "/review at 390px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=390 innerWidth=390 sidebar=false selector=true",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-phone",
+   "area": "responsive",
+   "input": "/about at 390px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=390 innerWidth=390 sidebar=false selector=true",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-phone",
+   "area": "responsive",
+   "input": "/settings at 390px",
+   "expected": "no horizontal page scroll; sidebar at >=1024, page selector below",
+   "actual": "scrollWidth=390 innerWidth=390 sidebar=false selector=true",
+   "result": "PASS"
+  },
+  {
+   "id": "S-RSP-view-phone",
+   "area": "responsive",
+   "input": "viewer card size at 390px",
+   "expected": "viewer at least 300px wide",
+   "actual": "[366,566]",
+   "result": "PASS"
+  },
+  {
+   "id": "S-A11Y-1",
+   "area": "accessibility",
+   "input": "Tab reaches the sidebar links and shows a visible focus ring",
+   "expected": "ring present",
+   "actual": "{\"tag\":\"A\",\"text\":\"Home\",\"ring\":true}",
+   "result": "PASS"
+  },
+  {
+   "id": "S-A11Y-2",
+   "area": "accessibility",
+   "input": "interactive controls on X-ray Analysis have an accessible name",
+   "expected": "0 unlabeled",
+   "actual": "unlabeled=0",
+   "result": "PASS"
+  },
+  {
+   "id": "S-A11Y-3",
+   "area": "accessibility",
+   "input": "WCAG AA colour contrast of all visible text (contrast.mjs, 15 page states incl. research pages)",
+   "expected": "0 failing text/background combinations; measurement fresh (< 45 min)",
+   "actual": "failing=0 end-user=0 age=4min",
+   "result": "PASS"
+  },
+  {
+   "id": "S-CON-1",
+   "area": "console",
+   "input": "browser console errors during the whole run",
+   "expected": "none except intended 4xx",
+   "actual": "[\"Failed to load resource: the server responded with a status of 503 (Service Unavailable)\",\"Failed to load resource: the server responded with a status of 500 (Internal Server Error)\"]",
+   "result": "PASS"
+  },
+  {
+   "id": "S-CON-2",
+   "area": "console",
+   "input": "HTTP >= 400 responses during the run (excluding the two simulated failures of S-ERR-1/2)",
+   "expected": "none",
+   "actual": "[]",
+   "result": "PASS"
+  }
+ ]
+}

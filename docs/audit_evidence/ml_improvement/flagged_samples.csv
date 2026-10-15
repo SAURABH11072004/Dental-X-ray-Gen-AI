@@ -1,0 +1,5 @@
+task,image_id,annotation_id,issue,detail
+classification,qed_train_280,1635,conflicting_label_same_box,Periapical Lesion vs Deep Caries
+classification,qed_train_377,2337,duplicate_annotation,"(1282, 774, 1394, 1066)"
+classification,qed_train_481,2782,conflicting_label_same_box,Caries vs Deep Caries
+segmentation,qe_train_255,3834,mask_bbox_mismatch,iou=0.68

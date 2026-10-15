@@ -1,0 +1,412 @@
+{
+ "run_at": "2026-10-14T17:39:40.545Z",
+ "base": "http://localhost:5173",
+ "controls": {
+  "/": {
+   "buttons": 1,
+   "links": 3,
+   "fields": 0
+  },
+  "/analysis": {
+   "buttons": 6,
+   "links": 0,
+   "fields": 6
+  },
+  "/segmentation": {
+   "buttons": 7,
+   "links": 1,
+   "fields": 3
+  },
+  "/uncertainty": {
+   "buttons": 1,
+   "links": 1,
+   "fields": 4
+  },
+  "/active-learning": {
+   "buttons": 9,
+   "links": 1,
+   "fields": 1
+  },
+  "/annotations": {
+   "buttons": 6,
+   "links": 4,
+   "fields": 3
+  },
+  "/reports": {
+   "buttons": 2,
+   "links": 1,
+   "fields": 0
+  },
+  "/review": {
+   "buttons": 1,
+   "links": 2,
+   "fields": 0
+  },
+  "/training": {
+   "buttons": 2,
+   "links": 1,
+   "fields": 10
+  },
+  "/experiments": {
+   "buttons": 0,
+   "links": 3,
+   "fields": 51
+  },
+  "/models": {
+   "buttons": 12,
+   "links": 1,
+   "fields": 0
+  },
+  "/settings": {
+   "buttons": 2,
+   "links": 0,
+   "fields": 5
+  },
+  "/about": {
+   "buttons": 0,
+   "links": 0,
+   "fields": 0
+  },
+  "/no-such-page": {
+   "buttons": 0,
+   "links": 0,
+   "fields": 0
+  }
+ },
+ "uploaded_image": "up_6c461ec61f59",
+ "results": [
+  {
+   "id": "UI-R-Home/das",
+   "area": "routes",
+   "input": "open /",
+   "expected": "page renders content, no console error, no HTTP>=400, not stuck on loading",
+   "actual": "h1='Dental X-ray review' text=736 chars, controls=1b/3a/0f, consoleErrors=0, http>=400=[]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-R-X-ray an",
+   "area": "routes",
+   "input": "open /analysis",
+   "expected": "page renders content, no console error, no HTTP>=400, not stuck on loading",
+   "actual": "h1='X-ray Analysis' text=3364 chars, controls=6b/0a/6f, consoleErrors=0, http>=400=[]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-R-Tooth se",
+   "area": "routes",
+   "input": "open /segmentation",
+   "expected": "page renders content, no console error, no HTTP>=400, not stuck on loading",
+   "actual": "h1='Segmentation' text=3685 chars, controls=7b/1a/3f, consoleErrors=0, http>=400=[]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-R-Uncertai",
+   "area": "routes",
+   "input": "open /uncertainty",
+   "expected": "page renders content, no console error, no HTTP>=400, not stuck on loading",
+   "actual": "h1='Uncertainty' text=5409 chars, controls=1b/1a/4f, consoleErrors=0, http>=400=[]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-R-Active l",
+   "area": "routes",
+   "input": "open /active-learning",
+   "expected": "page renders content, no console error, no HTTP>=400, not stuck on loading",
+   "actual": "h1='Active Learning' text=863 chars, controls=9b/1a/1f, consoleErrors=0, http>=400=[]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-R-Annotati",
+   "area": "routes",
+   "input": "open /annotations",
+   "expected": "page renders content, no console error, no HTTP>=400, not stuck on loading",
+   "actual": "h1='Annotation Studio' text=1737 chars, controls=6b/4a/3f, consoleErrors=0, http>=400=[]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-R-Reports",
+   "area": "routes",
+   "input": "open /reports",
+   "expected": "page renders content, no console error, no HTTP>=400, not stuck on loading",
+   "actual": "h1='Reports' text=442 chars, controls=2b/1a/0f, consoleErrors=0, http>=400=[]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-R-Review F",
+   "area": "routes",
+   "input": "open /review",
+   "expected": "page renders content, no console error, no HTTP>=400, not stuck on loading",
+   "actual": "h1='Review Findings' text=1107 chars, controls=1b/2a/0f, consoleErrors=0, http>=400=[]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-R-Training",
+   "area": "routes",
+   "input": "open /training",
+   "expected": "page renders content, no console error, no HTTP>=400, not stuck on loading",
+   "actual": "h1='Model Training' text=15232 chars, controls=2b/1a/10f, consoleErrors=0, http>=400=[]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-R-Experime",
+   "area": "routes",
+   "input": "open /experiments",
+   "expected": "page renders content, no console error, no HTTP>=400, not stuck on loading",
+   "actual": "h1='Experiment Comparison' text=4529 chars, controls=0b/3a/51f, consoleErrors=0, http>=400=[]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-R-Model re",
+   "area": "routes",
+   "input": "open /models",
+   "expected": "page renders content, no console error, no HTTP>=400, not stuck on loading",
+   "actual": "h1='Model Registry' text=1176 chars, controls=12b/1a/0f, consoleErrors=0, http>=400=[]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-R-Settings",
+   "area": "routes",
+   "input": "open /settings",
+   "expected": "page renders content, no console error, no HTTP>=400, not stuck on loading",
+   "actual": "h1='Settings' text=2185 chars, controls=2b/0a/5f, consoleErrors=0, http>=400=[]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-R-About",
+   "area": "routes",
+   "input": "open /about",
+   "expected": "page renders content, no console error, no HTTP>=400, not stuck on loading",
+   "actual": "h1='About & Limitations' text=1886 chars, controls=0b/0a/0f, consoleErrors=0, http>=400=[]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-R-Unknown ",
+   "area": "routes",
+   "input": "open /no-such-page",
+   "expected": "page renders content, no console error, no HTTP>=400, not stuck on loading",
+   "actual": "h1='' text=15 chars, controls=0b/0a/0f, consoleErrors=0, http>=400=[]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-B-000",
+   "area": "controls",
+   "input": "state-changing API calls attempted by the crawl (all aborted before reaching the server)",
+   "expected": "the crawl itself must not change data",
+   "actual": "[\"POST /api/analyze/full\",\"POST /api/segment\",\"POST /api/active-learning/score-pool?n=30&seed=42\",\"POST /api/training/start\",\"POST /api/models/select\",\"POST /api/models/dentex_fdi_numbering_v1.pth/evaluate\",\"POST /api/models/select\",\"POST /api/models/dentex_findings_classification_v1.pth/evaluate\",\"POST /api/models/select\",\"POST /api/models/dentex_teeth_detection_v1.pth/evaluate\",\"POST /api/models",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-B-001",
+   "area": "controls",
+   "input": "click every enabled button on 12 pages except Start training/Stop/Delete/Promote (non-GET API calls aborted)",
+   "expected": "each click changes DOM, URL, or triggers an API call (never silently nothing)",
+   "actual": "clicked=36 no-effect=[] skipped=13",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-C-001",
+   "area": "controls",
+   "input": "disabled controls without a title/explanation",
+   "expected": "every disabled control states a reason (title) or is an obvious precondition",
+   "actual": "[]",
+   "result": "PASS",
+   "note": "heuristic: precondition-style buttons (Run/Analyze/Generate…) are accepted when the missing input is visible"
+  },
+  {
+   "id": "UI-D-001",
+   "area": "upload",
+   "input": "browser upload of a corrupt PNG",
+   "expected": "visible error text, no crash, no analysis started",
+   "actual": "corrupt or unreadable: cannot identify image file <_io",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-D-002",
+   "area": "upload",
+   "input": "browser upload of a .txt file",
+   "expected": "visible 'unsupported' error",
+   "actual": "PNG or JPEG · up to 25 MB Browse files Unsupported file type",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-E-001",
+   "area": "upload",
+   "input": "browser upload of a real validation radiograph (val_12.png)",
+   "expected": "200, image registered, shown selected",
+   "actual": "200 id=up_6c461ec61f59 2794x1316 dup=true",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-E-002",
+   "area": "inference",
+   "input": "click 'Analyze Image (full pipeline)'",
+   "expected": "real POST /api/analyze/full (200) and steps rendered",
+   "actual": "200 regions=32 secs=1.92",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-E-004",
+   "area": "alignment",
+   "input": "SVG overlay vs API boxes and image natural size",
+   "expected": "viewBox == natural size == API image size; every drawn rect == API box (original pixel coordinates); svg exactly covers <img>",
+   "actual": "32 boxes exact, viewBox 0 0 2794 1316",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-E-007",
+   "area": "reports",
+   "input": "Generate Draft Report from the analysis",
+   "expected": "report created from analysis_id, shown in English with banner",
+   "actual": "200 id=RPT-67BC8DD413 analysis=(n/a) status=true",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-E-008",
+   "area": "i18n",
+   "input": "switch the displayed report EN -> HI -> MR -> EN",
+   "expected": "ids/versions preserved in every language, Devanagari present, no inference request",
+   "actual": "ids=66 missing={\"hi\":[],\"mr\":[]} devanagari(hi)=true devanagari(mr)=true inference-requests=0",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-N-001",
+   "area": "i18n",
+   "input": "Marathi report on screen: prominent 'awaiting linguistic review' notice (local + English text)",
+   "expected": "visible near the top, includes the English sentence",
+   "actual": "भाषिक पुनरावलोकन प्रलंबित: या भाषांतराचे मराठी भाषिक दंत व्यावसायिकाने पुनरावलोकन केलेले नाही; संदर्भासाठी इंग्रजी अहवाल ग्राह्य आहे. Awaiting linguistic review: this translation has not been reviewed",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-N-002",
+   "area": "i18n",
+   "input": "English report on screen has no translation-review notice",
+   "expected": "absent",
+   "actual": "count=0",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-E-009",
+   "area": "export",
+   "input": "click HTML export while language=mr",
+   "expected": "file downloads; contains Marathi text and the report id",
+   "actual": "RPT-67BC8DD413_mr.html 28773 B marathi=true id=true",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-E-010",
+   "area": "persistence",
+   "input": "reload /reports and look for the new report in the list",
+   "expected": "report is listed with its id",
+   "actual": "listed=true",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-E-010b",
+   "area": "reports",
+   "input": "click a report in the list while none is selected (regression for the null.report crash)",
+   "expected": "report renders; no page error",
+   "actual": "rendered=true pageErrors=0",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-E-011",
+   "area": "persistence",
+   "input": "reopen /reports?id=<id> in a fresh navigation",
+   "expected": "report renders from the database",
+   "actual": "rendered",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-E-012",
+   "area": "reports",
+   "input": "'Mark reviewed' with an empty reviewer name",
+   "expected": "button disabled",
+   "actual": "disabled=true",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-N-003",
+   "area": "training",
+   "input": "'Validate only' on the Training page",
+   "expected": "200, message names the checkpoint it would write, no job created",
+   "actual": "enabled=true 200 Configuration is valid and no other job is running. A real run would write exp_001_classification_v1.pth. Nothing was started or written. jobs 13->13",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-N-004",
+   "area": "training",
+   "input": "TensorBoard state on the Training page is truthful",
+   "expected": "says it is not installed / no event files (no dead link)",
+   "actual": "TensorBoard is not installed (pip install tensorboard); training runs write no event files until it is.",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-N-005",
+   "area": "uncertainty",
+   "input": "each signal shows what was measured about it",
+   "expected": "4 lines; mask instability labelled weak/very weak",
+   "actual": "[\"Measured reliability: moderate (AUROC 0.77 against classifier errors on ground-truth crops, test split)\",\"Measured reliability: moderate (AUROC 0.75 against classifier errors on ground-truth crops, test split)\",\"Measured reliability: very weak (AUROC 0.59 against mask IoU < 0.8 against the DENTEX polygon, val split)\",\"Measured",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-X-001",
+   "area": "console",
+   "input": "all console errors across the whole browser audit",
+   "expected": "none unexpected (intended 4xx from deliberate invalid uploads are logged by Chromium as errors)",
+   "actual": "[\"Failed to load resource: net::ERR_FAILED\",\"Failed to load resource: net::ERR_FAILED\",\"Failed to load resource: net::ERR_FAILED\",\"Failed to load resource: net::ERR_FAILED\",\"Failed to load resource: net::ERR_FAILED\",\"Failed to load resource: net::ERR_FAILED\"]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-X-002",
+   "area": "network",
+   "input": "HTTP >= 400 responses during the audit",
+   "expected": "only from the deliberate invalid uploads",
+   "actual": "[\"POST 422 /api/images/upload\"]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "UI-X-003",
+   "area": "network",
+   "input": "failed requests other than the crawl's deliberately aborted POSTs",
+   "expected": "none",
+   "actual": "[]",
+   "result": "PASS",
+   "note": ""
+  }
+ ]
+}

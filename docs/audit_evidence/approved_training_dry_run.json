@@ -1,0 +1,72 @@
+{
+ "run_at": "2026-10-14T23:14:34",
+ "summary": {
+  "PASS": 9,
+  "FAIL": 0
+ },
+ "results": [
+  {
+   "id": "APPR-01",
+   "check": "dry run with no approved reviews",
+   "expected": "400 prerequisites_unmet (no approved annotations)",
+   "actual": "400 prerequisites_unmet",
+   "result": "PASS"
+  },
+  {
+   "id": "APPR-02",
+   "check": "real analysis of an unlabelled pool image qed_train_435 yields a candidate region to review",
+   "expected": "a region with a candidate class",
+   "actual": "True",
+   "result": "PASS"
+  },
+  {
+   "id": "APPR-03",
+   "check": "review saved; usable_for_training for a pool image",
+   "expected": "usable_for_training true",
+   "actual": "200 usable=True split=unassigned",
+   "result": "PASS"
+  },
+  {
+   "id": "APPR-04",
+   "check": "approval by the same person is refused",
+   "expected": "400",
+   "actual": "400",
+   "result": "PASS"
+  },
+  {
+   "id": "APPR-05",
+   "check": "approval by a second named person",
+   "expected": "200 approved",
+   "actual": "200 ['approved']",
+   "result": "PASS"
+  },
+  {
+   "id": "APPR-06",
+   "check": "review of a validation-split film q_train_673",
+   "expected": "usable_for_training false",
+   "actual": "200 usable=False split=val",
+   "result": "PASS"
+  },
+  {
+   "id": "APPR-07",
+   "check": "export contains the pool review and not the validation-split one",
+   "expected": "[qed_train_435] and excluded >= 1",
+   "actual": "records=['qed_train_435'] excluded=1",
+   "result": "PASS"
+  },
+  {
+   "id": "APPR-08",
+   "check": "dry run with one eligible approved review",
+   "expected": "200, valid, nothing started",
+   "actual": "200 {'dry_run': True, 'valid': True, 'config': {'task': 'classification', 'architecture': 'resnet18', 'experiment_",
+   "result": "PASS"
+  },
+  {
+   "id": "APPR-09",
+   "check": "no job was created by the dry run",
+   "expected": "no queued/running job",
+   "actual": "['failed', 'failed', 'failed', 'failed', 'failed']",
+   "result": "PASS"
+  }
+ ]
+}

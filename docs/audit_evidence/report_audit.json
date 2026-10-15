@@ -1,0 +1,505 @@
+{
+ "run_at": "2026-10-14T23:14:18",
+ "source_image": "up_d02567b36667",
+ "source_analysis": "an-51af6c372b",
+ "reports_created": [
+  "RPT-A1C9634C00",
+  "RPT-F7AE2282ED"
+ ],
+ "summary": {
+  "PASS": 61,
+  "FAIL": 0,
+  "PARTIAL": 0,
+  "BLOCKED": 0
+ },
+ "results": [
+  {
+   "id": "RPT-A01",
+   "check": "real full-pipeline analysis as the source",
+   "expected": "200 with regions",
+   "actual": "200 image=up_d02567b36667 regions=33 analysis=an-51af6c372b",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-A02",
+   "check": "generate EN template report from the analysis",
+   "expected": "report id, image id, model versions, status = unconfirmed research draft",
+   "actual": "RPT-A1C9634C00 image=up_d02567b36667 status=unconfirmed_research_draft models={'detection': 'dentex_teeth_detection_v1', 'segmentation': 'dentex_teeth_segmentation_v1', 'numbering': 'dentex_fdi_numbering_v1', 'classification': 'dentex_findings_classification_v1'}",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-A03",
+   "check": "regeneration from the same analysis",
+   "expected": "new report id, identical findings (deterministic template)",
+   "actual": "ids differ=True findings identical=True",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-B01",
+   "check": "languages advertised to the UI",
+   "expected": "exactly the languages that have complete templates",
+   "actual": "{\"en\": \"English\", \"hi\": \"हिन्दी\", \"mr\": \"मराठी\"}",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-B02",
+   "check": "lang='xx'",
+   "expected": "4xx with the list of supported languages (no English fallback labelled as translation)",
+   "actual": "422 {\"error\":{\"code\":\"validation_error\",\"message\":\"lang: String should match pattern '^(en|hi|mr)$'\",\"hint\":\"Check",
+   "result": "PASS",
+   "note": "'HI' upper-case may be normalised"
+  },
+  {
+   "id": "RPT-B02",
+   "check": "lang='fr'",
+   "expected": "4xx with the list of supported languages (no English fallback labelled as translation)",
+   "actual": "422 {\"error\":{\"code\":\"validation_error\",\"message\":\"lang: String should match pattern '^(en|hi|mr)$'\",\"hint\":\"Check",
+   "result": "PASS",
+   "note": "'HI' upper-case may be normalised"
+  },
+  {
+   "id": "RPT-B02",
+   "check": "lang='HI'",
+   "expected": "4xx with the list of supported languages (no English fallback labelled as translation)",
+   "actual": "422 {\"error\":{\"code\":\"validation_error\",\"message\":\"lang: String should match pattern '^(en|hi|mr)$'\",\"hint\":\"Check",
+   "result": "PASS",
+   "note": "'HI' upper-case may be normalised"
+  },
+  {
+   "id": "RPT-B02",
+   "check": "lang=''",
+   "expected": "4xx with the list of supported languages (no English fallback labelled as translation)",
+   "actual": "422 {\"error\":{\"code\":\"validation_error\",\"message\":\"lang: String should match pattern '^(en|hi|mr)$'\",\"hint\":\"Check",
+   "result": "PASS",
+   "note": "'HI' upper-case may be normalised"
+  },
+  {
+   "id": "RPT-B02",
+   "check": "lang='en;drop'",
+   "expected": "4xx with the list of supported languages (no English fallback labelled as translation)",
+   "actual": "422 {\"error\":{\"code\":\"validation_error\",\"message\":\"lang: String should match pattern '^(en|hi|mr)$'\",\"hint\":\"Check",
+   "result": "PASS",
+   "note": "'HI' upper-case may be normalised"
+  },
+  {
+   "id": "RPT-B02",
+   "check": "lang='../en'",
+   "expected": "4xx with the list of supported languages (no English fallback labelled as translation)",
+   "actual": "422 {\"error\":{\"code\":\"validation_error\",\"message\":\"lang: String should match pattern '^(en|hi|mr)$'\",\"hint\":\"Check",
+   "result": "PASS",
+   "note": "'HI' upper-case may be normalised"
+  },
+  {
+   "id": "RPT-C01-hi",
+   "check": "hi: finding ids, FDI, kind, label, score, uncertainty, review status, model versions, ids, status identical to English",
+   "expected": "exactly equal (no add/remove/alter)",
+   "actual": "33 findings vs 33; equal=True",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-C02-hi",
+   "check": "hi: server-side verify_localization",
+   "expected": "passed, no problems",
+   "actual": "{\"passed\": true, \"problems\": [], \"lang\": \"hi\"}",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-C03-hi",
+   "check": "hi: every decimal value in the English narrative appears verbatim",
+   "expected": "none missing",
+   "actual": "missing=[]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-C04-hi",
+   "check": "hi: abstained regions identical",
+   "expected": "same list",
+   "actual": "en=21 hi=21",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-C05-hi",
+   "check": "hi: research-draft + professional-review disclaimer and 'unconfirmed' status present",
+   "expected": "present, non-empty, in the target script",
+   "actual": "status_text='असत्यापित शोध मसौदा' disclaimer='यह मॉडल के आउटपुट से तैयार किया गया शोध मसौदा है। यह नैदानिक'",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-C06-hi",
+   "check": "hi: untranslated English words inside translated prose (after removing ids, versions and bracketed class names)",
+   "expected": "none (or only technical tokens)",
+   "actual": "{}",
+   "result": "PASS",
+   "note": "class names appear in brackets next to the translation by design"
+  },
+  {
+   "id": "RPT-C07-hi",
+   "check": "hi: no treatment instructions",
+   "expected": "no treatment words",
+   "actual": "found=[]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-C01-mr",
+   "check": "mr: finding ids, FDI, kind, label, score, uncertainty, review status, model versions, ids, status identical to English",
+   "expected": "exactly equal (no add/remove/alter)",
+   "actual": "33 findings vs 33; equal=True",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-C02-mr",
+   "check": "mr: server-side verify_localization",
+   "expected": "passed, no problems",
+   "actual": "{\"passed\": true, \"problems\": [], \"lang\": \"mr\"}",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-C03-mr",
+   "check": "mr: every decimal value in the English narrative appears verbatim",
+   "expected": "none missing",
+   "actual": "missing=[]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-C04-mr",
+   "check": "mr: abstained regions identical",
+   "expected": "same list",
+   "actual": "en=21 mr=21",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-C05-mr",
+   "check": "mr: research-draft + professional-review disclaimer and 'unconfirmed' status present",
+   "expected": "present, non-empty, in the target script",
+   "actual": "status_text='अपुष्ट संशोधन मसुदा' disclaimer='हा मॉडेलच्या आउटपुटवरून तयार केलेला संशोधन मसुदा आहे. हे वैद'",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-C06-mr",
+   "check": "mr: untranslated English words inside translated prose (after removing ids, versions and bracketed class names)",
+   "expected": "none (or only technical tokens)",
+   "actual": "{}",
+   "result": "PASS",
+   "note": "class names appear in brackets next to the translation by design"
+  },
+  {
+   "id": "RPT-C07-mr",
+   "check": "mr: no treatment instructions",
+   "expected": "no treatment words",
+   "actual": "found=[]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-C10-hi",
+   "check": "hi: 'awaiting linguistic review' label in the JSON, near the top of the HTML and of the TXT export",
+   "expected": "present in all three",
+   "actual": "status=awaiting_linguistic_review html=True txt-top=True",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-C10-mr",
+   "check": "mr: 'awaiting linguistic review' label in the JSON, near the top of the HTML and of the TXT export",
+   "expected": "present in all three",
+   "actual": "status=awaiting_linguistic_review html=True txt-top=True",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-C11-en",
+   "check": "English export carries no translation-review label",
+   "expected": "absent",
+   "actual": "True",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-C08-en",
+   "check": "en: no treatment instructions",
+   "expected": "no treatment words",
+   "actual": "found=[]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-C09-en",
+   "check": "en: every sentence mentioning diagnosis/confirmed/present/affected is a negation or limitation",
+   "expected": "all negated",
+   "actual": "16 sentences, all negated=True; e.g. [' It has no healthy class, so a class name here is not a statement that the finding is present.', ' The classification model has no healthy class and was trained only on teeth labelled with one of four findings; its closest-class output does not indicate that a tooth is affected.']",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-D01-en",
+   "check": "HTML export (en) well-formed, lang attribute, charset, no script/handlers",
+   "expected": "true",
+   "actual": "12379 B ct=text/html; charset=utf-8 lang-attr=True charset=True bad=[]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-D02-en",
+   "check": "JSON export (en) parses and carries the same finding ids",
+   "expected": "same ids",
+   "actual": "200 keys=['report', 'evidence', 'validation', 'localized', 'localization_check']",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-D03-en",
+   "check": "TXT export (en) contains report id, every finding id, model versions",
+   "expected": "all present",
+   "actual": "7444 chars",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-D01-hi",
+   "check": "HTML export (hi) well-formed, lang attribute, charset, no script/handlers",
+   "expected": "true",
+   "actual": "26709 B ct=text/html; charset=utf-8 lang-attr=True charset=True bad=[]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-D02-hi",
+   "check": "JSON export (hi) parses and carries the same finding ids",
+   "expected": "same ids",
+   "actual": "200 keys=['report', 'evidence', 'validation', 'localized', 'localization_check']",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-D03-hi",
+   "check": "TXT export (hi) contains report id, every finding id, model versions",
+   "expected": "all present",
+   "actual": "8622 chars",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-D01-mr",
+   "check": "HTML export (mr) well-formed, lang attribute, charset, no script/handlers",
+   "expected": "true",
+   "actual": "28243 B ct=text/html; charset=utf-8 lang-attr=True charset=True bad=[]",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-D02-mr",
+   "check": "JSON export (mr) parses and carries the same finding ids",
+   "expected": "same ids",
+   "actual": "200 keys=['report', 'evidence', 'validation', 'localized', 'localization_check']",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-D03-mr",
+   "check": "TXT export (mr) contains report id, every finding id, model versions",
+   "expected": "all present",
+   "actual": "8868 chars",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-E01",
+   "check": "empty findings",
+   "expected": "truthful refusal or safe, flagged output",
+   "actual": "200 {\"report\": {\"report_id\": \"RPT-8A3F9DEFBF\", \"image_id\": \"up_d02567b36667\", \"model_version\": null, \"model_versions\": {\"detection\": null}, \"generated_by\"",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-E02",
+   "check": "missing confidence/score",
+   "expected": "truthful refusal or safe, flagged output",
+   "actual": "200 {\"report\": {\"report_id\": \"RPT-92566B6EB9\", \"image_id\": \"up_d02567b36667\", \"model_version\": \"dentex_teeth_detection_v1\", \"model_versions\": {\"detection\"",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-E03",
+   "check": "no tooth number",
+   "expected": "truthful refusal or safe, flagged output",
+   "actual": "200 {\"report\": {\"report_id\": \"RPT-EDA41CCB9F\", \"image_id\": \"up_d02567b36667\", \"model_version\": \"dentex_teeth_detection_v1\", \"model_versions\": {\"detection\"",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-E04",
+   "check": "invalid FDI 99",
+   "expected": "truthful refusal or safe, flagged output",
+   "actual": "200 {\"report\": {\"report_id\": \"RPT-23CC60FA2B\", \"image_id\": \"up_d02567b36667\", \"model_version\": \"dentex_teeth_detection_v1\", \"model_versions\": {\"detection\"",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-E04v",
+   "check": "invalid FDI 99: report flagged invalid, not exportable as clean",
+   "expected": "validation_failed true",
+   "actual": "validation_failed=True",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-E05",
+   "check": "label outside the 4 trained classes ('Healthy')",
+   "expected": "truthful refusal or safe, flagged output",
+   "actual": "200 {\"report\": {\"report_id\": \"RPT-78C886CA91\", \"image_id\": \"up_d02567b36667\", \"model_version\": \"dentex_teeth_detection_v1\", \"model_versions\": {\"detection\"",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-E05v",
+   "check": "label outside the 4 trained classes ('Healthy'): report flagged invalid, not exportable as clean",
+   "expected": "validation_failed true",
+   "actual": "validation_failed=True",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-E06",
+   "check": "probability out of range 1.7",
+   "expected": "truthful refusal or safe, flagged output",
+   "actual": "200 {\"report\": {\"report_id\": \"RPT-65BE71565B\", \"image_id\": \"up_d02567b36667\", \"model_version\": \"dentex_teeth_detection_v1\", \"model_versions\": {\"detection\"",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-E06v",
+   "check": "probability out of range 1.7: report flagged invalid, not exportable as clean",
+   "expected": "validation_failed true",
+   "actual": "validation_failed=True",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-E07",
+   "check": "injected 'confirmed diagnosis' text in a finding",
+   "expected": "truthful refusal or safe, flagged output",
+   "actual": "200 {\"report\": {\"report_id\": \"RPT-F3801DFA76\", \"image_id\": \"up_d02567b36667\", \"model_version\": \"dentex_teeth_detection_v1\", \"model_versions\": {\"detection\"",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-E08",
+   "check": "LLM mode without configuration",
+   "expected": "truthful refusal or safe, flagged output",
+   "actual": "502 {\"error\": {\"code\": \"external_service_unavailable\", \"message\": \"LLM is not configured.\", \"hint\": \"Set LLM_BASE_URL, LLM_API_KEY and LLM_MODEL in .env, ",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-E09",
+   "check": "unknown mode",
+   "expected": "truthful refusal or safe, flagged output",
+   "actual": "422 {\"error\": {\"code\": \"validation_error\", \"message\": \"mode: Input should be 'auto', 'template' or 'llm'\", \"hint\": \"Check the highlighted fields.\", \"detai",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-E10",
+   "check": "unknown analysis",
+   "expected": "truthful refusal or safe, flagged output",
+   "actual": "404 {\"error\": {\"code\": \"not_found\", \"message\": \"Analysis 'an-doesnotexist' not found.\", \"hint\": null, \"details\": {}}}",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-F01",
+   "check": "review with empty reviewer",
+   "expected": "422",
+   "actual": "422",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-F02",
+   "check": "report not marked reviewed by those failed attempts",
+   "expected": "status unconfirmed",
+   "actual": "unconfirmed_research_draft",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-F03",
+   "check": "report list contains the audit reports and links to the right image",
+   "expected": "ids listed",
+   "actual": "True total=11",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-F04",
+   "check": "review of an audit-created report by a named reviewer",
+   "expected": "status reviewed + reviewer stored",
+   "actual": "200 {'report_id': 'RPT-F7AE2282ED', 'image_id': 'up_d02567b36667', 'model_version': 'dentex_teeth_detection_v1', 'model_versions': {'detection': 'dentex_t",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-G00",
+   "check": "second server process started on :8011 (fresh process, same database)",
+   "expected": "healthy",
+   "actual": "True",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-G01",
+   "check": "reopen the reviewed report from a fresh process (Marathi)",
+   "expected": "same report, reviewed_by = 'Audit Reviewer (test)', still verified",
+   "actual": "200 reviewed_by=Audit Reviewer (test) check=True",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-G02",
+   "check": "list in the fresh process equals the list in the main process",
+   "expected": "same ids",
+   "actual": "11 vs 11",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-H01",
+   "check": "server started with an unusable database path",
+   "expected": "clear failure (exit with message) or health shows database error; no silent fake DB",
+   "actual": "exited: \"inError 3] The system cannot find the path specified: 'Z:\\\\\\\\'. The folder must be on a local, writable disk (network, cloud-synced or virtual drives can break SQLite locking). Set DATABASE_URL in .env, e.g. DATABASE_URL=sqlite:///C:/DentaMind/dentamind.sqlite3\\n\"",
+   "result": "PASS",
+   "note": "traceback shown on stderr at startup is acceptable for a misconfiguration; recorded: False"
+  },
+  {
+   "id": "RPT-I01",
+   "check": "template keys of English present in Hindi and Marathi",
+   "expected": "no missing keys",
+   "actual": "{\"hi\": [], \"mr\": []}",
+   "result": "PASS",
+   "note": ""
+  },
+  {
+   "id": "RPT-I02",
+   "check": "translation flagged as not natively reviewed",
+   "expected": "translation_reviewed_by_native_dental_professional == false and note says so",
+   "actual": "hi=False mr=False",
+   "result": "PASS",
+   "note": ""
+  }
+ ]
+}

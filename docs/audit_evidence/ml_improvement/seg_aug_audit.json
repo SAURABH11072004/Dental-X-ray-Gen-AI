@@ -1,0 +1,12 @@
+{
+ "n_checked": 40,
+ "shape_mismatch": 0,
+ "box_outside_image": 0,
+ "box_ne_mask_bbox": 677,
+ "empty_mask": 0,
+ "dropped_instances": 0,
+ "instances_total": 1127,
+ "corr_inside_mask_min": 0.9999334089233869,
+ "corr_inside_mask_mean": 0.9999677697748974,
+ "identity_equals_baseline_masks": true
+}

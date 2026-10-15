@@ -1,0 +1,42 @@
+{
+ "measured": "2026-10-14T12:55:21.682Z",
+ "images_considered": 3660,
+ "largest": {
+  "id": "qed_train_637",
+  "size": "3076x1536",
+  "image_decoded_ms": 19,
+  "natural_dims": [
+   3076,
+   1536
+  ],
+  "analyze_full_http_ms": 3820,
+  "response_kB": 111,
+  "table_and_overlay_visible_ms": 6539,
+  "js_heap_MB": 362,
+  "boxes": 30
+ },
+ "smallest": {
+  "id": "train_1486",
+  "w": 97,
+  "h": 65
+ },
+ "largest_upload": {
+  "status": 200,
+  "ms": 336,
+  "bytes": 5718487
+ },
+ "typical": {
+  "id": "val_12",
+  "size": "2794x1316",
+  "image_decoded_ms": 169,
+  "natural_dims": [
+   2794,
+   1316
+  ],
+  "analyze_full_http_ms": 2257,
+  "response_kB": 106,
+  "table_and_overlay_visible_ms": 4603,
+  "js_heap_MB": 214,
+  "boxes": 32
+ }
+}

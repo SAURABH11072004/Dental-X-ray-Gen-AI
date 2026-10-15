@@ -1,0 +1,51 @@
+{
+ "generated": "2026-10-14T18:06:10.144806+00:00",
+ "model_version": "dentex_teeth_segmentation_v1",
+ "model_id": "dentex_teeth_segmentation_v1.pth",
+ "task": "segmentation",
+ "split": "val",
+ "n_images": 69,
+ "dataset_version": {
+  "fingerprint": "7f66d59d9cbad925",
+  "manifest_sha": "932b0b941f54643e",
+  "splits_sha": "ee88dc6835eb9a20",
+  "assignments_sha": "1c350480eed2ae96"
+ },
+ "final_test": false,
+ "metrics": {
+  "segmentation": {
+   "map": 0.5688879400437572,
+   "ap50": 0.9808044242216127,
+   "per_class_ap50": {
+    "1": 0.9808044242216127
+   },
+   "n_images": 69,
+   "n_ground_truth": 2000,
+   "n_predictions": 2221,
+   "score_floor": 0.05,
+   "mask_ap50": 0.9795643622048884,
+   "mask_eval_note": "mask IoU on a 4x subsampled grid",
+   "mean_mask_iou_matched": 0.794435060174879,
+   "mean_dice_matched": 0.8826257954678108,
+   "n_matched_for_iou": 1972,
+   "operating_point": {
+    "score_threshold": 0.3,
+    "iou": 0.5,
+    "tp": 1972,
+    "fp": 70,
+    "fn": 28,
+    "precision": 0.9657198824681684,
+    "recall": 0.986
+   }
+  }
+ },
+ "software": {
+  "python": "3.13.0",
+  "torch": "2.6.0+cu124",
+  "torchvision": "0.21.0+cu124",
+  "numpy": "2.5.4",
+  "cuda": "12.4",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU"
+ }
+}

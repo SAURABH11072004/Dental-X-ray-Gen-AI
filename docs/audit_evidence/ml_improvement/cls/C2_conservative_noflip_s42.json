@@ -1,0 +1,266 @@
+{
+ "exp": "C2_conservative_noflip",
+ "seed": 42,
+ "config": {
+  "exp": "C2_conservative_noflip",
+  "preproc": "none",
+  "aug": "conservative_noflip",
+  "imbalance": "weights",
+  "gamma": 2.0,
+  "epochs": 15,
+  "batch_size": 32,
+  "lr": 0.0003,
+  "wd": 0.0001,
+  "freeze_epochs": 0,
+  "save": false
+ },
+ "preproc_cfg": {
+  "mode": "none"
+ },
+ "aug_cfg": {
+  "name": "conservative_noflip",
+  "hflip": 0.0,
+  "geom_p": 0.7,
+  "rot_deg": 5.0,
+  "translate": 0.03,
+  "scale": [
+   0.95,
+   1.05
+  ],
+  "contrast": [
+   0.9,
+   1.1
+  ],
+  "brightness": 0.05
+ },
+ "train_counts": [
+  1550,
+  438,
+  412,
+  120
+ ],
+ "n_val": 331,
+ "best_epoch": 13,
+ "best_val": {
+  "n": 331,
+  "accuracy": 0.8761329305135952,
+  "macro_f1": 0.7788680137283275,
+  "weighted_f1": 0.8759243813570124,
+  "balanced_accuracy": 0.8120765582655827,
+  "per_class": {
+   "Caries": {
+    "precision": 0.9121951219512195,
+    "recall": 0.9121951219512195,
+    "f1": 0.9121951219512195,
+    "support": 205
+   },
+   "Deep Caries": {
+    "precision": 0.6923076923076923,
+    "recall": 0.6,
+    "f1": 0.6428571428571429,
+    "support": 45
+   },
+   "Impacted": {
+    "precision": 0.9452054794520548,
+    "recall": 0.9583333333333334,
+    "f1": 0.9517241379310345,
+    "support": 72
+   },
+   "Periapical Lesion": {
+    "precision": 0.5,
+    "recall": 0.7777777777777778,
+    "f1": 0.6086956521739131,
+    "support": 9
+   }
+  },
+  "confusion": [
+   [
+    187,
+    10,
+    3,
+    5
+   ],
+   [
+    15,
+    27,
+    1,
+    2
+   ],
+   [
+    2,
+    1,
+    69,
+    0
+   ],
+   [
+    1,
+    1,
+    0,
+    7
+   ]
+  ],
+  "minority_recall_periapical": 0.7777777777777778,
+  "roc_auc_ovr": {
+   "Caries": 0.9450251645373596,
+   "Deep Caries": 0.8943278943278943,
+   "Impacted": 0.9954418704418705,
+   "Periapical Lesion": 0.9813664596273292
+  },
+  "pr_auc_ovr": {
+   "Caries": 0.9639642074049418,
+   "Deep Caries": 0.6447395373148345,
+   "Impacted": 0.9842092220541588,
+   "Periapical Lesion": 0.7297484650425826
+  },
+  "macro_roc_auc": 0.9540403472336134,
+  "macro_pr_auc": 0.8306653579541294,
+  "nll": 0.5005494356155396,
+  "ece": 0.07621162913717171
+ },
+ "last_val": {
+  "val_macro_f1": 0.769714525076946,
+  "val_acc": 0.8731117824773413,
+  "val_pl_recall": 0.7777777777777778,
+  "val_loss": 0.49793434143066406
+ },
+ "history": [
+  {
+   "epoch": 1,
+   "train_loss": 1.0212579655268836,
+   "val_loss": 0.9751443862915039,
+   "val_macro_f1": 0.49013395953761546,
+   "val_acc": 0.6042296072507553,
+   "val_pl_recall": 0.7777777777777778,
+   "val_balanced_acc": 0.6085027100271003
+  },
+  {
+   "epoch": 2,
+   "train_loss": 0.7416883953033931,
+   "val_loss": 1.0418332815170288,
+   "val_macro_f1": 0.4735910305703134,
+   "val_acc": 0.5015105740181269,
+   "val_pl_recall": 0.8888888888888888,
+   "val_balanced_acc": 0.6806571815718157
+  },
+  {
+   "epoch": 3,
+   "train_loss": 0.5817090677836585,
+   "val_loss": 0.7152310013771057,
+   "val_macro_f1": 0.6083246947401061,
+   "val_acc": 0.7009063444108762,
+   "val_pl_recall": 0.7777777777777778,
+   "val_balanced_acc": 0.7106537940379404
+  },
+  {
+   "epoch": 4,
+   "train_loss": 0.44806501808620636,
+   "val_loss": 0.6556499004364014,
+   "val_macro_f1": 0.5937382959731964,
+   "val_acc": 0.7280966767371602,
+   "val_pl_recall": 0.4444444444444444,
+   "val_balanced_acc": 0.6549627371273712
+  },
+  {
+   "epoch": 5,
+   "train_loss": 0.3195895414503794,
+   "val_loss": 0.5978278517723083,
+   "val_macro_f1": 0.6649146611801475,
+   "val_acc": 0.7734138972809668,
+   "val_pl_recall": 0.7777777777777778,
+   "val_balanced_acc": 0.7508468834688347
+  },
+  {
+   "epoch": 6,
+   "train_loss": 0.24532216011531768,
+   "val_loss": 0.6987149119377136,
+   "val_macro_f1": 0.6358130486787796,
+   "val_acc": 0.7190332326283988,
+   "val_pl_recall": 0.8888888888888888,
+   "val_balanced_acc": 0.7642953929539295
+  },
+  {
+   "epoch": 7,
+   "train_loss": 0.20315160630714327,
+   "val_loss": 0.537793755531311,
+   "val_macro_f1": 0.6871646109073354,
+   "val_acc": 0.8308157099697885,
+   "val_pl_recall": 0.4444444444444444,
+   "val_balanced_acc": 0.685670731707317
+  },
+  {
+   "epoch": 8,
+   "train_loss": 0.14169443689641498,
+   "val_loss": 0.4889240562915802,
+   "val_macro_f1": 0.7247440447751007,
+   "val_acc": 0.8549848942598187,
+   "val_pl_recall": 0.7777777777777778,
+   "val_balanced_acc": 0.7645155826558265
+  },
+  {
+   "epoch": 9,
+   "train_loss": 0.0837123942517099,
+   "val_loss": 0.6401317119598389,
+   "val_macro_f1": 0.7062798812137665,
+   "val_acc": 0.8157099697885196,
+   "val_pl_recall": 0.7777777777777778,
+   "val_balanced_acc": 0.7790142276422765
+  },
+  {
+   "epoch": 10,
+   "train_loss": 0.06598403219074483,
+   "val_loss": 0.5372939109802246,
+   "val_macro_f1": 0.7340882227131176,
+   "val_acc": 0.8549848942598187,
+   "val_pl_recall": 0.7777777777777778,
+   "val_balanced_acc": 0.7905318428184281
+  },
+  {
+   "epoch": 11,
+   "train_loss": 0.04669740880943007,
+   "val_loss": 0.5268421769142151,
+   "val_macro_f1": 0.7620696534427724,
+   "val_acc": 0.8640483383685801,
+   "val_pl_recall": 0.7777777777777778,
+   "val_balanced_acc": 0.8028624661246613
+  },
+  {
+   "epoch": 12,
+   "train_loss": 0.03851290749947703,
+   "val_loss": 0.5162328481674194,
+   "val_macro_f1": 0.7575127669312393,
+   "val_acc": 0.8610271903323263,
+   "val_pl_recall": 0.7777777777777778,
+   "val_balanced_acc": 0.7973069105691057
+  },
+  {
+   "epoch": 13,
+   "train_loss": 0.03416713990330223,
+   "val_loss": 0.5005494356155396,
+   "val_macro_f1": 0.7788680137283275,
+   "val_acc": 0.8761329305135952,
+   "val_pl_recall": 0.7777777777777778,
+   "val_balanced_acc": 0.8120765582655827
+  },
+  {
+   "epoch": 14,
+   "train_loss": 0.03668213967706949,
+   "val_loss": 0.5100014805793762,
+   "val_macro_f1": 0.7733342442386797,
+   "val_acc": 0.8670694864048338,
+   "val_pl_recall": 0.7777777777777778,
+   "val_balanced_acc": 0.8127540650406504
+  },
+  {
+   "epoch": 15,
+   "train_loss": 0.03621839094788782,
+   "val_loss": 0.49793434143066406,
+   "val_macro_f1": 0.769714525076946,
+   "val_acc": 0.8731117824773413,
+   "val_pl_recall": 0.7777777777777778,
+   "val_balanced_acc": 0.7978489159891599
+  }
+ ],
+ "duration_s": 231.3,
+ "gpu_peak_mb": 1830,
+ "split_note": "fit on train split; epoch selection on validation split; calibration and test not used"
+}

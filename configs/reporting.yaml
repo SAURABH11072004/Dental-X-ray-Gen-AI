@@ -1,0 +1,4 @@
+mode: auto            # auto = LLM when LLM_* env vars are set, otherwise deterministic template
+disclaimer: "Research draft generated from model outputs. Not a clinical diagnosis. Requires review by a qualified professional."
+confidence_tolerance: 1.0e-6
+forbidden_phrases: ["diagnos", "prescrib", "recommend", "should be treated", "treatment plan", "extraction", "root canal", "antibiotic", "definitely", "confirmed"]

@@ -1,0 +1,856 @@
+{
+ "summary": {
+  "config": {
+   "name": "conservative_noflip",
+   "hflip": 0.0,
+   "geom_p": 0.7,
+   "rot_deg": 5.0,
+   "translate": 0.03,
+   "scale": [
+    0.95,
+    1.05
+   ],
+   "contrast": [
+    0.9,
+    1.1
+   ],
+   "brightness": 0.05
+  },
+  "seed": 123,
+  "n_rendered": 52,
+  "mean_abs_pixel_change": {
+   "mean": 10.794807692307693,
+   "max": 17.23
+  },
+  "max_abs_rotation_deg": 4.914,
+  "max_abs_translate_frac": 0.0293,
+  "scale_range_seen": [
+   0.9504,
+   1.05
+  ],
+  "vertical_flip": "never applied",
+  "horizontal_flip_in_this_config": 0.0
+ },
+ "samples": [
+  {
+   "source_image_id": "qed_train_257",
+   "annotation_id": 1936,
+   "class": "Caries",
+   "draw": 0,
+   "params": {
+    "rot_deg": -4.26,
+    "scale": 0.9684,
+    "tx": -0.0255,
+    "ty": -0.0229,
+    "contrast": 1.0707,
+    "brightness": -0.0226
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 13.95
+  },
+  {
+   "source_image_id": "qed_train_257",
+   "annotation_id": 1936,
+   "class": "Caries",
+   "draw": 1,
+   "params": {
+    "rot_deg": 3.665,
+    "scale": 1.0226,
+    "tx": -0.0182,
+    "ty": 0.0196,
+    "contrast": 1.0186,
+    "brightness": 0.0158
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 11.94
+  },
+  {
+   "source_image_id": "qed_train_257",
+   "annotation_id": 1936,
+   "class": "Caries",
+   "draw": 2,
+   "params": {
+    "rot_deg": -3.634,
+    "scale": 0.9815,
+    "tx": -0.011,
+    "ty": -0.0071,
+    "contrast": 1.0273,
+    "brightness": -0.0222
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 10.5
+  },
+  {
+   "source_image_id": "qed_train_257",
+   "annotation_id": 1936,
+   "class": "Caries",
+   "draw": 3,
+   "params": {
+    "rot_deg": -3.975,
+    "scale": 1.0187,
+    "tx": -0.0059,
+    "ty": 0.0096,
+    "contrast": 1.0965,
+    "brightness": 0.0357
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 15.23
+  },
+  {
+   "source_image_id": "qed_train_396",
+   "annotation_id": 2242,
+   "class": "Caries",
+   "draw": 0,
+   "params": {
+    "contrast": 1.0891,
+    "brightness": 0.0118
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 5.49
+  },
+  {
+   "source_image_id": "qed_train_396",
+   "annotation_id": 2242,
+   "class": "Caries",
+   "draw": 1,
+   "params": {
+    "rot_deg": 2.058,
+    "scale": 0.9857,
+    "tx": -0.0161,
+    "ty": 0.001,
+    "contrast": 1.0611,
+    "brightness": 0.0193
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 14.06
+  },
+  {
+   "source_image_id": "qed_train_396",
+   "annotation_id": 2242,
+   "class": "Caries",
+   "draw": 2,
+   "params": {
+    "contrast": 1.0355,
+    "brightness": -0.0065
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 2.0
+  },
+  {
+   "source_image_id": "qed_train_396",
+   "annotation_id": 2242,
+   "class": "Caries",
+   "draw": 3,
+   "params": {
+    "contrast": 1.0217,
+    "brightness": -0.0465
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 11.84
+  },
+  {
+   "source_image_id": "qed_train_31",
+   "annotation_id": 65,
+   "class": "Caries",
+   "draw": 0,
+   "params": {
+    "rot_deg": 0.789,
+    "scale": 0.9801,
+    "tx": -0.0292,
+    "ty": -0.0212,
+    "contrast": 1.041,
+    "brightness": 0.0232
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 15.12
+  },
+  {
+   "source_image_id": "qed_train_31",
+   "annotation_id": 65,
+   "class": "Caries",
+   "draw": 1,
+   "params": {
+    "contrast": 0.9023,
+    "brightness": 0.0018
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 3.97
+  },
+  {
+   "source_image_id": "qed_train_31",
+   "annotation_id": 65,
+   "class": "Caries",
+   "draw": 2,
+   "params": {
+    "rot_deg": -4.725,
+    "scale": 0.9883,
+    "tx": 0.0263,
+    "ty": 0.0125,
+    "contrast": 0.994,
+    "brightness": 0.0098
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 12.43
+  },
+  {
+   "source_image_id": "qed_train_31",
+   "annotation_id": 65,
+   "class": "Caries",
+   "draw": 3,
+   "params": {
+    "rot_deg": -3.366,
+    "scale": 0.9945,
+    "tx": 0.0183,
+    "ty": 0.0007,
+    "contrast": 1.0705,
+    "brightness": -0.0047
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 10.34
+  },
+  {
+   "source_image_id": "qed_train_137",
+   "annotation_id": 505,
+   "class": "Deep Caries",
+   "draw": 0,
+   "params": {
+    "rot_deg": 2.751,
+    "scale": 1.0157,
+    "tx": 0.0293,
+    "ty": 0.0229,
+    "contrast": 0.9767,
+    "brightness": 0.0248
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 17.08
+  },
+  {
+   "source_image_id": "qed_train_137",
+   "annotation_id": 505,
+   "class": "Deep Caries",
+   "draw": 1,
+   "params": {
+    "rot_deg": 1.749,
+    "scale": 1.0346,
+    "tx": 0.0202,
+    "ty": -0.0235,
+    "contrast": 0.9744,
+    "brightness": -0.0002
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 14.33
+  },
+  {
+   "source_image_id": "qed_train_137",
+   "annotation_id": 505,
+   "class": "Deep Caries",
+   "draw": 2,
+   "params": {
+    "rot_deg": -3.834,
+    "scale": 0.9803,
+    "tx": 0.0241,
+    "ty": 0.0026,
+    "contrast": 1.0075,
+    "brightness": 0.0355
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 15.07
+  },
+  {
+   "source_image_id": "qed_train_137",
+   "annotation_id": 505,
+   "class": "Deep Caries",
+   "draw": 3,
+   "params": {
+    "contrast": 1.091,
+    "brightness": -0.0256
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 6.68
+  },
+  {
+   "source_image_id": "qed_train_456",
+   "annotation_id": 676,
+   "class": "Deep Caries",
+   "draw": 0,
+   "params": {
+    "contrast": 1.0006,
+    "brightness": 0.0221
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 6.0
+  },
+  {
+   "source_image_id": "qed_train_456",
+   "annotation_id": 676,
+   "class": "Deep Caries",
+   "draw": 1,
+   "params": {
+    "rot_deg": 0.578,
+    "scale": 1.018,
+    "tx": -0.0149,
+    "ty": 0.0237,
+    "contrast": 0.9248,
+    "brightness": 0.0045
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 14.5
+  },
+  {
+   "source_image_id": "qed_train_456",
+   "annotation_id": 676,
+   "class": "Deep Caries",
+   "draw": 2,
+   "params": {
+    "rot_deg": 1.681,
+    "scale": 1.05,
+    "tx": 0.0132,
+    "ty": -0.0121,
+    "contrast": 0.9757,
+    "brightness": 0.0049
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 12.41
+  },
+  {
+   "source_image_id": "qed_train_456",
+   "annotation_id": 676,
+   "class": "Deep Caries",
+   "draw": 3,
+   "params": {
+    "rot_deg": 4.275,
+    "scale": 0.9786,
+    "tx": 0.0118,
+    "ty": 0.0079,
+    "contrast": 0.9332,
+    "brightness": -0.0152
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 12.65
+  },
+  {
+   "source_image_id": "qed_train_451",
+   "annotation_id": 756,
+   "class": "Deep Caries",
+   "draw": 0,
+   "params": {
+    "rot_deg": 0.757,
+    "scale": 0.9629,
+    "tx": 0.0022,
+    "ty": -0.0188,
+    "contrast": 1.0208,
+    "brightness": 0.0422
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 16.75
+  },
+  {
+   "source_image_id": "qed_train_451",
+   "annotation_id": 756,
+   "class": "Deep Caries",
+   "draw": 1,
+   "params": {
+    "rot_deg": -2.215,
+    "scale": 0.9624,
+    "tx": 0.0207,
+    "ty": 0.0025,
+    "contrast": 1.0967,
+    "brightness": 0.0404
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 11.05
+  },
+  {
+   "source_image_id": "qed_train_451",
+   "annotation_id": 756,
+   "class": "Deep Caries",
+   "draw": 2,
+   "params": {
+    "rot_deg": -3.054,
+    "scale": 0.9675,
+    "tx": 0.0116,
+    "ty": -0.0267,
+    "contrast": 0.9289,
+    "brightness": 0.0071
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 11.46
+  },
+  {
+   "source_image_id": "qed_train_451",
+   "annotation_id": 756,
+   "class": "Deep Caries",
+   "draw": 3,
+   "params": {
+    "contrast": 1.0802,
+    "brightness": 0.0455
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 11.46
+  },
+  {
+   "source_image_id": "qed_train_72",
+   "annotation_id": 2847,
+   "class": "Impacted",
+   "draw": 0,
+   "params": {
+    "contrast": 1.0707,
+    "brightness": 0.0189
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 4.82
+  },
+  {
+   "source_image_id": "qed_train_72",
+   "annotation_id": 2847,
+   "class": "Impacted",
+   "draw": 1,
+   "params": {
+    "contrast": 0.903,
+    "brightness": 0.0402
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 10.26
+  },
+  {
+   "source_image_id": "qed_train_72",
+   "annotation_id": 2847,
+   "class": "Impacted",
+   "draw": 2,
+   "params": {
+    "rot_deg": -3.406,
+    "scale": 1.0436,
+    "tx": 0.0187,
+    "ty": -0.0173,
+    "contrast": 0.9151,
+    "brightness": -0.0388
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 12.16
+  },
+  {
+   "source_image_id": "qed_train_72",
+   "annotation_id": 2847,
+   "class": "Impacted",
+   "draw": 3,
+   "params": {
+    "rot_deg": -2.868,
+    "scale": 1.0085,
+    "tx": -0.0265,
+    "ty": 0.0155,
+    "contrast": 0.9026,
+    "brightness": -0.0231
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 12.45
+  },
+  {
+   "source_image_id": "qed_train_471",
+   "annotation_id": 1126,
+   "class": "Impacted",
+   "draw": 0,
+   "params": {
+    "rot_deg": -1.392,
+    "scale": 0.9613,
+    "tx": -0.0044,
+    "ty": 0.0123,
+    "contrast": 1.048,
+    "brightness": -0.0402
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 14.0
+  },
+  {
+   "source_image_id": "qed_train_471",
+   "annotation_id": 1126,
+   "class": "Impacted",
+   "draw": 1,
+   "params": {
+    "rot_deg": 0.325,
+    "scale": 1.0003,
+    "tx": 0.0193,
+    "ty": -0.0189,
+    "contrast": 0.9458,
+    "brightness": -0.0364
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 13.37
+  },
+  {
+   "source_image_id": "qed_train_471",
+   "annotation_id": 1126,
+   "class": "Impacted",
+   "draw": 2,
+   "params": {
+    "contrast": 1.0037,
+    "brightness": 0.0192
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 5.0
+  },
+  {
+   "source_image_id": "qed_train_471",
+   "annotation_id": 1126,
+   "class": "Impacted",
+   "draw": 3,
+   "params": {
+    "rot_deg": -1.768,
+    "scale": 1.001,
+    "tx": -0.0029,
+    "ty": -0.0066,
+    "contrast": 1.0098,
+    "brightness": -0.0146
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 6.83
+  },
+  {
+   "source_image_id": "qed_train_528",
+   "annotation_id": 1619,
+   "class": "Impacted",
+   "draw": 0,
+   "params": {
+    "contrast": 1.0755,
+    "brightness": 0.0389
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 9.93
+  },
+  {
+   "source_image_id": "qed_train_528",
+   "annotation_id": 1619,
+   "class": "Impacted",
+   "draw": 1,
+   "params": {
+    "rot_deg": -0.145,
+    "scale": 1.0142,
+    "tx": -0.0006,
+    "ty": -0.0057,
+    "contrast": 1.0915,
+    "brightness": 0.0244
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 7.86
+  },
+  {
+   "source_image_id": "qed_train_528",
+   "annotation_id": 1619,
+   "class": "Impacted",
+   "draw": 2,
+   "params": {
+    "rot_deg": -0.933,
+    "scale": 1.0012,
+    "tx": -0.029,
+    "ty": -0.0207,
+    "contrast": 0.9245,
+    "brightness": 0.031
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 12.08
+  },
+  {
+   "source_image_id": "qed_train_528",
+   "annotation_id": 1619,
+   "class": "Impacted",
+   "draw": 3,
+   "params": {
+    "rot_deg": -0.832,
+    "scale": 0.9655,
+    "tx": 0.0161,
+    "ty": 0.0012,
+    "contrast": 0.9548,
+    "brightness": -0.0249
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 9.18
+  },
+  {
+   "source_image_id": "qed_train_267",
+   "annotation_id": 2511,
+   "class": "Periapical Lesion",
+   "draw": 0,
+   "params": {
+    "contrast": 1.0314,
+    "brightness": -0.0137
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 3.51
+  },
+  {
+   "source_image_id": "qed_train_267",
+   "annotation_id": 2511,
+   "class": "Periapical Lesion",
+   "draw": 1,
+   "params": {
+    "rot_deg": -3.773,
+    "scale": 1.0018,
+    "tx": 0.0177,
+    "ty": 0.0005,
+    "contrast": 0.9741,
+    "brightness": -0.0203
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 7.82
+  },
+  {
+   "source_image_id": "qed_train_267",
+   "annotation_id": 2511,
+   "class": "Periapical Lesion",
+   "draw": 2,
+   "params": {
+    "rot_deg": 4.587,
+    "scale": 0.9734,
+    "tx": 0.0097,
+    "ty": -0.0109,
+    "contrast": 0.9726,
+    "brightness": -0.0273
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 10.39
+  },
+  {
+   "source_image_id": "qed_train_267",
+   "annotation_id": 2511,
+   "class": "Periapical Lesion",
+   "draw": 3,
+   "params": {
+    "rot_deg": 4.914,
+    "scale": 1.0479,
+    "tx": -0.003,
+    "ty": 0.0155,
+    "contrast": 0.9116,
+    "brightness": -0.0452
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 13.08
+  },
+  {
+   "source_image_id": "qed_train_168",
+   "annotation_id": 2490,
+   "class": "Periapical Lesion",
+   "draw": 0,
+   "params": {
+    "contrast": 0.996,
+    "brightness": -0.0147
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 3.84
+  },
+  {
+   "source_image_id": "qed_train_168",
+   "annotation_id": 2490,
+   "class": "Periapical Lesion",
+   "draw": 1,
+   "params": {
+    "rot_deg": 4.079,
+    "scale": 0.9796,
+    "tx": -0.0052,
+    "ty": -0.0003,
+    "contrast": 1.0381,
+    "brightness": 0.0164
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 11.59
+  },
+  {
+   "source_image_id": "qed_train_168",
+   "annotation_id": 2490,
+   "class": "Periapical Lesion",
+   "draw": 2,
+   "params": {
+    "contrast": 1.0871,
+    "brightness": -0.0044
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 3.38
+  },
+  {
+   "source_image_id": "qed_train_168",
+   "annotation_id": 2490,
+   "class": "Periapical Lesion",
+   "draw": 3,
+   "params": {
+    "rot_deg": -1.427,
+    "scale": 0.9811,
+    "tx": 0.012,
+    "ty": 0.01,
+    "contrast": 1.0252,
+    "brightness": -0.0391
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 11.52
+  },
+  {
+   "source_image_id": "qed_train_510",
+   "annotation_id": 889,
+   "class": "Periapical Lesion",
+   "draw": 0,
+   "params": {
+    "rot_deg": -2.927,
+    "scale": 0.9756,
+    "tx": -0.019,
+    "ty": 0.0183,
+    "contrast": 0.9328,
+    "brightness": -0.0211
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 16.29
+  },
+  {
+   "source_image_id": "qed_train_510",
+   "annotation_id": 889,
+   "class": "Periapical Lesion",
+   "draw": 1,
+   "params": {
+    "contrast": 1.0032,
+    "brightness": 0.0408
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 9.42
+  },
+  {
+   "source_image_id": "qed_train_510",
+   "annotation_id": 889,
+   "class": "Periapical Lesion",
+   "draw": 2,
+   "params": {
+    "rot_deg": -2.087,
+    "scale": 1.0224,
+    "tx": 0.0219,
+    "ty": 0.0141,
+    "contrast": 1.02,
+    "brightness": -0.004
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 12.52
+  },
+  {
+   "source_image_id": "qed_train_510",
+   "annotation_id": 889,
+   "class": "Periapical Lesion",
+   "draw": 3,
+   "params": {
+    "rot_deg": 1.066,
+    "scale": 0.986,
+    "tx": 0.0181,
+    "ty": 0.0075,
+    "contrast": 0.946,
+    "brightness": -0.0005
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 10.68
+  },
+  {
+   "source_image_id": "qed_train_640",
+   "annotation_id": 2759,
+   "class": "Periapical Lesion",
+   "draw": 0,
+   "params": {
+    "rot_deg": -0.791,
+    "scale": 0.9504,
+    "tx": 0.0256,
+    "ty": 0.0261,
+    "contrast": 0.9482,
+    "brightness": 0.0428
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 14.83
+  },
+  {
+   "source_image_id": "qed_train_640",
+   "annotation_id": 2759,
+   "class": "Periapical Lesion",
+   "draw": 1,
+   "params": {
+    "rot_deg": 3.046,
+    "scale": 1.0203,
+    "tx": 0.0099,
+    "ty": -0.0143,
+    "contrast": 1.0763,
+    "brightness": 0.0375
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 15.74
+  },
+  {
+   "source_image_id": "qed_train_640",
+   "annotation_id": 2759,
+   "class": "Periapical Lesion",
+   "draw": 2,
+   "params": {
+    "contrast": 1.0245,
+    "brightness": -0.0206
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 5.24
+  },
+  {
+   "source_image_id": "qed_train_640",
+   "annotation_id": 2759,
+   "class": "Periapical Lesion",
+   "draw": 3,
+   "params": {
+    "rot_deg": -4.362,
+    "scale": 1.0307,
+    "tx": -0.0069,
+    "ty": 0.0199,
+    "contrast": 0.998,
+    "brightness": 0.0048
+   },
+   "seed": 123,
+   "config_version": "conservative_noflip",
+   "mean_abs_pixel_change": 17.23
+  }
+ ]
+}

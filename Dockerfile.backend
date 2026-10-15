@@ -1,0 +1,23 @@
+# DentaMind API image (CPU core + API). Add PyTorch by building with --build-arg WITH_ML=1.
+# The original research Dockerfile (Jupyter/detectron2) is left unchanged.
+FROM python:3.11-slim
+
+ARG WITH_ML=0
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1 DATA_ROOT=/app/data
+
+WORKDIR /app
+COPY requirements-core.txt requirements-api.txt requirements-ml.txt ./
+RUN pip install -r requirements-api.txt \
+ && if [ "$WITH_ML" = "1" ]; then pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu; fi
+
+COPY src ./src
+COPY backend ./backend
+COPY configs ./configs
+COPY scripts ./scripts
+ENV PYTHONPATH=/app/src:/app
+
+# The data directory is mounted, never baked into the image.
+VOLUME ["/app/data"]
+EXPOSE 8000
+HEALTHCHECK --interval=30s --timeout=5s CMD python -c "import urllib.request;urllib.request.urlopen('http://localhost:8000/api/health?probes=false')"
+CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -1,0 +1,64 @@
+{
+ "at": "20261014T172758Z",
+ "cutoff": "2026-10-14T10:15:00",
+ "backup": "dentamind_before_audit_cleanup_20261014T172758Z.sqlite3",
+ "rows_before": {
+  "analyses": 16,
+  "reports": 4,
+  "region_reviews": 2,
+  "al_rounds": 1,
+  "annotation_batches": 0,
+  "images": 4,
+  "jobs": 13,
+  "experiments": 50
+ },
+ "rows_after": {
+  "analyses": 0,
+  "reports": 0,
+  "region_reviews": 0,
+  "al_rounds": 1,
+  "annotation_batches": 0,
+  "images": 3,
+  "jobs": 13,
+  "experiments": 50
+ },
+ "removed_ids": {
+  "analyses": [
+   "an-e4b6813b65",
+   "an-bd2601e558",
+   "an-74ba7374f6",
+   "an-c8722bdb26",
+   "an-510932c556",
+   "an-765274fd58",
+   "an-07ea19c1fe",
+   "an-4ef872de1e",
+   "an-ffd186821b",
+   "an-e4ba9f4742",
+   "an-981a1fa512",
+   "an-89318d5d09",
+   "an-fdda9c1532",
+   "an-e7da3285e5",
+   "an-494d195984",
+   "an-13dd365221"
+  ],
+  "reports": [
+   "RPT-E3AC213A7C",
+   "RPT-A3E0D43A29",
+   "RPT-DF491A179D",
+   "RPT-BC3C74FCE6"
+  ],
+  "region_reviews": [
+   "rev-6a350b051b",
+   "rev-4d6ba5f5b0"
+  ],
+  "al_rounds": [],
+  "annotation_batches": [],
+  "images": [
+   "up_6c461ec61f59"
+  ]
+ },
+ "removed_upload_files": [
+  "up_6c461ec61f59.png"
+ ],
+ "removed_active_models_json": false
+}

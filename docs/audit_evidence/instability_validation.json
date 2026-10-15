@@ -1,0 +1,26 @@
+{
+ "generated": "2026-10-14T14:09:49.750273+00:00",
+ "split": "val (test split never used)",
+ "n_images": 30,
+ "base": "live API, real models",
+ "ground_truth": "DENTEX quadrant_enumeration boxes and polygons",
+ "mask_instability": {
+  "n_regions": 851,
+  "mean_mask_iou": 0.7780030971362712,
+  "fraction_iou_below_0.8": 0.518213866039953,
+  "auroc_for_iou_below_0.8": 0.5925087108013938,
+  "spearman_like_corr_with_error": 0.19033668660195086,
+  "error_rate_above_median_signal": 0.5976470588235294,
+  "error_rate_at_or_below_median_signal": 0.43896713615023475,
+  "median_signal": 0.0592915240677363
+ },
+ "detection_instability": {
+  "n_regions": 878,
+  "false_positive_fraction": 0.030751708428246014,
+  "n_false_positives": 27,
+  "auroc_for_false_positive": 0.644122383252818,
+  "error_rate_above_median_signal": 0.04555808656036447,
+  "median_signal": 0.08488047615252436
+ },
+ "reading": "AUROC 0.5 = no information, 1.0 = perfect ranking. These are ranking signals on one split of one dataset; they are not calibrated probabilities of error. If an AUROC is near 0.5 or None the signal must not be presented as validated."
+}

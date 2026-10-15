@@ -1,0 +1,29 @@
+{
+ "note": "test-split radiographs, evaluation only; boxes are in original pixels",
+ "images": [
+  {
+   "image_id": "qe_train_119",
+   "n_gt": 20,
+   "n_pred": 21,
+   "median_best_iou": 0.662970080482027,
+   "recall_iou50": 0.95
+  },
+  {
+   "image_id": "qe_train_121",
+   "n_gt": 21,
+   "n_pred": 22,
+   "median_best_iou": 0.7530380948619754,
+   "recall_iou50": 0.8571428571428571
+  },
+  {
+   "image_id": "qe_train_125",
+   "n_gt": 32,
+   "n_pred": 32,
+   "median_best_iou": 0.8112006763219413,
+   "recall_iou50": 1.0
+  },
+  {
+   "pooled_recall_iou50": 0.945
+  }
+ ]
+}

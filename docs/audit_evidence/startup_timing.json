@@ -1,0 +1,12 @@
+﻿{
+    "measured":  "2026-10-14T17:18:29",
+    "cold_start_to_healthy_s":  4.1,
+    "first_predict_after_start_s":  9.59,
+    "second_predict_s":  0.59,
+    "first_full_after_predict_s":  5.75,
+    "gpu_mb_idle_before_start":  "0",
+    "gpu_mb_after_first_predict":  "1293",
+    "gpu_mb_after_first_full":  "1573",
+    "predict_response_bytes":  12924,
+    "full_response_bytes":  88000
+}

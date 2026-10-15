@@ -1,0 +1,258 @@
+{
+ "exp": "C1_clahe20",
+ "seed": 43,
+ "config": {
+  "exp": "C1_clahe20",
+  "preproc": "clahe20",
+  "aug": "baseline",
+  "imbalance": "weights",
+  "gamma": 2.0,
+  "epochs": 15,
+  "batch_size": 32,
+  "lr": 0.0003,
+  "wd": 0.0001,
+  "freeze_epochs": 0,
+  "save": false
+ },
+ "preproc_cfg": {
+  "mode": "clahe",
+  "clip": 2.0,
+  "grid": 4
+ },
+ "aug_cfg": {
+  "name": "baseline",
+  "hflip": 0.5,
+  "contrast": 0.1,
+  "geom_p": 0.0
+ },
+ "train_counts": [
+  1550,
+  438,
+  412,
+  120
+ ],
+ "n_val": 331,
+ "best_epoch": 8,
+ "best_val": {
+  "n": 331,
+  "accuracy": 0.851963746223565,
+  "macro_f1": 0.7542270412959884,
+  "weighted_f1": 0.857003533113765,
+  "balanced_accuracy": 0.8108231707317073,
+  "per_class": {
+   "Caries": {
+    "precision": 0.9222797927461139,
+    "recall": 0.8682926829268293,
+    "f1": 0.8944723618090452,
+    "support": 205
+   },
+   "Deep Caries": {
+    "precision": 0.6122448979591837,
+    "recall": 0.6666666666666666,
+    "f1": 0.6382978723404255,
+    "support": 45
+   },
+   "Impacted": {
+    "precision": 0.9178082191780822,
+    "recall": 0.9305555555555556,
+    "f1": 0.9241379310344828,
+    "support": 72
+   },
+   "Periapical Lesion": {
+    "precision": 0.4375,
+    "recall": 0.7777777777777778,
+    "f1": 0.56,
+    "support": 9
+   }
+  },
+  "confusion": [
+   [
+    178,
+    16,
+    4,
+    7
+   ],
+   [
+    11,
+    30,
+    2,
+    2
+   ],
+   [
+    3,
+    2,
+    67,
+    0
+   ],
+   [
+    1,
+    1,
+    0,
+    7
+   ]
+  ],
+  "minority_recall_periapical": 0.7777777777777778,
+  "roc_auc_ovr": {
+   "Caries": 0.9330236159504453,
+   "Deep Caries": 0.8874902874902875,
+   "Impacted": 0.9915272415272415,
+   "Periapical Lesion": 0.9799861973775017
+  },
+  "pr_auc_ovr": {
+   "Caries": 0.9555502823086751,
+   "Deep Caries": 0.6421428779726582,
+   "Impacted": 0.9748063104500431,
+   "Periapical Lesion": 0.7039384573812298
+  },
+  "macro_roc_auc": 0.948006835586369,
+  "macro_pr_auc": 0.8191094820281515,
+  "nll": 0.5875552892684937,
+  "ece": 0.08765770787558888
+ },
+ "last_val": {
+  "val_macro_f1": 0.729420859252792,
+  "val_acc": 0.8398791540785498,
+  "val_pl_recall": 0.6666666666666666,
+  "val_loss": 0.5887517929077148
+ },
+ "history": [
+  {
+   "epoch": 1,
+   "train_loss": 1.0243253537586756,
+   "val_loss": 1.1692785024642944,
+   "val_macro_f1": 0.4444094862043868,
+   "val_acc": 0.5226586102719033,
+   "val_pl_recall": 1.0,
+   "val_balanced_acc": 0.6484586720867209
+  },
+  {
+   "epoch": 2,
+   "train_loss": 0.7391998185051812,
+   "val_loss": 0.7752360105514526,
+   "val_macro_f1": 0.5406538718149173,
+   "val_acc": 0.622356495468278,
+   "val_pl_recall": 0.8888888888888888,
+   "val_balanced_acc": 0.6971714092140922
+  },
+  {
+   "epoch": 3,
+   "train_loss": 0.5189131744324215,
+   "val_loss": 0.6524880528450012,
+   "val_macro_f1": 0.6158595624376612,
+   "val_acc": 0.7250755287009063,
+   "val_pl_recall": 0.4444444444444444,
+   "val_balanced_acc": 0.6886009485094851
+  },
+  {
+   "epoch": 4,
+   "train_loss": 0.44035500590763393,
+   "val_loss": 0.6612906455993652,
+   "val_macro_f1": 0.6514823526728389,
+   "val_acc": 0.7734138972809668,
+   "val_pl_recall": 1.0,
+   "val_balanced_acc": 0.7867886178861789
+  },
+  {
+   "epoch": 5,
+   "train_loss": 0.2831466109506668,
+   "val_loss": 0.6721919178962708,
+   "val_macro_f1": 0.6718162140889414,
+   "val_acc": 0.7583081570996979,
+   "val_pl_recall": 0.5555555555555556,
+   "val_balanced_acc": 0.7308265582655826
+  },
+  {
+   "epoch": 6,
+   "train_loss": 0.22604627793743498,
+   "val_loss": 0.6987794637680054,
+   "val_macro_f1": 0.666263162921658,
+   "val_acc": 0.7643504531722054,
+   "val_pl_recall": 0.6666666666666666,
+   "val_balanced_acc": 0.7553184281842817
+  },
+  {
+   "epoch": 7,
+   "train_loss": 0.1472184560956463,
+   "val_loss": 0.6046422123908997,
+   "val_macro_f1": 0.6818124690795498,
+   "val_acc": 0.8126888217522659,
+   "val_pl_recall": 0.7777777777777778,
+   "val_balanced_acc": 0.7342649051490515
+  },
+  {
+   "epoch": 8,
+   "train_loss": 0.0738926316714949,
+   "val_loss": 0.5875552892684937,
+   "val_macro_f1": 0.7542270412959884,
+   "val_acc": 0.851963746223565,
+   "val_pl_recall": 0.7777777777777778,
+   "val_balanced_acc": 0.8108231707317073
+  },
+  {
+   "epoch": 9,
+   "train_loss": 0.07284954177836576,
+   "val_loss": 0.5962220430374146,
+   "val_macro_f1": 0.7286647089500001,
+   "val_acc": 0.8398791540785498,
+   "val_pl_recall": 0.6666666666666666,
+   "val_balanced_acc": 0.7795562330623306
+  },
+  {
+   "epoch": 10,
+   "train_loss": 0.033752741218204534,
+   "val_loss": 0.5707001686096191,
+   "val_macro_f1": 0.743766797101724,
+   "val_acc": 0.8549848942598187,
+   "val_pl_recall": 0.6666666666666666,
+   "val_balanced_acc": 0.7724762872628727
+  },
+  {
+   "epoch": 11,
+   "train_loss": 0.03333078929710956,
+   "val_loss": 0.5936277508735657,
+   "val_macro_f1": 0.7305452803724694,
+   "val_acc": 0.8429003021148036,
+   "val_pl_recall": 0.6666666666666666,
+   "val_balanced_acc": 0.769850948509485
+  },
+  {
+   "epoch": 12,
+   "train_loss": 0.014271201219941888,
+   "val_loss": 0.5877118706703186,
+   "val_macro_f1": 0.7270615201490778,
+   "val_acc": 0.8308157099697885,
+   "val_pl_recall": 0.6666666666666666,
+   "val_balanced_acc": 0.7583841463414634
+  },
+  {
+   "epoch": 13,
+   "train_loss": 0.01580449390069892,
+   "val_loss": 0.5984404683113098,
+   "val_macro_f1": 0.7179532493926374,
+   "val_acc": 0.8338368580060423,
+   "val_pl_recall": 0.6666666666666666,
+   "val_balanced_acc": 0.7465955284552844
+  },
+  {
+   "epoch": 14,
+   "train_loss": 0.01148569511013135,
+   "val_loss": 0.6025328636169434,
+   "val_macro_f1": 0.7203304162384696,
+   "val_acc": 0.8368580060422961,
+   "val_pl_recall": 0.6666666666666666,
+   "val_balanced_acc": 0.7500677506775068
+  },
+  {
+   "epoch": 15,
+   "train_loss": 0.0075259393058894645,
+   "val_loss": 0.5887517929077148,
+   "val_macro_f1": 0.729420859252792,
+   "val_acc": 0.8398791540785498,
+   "val_pl_recall": 0.6666666666666666,
+   "val_balanced_acc": 0.7556233062330623
+  }
+ ],
+ "duration_s": 226.7,
+ "gpu_peak_mb": 1831,
+ "split_note": "fit on train split; epoch selection on validation split; calibration and test not used"
+}
