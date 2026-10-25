@@ -61,7 +61,11 @@ MANIFEST
 .env
 
 # Data sets
-/data/
+/data/*
+# the frozen CV5 fold plan (group -> fold, class counts; no images or labels per finding) is needed by the CV5 tests
+!/data/splits/
+/data/splits/*
+!/data/splits/cv5_folds_v1.csv
 # DentaMind runtime artifacts
 logs/
 frontend/node_modules/

@@ -8,6 +8,7 @@ reports/manuscript/figures_v*/*.pdf -text
 reports/manuscript/figures_v*/*.png -text
 
 # pinned text files
+Data/splits/cv5_folds_v1.csv -text
 docs/ANNOTATION_AND_EVALUATION_PLAN.md -text
 docs/audit_evidence/ml_improvement/abstention/README.md -text
 docs/audit_evidence/ml_improvement/abstention/probs_calibration.json -text
