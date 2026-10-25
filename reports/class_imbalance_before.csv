@@ -1,0 +1,21 @@
+split,class,findings,crops_after_crop_rule,radiographs_with_class,share_of_split_crops,radiographs_in_split_with_any_finding
+train,Caries,1550,1550,435,0.6151,476
+train,Deep Caries,438,438,232,0.1738,476
+train,Impacted,412,412,171,0.1635,476
+train,Periapical Lesion,120,120,87,0.0476,476
+val,Caries,205,205,62,0.6193,65
+val,Deep Caries,45,45,29,0.136,65
+val,Impacted,72,72,31,0.2175,65
+val,Periapical Lesion,9,9,7,0.0272,65
+calibration,Caries,206,206,58,0.6358,64
+calibration,Deep Caries,47,47,26,0.1451,64
+calibration,Impacted,55,55,24,0.1698,64
+calibration,Periapical Lesion,16,16,11,0.0494,64
+test,Caries,228,228,68,0.6441,73
+test,Deep Caries,48,48,34,0.1356,73
+test,Impacted,65,65,28,0.1836,73
+test,Periapical Lesion,13,13,11,0.0367,73
+all,Caries,2189,2189,623,0.6203,678
+all,Deep Caries,578,578,321,0.1638,678
+all,Impacted,604,604,254,0.1712,678
+all,Periapical Lesion,158,158,116,0.0448,678

@@ -1,0 +1,1 @@
+intake_batch_id,pool_id,image_id,image_sha256,source_dataset,split_lock,reviewer_id,reviewer_qualification_attested,review_tool,review_started_on,review_completed_on,regions_marked,coverage_statement,second_reader_id,second_reader_agreement,export_file,export_file_sha256,notes

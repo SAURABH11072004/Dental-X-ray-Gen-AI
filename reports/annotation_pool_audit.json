@@ -1,0 +1,43 @@
+{
+ "generated": "2026-10-16T12:47:32.348255+00:00",
+ "script": "scripts/dataset/build_annotation_pool.py",
+ "images_considered": 7827,
+ "radiograph_groups": 6734,
+ "pool_radiographs": 6006,
+ "excluded_groups": {
+  "group already has diagnosis labels": 728
+ },
+ "pool_by_source_lock_boxes": {
+  "dentex_official_test | unassigned | no ": 155,
+  "dentex_quadrant | eval_locked | no ": 24,
+  "dentex_quadrant | train | no ": 55,
+  "dentex_quadrant-enumeration-disease | unassigned | no ": 16,
+  "dentex_quadrant_enumeration | eval_locked | yes": 105,
+  "dentex_quadrant_enumeration | train | yes": 251,
+  "dentex_unlabelled | unassigned | no ": 1537,
+  "hanoi_periapical | unassigned | no ": 3863
+ },
+ "near_duplicates": {
+  "rule": "dHash Hamming <= 4 and different SHA-256, confirmed by thumbnail correlation >= 0.97",
+  "hash_candidates": 51545,
+  "confirmed": 2,
+  "max_candidate_correlation": 0.9999656081199646,
+  "pairs": [
+   [
+    "raw/external/hanoi_periapical/originals/Original JPG Images/01161.jpg",
+    "raw/external/hanoi_periapical/originals/Original JPG Images/33841.jpg",
+    0,
+    1.0
+   ],
+   [
+    "raw/external/hanoi_periapical/originals/Original JPG Images/19241.jpg",
+    "raw/external/hanoi_periapical/originals/Original JPG Images/37231.jpg",
+    0,
+    0.9973
+   ]
+  ]
+ },
+ "hanoi_included": true,
+ "policy": "pool radiographs carry NO labels; teeth without a clinician-confirmed finding are never treated as healthy",
+ "pool_sha256": "b4281dfcce307eaada2c5c971947656f09762c946e783e64d39938f4eea20a46"
+}

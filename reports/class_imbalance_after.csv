@@ -1,0 +1,29 @@
+split,class,findings,crops_after_crop_rule,crops_before,change,radiographs_with_class,share_of_split_crops,radiographs_in_split_with_any_finding
+train,Caries,1635,1635,1550,85,467,0.6103,516
+train,Deep Caries,467,467,438,29,250,0.1743,516
+train,Impacted,448,448,412,36,186,0.1672,516
+train,Periapical Lesion,129,129,120,9,94,0.0482,516
+val,Caries,205,205,205,0,62,0.6193,65
+val,Deep Caries,45,45,45,0,29,0.136,65
+val,Impacted,72,72,72,0,31,0.2175,65
+val,Periapical Lesion,9,9,9,0,7,0.0272,65
+calibration,Caries,206,206,206,0,58,0.6358,64
+calibration,Deep Caries,47,47,47,0,26,0.1451,64
+calibration,Impacted,55,55,55,0,24,0.1698,64
+calibration,Periapical Lesion,16,16,16,0,11,0.0494,64
+test,Caries,228,228,228,0,68,0.6441,73
+test,Deep Caries,48,48,48,0,34,0.1356,73
+test,Impacted,65,65,65,0,28,0.1836,73
+test,Periapical Lesion,13,13,13,0,11,0.0367,73
+all,Caries,2274,2274,2189,85,655,0.6166,718
+all,Deep Caries,607,607,578,29,339,0.1646,718
+all,Impacted,640,640,604,36,269,0.1735,718
+all,Periapical Lesion,167,167,158,9,123,0.0453,718
+train[dentex_train_disease],Caries,1550,1550,,,435,,
+train[dentex_train_disease],Deep Caries,438,438,,,232,,
+train[dentex_train_disease],Impacted,412,412,,,171,,
+train[dentex_train_disease],Periapical Lesion,120,120,,,87,,
+train[dentex_official_val],Caries,85,85,,,32,,
+train[dentex_official_val],Deep Caries,29,29,,,18,,
+train[dentex_official_val],Impacted,36,36,,,15,,
+train[dentex_official_val],Periapical Lesion,9,9,,,7,,

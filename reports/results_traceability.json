@@ -1,0 +1,1269 @@
+{
+ "format": "dentamind-results-traceability-v1",
+ "run": "CV5-BASE run 1 (kaggle/artifacts_cv5_run1)",
+ "archive_zip_sha256": "4ac56843ebc370eb7f3913f6c6f2c92e78062033b7dae1727ec79b52ea220648",
+ "sha256sums_txt": "19a0decfebf21b74b2f0f536ff8e27cb934322e9139d1c1211b754a599f88abd",
+ "script_sha256": "49aa00fdd1f2065fb2a6a7314cd0944241a346c63d6dfd9698ddc33ee01953bb",
+ "notes": [
+  "radiograph-level results only: DENTEX has no patient identifiers",
+  "not test-set results; not comparable with earlier single-split numbers (different populations and protocols)",
+  "no candidate results exist; BASE-P2 has not been run"
+ ],
+ "rows": [
+  {
+   "id": "pop.findings",
+   "quantity": "primary out-of-fold findings",
+   "value": 2851,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "population/primary_findings",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "pop.radiographs",
+   "quantity": "primary radiographs",
+   "value": 541,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "population/primary_radiographs",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "pop.det_matched",
+   "quantity": "detector-matched findings",
+   "value": 2745,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "population/detector_matched",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.macro_f1.mean",
+   "quantity": "macro-F1, detector boxes, mean over seeds 42-46",
+   "value": 0.6767980357784917,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/macro_f1/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.macro_f1.sd",
+   "quantity": "macro-F1, detector boxes, SD over seeds",
+   "value": 0.00837456822113588,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/macro_f1/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.boot.point",
+   "quantity": "macro-F1, detector boxes, bootstrap point (seed-mean)",
+   "value": 0.6767980357784917,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "bootstrap/det_matched/point",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.boot.ci95",
+   "quantity": "macro-F1, detector boxes, radiograph bootstrap 95% CI (2,000 resamples)",
+   "value": [
+    0.6524808778922458,
+    0.7011542674700031
+   ],
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "bootstrap/det_matched/ci95",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.accuracy.mean",
+   "quantity": "accuracy, detector boxes, mean",
+   "value": 0.8072859744990893,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/accuracy/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.ece.mean",
+   "quantity": "ECE (10 bins), detector boxes, mean",
+   "value": 0.1071169023479052,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/ece_10bin/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.ece.sd",
+   "quantity": "ECE (10 bins), detector boxes, SD",
+   "value": 0.0034316511511982613,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/ece_10bin/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.fold_level.mean",
+   "quantity": "fold-level macro-F1, detector boxes, mean over folds (descriptive)",
+   "value": 0.6749340325534929,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "fold_level_macro_f1/det_matched/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.fold_level.sd",
+   "quantity": "fold-level macro-F1, detector boxes, SD over folds",
+   "value": 0.03221450279168765,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "fold_level_macro_f1/det_matched/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Caries.precision.mean",
+   "quantity": "Caries precision, detector boxes, mean",
+   "value": 0.8481256660514523,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Caries/precision/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Caries.precision.sd",
+   "quantity": "Caries precision, detector boxes, SD",
+   "value": 0.003167503118986167,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Caries/precision/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Caries.recall.mean",
+   "quantity": "Caries recall, detector boxes, mean",
+   "value": 0.882671272308578,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Caries/recall/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Caries.recall.sd",
+   "quantity": "Caries recall, detector boxes, SD",
+   "value": 0.007043865938598864,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Caries/recall/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Caries.f1.mean",
+   "quantity": "Caries f1, detector boxes, mean",
+   "value": 0.8650334315728871,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Caries/f1/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Caries.f1.sd",
+   "quantity": "Caries f1, detector boxes, SD",
+   "value": 0.002590663086207184,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Caries/f1/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Deep Caries.precision.mean",
+   "quantity": "Deep Caries precision, detector boxes, mean",
+   "value": 0.5455458264146549,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Deep Caries/precision/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Deep Caries.precision.sd",
+   "quantity": "Deep Caries precision, detector boxes, SD",
+   "value": 0.02379447816158384,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Deep Caries/precision/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Deep Caries.recall.mean",
+   "quantity": "Deep Caries recall, detector boxes, mean",
+   "value": 0.43981481481481477,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Deep Caries/recall/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Deep Caries.recall.sd",
+   "quantity": "Deep Caries recall, detector boxes, SD",
+   "value": 0.017552952416786005,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Deep Caries/recall/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Deep Caries.f1.mean",
+   "quantity": "Deep Caries f1, detector boxes, mean",
+   "value": 0.48681661590822933,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Deep Caries/f1/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Deep Caries.f1.sd",
+   "quantity": "Deep Caries f1, detector boxes, SD",
+   "value": 0.017115164508552914,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Deep Caries/f1/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Impacted.precision.mean",
+   "quantity": "Impacted precision, detector boxes, mean",
+   "value": 0.9352053684404529,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Impacted/precision/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Impacted.precision.sd",
+   "quantity": "Impacted precision, detector boxes, SD",
+   "value": 0.01111242164661615,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Impacted/precision/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Impacted.recall.mean",
+   "quantity": "Impacted recall, detector boxes, mean",
+   "value": 0.9445378151260504,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Impacted/recall/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Impacted.recall.sd",
+   "quantity": "Impacted recall, detector boxes, SD",
+   "value": 0.006904065850905468,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Impacted/recall/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Impacted.f1.mean",
+   "quantity": "Impacted f1, detector boxes, mean",
+   "value": 0.9398163072907592,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Impacted/f1/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Impacted.f1.sd",
+   "quantity": "Impacted f1, detector boxes, SD",
+   "value": 0.006976068256308117,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Impacted/f1/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Periapical Lesion.precision.mean",
+   "quantity": "Periapical Lesion precision, detector boxes, mean",
+   "value": 0.40103077046582597,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Periapical Lesion/precision/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Periapical Lesion.precision.sd",
+   "quantity": "Periapical Lesion precision, detector boxes, SD",
+   "value": 0.020325181133766884,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Periapical Lesion/precision/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Periapical Lesion.recall.mean",
+   "quantity": "Periapical Lesion recall, detector boxes, mean",
+   "value": 0.43200000000000005,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Periapical Lesion/recall/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Periapical Lesion.recall.sd",
+   "quantity": "Periapical Lesion recall, detector boxes, SD",
+   "value": 0.03271085446759225,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Periapical Lesion/recall/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Periapical Lesion.f1.mean",
+   "quantity": "Periapical Lesion f1, detector boxes, mean",
+   "value": 0.41552578834209186,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Periapical Lesion/f1/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.Periapical Lesion.f1.sd",
+   "quantity": "Periapical Lesion f1, detector boxes, SD",
+   "value": 0.022568143769296767,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/det_matched/per_class/Periapical Lesion/f1/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.seed42.macro_f1",
+   "quantity": "macro-F1, detector boxes, seed 42 (pooled out-of-fold)",
+   "value": 0.6677366827198298,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/42/det_matched/macro_f1",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.seed42.nll",
+   "quantity": "NLL, detector boxes, seed 42",
+   "value": 0.6745991224856985,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/42/det_matched/nll",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.seed43.macro_f1",
+   "quantity": "macro-F1, detector boxes, seed 43 (pooled out-of-fold)",
+   "value": 0.6731948284769137,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/43/det_matched/macro_f1",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.seed43.nll",
+   "quantity": "NLL, detector boxes, seed 43",
+   "value": 0.6866566635663321,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/43/det_matched/nll",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.seed44.macro_f1",
+   "quantity": "macro-F1, detector boxes, seed 44 (pooled out-of-fold)",
+   "value": 0.6806612801297544,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/44/det_matched/macro_f1",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.seed44.nll",
+   "quantity": "NLL, detector boxes, seed 44",
+   "value": 0.6440639552397075,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/44/det_matched/nll",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.seed45.macro_f1",
+   "quantity": "macro-F1, detector boxes, seed 45 (pooled out-of-fold)",
+   "value": 0.6893161475336176,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/45/det_matched/macro_f1",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.seed45.nll",
+   "quantity": "NLL, detector boxes, seed 45",
+   "value": 0.6392476175578238,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/45/det_matched/nll",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.seed46.macro_f1",
+   "quantity": "macro-F1, detector boxes, seed 46 (pooled out-of-fold)",
+   "value": 0.6730812400323435,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/46/det_matched/macro_f1",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.seed46.nll",
+   "quantity": "NLL, detector boxes, seed 46",
+   "value": 0.6829888152339221,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/46/det_matched/nll",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.fold0.macro_f1.mean",
+   "quantity": "macro-F1, detector boxes, held-out fold 0, mean over seeds",
+   "value": 0.7247298220897118,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "per_fold/0/det_matched/macro_f1/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.fold1.macro_f1.mean",
+   "quantity": "macro-F1, detector boxes, held-out fold 1, mean over seeds",
+   "value": 0.6523908851226908,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "per_fold/1/det_matched/macro_f1/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.fold2.macro_f1.mean",
+   "quantity": "macro-F1, detector boxes, held-out fold 2, mean over seeds",
+   "value": 0.6617662083783138,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "per_fold/2/det_matched/macro_f1/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.fold3.macro_f1.mean",
+   "quantity": "macro-F1, detector boxes, held-out fold 3, mean over seeds",
+   "value": 0.6467883067013547,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "per_fold/3/det_matched/macro_f1/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "det_matched.fold4.macro_f1.mean",
+   "quantity": "macro-F1, detector boxes, held-out fold 4, mean over seeds",
+   "value": 0.6889949404753934,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "per_fold/4/det_matched/macro_f1/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.macro_f1.mean",
+   "quantity": "macro-F1, GT boxes, mean over seeds 42-46",
+   "value": 0.6976228629596404,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/macro_f1/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.macro_f1.sd",
+   "quantity": "macro-F1, GT boxes, SD over seeds",
+   "value": 0.007061892026207441,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/macro_f1/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.boot.point",
+   "quantity": "macro-F1, GT boxes, bootstrap point (seed-mean)",
+   "value": 0.6976228629596404,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "bootstrap/gt/point",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.boot.ci95",
+   "quantity": "macro-F1, GT boxes, radiograph bootstrap 95% CI (2,000 resamples)",
+   "value": [
+    0.6752410669370661,
+    0.7184254080887418
+   ],
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "bootstrap/gt/ci95",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.accuracy.mean",
+   "quantity": "accuracy, GT boxes, mean",
+   "value": 0.8037179936864259,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/accuracy/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.ece.mean",
+   "quantity": "ECE (10 bins), GT boxes, mean",
+   "value": 0.10873823808770733,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/ece_10bin/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.ece.sd",
+   "quantity": "ECE (10 bins), GT boxes, SD",
+   "value": 0.005956585294712444,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/ece_10bin/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.fold_level.mean",
+   "quantity": "fold-level macro-F1, GT boxes, mean over folds (descriptive)",
+   "value": 0.6967150398902147,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "fold_level_macro_f1/gt/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.fold_level.sd",
+   "quantity": "fold-level macro-F1, GT boxes, SD over folds",
+   "value": 0.01989509332201943,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "fold_level_macro_f1/gt/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Caries.precision.mean",
+   "quantity": "Caries precision, GT boxes, mean",
+   "value": 0.8468224014322308,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Caries/precision/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Caries.precision.sd",
+   "quantity": "Caries precision, GT boxes, SD",
+   "value": 0.0039259877182953535,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Caries/precision/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Caries.recall.mean",
+   "quantity": "Caries recall, GT boxes, mean",
+   "value": 0.8744159544159544,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Caries/recall/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Caries.recall.sd",
+   "quantity": "Caries recall, GT boxes, SD",
+   "value": 0.0052005033431816,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Caries/recall/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Caries.f1.mean",
+   "quantity": "Caries f1, GT boxes, mean",
+   "value": 0.860392386680024,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Caries/f1/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Caries.f1.sd",
+   "quantity": "Caries f1, GT boxes, SD",
+   "value": 0.0038625434591908416,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Caries/f1/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Deep Caries.precision.mean",
+   "quantity": "Deep Caries precision, GT boxes, mean",
+   "value": 0.5757517355206805,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Deep Caries/precision/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Deep Caries.precision.sd",
+   "quantity": "Deep Caries precision, GT boxes, SD",
+   "value": 0.017527677955527617,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Deep Caries/precision/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Deep Caries.recall.mean",
+   "quantity": "Deep Caries recall, GT boxes, mean",
+   "value": 0.49565217391304356,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Deep Caries/recall/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Deep Caries.recall.sd",
+   "quantity": "Deep Caries recall, GT boxes, SD",
+   "value": 0.012300994432722959,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Deep Caries/recall/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Deep Caries.f1.mean",
+   "quantity": "Deep Caries f1, GT boxes, mean",
+   "value": 0.5326182726286252,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Deep Caries/f1/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Deep Caries.f1.sd",
+   "quantity": "Deep Caries f1, GT boxes, SD",
+   "value": 0.0124706964300193,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Deep Caries/f1/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Impacted.precision.mean",
+   "quantity": "Impacted precision, GT boxes, mean",
+   "value": 0.9130789753440638,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Impacted/precision/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Impacted.precision.sd",
+   "quantity": "Impacted precision, GT boxes, SD",
+   "value": 0.012817595091485211,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Impacted/precision/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Impacted.recall.mean",
+   "quantity": "Impacted recall, GT boxes, mean",
+   "value": 0.9487603305785125,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Impacted/recall/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Impacted.recall.sd",
+   "quantity": "Impacted recall, GT boxes, SD",
+   "value": 0.008692431391720108,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Impacted/recall/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Impacted.f1.mean",
+   "quantity": "Impacted f1, GT boxes, mean",
+   "value": 0.9305195006569734,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Impacted/f1/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Impacted.f1.sd",
+   "quantity": "Impacted f1, GT boxes, SD",
+   "value": 0.007481905468476404,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Impacted/f1/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Periapical Lesion.precision.mean",
+   "quantity": "Periapical Lesion precision, GT boxes, mean",
+   "value": 0.48522809181842075,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Periapical Lesion/precision/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Periapical Lesion.precision.sd",
+   "quantity": "Periapical Lesion precision, GT boxes, SD",
+   "value": 0.0191795528783654,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Periapical Lesion/precision/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Periapical Lesion.recall.mean",
+   "quantity": "Periapical Lesion recall, GT boxes, mean",
+   "value": 0.4511627906976744,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Periapical Lesion/recall/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Periapical Lesion.recall.sd",
+   "quantity": "Periapical Lesion recall, GT boxes, SD",
+   "value": 0.04728046723093614,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Periapical Lesion/recall/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Periapical Lesion.f1.mean",
+   "quantity": "Periapical Lesion f1, GT boxes, mean",
+   "value": 0.46696129187293856,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Periapical Lesion/f1/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.Periapical Lesion.f1.sd",
+   "quantity": "Periapical Lesion f1, GT boxes, SD",
+   "value": 0.03281513996139242,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "summary/gt/per_class/Periapical Lesion/f1/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.seed42.macro_f1",
+   "quantity": "macro-F1, GT boxes, seed 42 (pooled out-of-fold)",
+   "value": 0.7002525230211912,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/42/gt/macro_f1",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.seed42.nll",
+   "quantity": "NLL, GT boxes, seed 42",
+   "value": 0.6893277980957486,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/42/gt/nll",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.seed43.macro_f1",
+   "quantity": "macro-F1, GT boxes, seed 43 (pooled out-of-fold)",
+   "value": 0.6980450875875717,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/43/gt/macro_f1",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.seed43.nll",
+   "quantity": "NLL, GT boxes, seed 43",
+   "value": 0.6487153218996179,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/43/gt/nll",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.seed44.macro_f1",
+   "quantity": "macro-F1, GT boxes, seed 44 (pooled out-of-fold)",
+   "value": 0.7061983857490073,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/44/gt/macro_f1",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.seed44.nll",
+   "quantity": "NLL, GT boxes, seed 44",
+   "value": 0.6368688218563902,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/44/gt/nll",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.seed45.macro_f1",
+   "quantity": "macro-F1, GT boxes, seed 45 (pooled out-of-fold)",
+   "value": 0.6968712732466353,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/45/gt/macro_f1",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.seed45.nll",
+   "quantity": "NLL, GT boxes, seed 45",
+   "value": 0.6446438760420325,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/45/gt/nll",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.seed46.macro_f1",
+   "quantity": "macro-F1, GT boxes, seed 46 (pooled out-of-fold)",
+   "value": 0.686747045193796,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/46/gt/macro_f1",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.seed46.nll",
+   "quantity": "NLL, GT boxes, seed 46",
+   "value": 0.6963506570127201,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/46/gt/nll",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.fold0.macro_f1.mean",
+   "quantity": "macro-F1, GT boxes, held-out fold 0, mean over seeds",
+   "value": 0.7132796921932487,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "per_fold/0/gt/macro_f1/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.fold1.macro_f1.mean",
+   "quantity": "macro-F1, GT boxes, held-out fold 1, mean over seeds",
+   "value": 0.6725170948598788,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "per_fold/1/gt/macro_f1/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.fold2.macro_f1.mean",
+   "quantity": "macro-F1, GT boxes, held-out fold 2, mean over seeds",
+   "value": 0.7112455905658354,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "per_fold/2/gt/macro_f1/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.fold3.macro_f1.mean",
+   "quantity": "macro-F1, GT boxes, held-out fold 3, mean over seeds",
+   "value": 0.6776393875747999,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "per_fold/3/gt/macro_f1/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "gt.fold4.macro_f1.mean",
+   "quantity": "macro-F1, GT boxes, held-out fold 4, mean over seeds",
+   "value": 0.7088934342573104,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "per_fold/4/gt/macro_f1/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "e2e.seed42.Caries.recall",
+   "quantity": "end-to-end recall (unmatched = wrong), Caries, seed 42",
+   "value": 0.8689458689458689,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/42/end_to_end/recall/Caries",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "e2e.seed42.Deep Caries.recall",
+   "quantity": "end-to-end recall (unmatched = wrong), Deep Caries, seed 42",
+   "value": 0.3747412008281574,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/42/end_to_end/recall/Deep Caries",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "e2e.seed42.Impacted.recall",
+   "quantity": "end-to-end recall (unmatched = wrong), Impacted, seed 42",
+   "value": 0.9214876033057852,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/42/end_to_end/recall/Impacted",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "e2e.seed42.Periapical Lesion.recall",
+   "quantity": "end-to-end recall (unmatched = wrong), Periapical Lesion, seed 42",
+   "value": 0.34108527131782945,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/42/end_to_end/recall/Periapical Lesion",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "e2e.seed43.Caries.recall",
+   "quantity": "end-to-end recall (unmatched = wrong), Caries, seed 43",
+   "value": 0.8672364672364672,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/43/end_to_end/recall/Caries",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "e2e.seed43.Deep Caries.recall",
+   "quantity": "end-to-end recall (unmatched = wrong), Deep Caries, seed 43",
+   "value": 0.4078674948240166,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/43/end_to_end/recall/Deep Caries",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "e2e.seed43.Impacted.recall",
+   "quantity": "end-to-end recall (unmatched = wrong), Impacted, seed 43",
+   "value": 0.9256198347107438,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/43/end_to_end/recall/Impacted",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "e2e.seed43.Periapical Lesion.recall",
+   "quantity": "end-to-end recall (unmatched = wrong), Periapical Lesion, seed 43",
+   "value": 0.32558139534883723,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/43/end_to_end/recall/Periapical Lesion",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "e2e.seed44.Caries.recall",
+   "quantity": "end-to-end recall (unmatched = wrong), Caries, seed 44",
+   "value": 0.8814814814814815,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/44/end_to_end/recall/Caries",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "e2e.seed44.Deep Caries.recall",
+   "quantity": "end-to-end recall (unmatched = wrong), Deep Caries, seed 44",
+   "value": 0.39337474120082816,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/44/end_to_end/recall/Deep Caries",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "e2e.seed44.Impacted.recall",
+   "quantity": "end-to-end recall (unmatched = wrong), Impacted, seed 44",
+   "value": 0.9338842975206612,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/44/end_to_end/recall/Impacted",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "e2e.seed44.Periapical Lesion.recall",
+   "quantity": "end-to-end recall (unmatched = wrong), Periapical Lesion, seed 44",
+   "value": 0.3333333333333333,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/44/end_to_end/recall/Periapical Lesion",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "e2e.seed45.Caries.recall",
+   "quantity": "end-to-end recall (unmatched = wrong), Caries, seed 45",
+   "value": 0.8695156695156695,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/45/end_to_end/recall/Caries",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "e2e.seed45.Deep Caries.recall",
+   "quantity": "end-to-end recall (unmatched = wrong), Deep Caries, seed 45",
+   "value": 0.40993788819875776,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/45/end_to_end/recall/Deep Caries",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "e2e.seed45.Impacted.recall",
+   "quantity": "end-to-end recall (unmatched = wrong), Impacted, seed 45",
+   "value": 0.9256198347107438,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/45/end_to_end/recall/Impacted",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "e2e.seed45.Periapical Lesion.recall",
+   "quantity": "end-to-end recall (unmatched = wrong), Periapical Lesion, seed 45",
+   "value": 0.37209302325581395,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/45/end_to_end/recall/Periapical Lesion",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "e2e.seed46.Caries.recall",
+   "quantity": "end-to-end recall (unmatched = wrong), Caries, seed 46",
+   "value": 0.8809116809116809,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/46/end_to_end/recall/Caries",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "e2e.seed46.Deep Caries.recall",
+   "quantity": "end-to-end recall (unmatched = wrong), Deep Caries, seed 46",
+   "value": 0.38095238095238093,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/46/end_to_end/recall/Deep Caries",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "e2e.seed46.Impacted.recall",
+   "quantity": "end-to-end recall (unmatched = wrong), Impacted, seed 46",
+   "value": 0.9380165289256198,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/46/end_to_end/recall/Impacted",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "e2e.seed46.Periapical Lesion.recall",
+   "quantity": "end-to-end recall (unmatched = wrong), Periapical Lesion, seed 46",
+   "value": 0.3023255813953488,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "pooled_per_seed/46/end_to_end/recall/Periapical Lesion",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "unseen.findings",
+   "quantity": "detector-unseen subset findings",
+   "value": 331,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "detector_unseen_subset/findings",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "unseen.det.mean",
+   "quantity": "detector-unseen subset macro-F1, detector boxes, mean",
+   "value": 0.6845078208577668,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "detector_unseen_subset/macro_f1_det_matched/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "unseen.gt.mean",
+   "quantity": "detector-unseen subset macro-F1, GT boxes, mean",
+   "value": 0.7099229226416981,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "detector_unseen_subset/macro_f1_gt/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "secondary.findings",
+   "quantity": "DENTEX official-validation findings (secondary)",
+   "value": 159,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "secondary_official_val/findings",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "secondary.gt.mean",
+   "quantity": "official-validation macro-F1, GT boxes, mean",
+   "value": 0.7061858308445806,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "secondary_official_val/gt_macro_f1/mean",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "secondary.gt.sd",
+   "quantity": "official-validation macro-F1, GT boxes, SD",
+   "value": 0.05440600376689427,
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "secondary_official_val/gt_macro_f1/sd",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "env.gpu",
+   "quantity": "GPU",
+   "value": "Tesla T4",
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "environment/gpu",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "env.torch",
+   "quantity": "torch",
+   "value": "2.11.0+cu128",
+   "source": "kaggle/artifacts_cv5_run1/cv5_results.json",
+   "json_path": "environment/torch",
+   "source_sha256": "52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82",
+   "kind": "read"
+  },
+  {
+   "id": "cost.train_hours",
+   "quantity": "training time, sum over the 25 runs (per-run cumulative epoch seconds; excludes data download, crops, detector and prediction)",
+   "value": 1.042638888888889,
+   "source": "runs/*__result.json history[-1].sec",
+   "json_path": null,
+   "source_sha256": [
+    "09551db68d50bfe4ce540dfe5d0f61d0babec40080559e1e229c35262038924e",
+    "5caf4e4bda534e738187ace87d3ddecc61e104fed77fa2478f647ef0c613f661",
+    "ef1a575fd13c762648717bc9035ca24211d4b013cfec608432fef7d84af9c7fa",
+    "15482934753f48ec3848f543cd017e9ebca37e0c5c4bd4ecea1e3d496d8dfe99",
+    "200250fb6ab64ae0e9884211328ca11a33eb023d88cc6d25dd578a77a58807d6",
+    "8a9a30463cfcdb8410b00b8da4f1fae3816ca4238e4090c516aee56ea0bf082d",
+    "07c1bf4bdd72102a6e4e62548a927fee05f064a68d002e755366107d3a9e9acd",
+    "b221e463d74501caedf536966c893923584e24e2a187939a185f629305552b9b",
+    "ce16fe4cd8c946514d4a8ab39f82028c9faf84d571ecc8e9cbc2af18786943cc",
+    "01f7b632dcb0859c2e42ca4601b3e353cdd83047e13be128818bcb4910b42a9d",
+    "f2eea279e197b9286a33ebafc1957241141c4839d11b891c6a01762cf2da9ff6",
+    "de831b670affab5329d16ee8b75234e628a1571fed17bfc74f1d34c86e6b9aa9",
+    "908191390ba341ad7908b87d015bed68b044ab2a8459d25a11d54c53b9b9728d",
+    "9450b8d8f6d1ccffae76a9ec74b7d058aefb1006d476545bdc7fffef6a593ea2",
+    "96cf8b73c78f30bdcd0cdfafe565398ea6682cc96ea724b813ffdd01d9a837f9",
+    "fdbd481122f70df9cda92b856797e7f90785d3b0dfe6a6c44e73ef40c801884d",
+    "1049ca87b40d59f1813b2fe5f72bb59d05d8e63f125ed47c92ebdbc5081ee4c5",
+    "5aa9f8af9587cd2b67215e4a551718d727df805698b44ecbc7d7f534bd6335aa",
+    "2a1934b9327d8a385915c0fef439d6aee12c7f6ac42cf81e9bf104845182a050",
+    "c74d1c282940601183f207aac456885ac9fc6274f942080d7c6e452b570cd25a",
+    "3f84b68b1a32164e35d82cc275642ff2122c3520a113203587855a15fce14d4a",
+    "30c14c80f1af06a78e51c8725e7acf428fec280630810208e6542b5b29772d9d",
+    "3494d32050f82c36e30a7bb178b027b51c9c0029d7a02d3b48c8375cca4b6ee2",
+    "ef312f6f597924df4f2b2f3060f83a3a6793d4436cd0fd0c59c03f9588fd3d48",
+    "b66ff0fd88fe7231e64ca5c099128bdfacfa3d509f5237f6812d38a1973e45a4"
+   ],
+   "kind": "derived (sum of 25 runs)"
+  },
+  {
+   "id": "cost.peak_gpu_mb",
+   "quantity": "peak allocated GPU memory, max over runs (MB)",
+   "value": 1736,
+   "source": "runs/*__result.json gpu.peak_alloc_mb",
+   "json_path": null,
+   "source_sha256": [
+    "09551db68d50bfe4ce540dfe5d0f61d0babec40080559e1e229c35262038924e",
+    "5caf4e4bda534e738187ace87d3ddecc61e104fed77fa2478f647ef0c613f661",
+    "ef1a575fd13c762648717bc9035ca24211d4b013cfec608432fef7d84af9c7fa",
+    "15482934753f48ec3848f543cd017e9ebca37e0c5c4bd4ecea1e3d496d8dfe99",
+    "200250fb6ab64ae0e9884211328ca11a33eb023d88cc6d25dd578a77a58807d6",
+    "8a9a30463cfcdb8410b00b8da4f1fae3816ca4238e4090c516aee56ea0bf082d",
+    "07c1bf4bdd72102a6e4e62548a927fee05f064a68d002e755366107d3a9e9acd",
+    "b221e463d74501caedf536966c893923584e24e2a187939a185f629305552b9b",
+    "ce16fe4cd8c946514d4a8ab39f82028c9faf84d571ecc8e9cbc2af18786943cc",
+    "01f7b632dcb0859c2e42ca4601b3e353cdd83047e13be128818bcb4910b42a9d",
+    "f2eea279e197b9286a33ebafc1957241141c4839d11b891c6a01762cf2da9ff6",
+    "de831b670affab5329d16ee8b75234e628a1571fed17bfc74f1d34c86e6b9aa9",
+    "908191390ba341ad7908b87d015bed68b044ab2a8459d25a11d54c53b9b9728d",
+    "9450b8d8f6d1ccffae76a9ec74b7d058aefb1006d476545bdc7fffef6a593ea2",
+    "96cf8b73c78f30bdcd0cdfafe565398ea6682cc96ea724b813ffdd01d9a837f9",
+    "fdbd481122f70df9cda92b856797e7f90785d3b0dfe6a6c44e73ef40c801884d",
+    "1049ca87b40d59f1813b2fe5f72bb59d05d8e63f125ed47c92ebdbc5081ee4c5",
+    "5aa9f8af9587cd2b67215e4a551718d727df805698b44ecbc7d7f534bd6335aa",
+    "2a1934b9327d8a385915c0fef439d6aee12c7f6ac42cf81e9bf104845182a050",
+    "c74d1c282940601183f207aac456885ac9fc6274f942080d7c6e452b570cd25a",
+    "3f84b68b1a32164e35d82cc275642ff2122c3520a113203587855a15fce14d4a",
+    "30c14c80f1af06a78e51c8725e7acf428fec280630810208e6542b5b29772d9d",
+    "3494d32050f82c36e30a7bb178b027b51c9c0029d7a02d3b48c8375cca4b6ee2",
+    "ef312f6f597924df4f2b2f3060f83a3a6793d4436cd0fd0c59c03f9588fd3d48",
+    "b66ff0fd88fe7231e64ca5c099128bdfacfa3d509f5237f6812d38a1973e45a4"
+   ],
+   "kind": "derived (max)"
+  },
+  {
+   "id": "cost.checkpoint_bytes",
+   "quantity": "checkpoint size (bytes; identical for all 25)",
+   "value": 94354861,
+   "source": "checkpoint_manifest.json",
+   "json_path": "*/bytes",
+   "source_sha256": "afb505e10b59b85a81a4639393e4304b9f54fa8edd2d6d35cda841e1e5604fb3",
+   "kind": "read"
+  },
+  {
+   "id": "cost.parameters",
+   "quantity": "trainable parameters of the BASE architecture (ResNet-50, 4-class head)",
+   "value": 23516228,
+   "source": "kaggle/dentamind_kaggle.py new_model()",
+   "json_path": null,
+   "source_sha256": "879faa93cb313b47e3b9f03dcc94a92e40981384d790f40c604117a9042f3e3d",
+   "kind": "derived (architecture count, no weights)"
+  },
+  {
+   "id": "cost.latency",
+   "quantity": "inference latency per crop",
+   "value": null,
+   "source": null,
+   "json_path": null,
+   "source_sha256": null,
+   "kind": "NOT AVAILABLE in the archived artifacts"
+  },
+  {
+   "id": "cost.notebook_runtime",
+   "quantity": "total notebook wall-clock runtime",
+   "value": null,
+   "source": null,
+   "json_path": null,
+   "source_sha256": null,
+   "kind": "NOT AVAILABLE in the archived artifacts (the Kaggle log states 'Successfully ran in 4945.4s'; reported in reports/cv5_results.md, not an artifact field)"
+  }
+ ]
+}

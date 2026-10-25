@@ -1,0 +1,147 @@
+{
+ "generated": "2026-10-16T08:21:37.389406+00:00",
+ "script": "scripts/dataset/build_combined_manifest.py",
+ "seed": 42,
+ "seed_note": "no new random split: DENTEX images keep their persisted seed-42 assignment; external data is assigned by rule (deterministic)",
+ "official_val_role": "train",
+ "inputs_sha256": {
+  "manifest.csv": "a962602d9e240ae6afa20f010cb6224a8005cca1a40c123fe969843b15233739",
+  "manifest_test_data.csv": "68bf59e50fcecc7967ced138e3e3cb157df193ffcede0f9eb2537cd1da201fee",
+  "dentex_splits.json": "ee88dc6835eb9a205089b72505445f306786d4f06988de34c64927da78c80b4f",
+  "split_assignments_fingerprint": "7f66d59d9cbad925",
+  "train_quadrant_enumeration_disease.json": "6e1f702cfd6c83bc63660d9a0fd79fe5b26d5a54b63d93b954a02cc254314483",
+  "validation_triple.json": "d058afd35d2849923c7c045e61fd3e05d231dcf74d55009993fff88bd9b6f5a2",
+  "test_data.zip": "ed396d6daa133264ddb0ecdbed3f963868d2a31344ba0fab929a6a1773d82ce2"
+ },
+ "outputs_sha256": {
+  "combined_train.csv": "faf2902e473107138c6ce1111f6495f295ef46fffaa9cdbec9f54b0c5d8f4c98",
+  "combined_validation.csv": "3e29ffa00f8b9053de73ef0f89d2730ed842838394648a0c0816916754b76375",
+  "combined_calibration.csv": "e3c8f1beb041bf736e22181041e418bea7aba7dfdd76b2cc39a3abfa7bc2740a",
+  "combined_test.csv": "749af264557e27298c5ee8d836af029d42964a692a0628ab48a552d87de28119",
+  "combined_excluded.csv": "5c86e1b9bd44064eeca1adaaff132a55d8b0b6e30cf1974453493b7e94036500"
+ },
+ "samples_per_split": {
+  "train": 2679,
+  "validation": 331,
+  "calibration": 324,
+  "test": 354
+ },
+ "radiographs_per_split": {
+  "train": 516,
+  "validation": 65,
+  "calibration": 64,
+  "test": 73
+ },
+ "class_distribution_by_split_and_source": {
+  "calibration": {
+   "dentex_train_disease": {
+    "Impacted": 55,
+    "Caries": 206,
+    "Deep Caries": 47,
+    "Periapical Lesion": 16
+   }
+  },
+  "test": {
+   "dentex_train_disease": {
+    "Caries": 228,
+    "Deep Caries": 48,
+    "Impacted": 65,
+    "Periapical Lesion": 13
+   }
+  },
+  "train": {
+   "dentex_official_val": {
+    "Deep Caries": 29,
+    "Impacted": 36,
+    "Caries": 85,
+    "Periapical Lesion": 9
+   },
+   "dentex_train_disease": {
+    "Caries": 1550,
+    "Impacted": 412,
+    "Periapical Lesion": 120,
+    "Deep Caries": 438
+   }
+  },
+  "validation": {
+   "dentex_train_disease": {
+    "Impacted": 72,
+    "Caries": 205,
+    "Deep Caries": 45,
+    "Periapical Lesion": 9
+   }
+  }
+ },
+ "leakage_checks": {
+  "split_overlaps": {
+   "train vs validation": {
+    "groups": 0,
+    "sha256": 0
+   },
+   "train vs calibration": {
+    "groups": 0,
+    "sha256": 0
+   },
+   "train vs test": {
+    "groups": 0,
+    "sha256": 0
+   },
+   "validation vs calibration": {
+    "groups": 0,
+    "sha256": 0
+   },
+   "validation vs test": {
+    "groups": 0,
+    "sha256": 0
+   },
+   "calibration vs test": {
+    "groups": 0,
+    "sha256": 0
+   }
+  },
+  "all_zero": true,
+  "group_split_conflicts": [],
+  "near_duplicates": {
+   "method": "dHash Hamming <= 4 and different SHA-256, confirmed by 256x128 thumbnail correlation >= 0.97",
+   "images_checked": 2305,
+   "hash_candidates": 1456,
+   "confirmed": 0,
+   "max_candidate_correlation": 0.9393503665924072,
+   "pairs": []
+  },
+  "patient_level": "not possible: no patient ids in DENTEX; groups are radiograph-level"
+ },
+ "fixed_evaluation_sets": {
+  "validation_identical_to_project_val": true,
+  "validation_findings": 331,
+  "test_identical_to_project_test": true,
+  "test_findings": 354,
+  "test_status": "previously used project test split; the official DENTEX test set is NOT a usable test set for this taxonomy (labels not mapped) - no new independent test set exists"
+ },
+ "external_contribution": {
+  "dentex_official_val": {
+   "images_contributing": 40,
+   "findings": {
+    "Deep Caries": 29,
+    "Impacted": 36,
+    "Caries": 85,
+    "Periapical Lesion": 9
+   }
+  },
+  "dentex_official_test": {
+   "findings": 0,
+   "reason": "taxonomy not equivalent (see candidates report)"
+  }
+ },
+ "excluded": {
+  "count": 1623,
+  "by_reason": {
+   "byte-identical / near-duplicate of a project calibration radiograph; adding its labels wou": 7,
+   "byte-identical / near-duplicate of a project val radiograph; adding its labels would chang": 8,
+   "byte-identical / near-duplicate of a project test radiograph; adding its labels would chan": 8,
+   "Turkish treatment-oriented taxonomy; not mapped (no verified equivalence)": 1600
+  }
+ },
+ "official_test_overlap_with_dentex_training_subsets": 95,
+ "domain": "all included images are DENTEX panoramic radiographs from the same release; no bitewing / periapical images mixed"
+}

@@ -1,0 +1,285 @@
+{
+ "source": "Zenodo 10.5281/zenodo.15487430 (CC BY 4.0); paper doi:10.3390/diagnostics14202336",
+ "archive_md5_verified": "18d5acaea021f4f3b05b76e9a27fbd42",
+ "n_files": 3618,
+ "n_images": 1808,
+ "images_per_folder": {
+  "valid\\images": 153,
+  "train\\images": 1375,
+  "test_alte_cabinete\\Ext-validation\\images": 180,
+  "test\\images": 100
+ },
+ "undecodable_images": [],
+ "images_without_label_file": 0,
+ "images_with_empty_label": 0,
+ "image_sizes_top10": [
+  [
+   "2652x1536",
+   519
+  ],
+  [
+   "2386x1536",
+   247
+  ],
+  [
+   "2868x1504",
+   237
+  ],
+  [
+   "2760x1504",
+   167
+  ],
+  [
+   "2775x1499",
+   68
+  ],
+  [
+   "2864x1504",
+   57
+  ],
+  [
+   "2775x1474",
+   50
+  ],
+  [
+   "2775x1475",
+   46
+  ],
+  [
+   "2652x1537",
+   43
+  ],
+  [
+   "2648x1475",
+   28
+  ]
+ ],
+ "boxes_per_class": {
+  "OBT (Obturation)": 5262,
+  "BON (Bone resorption)": 3858,
+  "END (Endodontic treatment)": 3692,
+  "CAR (Carious lesion)": 3589,
+  "PRR (Prosthetic restoration)": 1890,
+  "ROT (Root fragment)": 1502,
+  "SRD (Surgical device)": 1272,
+  "API (Apical periodontitis)": 1259,
+  "IMT (Impacted tooth)": 1088,
+  "ORD (Orthodontic device)": 533,
+  "IMP (Implant)": 522,
+  "FUR (Furcation lesion)": 328,
+  "APS (Apical surgery)": 91,
+  "ROR (Root resorption)": 5
+ },
+ "images_with_class": {
+  "CAR (Carious lesion)": 1068,
+  "END (Endodontic treatment)": 1048,
+  "OBT (Obturation)": 1027,
+  "PRR (Prosthetic restoration)": 711,
+  "API (Apical periodontitis)": 654,
+  "BON (Bone resorption)": 588,
+  "ROT (Root fragment)": 505,
+  "IMT (Impacted tooth)": 448,
+  "SRD (Surgical device)": 252,
+  "ORD (Orthodontic device)": 232,
+  "FUR (Furcation lesion)": 226,
+  "IMP (Implant)": 152,
+  "APS (Apical surgery)": 51,
+  "ROR (Root resorption)": 4
+ },
+ "boxes_per_folder_and_class": {
+  "valid\\images": {
+   "CAR": 407,
+   "END": 224,
+   "IMP": 25,
+   "IMT": 110,
+   "BON": 297,
+   "SRD": 98,
+   "ORD": 51,
+   "OBT": 359,
+   "PRR": 103,
+   "ROT": 171,
+   "API": 100,
+   "FUR": 23,
+   "APS": 4
+  },
+  "train\\images": {
+   "CAR": 2745,
+   "ROT": 1205,
+   "API": 973,
+   "END": 2673,
+   "OBT": 3615,
+   "PRR": 1492,
+   "BON": 2763,
+   "IMP": 456,
+   "SRD": 1049,
+   "FUR": 268,
+   "IMT": 809,
+   "APS": 66,
+   "ORD": 451,
+   "ROR": 5
+  },
+  "test_alte_cabinete\\Ext-validation\\images": {
+   "IMT": 111,
+   "API": 106,
+   "CAR": 296,
+   "END": 528,
+   "PRR": 206,
+   "OBT": 897,
+   "IMP": 16,
+   "ORD": 6,
+   "FUR": 19,
+   "BON": 680,
+   "ROT": 93,
+   "APS": 17,
+   "SRD": 5
+  },
+  "test\\images": {
+   "CAR": 141,
+   "OBT": 391,
+   "API": 80,
+   "END": 267,
+   "PRR": 89,
+   "BON": 118,
+   "FUR": 18,
+   "ROT": 33,
+   "IMP": 25,
+   "IMT": 58,
+   "ORD": 25,
+   "SRD": 120,
+   "APS": 4
+  }
+ },
+ "duplicates": {
+  "exact_within_cluj": 197,
+  "exact_vs_dentex_or_hanoi": 0,
+  "near_candidates_checked": 53046,
+  "near_confirmed_within_cluj": 20,
+  "near_confirmed_vs_dentex_or_hanoi": 0,
+  "near_examples": [
+   [
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1013.jpg",
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1403.jpg",
+    0,
+    1.0
+   ],
+   [
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1033.jpg",
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1414.jpg",
+    0,
+    1.0
+   ],
+   [
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1063.jpg",
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1424.jpg",
+    0,
+    1.0
+   ],
+   [
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1183.jpg",
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1184.jpg",
+    0,
+    0.9828
+   ],
+   [
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1322.jpg",
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1404.jpg",
+    0,
+    1.0
+   ],
+   [
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1451.jpg",
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\999.jpg",
+    0,
+    1.0
+   ],
+   [
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1478.jpg",
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1517.jpg",
+    0,
+    1.0
+   ],
+   [
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1479.jpg",
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\754.jpg",
+    0,
+    1.0
+   ],
+   [
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1485.jpg",
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1521.jpg",
+    0,
+    1.0
+   ],
+   [
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1485.jpg",
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\731.jpg",
+    0,
+    1.0
+   ],
+   [
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1486.jpg",
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\232.jpg",
+    0,
+    0.9998
+   ],
+   [
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1487.jpg",
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\725.jpg",
+    0,
+    1.0
+   ],
+   [
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1501.jpg",
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1543.jpg",
+    0,
+    1.0
+   ],
+   [
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1513.jpg",
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\722.jpg",
+    0,
+    1.0
+   ],
+   [
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1518.jpg",
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\758.jpg",
+    0,
+    1.0
+   ],
+   [
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1521.jpg",
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\731.jpg",
+    0,
+    1.0
+   ],
+   [
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\1522.jpg",
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\739.jpg",
+    0,
+    0.9936
+   ],
+   [
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\429.jpg",
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\72.jpg",
+    2,
+    0.988
+   ],
+   [
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\622.jpg",
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\train\\images\\842.jpg",
+    3,
+    1.0
+   ],
+   [
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\test_alte_cabinete\\Ext-validation\\images\\159.jpg",
+    "cluj:D:\\Dentex-Gen Ai\\Data\\raw\\external\\zenodo_cluj_15487430\\extracted\\test_alte_cabinete\\Ext-validation\\images\\19.jpg",
+    4,
+    0.9996
+   ]
+  ],
+  "compared_against": {
+   "dentex_png": 3919,
+   "hanoi": 3924
+  }
+ }
+}

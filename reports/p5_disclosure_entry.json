@@ -1,0 +1,48 @@
+{
+ "task": "classification",
+ "version": "kaggle_BASE_s42-46",
+ "description": "BASE recipe (C0r: ResNet-50, 224 px GT crops, inverse-frequency weights capped at 5), seeds 42-46; the existing internal test split was evaluated once with ground-truth-box crops after all candidate selection had been done on validation",
+ "evaluated_at": "2026-10-16T11:53:27Z",
+ "evaluated_at_source": "Kaggle training_log.txt line: 2026-10-16 11:53:27 test evaluated for: ['BASE'] (selection ... (container clock; run started 2026-10-16T09:45:49Z per environment.json)",
+ "checkpoint_sha256s": [
+  "6c610485514a655db14608196d7b23ad38d60c7b25bfa22f1225e5daf28039d5",
+  "aa5e7f9be6a42392f4429c549ca5c1e831915e8cb799404da256c97b49a34a22",
+  "9e948343dfeda29d2a36814549c3f0cd2c727fdf26e11de81ada97cdaaeefcd9",
+  "3e0ab876885a1c3dd11eb45210876133cceb331a6662b718530a49af12833798",
+  "f098a7b24394b13b82f56f6e9e91595d70340e11adeab2535171439e5fa01064"
+ ],
+ "checkpoint_by_seed": {
+  "42": "6c610485514a655db14608196d7b23ad38d60c7b25bfa22f1225e5daf28039d5",
+  "43": "aa5e7f9be6a42392f4429c549ca5c1e831915e8cb799404da256c97b49a34a22",
+  "44": "9e948343dfeda29d2a36814549c3f0cd2c727fdf26e11de81ada97cdaaeefcd9",
+  "45": "3e0ab876885a1c3dd11eb45210876133cceb331a6662b718530a49af12833798",
+  "46": "f098a7b24394b13b82f56f6e9e91595d70340e11adeab2535171439e5fa01064"
+ },
+ "split_version_at_evaluation": {
+  "assignments_sha": "1c350480eed2ae96",
+  "manifest_sha256": "932b0b941f54643e2faa7077e52b314475c03cbe03cdf8d4f6b9ecbf1a12a76c",
+  "combined_test_csv_sha256": "749af264557e27298c5ee8d836af029d42964a692a0628ab48a552d87de28119"
+ },
+ "n_findings": 354,
+ "n_images": 73,
+ "metrics": {
+  "gt_macro_f1_per_seed": {
+   "42": 0.734,
+   "43": 0.6678,
+   "44": 0.6926,
+   "45": 0.7106,
+   "46": 0.6612
+  },
+  "gt_macro_f1_mean": 0.6932,
+  "gt_macro_f1_sd": 0.0302,
+  "gt_recall_mean": {
+   "Caries": 0.9123,
+   "Deep Caries": 0.4625,
+   "Impacted": 0.9385,
+   "Periapical Lesion": 0.3692
+  }
+ },
+ "report": "checkpoints/kaggle_candidates/dc9c505b/test_eval.json (sha256 95f386b5abf5df489acbe031b6941890b5a99eb4c99cc451527852e22d9047fb); archive dentamind_balanced_training_artifacts.zip sha256 dc9c505b38d2e23fc13f5fac92ede8d73bb75aa358283cd6e82a1a675b16b2f9",
+ "script": "Kaggle notebook btechgd10/dentamind-ai-balanced-training, Version 2 (kaggle/denta_mind_training.ipynb)",
+ "selection": "validation only: acceptance rule applied on validation; no candidate passed, so only BASE was test-evaluated"
+}

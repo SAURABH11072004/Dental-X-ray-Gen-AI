@@ -1,0 +1,68 @@
+{
+ "format": "dentamind-manuscript-figures-v2",
+ "script_sha256": "2cc44abeb8f5f3aa28307c95a27ddf7f942e938152fc2534fa421d8f83ae7e24",
+ "figures": {
+  "fig1_study_design.png": {
+   "sha256": "c92a95c5e16b7c85b92aaea7f3044c349b7a3afcbcd9a25ef1fdac4bd9e2fe10",
+   "sources": [
+    "schematic of the methods text; no data"
+   ]
+  },
+  "fig1_study_design.pdf": {
+   "sha256": "53bada299a51e0720ac6bbf3b455df5f631ae1ea00882111b943d70e54438a7e",
+   "sources": [
+    "schematic of the methods text; no data"
+   ]
+  },
+  "fig2_confusion.png": {
+   "sha256": "10ecd388aa46a85c6c95cc4953345fec16c784bf7fe4f4187f01efc9b1264aea",
+   "sources": [
+    "kaggle/artifacts_cv5_run1/cv5_results.json 52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82: summary/*/confusion_sum_over_seeds"
+   ]
+  },
+  "fig2_confusion.pdf": {
+   "sha256": "0aacdced03b1402bbc9b8c1546990e8edab26a2f80348400fc78cfaa30cb9c83",
+   "sources": [
+    "kaggle/artifacts_cv5_run1/cv5_results.json 52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82: summary/*/confusion_sum_over_seeds"
+   ]
+  },
+  "fig3_recall_settings.png": {
+   "sha256": "224aaed5b506fde5437bcc944d292af2ad90a86a5c892837836425eee155637a",
+   "sources": [
+    "reports/cv5_per_class_bootstrap.json 4cbe5c1f959d77f266973c195452063c87cc497539eb94c02d15dda336ce1b0f",
+    "kaggle/artifacts_cv5_run1/cv5_results.json 52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82: pooled_per_seed/*/end_to_end/recall"
+   ]
+  },
+  "fig3_recall_settings.pdf": {
+   "sha256": "19e14d43771c7880ef1a1017ac0d362b0d00b3030774715e870485065b6c7a85",
+   "sources": [
+    "reports/cv5_per_class_bootstrap.json 4cbe5c1f959d77f266973c195452063c87cc497539eb94c02d15dda336ce1b0f",
+    "kaggle/artifacts_cv5_run1/cv5_results.json 52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82: pooled_per_seed/*/end_to_end/recall"
+   ]
+  },
+  "fig4_fold_variation.png": {
+   "sha256": "a01a72fb35564d276e13e306b30e4f8c99574768b8a36ea8d7400d0eb83dedcc",
+   "sources": [
+    "kaggle/artifacts_cv5_run1/cv5_results.json 52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82: per_fold/*/det_matched/macro_f1/values"
+   ]
+  },
+  "fig4_fold_variation.pdf": {
+   "sha256": "24236cb2832e23cf9a899532ddb651f0aee4b3f35e4dea03ad1a0bbbc53b3319",
+   "sources": [
+    "kaggle/artifacts_cv5_run1/cv5_results.json 52d94923bebad5596eeccfa26ead92a30237f289e6e4dd40963d13c78b29bd82: per_fold/*/det_matched/macro_f1/values"
+   ]
+  },
+  "fig5_negative_results.png": {
+   "sha256": "8957a6d6e7f81ee124a59fdbc004de4f2a4889f5c29dc2cd49d50ae05c8ea769",
+   "sources": [
+    "reports/negative_findings_traceability.json a5810e133860910943c1f70a646b069af6884a784c63a297663f58cb26ac39ed"
+   ]
+  },
+  "fig5_negative_results.pdf": {
+   "sha256": "d0e96562eb3da5c79b53c90ae91c064f0afdb0f9b8bf0e54421b19426feb28d6",
+   "sources": [
+    "reports/negative_findings_traceability.json a5810e133860910943c1f70a646b069af6884a784c63a297663f58cb26ac39ed"
+   ]
+  }
+ }
+}

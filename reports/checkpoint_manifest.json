@@ -1,0 +1,32 @@
+{
+ "generated": "2026-10-16T11:58:28.261189+00:00",
+ "archive": "D:\\Dentex-Gen Ai\\artifacts\\kaggle\\dentamind_balanced_training_artifacts.zip",
+ "archive_sha256": "dc9c505b38d2e23fc13f5fac92ede8d73bb75aa358283cd6e82a1a675b16b2f9",
+ "members_verified": 61,
+ "staged_to": "D:\\Dentex-Gen Ai\\checkpoints\\kaggle_candidates\\dc9c505b",
+ "checkpoints": [
+  {
+   "file": "D:\\Dentex-Gen Ai\\checkpoints\\kaggle_candidates\\dc9c505b\\checkpoints\\baseline__BASE_s45.pth",
+   "sha256": "3e0ab876885a1c3dd11eb45210876133cceb331a6662b718530a49af12833798",
+   "version": "kaggle_BASE_s45",
+   "promoted": false,
+   "sidecar_problems": [],
+   "sha256_matches_sidecar": true,
+   "loads_with_production_construction": true,
+   "class_names": [
+    "Caries",
+    "Deep Caries",
+    "Impacted",
+    "Periapical Lesion"
+   ],
+   "class_names_match_production": true,
+   "local_val_macro_f1": 0.7509,
+   "kaggle_reported_val_macro_f1": 0.7534,
+   "abs_difference": 0.0025,
+   "local_inference_ok": true
+  }
+ ],
+ "production_unchanged": true,
+ "protected_files_checked": 10,
+ "note": "Staged for offline review only. Promotion requires explicit approval and the project's promotion workflow."
+}
