@@ -25,6 +25,7 @@ import numpy as np
 
 from dentexmodel.errors import DentaMindError
 from dentexmodel.inference.tooth_numbering import check_numbering
+from dentexmodel.reporting.final_result import final_result
 from dentexmodel.storage import jdump, new_id, now
 from dentexmodel.uncertainty import entropy
 from dentexmodel.uncertainty.measures import detection_instability, mask_instability
@@ -195,7 +196,9 @@ class PipelineService:
             elif seg:
                 reg["flags"].append("no_matching_mask")
             u = reg["uncertainty"]
-            if cls and cls["probabilities"][i] is not None:
+            if cls and cls["probabilities"][i] is not None and not np.all(np.isfinite(np.asarray(cls["probabilities"][i], float))):
+                reg["flags"].append("invalid_classifier_output")      # NaN / inf scores: no class or entropy is derived from them
+            elif cls and cls["probabilities"][i] is not None:
                 p = np.asarray(cls["probabilities"][i], float)
                 h = float(entropy(p))
                 u["entropy"] = h
@@ -237,11 +240,11 @@ class PipelineService:
             elif reg["numbering_status"] != "assigned":
                 reg["flags"].append("tooth_number_needs_review")
             reasons = [f for f in reg["flags"] if f in ("high_entropy", "unstable_under_flip", "mask_unstable", "no_matching_mask", "low_detection_score",
-                                                       "tooth_number_needs_review", "not_found_on_flipped_image")]
+                                                       "tooth_number_needs_review", "not_found_on_flipped_image", "invalid_classifier_output")]
             reg["review_reasons"] = reasons
             reg["review_required"] = bool(reasons) or reg["numbering_status"] == "unassigned"
             if reg["candidate_class"] and ("high_entropy" in reg["flags"]):
-                reg["candidate_class"]["status"] = "abstained"       # too uncertain to name a candidate: manual review
+                reg["candidate_class"]["status"] = "abstained"       # high classifier uncertainty: class still shown, flagged for human review
             regions.append(reg)
 
         # ---- image-level uncertainty record (saved for the Uncertainty page and active learning)
@@ -279,6 +282,7 @@ class PipelineService:
             "uncertainty": rec_dict, "classification_limitations": (cls or {}).get("limitations", []),
             "disclaimer": "Model output for research use; candidate classes are not findings and nothing here is a diagnosis.",
         }
+        result["final_result"] = final_result(result)       # image-level result shown across the app (finding / healthy / error)
         aid = new_id("an")
         self.ctx.db.insert("analyses", {"id": aid, "image_id": image_id, "kind": "full", "model_version": det_version, "status": "done" if result["summary"]["all_steps_ok"] else "partial",
                                         "result_json": jdump(result), "duration_s": result["summary"]["seconds"], "created": now()})

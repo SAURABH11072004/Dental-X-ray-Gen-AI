@@ -17,6 +17,7 @@ from datetime import datetime, timezone
 
 from dentexmodel.data.fdi import is_valid_fdi
 from dentexmodel.errors import ExternalServiceError
+from dentexmodel.reporting.final_result import HIGH_UNCERTAINTY_TEXT, final_result_from_evidence
 
 DISCLAIMER = ("Research draft generated from model outputs. Not a clinical diagnosis and not clinically validated. "
               "Requires review by a qualified professional.")
@@ -33,7 +34,8 @@ REQUIRED = ("report_id", "image_id", "model_version", "findings", "summary", "li
 
 
 EXTRA_KEYS = ("region_id", "region_no", "numbering_status", "review_reasons", "needs_review", "mask_matched", "mask_iou",
-              "segmentation_score", "detection_score", "tta_disagreement", "mask_instability", "detection_instability")
+              "segmentation_score", "detection_score", "tta_disagreement", "mask_instability", "detection_instability",
+              "class_scores", "high_uncertainty")
 
 
 def make_evidence(image_id: str, model_version: str, findings: list, model_versions: dict | None = None, context: dict | None = None) -> dict:
@@ -84,13 +86,16 @@ def template_report(evidence: dict, report_id: str | None = None) -> dict:
     for f in fs:
         tooth = f"tooth {f['tooth_fdi']}" if f.get("tooth_fdi") is not None else "an unnumbered region"
         reasons = ", ".join(r.replace("_", " ") for r in (f.get("review_reasons") or []))
-        if f.get("kind") == "abstained":
+        if f.get("kind") == "abstained":        # legacy evidence only (before 2026-10-16)
             txt = (f"{f['finding_id']}: {tooth} - no reliable candidate class (normalised uncertainty {_fmt(f.get('uncertainty'))}); "
                    f"manual review required. Review status: {f.get('review_status')}.")
+        elif f.get("kind") == "class_unavailable":
+            txt = (f"{f['finding_id']}: {tooth} - classifier output unavailable or invalid; no class is shown. "
+                   f"Manual review required. Review status: {f.get('review_status')}.")
         elif f.get("kind") == "closest_class":
-            txt = (f"{f['finding_id']}: {tooth} - closest trained class '{f.get('label')}' (score {_fmt(f.get('probability'))}, "
-                   f"normalised uncertainty {_fmt(f.get('uncertainty'))}); not evidence that the finding is present. "
-                   f"Review status: {f.get('review_status')}.")
+            txt = (f"{f['finding_id']}: {tooth} - highest-scoring trained class '{f.get('label')}' (raw model score {_fmt(f.get('probability'))}, "
+                   f"normalised uncertainty {_fmt(f.get('uncertainty'))}); not evidence that the finding is present."
+                   f"{' ' + HIGH_UNCERTAINTY_TEXT + '.' if f.get('high_uncertainty') else ''} Review status: {f.get('review_status')}.")
         else:
             txt = (f"{f['finding_id']}: {tooth} - detected region (detector score {_fmt(f.get('probability'), 3)}). "
                    f"Review status: {f.get('review_status')}.")
@@ -109,6 +114,8 @@ def _assemble(evidence: dict, summary: str, notes: list, generated_by: str, repo
         "analysis": evidence.get("context") or {},
         "summary": summary, "limitations": list(LIMITATIONS), "disclaimer": DISCLAIMER,
         "evidence_refs": [f["finding_id"] for f in evidence["findings"]],
+        # image-level result (finding / healthy / error / no_teeth); a structured field, kept out of the validated free text
+        "final_result": final_result_from_evidence(evidence),
     }
 
 
@@ -116,12 +123,12 @@ def deidentified_payload(evidence: dict) -> dict:
     """Only structured, de-identified content leaves the machine: no image, no path, no original image id."""
     alias = "IMG-" + hashlib.sha256(evidence["image_id"].encode()).hexdigest()[:8]
     return {"image_alias": alias, "model_version": evidence["model_version"],
-            "findings": [{k: f.get(k) for k in ("finding_id", "tooth_fdi", "label", "probability", "uncertainty", "review_status", "kind")}
+            "findings": [{k: f.get(k) for k in ("finding_id", "tooth_fdi", "label", "probability", "uncertainty", "review_status", "kind", "high_uncertainty")}
                          for f in evidence["findings"]]}
 
 
 LLM_SYSTEM = ("You rewrite structured dental-radiograph model findings as a short research draft. Use ONLY the supplied "
-              "findings. Entries of kind closest_class come from a classifier with no healthy class: never say a finding is present. Do not add diagnoses, treatment advice, new teeth, new labels or numbers. Return strict JSON: "
+              "findings. Entries of kind closest_class come from a classifier with no healthy class: never say a finding is present; entries with high_uncertainty true must say they need human review because of high classifier uncertainty. Do not add diagnoses, treatment advice, new teeth, new labels or numbers. Return strict JSON: "
               '{"summary": str, "finding_notes": [{"finding_id": str, "text": str}]}')
 
 
@@ -286,6 +293,17 @@ def mark_reviewed(report: dict, reviewer: str) -> dict:
     return r
 
 
+def final_result_text(fr: dict | None) -> str:
+    """One line for exports: the label, plus each finding with tooth and score."""
+    if not fr:
+        return "-"
+    if fr["status"] == "finding":
+        parts = [f"{f['label']} ({'tooth ' + str(f['fdi']) if f.get('fdi') is not None else 'region ' + str(f.get('region_no') or '?')}, "
+                 f"score {_fmt(f.get('score'))})" for f in fr.get("findings", [])]
+        return f"{fr['label']}: " + "; ".join(parts)
+    return fr["label"] + (f" - {fr['message']}" if fr.get("message") else "")
+
+
 def render_html(report: dict) -> str:
     e = html.escape
     rows = "".join(f"<tr><td>{e(str(f.get('finding_id')))}</td><td>{e(str(f.get('tooth_fdi') or 'unassigned'))}</td>"
@@ -298,6 +316,7 @@ def render_html(report: dict) -> str:
 table{{border-collapse:collapse;width:100%}}td,th{{border:1px solid #cbd5e1;padding:.35rem .5rem;text-align:left}}</style></head><body>
 <h1>DentaMind AI - Research Draft Report</h1><p class="banner"><b>{e(report['status'].replace('_', ' ').upper())}</b> - {e(report['disclaimer'])}</p>
 <p>Report <b>{e(report['report_id'])}</b> | Image <b>{e(report['image_id'])}</b> | Models <b>{e(', '.join(f'{k}: {v}' for k, v in (report.get('model_versions') or {'detection': report['model_version']}).items()))}</b> | Generated by <b>{e(report['generated_by'])}</b></p>
+<h2>Final result</h2><p><b>{e(final_result_text(report.get('final_result')))}</b></p>
 <h2>Summary</h2><p>{e(report['summary'])}</p><h2>Findings</h2>
 <table><tr><th>ID</th><th>Tooth (FDI)</th><th>Class</th><th>Score</th><th>Uncertainty</th><th>Review</th></tr>{rows}</table>
 <h2>Limitations</h2><ul>{lim}</ul></body></html>"""

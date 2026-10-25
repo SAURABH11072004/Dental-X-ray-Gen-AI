@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, ClipboardCheck, FileText, Hash, Layers, ScanSearch, Tags } from "lucide-react";
 import StatusBadge from "../components/StatusBadge";
+import FinalResult, { FinalResultBadge } from "../components/FinalResult";
 import ErrorState from "../components/ErrorState";
 import LoadingState from "../components/LoadingState";
 import { modelAvailability } from "../components/ModelStatusPanel";
@@ -79,7 +80,8 @@ export default function Overview() {
             <ul className="divide-y divide-slate-100">{recent.map((a, i) => (
               <li key={i} className="flex items-center gap-3 py-2 text-sm">
                 <img src={a.thumbnail_url} alt="" className="h-9 w-14 rounded bg-slate-200 object-cover" loading="lazy" />
-                <span className="min-w-0 flex-1 truncate font-mono text-xs">{a.image_id}</span>
+                <span className="min-w-0 flex-1"><span className="block truncate font-mono text-xs">{a.image_id}</span>
+                  {a.final_result && <span className="mt-0.5 block"><FinalResultBadge result={a.final_result} /></span>}</span>
                 <span className="whitespace-nowrap text-xs text-muted">{when(a.created)}</span>
               </li>))}</ul>)}
         </div>
@@ -92,6 +94,7 @@ export default function Overview() {
                 <p className="font-mono text-xs">{latest.id}</p>
                 <p className="mt-0.5 truncate text-sm text-slate-700" title={latest.image_name || latest.image_id}>{latest.image_name || latest.image_id}</p>
                 <p className="mt-2 flex flex-wrap items-center gap-2"><StatusBadge tone={reviewStatus(latest.status).tone}>{reviewStatus(latest.status).label}</StatusBadge><span className="text-xs text-muted">{when(latest.created)}</span></p>
+                {latest.final_result && <div className="mt-2"><FinalResult result={latest.final_result} compact /></div>}
               </div>
               <Link to={"/reports?id=" + latest.id} className="btn-ghost self-start"><FileText className="h-4 w-4" aria-hidden />Open report</Link>
             </div>)}

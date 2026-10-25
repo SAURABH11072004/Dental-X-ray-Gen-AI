@@ -6,6 +6,7 @@ import numpy as np
 
 from dentexmodel.errors import DentaMindError, NotFoundError
 from dentexmodel.inference.tooth_numbering import check_numbering
+from dentexmodel.reporting.final_result import final_result, top_class
 from dentexmodel.storage import jdump, jload, new_id, now
 from dentexmodel.uncertainty import (Signal, UncertaintyRecord, entropy, image_quality, jensen_shannon_disagreement,
                                      mask_instability)
@@ -83,13 +84,13 @@ class AnalysisService:
         from dentexmodel.inference.visualize import draw_detections
         a = self.get_analysis(analysis_id)
         if not a.get("detections") and a.get("regions"):
-            # full-pipeline analysis: draw each region with its FDI number (if assigned) and a review marker; no class is drawn for abstained regions
+            # full-pipeline analysis: draw each region with its FDI number (if assigned), its highest-scoring class ("?" = high classifier uncertainty) and a review marker
             dets = []
             for r in a["regions"]:
                 parts = [f"#{r['fdi']}" if r.get("fdi") is not None else "no number"]
-                cc = r.get("candidate_class") or {}
-                if cc.get("status") == "candidate" and cc.get("label"):
-                    parts.append(f"~{cc['label']}")
+                tc = top_class(r.get("candidate_class"))
+                if tc:
+                    parts.append(f"~{tc['label']}" + ("?" if tc["high_uncertainty"] else ""))
                 if r.get("review_required"):
                     parts.append("review")
                 dets.append({"box": r["box"], "score": r.get("detection_score", 0.0), "label": " ".join(parts)})
@@ -107,7 +108,10 @@ class AnalysisService:
         row = self.ctx.db.get("analyses", analysis_id)
         if not row:
             raise NotFoundError(f"Analysis '{analysis_id}' not found.")
-        return {**jload(row["result_json"]), "analysis_id": analysis_id}
+        out = {**jload(row["result_json"]), "analysis_id": analysis_id}
+        if out.get("regions") is not None:      # recomputed from the stored regions so older analyses follow the current rule
+            out["final_result"] = final_result(out)
+        return out
 
     # ---- uncertainty ------------------------------------------------------------------------------------
     def quality_for(self, image_id: str) -> dict:

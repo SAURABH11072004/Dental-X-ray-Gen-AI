@@ -7,6 +7,7 @@ import EmptyState from "../components/EmptyState";
 import ErrorState from "../components/ErrorState";
 import LoadingState from "../components/LoadingState";
 import StatusBadge from "../components/StatusBadge";
+import { FinalResultBadge } from "../components/FinalResult";
 import { useAction, useApi } from "../hooks/useApi";
 import { api, reportExportUrl } from "../services/api";
 import { when } from "../lib/format";
@@ -61,6 +62,7 @@ export default function Reports() {
                     <div className={`rounded-lg border px-2.5 py-2 text-sm ${r.id === id ? "border-teal bg-teal-50" : "border-slate-200 bg-white"}`}>
                       <div className="flex items-center justify-between gap-2"><span className="truncate font-mono text-xs">{r.id}</span><StatusBadge tone={st.tone}>{st.label}</StatusBadge></div>
                       <p className="mt-1 truncate text-xs text-slate-700" title={r.image_name || r.image_id}>{r.image_name || r.image_id}</p>
+                      {r.final_result && <div className="mt-1"><FinalResultBadge result={r.final_result} /></div>}
                       <div className="mt-1 flex items-center justify-between gap-2 text-[11px] text-slate-600"><span>{when(r.created)}</span><span title="Languages this report can be viewed in">EN · HI · MR</span></div>
                       <button className="btn-ghost mt-2 w-full !py-1 text-xs" aria-current={r.id === id ? "true" : undefined} aria-label={`Open report ${r.id}`} onClick={() => open(r.id)}><FileText className="h-3.5 w-3.5" aria-hidden />{r.id === id ? "Open (viewing)" : "Open"}</button>
                     </div>

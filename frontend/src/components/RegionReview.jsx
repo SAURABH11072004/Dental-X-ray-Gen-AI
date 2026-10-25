@@ -7,10 +7,12 @@ import EmptyState from "./EmptyState";
 import ErrorState from "./ErrorState";
 import LoadingState from "./LoadingState";
 import StatusBadge from "./StatusBadge";
+import FinalResult, { FinalResultBadge } from "./FinalResult";
 import { useAction, useApi } from "../hooks/useApi";
 import { api, reviewsExportUrl } from "../services/api";
 import { FLAG_TEXT } from "../lib/fullAnalysis";
-import { fmt, when } from "../lib/format";
+import { fmt, pct, when } from "../lib/format";
+import { HIGH_UNCERTAINTY_TEXT, topClass } from "../lib/classResult";
 
 const ACTION_TEXT = {
   confirm_candidate: "Confirm candidate class", correct_class: "Correct the class", reject_candidate: "Reject candidate (do not use)",
@@ -36,6 +38,7 @@ export default function RegionReview() {
   const image = useApi(() => (open ? api.image(open.image_id) : Promise.resolve(null)), [open?.image_id]);
   const a = analysis.data;
   const reg = a?.regions?.[sel];
+  const regTop = topClass(reg?.candidate_class);
   const hist = useApi(() => (open && reg ? api.reviewHistory(open.image_id, reg.region_id) : Promise.resolve(null)), [open?.image_id, reg?.region_id, list.data]);
   const submit = useAction((b) => api.reviewSubmit(b));
   const decide = useAction((ids, who, ok) => (ok ? api.reviewApprove(ids, who) : api.reviewReject(ids, who)));
@@ -76,7 +79,9 @@ export default function RegionReview() {
             <ul className="max-h-[32rem] space-y-1.5 overflow-auto pr-1 lg:max-h-[calc(100vh-18rem)]" data-testid="review-queue">
               {queue.data.items.map((q) => (
                 <li key={q.analysis_id}><button className={`w-full rounded-lg border px-2.5 py-1.5 text-left text-xs ${open?.analysis_id === q.analysis_id ? "border-teal bg-teal-50" : "border-slate-200 hover:bg-slate-50"}`} onClick={() => setOpen({ image_id: q.image_id, analysis_id: q.analysis_id })}>
-                  <span className="block font-mono">{q.image_id}</span><span className="text-muted">{q.n_regions_to_review}/{q.n_regions} regions to review · overall uncertainty {q.combined_score != null ? fmt(q.combined_score, 2) : "n/a"}</span>
+                  <span className="block font-mono">{q.image_id}</span>
+                  {q.final_result && <span className="my-0.5 block"><FinalResultBadge result={q.final_result} /></span>}
+                  <span className="text-muted">{q.n_regions_to_review}/{q.n_regions} regions to review · overall uncertainty {q.combined_score != null ? fmt(q.combined_score, 2) : "n/a"}</span>
                   <span className="mt-0.5 flex gap-1">{(() => { const mine = current.filter((r) => r.image_id === q.image_id); const ap = mine.filter((r) => r.status === "approved").length; return mine.length === 0 ? <StatusBadge tone="warn">Pending</StatusBadge> : <><StatusBadge tone="info">{mine.length} saved</StatusBadge>{ap > 0 && <StatusBadge tone="ok">{ap} approved</StatusBadge>}</>; })()}</span></button></li>))}
             </ul>)}
           {queue.data && <p className="mt-2 text-xs text-muted">{queue.data.ordering}</p>}
@@ -90,13 +95,16 @@ export default function RegionReview() {
                   {(k) => <DetectionOverlay detections={detections} selected={sel} onSelect={setSel} showBoxes showIds showLabels={false} k={k} />}
                 </DentalImageViewer>
                 <p className="mt-1 text-xs text-muted">Models: {Object.entries(a.models).filter(([, v]) => v).map(([k, v]) => `${k}: ${v}`).join(" · ")}</p>
+                {a.final_result && <div className="mt-2"><FinalResult result={a.final_result} compact /></div>}
               </div>
               <div className="space-y-3 text-sm">
                 {reg ? (
                   <div className="rounded-lg border border-slate-200 p-2.5" data-testid="review-region">
                     <p className="font-medium">Region {reg.region_no} <span className="font-mono text-xs">id {reg.region_id.split(":")[1]}</span></p>
                     <p className="text-xs">Tooth: {reg.fdi ?? "unassigned"} ({reg.numbering_status.replace(/_/g, " ")})</p>
-                    <p className="text-xs">{reg.candidate_class ? (reg.candidate_class.status === "abstained" ? <span className="text-warn">model abstained (too uncertain)</span> : <>Candidate: <b>{reg.candidate_class.label}</b> ({fmt(reg.candidate_class.score, 2)}, uncalibrated)</>) : "no classifier output"}</p>
+                    <p className="text-xs">{regTop
+                      ? <>Predicted class: <b>{regTop.label}</b> (raw model score {pct(regTop.score, 1)}){regTop.highUncertainty && <span className="block text-warn" data-testid="high-uncertainty-warning">{HIGH_UNCERTAINTY_TEXT}</span>}</>
+                      : reg.candidate_class ? <span className="text-warn">class scores missing or invalid; no class shown</span> : "no classifier output"}</p>
                     <p className="text-xs text-muted">entropy {fmt(reg.uncertainty.entropy, 2)} · flip {fmt(reg.uncertainty.tta_disagreement, 2)} · mask {fmt(reg.uncertainty.mask_instability, 2)}</p>
                     <div className="mt-1 flex flex-wrap gap-1">{reg.flags.map((f) => <StatusBadge key={f} tone="warn">{FLAG_TEXT[f] || f}</StatusBadge>)}</div>
                   </div>) : <p className="text-xs text-muted">Click a region on the image (or flag the whole image below).</p>}

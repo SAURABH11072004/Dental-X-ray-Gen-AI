@@ -68,15 +68,20 @@ class UncertaintySemanticsTests(unittest.TestCase):
 
 
 class ReportFromRegionsTests(unittest.TestCase):
-    def test_abstained_regions_are_not_named_and_report_validates_in_all_languages(self):
+    def test_high_uncertainty_regions_show_highest_class_with_review_warning_in_all_languages(self):
         regs = [region(1), region(2, status="abstained", flags=["high_entropy"], key="bbbb2222"), region(3, fdi=None, flags=["unassigned_tooth_number"], key="cccc3333")]
         ev = ReportService._evidence_from_full(None, full_analysis(regs))
-        self.assertEqual([f["kind"] for f in ev["findings"]], ["closest_class", "abstained", "closest_class"])
-        self.assertIsNone(ev["findings"][1]["label"])                # nothing is claimed for an abstained region
+        self.assertEqual([f["kind"] for f in ev["findings"]], ["closest_class", "closest_class", "closest_class"])
+        top = max(PROBS, key=PROBS.get)
+        self.assertEqual((ev["findings"][1]["label"], ev["findings"][1]["probability"]), (top, PROBS[top]))   # highest raw score
+        self.assertEqual(ev["findings"][1]["class_scores"], PROBS)                   # all four scores, unchanged
+        self.assertEqual([f["high_uncertainty"] for f in ev["findings"]], [False, True, False])
         rep = template_report(ev)
         self.assertTrue(validate_report(rep, ev)["passed"], validate_report(rep, ev)["errors"])
-        self.assertIn("no reliable candidate class", rep["findings"][1]["narrative"])
-        self.assertNotIn("Caries", rep["findings"][1]["narrative"])
+        self.assertIn(f"highest-scoring trained class '{top}'", rep["findings"][1]["narrative"])
+        self.assertIn("raw model score", rep["findings"][1]["narrative"])
+        self.assertIn("Needs human review — high classifier uncertainty", rep["findings"][1]["narrative"])
+        self.assertNotIn("high classifier uncertainty", rep["findings"][0]["narrative"])
         self.assertEqual(rep["analysis"]["summary_counts"]["n_review_required"], 2)
         for lang in ("en", "hi", "mr"):
             loc = localize_report(rep, lang)
@@ -84,6 +89,19 @@ class ReportFromRegionsTests(unittest.TestCase):
             self.assertTrue(chk["passed"], (lang, chk["problems"]))
             self.assertEqual([f["needs_review"] for f in loc["findings"]], [False, True, True])
             self.assertEqual(loc["findings"][1]["region_id"], "IMG:bbbb2222")       # ids survive translation
+            self.assertIn(top, loc["findings"][1]["label_display"])
+
+    def test_invalid_class_scores_give_no_class(self):
+        bad = region(2, key="bbbb2222")
+        bad["candidate_class"] = {**bad["candidate_class"], "probabilities": {**PROBS, "Caries": float("nan")}}
+        ev = ReportService._evidence_from_full(None, full_analysis([region(1), bad]))
+        self.assertEqual(ev["findings"][1]["kind"], "class_unavailable")
+        self.assertIsNone(ev["findings"][1]["label"])
+        self.assertIsNone(ev["findings"][1]["probability"])
+        rep = template_report(ev)
+        self.assertIn("classifier output unavailable or invalid", rep["findings"][1]["narrative"])
+        for lang in ("en", "hi", "mr"):
+            self.assertTrue(verify_localization(rep, localize_report(rep, lang))["passed"])
 
     def test_versions_reflect_which_models_actually_contributed(self):
         ev = ReportService._evidence_from_full(None, full_analysis([region(1, fdi=None, flags=["unassigned_tooth_number"])]))

@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from dentexmodel.annotation.reviews import ACTIONS, QUAL, ReviewStore
+from dentexmodel.reporting.final_result import final_result, top_class
 from dentexmodel.storage import jload
 
 
@@ -26,8 +27,9 @@ class ReviewService:
             if regs:
                 items.append({"image_id": iid, "analysis_id": row["id"], "combined_score": comb, "n_regions_to_review": len(regs),
                               "n_regions": len(a.get("regions", [])), "created": row["created"],
+                              "final_result": final_result(a) or a.get("final_result"),
                               "regions": [{"region_id": r["region_id"], "region_no": r["region_no"], "fdi": r["fdi"], "flags": r["flags"],
-                                           "candidate": (r["candidate_class"] or {}).get("label"), "status": (r["candidate_class"] or {}).get("status")} for r in regs]})
+                                           "candidate": (top_class(r["candidate_class"]) or {}).get("label"), "status": (r["candidate_class"] or {}).get("status")} for r in regs]})
         items.sort(key=lambda x: (-(x["combined_score"] if x["combined_score"] is not None else -1), -x["n_regions_to_review"]))
         return {"items": items[:limit], "total": len(items),
                 "ordering": "image-level combined uncertainty (descending; images without a computed score last), then number of flagged regions",

@@ -5,6 +5,7 @@ import json
 
 from dentexmodel.errors import DentaMindError, NotFoundError
 from dentexmodel.reporting import make_evidence, mark_reviewed, render_html, template_report, validate_report
+from dentexmodel.reporting.final_result import final_result, final_result_from_evidence, top_class
 from dentexmodel.reporting.i18n import (LANGUAGES, localize_report, render_html_localized, render_text_localized,
                                        verify_localization)
 from dentexmodel.reporting.reports import llm_report
@@ -29,10 +30,13 @@ class ReportService:
                     "mask_iou": (r.get("mask") or {}).get("match_iou"), "segmentation_score": (r.get("mask") or {}).get("segmentation_score"),
                     "tta_disagreement": u.get("tta_disagreement"), "mask_instability": u.get("mask_instability"),
                     "detection_instability": u.get("detection_instability")}
-            if cc and cc["status"] == "candidate":
-                findings.append({**base, "kind": "closest_class", "label": cc["label"], "probability": cc["score"], "uncertainty": u.get("entropy")})
-            elif cc:      # abstained: too uncertain to name a candidate
-                findings.append({**base, "kind": "abstained", "label": None, "probability": None, "uncertainty": u.get("entropy")})
+            tc = top_class(cc)
+            if tc:        # highest raw score; high entropy keeps the class but marks it for human review
+                findings.append({**base, "kind": "closest_class", "label": tc["label"], "probability": tc["score"], "uncertainty": u.get("entropy"),
+                                 "class_scores": tc["scores"], "high_uncertainty": tc["high_uncertainty"],
+                                 "needs_review": base["needs_review"] or tc["high_uncertainty"]})
+            elif cc:      # classifier output present but missing/invalid scores: no class is invented
+                findings.append({**base, "kind": "class_unavailable", "label": None, "probability": None, "uncertainty": u.get("entropy")})
             else:
                 findings.append({**base, "kind": "detection", "label": "tooth", "probability": r["detection_score"], "uncertainty": None})
         versions = {"detection": a["models"]["detection"]}
@@ -42,7 +46,8 @@ class ReportService:
         un = a.get("uncertainty") or {}
         ctx = {"analysis_id": a.get("analysis_id"), "summary_counts": {k: a["summary"][k] for k in ("n_regions", "n_numbered", "n_with_mask", "n_review_required", "n_abstained")},
                "image_quality_flags": (a.get("preprocess") or {}).get("quality_flags", []), "combined_uncertainty": un.get("combined_score"),
-               "thresholds_provisional": (un.get("thresholds") or {}).get("provisional", True), "steps": [{"step": s["step"], "status": s["status"]} for s in a["steps"]]}
+               "thresholds_provisional": (un.get("thresholds") or {}).get("provisional", True), "steps": [{"step": s["step"], "status": s["status"]} for s in a["steps"]],
+               "final_result": final_result(a) or a.get("final_result")}
         return make_evidence(a["image_id"], a["models"]["detection"], findings, versions, ctx)
 
     def _evidence_from_analysis(self, analysis_id: str) -> dict:
@@ -53,16 +58,17 @@ class ReportService:
         names, probs = cls.get("class_names", []), cls.get("probabilities", [])
         findings = []
         for i, d in enumerate(a.get("detections", [])):
-            label, p, unc = d.get("label"), d.get("score"), None
+            label, p, unc, kind = d.get("label"), d.get("score"), None, "detection"
             if i < len(probs) and names:
-                import numpy as np
                 from dentexmodel.uncertainty import entropy
-                pr = np.asarray(probs[i], dtype=float)
-                label, p = names[int(pr.argmax())], float(pr.max())
-                unc = float(entropy(pr))
+                tc = top_class({"probabilities": dict(zip(names, probs[i]))} if isinstance(probs[i], (list, tuple)) and len(probs[i]) == len(names) else None)
+                if tc:
+                    label, p, kind = tc["label"], tc["score"], "closest_class"
+                    unc = float(entropy(list(tc["scores"].values())))
+                else:      # missing / invalid scores: no class is invented
+                    label, p, kind = None, None, "class_unavailable"
             findings.append({"tooth_fdi": d.get("fdi"), "label": label, "probability": p, "uncertainty": unc,
-                             "evidence_region": {"box": d["box"]}, "review_status": "unreviewed",
-                             "kind": "closest_class" if (i < len(probs) and names) else "detection"})
+                             "evidence_region": {"box": d["box"]}, "review_status": "unreviewed", "kind": kind})
         versions = {"detection": a["model_version"]}
         nm = a.get("numbering_model") or {}
         if nm.get("model_version") and any(f["tooth_fdi"] is not None for f in findings):
@@ -98,6 +104,8 @@ class ReportService:
         if not r:
             raise NotFoundError(f"Report '{report_id}' not found.")
         d = jload(r["report_json"])
+        if "final_result" not in d["report"]:          # reports saved before the final-result rule: derive it from their evidence
+            d["report"]["final_result"] = final_result_from_evidence(d["evidence"])
         out = {"report": d["report"], "evidence": d["evidence"], "validation": jload(r["validation_json"])}
         if lang:
             loc = self._localize(d["report"], lang)
@@ -113,8 +121,13 @@ class ReportService:
             raise DentaMindError(str(exc), code="unsupported_language", hint=f"Use one of: {', '.join(LANGUAGES)}.")
 
     def list(self) -> list:
-        return [{"id": r["id"], "image_id": r["image_id"], "status": r["status"], "generated_by": r["generated_by"], "created": r["created"]}
-                for r in self.ctx.db.list("reports", limit=200)]
+        out = []
+        for r in self.ctx.db.list("reports", limit=200):
+            d = jload(r["report_json"]) or {}
+            fr = (d.get("report") or {}).get("final_result") or (final_result_from_evidence(d["evidence"]) if d.get("evidence") else None)
+            out.append({"id": r["id"], "image_id": r["image_id"], "status": r["status"], "generated_by": r["generated_by"], "created": r["created"],
+                        "final_result": fr})
+        return out
 
     def validate(self, report_id: str) -> dict:
         d = self.get(report_id)

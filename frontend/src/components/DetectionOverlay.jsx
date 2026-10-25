@@ -40,7 +40,7 @@ export default function DetectionOverlay({ detections = [], selected, onSelect, 
   const fs = 13 / k;      // constant on-screen text size
   const items = useMemo(() => detections.map((d, i) => {
     const l = regionLabel(d, i);
-    const cls = showLabels && d.candidate ? ` ~${d.candidate}` : "";
+    const cls = showLabels && d.candidate ? ` ~${d.candidate}${d.candidate_uncertain ? "?" : ""}` : "";
     return { box: d.box, text: l.text + cls, kind: l.kind };
   }), [detections, showLabels]);
   const layout = useMemo(() => (showIds || showLabels ? placeLabels(items, fs, selected, width, height) : new Map()), [items, fs, selected, showIds, showLabels, width, height]);
@@ -77,7 +77,7 @@ export function OverlayLegend({ showClasses }) {
       <li className="flex items-center gap-1.5">{sw("#C44343")}<b>14?</b> proposed number, needs checking</li>
       <li className="flex items-center gap-1.5">{sw("#64748B")}<b>R7</b> region without a tooth number (R = region, 7 = detection order)</li>
       <li className="flex items-center gap-1.5">{sw("#A75B04")}selected region</li>
-      {showClasses && <li><b>~Caries</b> closest trained class, not a finding</li>}
+      {showClasses && <li><b>~Caries</b> highest-scoring trained class, not a finding · <b>~Caries?</b> needs human review — high classifier uncertainty</li>}
     </ul>
   );
 }
