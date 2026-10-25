@@ -71,3 +71,18 @@ frontend/dist/
 runtime/
 *.sqlite3
 *.sqlite3-journal
+
+# clinical-review blinding: never commit (owner-authorized 2026-10-25; see reports/security/clinical_files_access_control_plan_PROPOSED.md)
+reports/clinical_review/*COORDINATOR_ONLY*
+reports/clinical_review/caries_rereading_worksheet_v1_BLINDED.csv
+reports/cv5_caries_clinician_review_list.csv
+kaggle/artifacts_cv5_run1/caries_confusion_findings.csv
+kaggle/dentamind_5fold_cv_artifacts.zip
+
+# large binaries and data-derived run outputs (model weights, bundles; oof predictions allow rebuilding restricted F5)
+*.pth
+checkpoints/
+artifacts/
+kaggle/dist/
+kaggle/*.zip
+kaggle/artifacts_*/
