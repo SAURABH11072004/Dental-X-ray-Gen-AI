@@ -61,7 +61,7 @@ MANIFEST
 .env
 
 # Data sets
-data/
+/data/
 # DentaMind runtime artifacts
 logs/
 frontend/node_modules/
