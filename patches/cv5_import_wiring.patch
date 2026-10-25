@@ -1,0 +1,101 @@
+diff --git a/kaggle/make_cv5_notebook.py b/kaggle/make_cv5_notebook.py
+index 85690a0..685fa0b 100644
+--- a/kaggle/make_cv5_notebook.py
++++ b/kaggle/make_cv5_notebook.py
+@@ -343,6 +343,8 @@ log(f"ARCHIVE {zp}  {zp.stat().st_size / 2**20:.1f} MB  sha256 {CV.sha256_file(z
+ # packaged as run evidence before any aggregation; aggregation runs only when all 25 runs are valid and complete.
+ CANDIDATE_EMBED = {**EMBED, "kaggle/cv5_accept.py": HERE / "cv5_accept.py", "kaggle/cv5_interventions.py": HERE / "cv5_interventions.py"}
+ ACCEPT_PROTOCOL = "reports/cv5_acceptance_protocol.md"
++# Training imports (protocol section 3.1, Amendment 02): OFF unless candidate_cells(..., imports=...) is given a registered manifest.
++IMPORTS_EMBED = {"kaggle/cv5_imports.py": HERE / "cv5_imports.py"}
+ 
+ 
+ def _sub(src: str, old: str, new: str) -> str:
+@@ -365,10 +367,21 @@ def _check_candidate(candidate_id: str, cfg: dict) -> None:
+     CI.check_single_intervention(DK.ExpConfig(**cfg))          # V3: exactly one intervention key, nothing else
+ 
+ 
+-def candidate_cells(candidate_id: str, cfg: dict) -> list:
+-    """Cells of the CV5 notebook for one registered candidate (cfg: complete DK.ExpConfig field dict)."""
++def _check_imports(imports: dict) -> None:
++    import cv5_imports as CIM
++    CIM.check_import_params(imports)          # registered manifest / V6-record / reviewer-authorization SHA-256 + Kaggle input folder
++
++
++def candidate_cells(candidate_id: str, cfg: dict, imports: dict | None = None) -> list:
++    """Cells of the CV5 notebook for one registered candidate (cfg: complete DK.ExpConfig field dict). imports None (default): no
++    import code at all - the cells are exactly those of the import-free notebook. imports {manifest_sha256, v6_record_sha256,
++    reviewer_authorization_sha256, input_dir}: the registered manifest is loaded, checked and added to every fold's fitting part
++    (section 3.1, Amendment 02)."""
+     _check_candidate(candidate_id, cfg)
+-    files = {k: p.read_bytes().decode("utf-8") for k, p in CANDIDATE_EMBED.items()}
++    if imports is not None:
++        _check_imports(imports)
++    embed_files = CANDIDATE_EMBED if imports is None else {**CANDIDATE_EMBED, **IMPORTS_EMBED}
++    files = {k: p.read_bytes().decode("utf-8") for k, p in embed_files.items()}
+     shas = {k: hashlib.sha256(v.encode("utf-8")).hexdigest() for k, v in files.items()}
+     head = ("markdown", f"""# DentaMind AI - CV5 candidate `{candidate_id}` vs the BASE reference (Kaggle GPU)
+ 
+@@ -525,7 +538,34 @@ log(f"RUN EVIDENCE {EVZ}  sha256 {CV.sha256_file(EVZ)}")""")
+                           'CANDIDATE["extra"])\nlog("crop rule:", CI.resolve(CANDIDATE["extra"]), "crops", X_ALL.shape)'))
+     det = ("code", _sub(CELLS[8][1], 'XD, MI, MISSED = DK.build_detector_crops(POOL, DATA_ROOT, DET_CACHE, lambda r: r["project_image_id"])',
+                         'XD, MI, MISSED = CI.build_detector_crops(POOL, DATA_ROOT, DET_CACHE, lambda r: r["project_image_id"], CANDIDATE["extra"])'))
+-    return [head, CELLS[1], CELLS[2], CELLS[3], embed, CELLS[5], CELLS[6], crops, det, train, evidence, ("code", agg), ("code", pkg)]
++    cells = [head, CELLS[1], CELLS[2], CELLS[3], embed, CELLS[5], CELLS[6], crops, det, train, evidence, ("code", agg), ("code", pkg)]
++    return cells if imports is None else _with_imports(cells, imports)
++
++
++def _with_imports(cells: list, imports: dict) -> list:
++    """Import mode: one cell after the detector cell (load, verify, independence, fitting-part augmentation, import crops) and three
++    substitutions (per-run manifest separates imported rows; evidence and package keep the import check and manifest)."""
++    import cv5_imports as CIM
++    crops = 'CI.build_crops(IMP_ROWS, IMPORT_DIR, CACHE / f"imports_gt_{CI.crop_tag(CANDIDATE[\'extra\'])}.npz", CANDIDATE["extra"])'
++    imp = ("code", CIM.notebook_import_cell(imports, crops))
++    k_det = next(i for i, (_, src) in enumerate(cells) if "CI.build_detector_crops(" in src)
++    out = cells[:k_det + 1] + [imp] + cells[k_det + 1:]
++    for i, (kind, src) in enumerate(out):
++        if "CA.run_isolated(" in src:
++            src = _sub(src, 'rows_json = CA.write_rows(CACHE / f"f{k}_rows.json", plan["fit"], plan["inner"])',
++                       'rows_json = CA.write_rows(CACHE / f"f{k}_rows.json", [r for r in plan["fit"] if "import_source_id" not in r], '
++                       'plan["inner"],\n                               [r for r in plan["fit"] if "import_source_id" in r])')
++        elif "run evidence (always packaged" in src:
++            src = _sub(src, 'for f in ("run_status.json", "training_log.txt"):', 'for f in ("run_status.json", "training_log.txt", "import_check.json"):')
++        elif "package artifacts" in src:
++            src = _sub(src, '(pkg / "checkpoint_manifest.json").write_text(json.dumps(ck, indent=1))',
++                       '(pkg / "checkpoint_manifest.json").write_text(json.dumps(ck, indent=1))\n(pkg / "imports").mkdir()\n'
++                       'for f in ("import_manifest.json", "import_v6_record.json", "reviewer_authorization.json"):\n'
++                       '    shutil.copy2(IMPORT_DIR / f, pkg / "imports" / f)\n'
++                       'shutil.copy2(ART / "import_check.json", pkg / "imports" / "import_check.json")')
++            src = _sub(src, '"kaggle/cv5_interventions.py", ', '"kaggle/cv5_interventions.py", "kaggle/cv5_imports.py", ')
++        out[i] = (kind, src)
++    return out
+ 
+ 
+ def _notebook(cells: list) -> dict:
+@@ -541,13 +581,23 @@ def _notebook(cells: list) -> dict:
+     return nb
+ 
+ 
+-def write_candidate_notebook(candidate_id: str, cfg: dict, registration, out) -> Path:
+-    """Writes a candidate notebook only for a candidate named in an existing dated registration amendment (protocol section 4.5)."""
++def write_candidate_notebook(candidate_id: str, cfg: dict, registration, out, imports: dict | None = None,
++                             imports_registration=None) -> Path:
++    """Writes a candidate notebook only for a candidate named in an existing dated registration amendment (protocol section 4.5).
++    With imports, the BASE-P2 amendment (imports_registration) must exist and name all three registered SHA-256 values."""
+     reg = Path(registration)
+     if not reg.is_file() or candidate_id not in reg.read_text(encoding="utf-8"):
+         raise ValueError(f"no registration amendment naming candidate {candidate_id!r}: {reg}")
++    if imports is not None:
++        r2 = Path(imports_registration) if imports_registration else None
++        txt = r2.read_text(encoding="utf-8") if r2 and r2.is_file() else ""
++        keys = ("manifest_sha256", "v6_record_sha256", "reviewer_authorization_sha256")
++        if not all(imports.get(k) and imports[k] in txt for k in keys):
++            raise ValueError("imports need an Amendment 02 file that names the registered manifest, V6-record and "
++                             "reviewer-authorization SHA-256 values")
+     out = Path(out)
+-    out.write_text(json.dumps(_notebook(candidate_cells(candidate_id, cfg)), indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
++    out.write_text(json.dumps(_notebook(candidate_cells(candidate_id, cfg, imports)), indent=1, ensure_ascii=False) + "\n",
++                   encoding="utf-8")
+     return out
+ 
+ 
