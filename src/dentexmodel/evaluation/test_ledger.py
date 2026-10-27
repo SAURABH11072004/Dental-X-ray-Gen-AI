@@ -243,3 +243,48 @@ def test_status_for_report(ctx: dict) -> dict:
                                                                      "evaluated_at": e.get("evaluated_at")} for e in prior],
             "interpretation": ("The internal test split was already used for this task; this result is not an untouched estimate."
                                if prior else "First recorded use of the internal test split for this task.")}
+
+
+# ------------------------------------------------------------------------------------------------ retrospective disclosure
+DISCLOSURE_KIND = "retrospective_disclosure"
+_SHA64 = re.compile(r"^[0-9a-f]{64}$")
+DISCLOSURE_FIELDS = ("task", "version", "description", "evaluated_at", "checkpoint_sha256s", "split_version_at_evaluation",
+                     "n_findings", "n_images", "metrics", "report", "script", "selection")
+
+
+def record_retrospective_disclosure(settings, fields: dict, authorized_by: str, reason: str) -> dict:
+    """Append a disclosure of a test-split use that ALREADY happened outside :func:`authorize` (e.g. an external GPU run).
+
+    * Same authorizer / reason rules as :func:`authorize`; refuses a ledger that fails :func:`verify_chain`.
+    * Every field in ``DISCLOSURE_FIELDS`` must be supplied (nothing is filled in or guessed); checkpoint hashes must be full SHA-256.
+    * Kind ``retrospective_disclosure`` is NOT ``final_metrics``: it does not occupy the one-candidate-per-task slot of the gate, but it
+      is listed among prior uses, so every later test report states that the split was used again.
+    * The same set of checkpoints cannot be disclosed twice.
+    """
+    if not _NAME.match((authorized_by or "").strip()):
+        raise DentaMindError("A named authorizer is required for a test-split disclosure.", code="test_authorization_required")
+    if len((reason or "").strip()) < MIN_REASON:
+        raise DentaMindError(f"A written reason of at least {MIN_REASON} characters is required.", code="test_authorization_required")
+    missing = [k for k in DISCLOSURE_FIELDS if fields.get(k) in (None, "", [], {})]
+    if missing:
+        raise DentaMindError(f"Disclosure fields missing: {', '.join(missing)}", code="disclosure_incomplete")
+    shas = sorted(str(s).lower() for s in fields["checkpoint_sha256s"])
+    if not all(_SHA64.match(s) for s in shas):
+        raise DentaMindError("checkpoint_sha256s must be full 64-character SHA-256 hashes.", code="disclosure_incomplete")
+    led = ensure_ledger(settings)
+    if verify_chain(led):
+        raise DentaMindError("The test-set ledger fails its integrity check; refusing to add to it.", code="ledger_tampered")
+    if any(e.get("kind") == DISCLOSURE_KIND and sorted(e.get("checkpoint_sha256s") or []) == shas for e in led["entries"]):
+        raise DentaMindError("These checkpoints are already disclosed in the ledger.", code="already_recorded")
+    prior = [e for e in led["entries"] if e.get("task") == fields["task"] and e.get("kind") != "reproduction"]
+    entry = {"kind": DISCLOSURE_KIND, "historical": False, "retrospective": True, "model_id": None,
+             **{k: fields[k] for k in DISCLOSURE_FIELDS if k != "checkpoint_sha256s"}, "checkpoint_sha256s": shas,
+             "checkpoint_sha256": None, "recorded_at": datetime.now(timezone.utc).isoformat(),
+             "split_version_at_record": split_version(settings),
+             "authorized_by": authorized_by.strip(), "reason": reason.strip(),
+             "authorization": "recorded retrospectively; this evaluation did not pass through authorize()",
+             "test_set_previously_used": bool(prior),
+             "prior_uses_for_task": [{"version": e.get("version"), "kind": e.get("kind"), "evaluated_at": e.get("evaluated_at")} for e in prior]}
+    e = _append(led, entry)
+    _write(settings, led)
+    return e

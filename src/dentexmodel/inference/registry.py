@@ -50,6 +50,27 @@ KNOWN_ARCHITECTURES = {"detection": {"fasterrcnn_resnet50_fpn"}, "segmentation":
                        "classification": {"resnet18", "resnet50"}, "numbering": {"fasterrcnn_resnet50_fpn"}}
 
 
+def classifier_preprocessing_problems(meta: dict) -> list:
+    """A classifier must state how its training crops were made, so inference can reproduce them exactly. Without these keys
+    inference would have to guess (no padding, no normalisation) and silently feed the network inputs it was never trained on.
+    Enforced where the guess would happen (``torch_models._prep_crops``), not at checkpoint scanning, so listing, provenance and
+    promotion of existing checkpoints are unchanged; such a classifier simply refuses to run until its sidecar states them."""
+    problems = []
+    pad = meta.get("crop_pad")
+    if isinstance(pad, bool) or not isinstance(pad, (int, float)) or not 0 <= pad < 1:
+        problems.append(f"classification sidecar must state crop_pad as a number in [0, 1) (got {pad!r})")
+    size = meta.get("image_size")
+    if isinstance(size, bool) or not isinstance(size, int) or size < 32:
+        problems.append(f"classification sidecar must state image_size as an integer >= 32 (got {size!r})")
+    norm = meta.get("normalize")
+    mean, std = (norm.get("mean"), norm.get("std")) if isinstance(norm, dict) else (None, None)
+    ok = all(isinstance(v, (list, tuple)) and len(v) == 3 and all(isinstance(x, (int, float)) and not isinstance(x, bool) for x in v)
+             for v in (mean, std))
+    if not ok or any(s <= 0 for s in std):
+        problems.append("classification sidecar must state normalize.mean and normalize.std as three numbers each (std > 0)")
+    return problems
+
+
 def validate_sidecar(meta: dict) -> list:
     """Problems that make a checkpoint unsafe to load (empty list = compatible). Only checks what the sidecar states."""
     task, problems = meta.get("task"), []

@@ -1,0 +1,56 @@
+{
+ "format": "dentamind-patch-set-v1",
+ "name": "cv5_import_wiring_set_1",
+ "status": "PROPOSED - not applied, not approved",
+ "git_apply": "git -c core.autocrlf=false apply <patch>  (check: --check; rollback: -R). core.autocrlf is forced off because the system git config sets it to true, which rewrites line endings",
+ "order": [
+  {
+   "step": 1,
+   "patch": "patches/cv5_import_wiring.patch",
+   "patch_sha256": "33ec47e60dae64a0845b49f10d6ac69b46afcd8b1661318e5e041e876ae3da46",
+   "targets": {
+    "kaggle/make_cv5_notebook.py": {
+     "before": "4a5efda8951126644d0e91b4778e3d7c6d93e174cebc6a371f3a7001e2920641",
+     "after": "d15b1a55d959ff8e8079a8e7480c57b059f49cf866fee03ed7987f9e64ea969e"
+    }
+   }
+  },
+  {
+   "step": 2,
+   "patch": "patches/cv5_test_pin_update.patch",
+   "patch_sha256": "5e4062877f24f3943b37828c69e55b99c48d676d355fa14edc7f03573e0ec17e",
+   "targets": {
+    "tests/test_cv5_import_wiring.py": {
+     "before": "ac9fa89ee9b6472fd5cefaa6a21eea41cf577e6269de56b4fcbf96e4a88d93ee",
+     "after": "20f6be2dfa622c3883995329e22512b1a1bbf4b8b0f67547b9414b6393fbf464"
+    },
+    "tests/test_cv5_base_p2.py": {
+     "before": "08ac428eb1570ae17f2e5e4b2f91e29bd92c25704dd5e9ab814baf0816101527",
+     "after": "c8e10982e74fdf4984aac4bb8d130e48ad2777c2c326299faff8d5c4d6846035"
+    }
+   }
+  },
+  {
+   "step": 3,
+   "patch": "patches/cv5_bundle_builder_imports.patch",
+   "patch_sha256": "31a2ba15618ee41873bb2c457fc0887cbf60022027928bba2708f0b118925d45",
+   "targets": {
+    "kaggle/build_candidate_bundle.py": {
+     "before": "066b937b6e035dbd417268ae141f3eeaf6e19417a51af48764893512668c3aaf",
+     "after": "14273a4c2099efc958182d406cc8e87eb39c8f7ad98751016671d8c120da7e54"
+    }
+   }
+  }
+ ],
+ "imports_off_baseline_lf_sha256": {
+  "CROP384": "d47727b69b31f2fa2f829a7fcc8efc16f8ce201b0c7e23e13e33417ac22ec5f8",
+  "PAD25": "5e52a6b0dd9315e116c5cebe0466558b60cd1212dade4e4fda54f1986fd6621f",
+  "CNXTT": "e6e57c38c9307abf0aeacb859f993e393ab868576efacd5babc701e466038b5f",
+  "BASE": "31ffc3effb56d422f91807de3d769122d7fb25665f381da846c0a9fcb1d9cfa1",
+  "PREFLIGHT": "7336f2cf519607264d38ad928801a1e7e0a0c38b6af7c6f880ec85a18b3cdafb"
+ },
+ "lf_method": "sha256 of the file bytes (or of json.dumps(_notebook(cells), indent=1, ensure_ascii=False) + '\n' in UTF-8) after replacing every CRLF by LF",
+ "supersedes": {
+  "patches/cv5_import_wiring.patch (earlier version)": "ed26e064e86d9136f6026515937b9ba26c123bfeeb94d9b843957e749e639d5d - same resulting generator content; its content lines lacked CRs and it applied only with core.autocrlf=true"
+ }
+}

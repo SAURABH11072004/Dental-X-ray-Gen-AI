@@ -1,0 +1,1055 @@
+{
+ "protocol": "reports/ensemble_protocol.md",
+ "generated_utc": "2026-10-24T14:41:13.764707+00:00",
+ "environment": "kaggle",
+ "script_sha256": "44a89511641a7c23ffe160eb30c20958191738407ff95f0ea283d932c3cee262",
+ "members": {
+  "42": {
+   "sha256": "0846c7595f9e567960d223988a284e8aab552b7a53be172f719e02508117c6ad",
+   "path": "/kaggle/input/notebooks/btechgd10/dentamind-external-data-training/dentamind_artifacts/runs/BASE_s42/best.pth"
+  },
+  "43": {
+   "sha256": "48c2b6718afdef0e273598e60b8feb51f3129db3d11da4d9f9c790cc2eb779cf",
+   "path": "/kaggle/input/notebooks/btechgd10/dentamind-external-data-training/dentamind_artifacts/runs/BASE_s43/best.pth"
+  },
+  "44": {
+   "sha256": "270cb3f190b99a9d56bc3c086a56223264e69bdc9ad989e77fe765d3ceb75a4b",
+   "path": "/kaggle/input/notebooks/btechgd10/dentamind-external-data-training/dentamind_artifacts/runs/BASE_s44/best.pth"
+  },
+  "45": {
+   "sha256": "05ed85068fec18102e5686d619488c50aef0fda69f4046a842dfe26cd62e22f8",
+   "path": "/kaggle/input/notebooks/btechgd10/dentamind-external-data-training/dentamind_artifacts/runs/BASE_s45/best.pth"
+  },
+  "46": {
+   "sha256": "653eaab4cfea1efa0b1bc3de683c707f28128aed97f9eee50619baa9ec59a30e",
+   "path": "/kaggle/input/notebooks/btechgd10/dentamind-external-data-training/dentamind_artifacts/runs/BASE_s46/best.pth"
+  }
+ },
+ "data": {
+  "split": "data/splits/combined_validation.csv",
+  "findings": 331,
+  "radiographs": 65,
+  "detector_matched": 323,
+  "detector_unmatched": 8,
+  "test_split_loaded": false
+ },
+ "software": {
+  "python": "3.13.15",
+  "torch": "2.11.0+cu128",
+  "torchvision": "0.26.0+cu128",
+  "numpy": "2.1.3",
+  "cuda": "12.8",
+  "gpu": "Tesla T4",
+  "platform": "Linux-6.18.55+-x86_64-with-glibc2.39"
+ },
+ "reproduction_check": {
+  "tolerance": 0.005,
+  "pass": true,
+  "members": {
+   "42": {
+    "gt": {
+     "local": 0.7443687581415545,
+     "kaggle": 0.7443687581415545,
+     "abs_diff": 0.0
+    },
+    "det_matched": {
+     "local": 0.7009019877495677,
+     "kaggle": 0.7009019877495677,
+     "abs_diff": 0.0
+    }
+   },
+   "43": {
+    "gt": {
+     "local": 0.8023875755421259,
+     "kaggle": 0.8023875755421259,
+     "abs_diff": 0.0
+    },
+    "det_matched": {
+     "local": 0.7414566700120708,
+     "kaggle": 0.7414566700120708,
+     "abs_diff": 0.0
+    }
+   },
+   "44": {
+    "gt": {
+     "local": 0.7460515435698712,
+     "kaggle": 0.7460515435698712,
+     "abs_diff": 0.0
+    },
+    "det_matched": {
+     "local": 0.7000295635776723,
+     "kaggle": 0.7000295635776723,
+     "abs_diff": 0.0
+    }
+   },
+   "45": {
+    "gt": {
+     "local": 0.7513357593204227,
+     "kaggle": 0.7513357593204227,
+     "abs_diff": 0.0
+    },
+    "det_matched": {
+     "local": 0.7484109260415042,
+     "kaggle": 0.7484109260415042,
+     "abs_diff": 0.0
+    }
+   },
+   "46": {
+    "gt": {
+     "local": 0.7431131814245263,
+     "kaggle": 0.7431131814245263,
+     "abs_diff": 0.0
+    },
+    "det_matched": {
+     "local": 0.759239701029897,
+     "kaggle": 0.759239701029897,
+     "abs_diff": 0.0
+    }
+   }
+  }
+ },
+ "member_results": {
+  "42": {
+   "gt": {
+    "n": 331,
+    "accuracy": 0.8277945619335347,
+    "macro_precision": 0.7193079539508112,
+    "macro_recall": 0.7773035230352303,
+    "macro_f1": 0.7443687581415545,
+    "balanced_accuracy": 0.7773035230352303,
+    "per_class": {
+     "Caries": {
+      "precision": 0.8974358974358975,
+      "recall": 0.8536585365853658,
+      "f1": 0.875,
+      "support": 205,
+      "false_positives": 20
+     },
+     "Deep Caries": {
+      "precision": 0.4897959183673469,
+      "recall": 0.5333333333333333,
+      "f1": 0.5106382978723404,
+      "support": 45,
+      "false_positives": 25
+     },
+     "Impacted": {
+      "precision": 0.9066666666666666,
+      "recall": 0.9444444444444444,
+      "f1": 0.9251700680272109,
+      "support": 72,
+      "false_positives": 7
+     },
+     "Periapical Lesion": {
+      "precision": 0.5833333333333334,
+      "recall": 0.7777777777777778,
+      "f1": 0.6666666666666666,
+      "support": 9,
+      "false_positives": 5
+     }
+    },
+    "confusion": [
+     [
+      175,
+      23,
+      3,
+      4
+     ],
+     [
+      16,
+      24,
+      4,
+      1
+     ],
+     [
+      3,
+      1,
+      68,
+      0
+     ],
+     [
+      1,
+      1,
+      0,
+      7
+     ]
+    ],
+    "nll": 0.6211685806052909,
+    "ece_10bin": 0.11285048264030967,
+    "abstention_production_rule": {
+     "rule": "abstain if normalised entropy >= 0.3966 (fitted for the deployed model; not refitted)",
+     "accepted": 296,
+     "abstained": 35,
+     "accuracy_on_accepted": 0.8581081081081081
+    }
+   },
+   "det_matched": {
+    "n": 323,
+    "accuracy": 0.8111455108359134,
+    "macro_precision": 0.6807872233400403,
+    "macro_recall": 0.730548379991189,
+    "macro_f1": 0.7009019877495677,
+    "balanced_accuracy": 0.730548379991189,
+    "per_class": {
+     "Caries": {
+      "precision": 0.865,
+      "recall": 0.8522167487684729,
+      "f1": 0.858560794044665,
+      "support": 203,
+      "false_positives": 27
+     },
+     "Deep Caries": {
+      "precision": 0.42857142857142855,
+      "recall": 0.43902439024390244,
+      "f1": 0.4337349397590361,
+      "support": 41,
+      "false_positives": 24
+     },
+     "Impacted": {
+      "precision": 0.9295774647887324,
+      "recall": 0.9166666666666666,
+      "f1": 0.9230769230769231,
+      "support": 72,
+      "false_positives": 5
+     },
+     "Periapical Lesion": {
+      "precision": 0.5,
+      "recall": 0.7142857142857143,
+      "f1": 0.588235294117647,
+      "support": 7,
+      "false_positives": 5
+     }
+    },
+    "confusion": [
+     [
+      173,
+      22,
+      4,
+      4
+     ],
+     [
+      21,
+      18,
+      1,
+      1
+     ],
+     [
+      5,
+      1,
+      66,
+      0
+     ],
+     [
+      1,
+      1,
+      0,
+      5
+     ]
+    ],
+    "nll": 0.6581883222778432,
+    "ece_10bin": 0.1263944794519029,
+    "abstention_production_rule": {
+     "rule": "abstain if normalised entropy >= 0.3966 (fitted for the deployed model; not refitted)",
+     "accepted": 283,
+     "abstained": 40,
+     "accuracy_on_accepted": 0.8763250883392226
+    }
+   }
+  },
+  "43": {
+   "gt": {
+    "n": 331,
+    "accuracy": 0.8700906344410876,
+    "macro_precision": 0.7792480920905578,
+    "macro_recall": 0.8311483739837398,
+    "macro_f1": 0.8023875755421259,
+    "balanced_accuracy": 0.8311483739837398,
+    "per_class": {
+     "Caries": {
+      "precision": 0.9282051282051282,
+      "recall": 0.8829268292682927,
+      "f1": 0.905,
+      "support": 205,
+      "false_positives": 14
+     },
+     "Deep Caries": {
+      "precision": 0.6346153846153846,
+      "recall": 0.7333333333333333,
+      "f1": 0.6804123711340205,
+      "support": 45,
+      "false_positives": 19
+     },
+     "Impacted": {
+      "precision": 0.9178082191780822,
+      "recall": 0.9305555555555556,
+      "f1": 0.9241379310344828,
+      "support": 72,
+      "false_positives": 6
+     },
+     "Periapical Lesion": {
+      "precision": 0.6363636363636364,
+      "recall": 0.7777777777777778,
+      "f1": 0.7000000000000001,
+      "support": 9,
+      "false_positives": 4
+     }
+    },
+    "confusion": [
+     [
+      181,
+      17,
+      3,
+      4
+     ],
+     [
+      9,
+      33,
+      3,
+      0
+     ],
+     [
+      4,
+      1,
+      67,
+      0
+     ],
+     [
+      1,
+      1,
+      0,
+      7
+     ]
+    ],
+    "nll": 0.46142269112788253,
+    "ece_10bin": 0.07469479311989155,
+    "abstention_production_rule": {
+     "rule": "abstain if normalised entropy >= 0.3966 (fitted for the deployed model; not refitted)",
+     "accepted": 288,
+     "abstained": 43,
+     "accuracy_on_accepted": 0.9236111111111112
+    }
+   },
+   "det_matched": {
+    "n": 323,
+    "accuracy": 0.8513931888544891,
+    "macro_precision": 0.7099603694008144,
+    "macro_recall": 0.7948339274033134,
+    "macro_f1": 0.7414566700120708,
+    "balanced_accuracy": 0.7948339274033134,
+    "per_class": {
+     "Caries": {
+      "precision": 0.9162303664921466,
+      "recall": 0.8620689655172413,
+      "f1": 0.8883248730964467,
+      "support": 203,
+      "false_positives": 16
+     },
+     "Deep Caries": {
+      "precision": 0.5625,
+      "recall": 0.6585365853658537,
+      "f1": 0.6067415730337078,
+      "support": 41,
+      "false_positives": 21
+     },
+     "Impacted": {
+      "precision": 0.9444444444444444,
+      "recall": 0.9444444444444444,
+      "f1": 0.9444444444444444,
+      "support": 72,
+      "false_positives": 4
+     },
+     "Periapical Lesion": {
+      "precision": 0.4166666666666667,
+      "recall": 0.7142857142857143,
+      "f1": 0.5263157894736842,
+      "support": 7,
+      "false_positives": 7
+     }
+    },
+    "confusion": [
+     [
+      175,
+      19,
+      4,
+      5
+     ],
+     [
+      12,
+      27,
+      0,
+      2
+     ],
+     [
+      3,
+      1,
+      68,
+      0
+     ],
+     [
+      1,
+      1,
+      0,
+      5
+     ]
+    ],
+    "nll": 0.5650367547681981,
+    "ece_10bin": 0.08130849136656651,
+    "abstention_production_rule": {
+     "rule": "abstain if normalised entropy >= 0.3966 (fitted for the deployed model; not refitted)",
+     "accepted": 285,
+     "abstained": 38,
+     "accuracy_on_accepted": 0.8947368421052632
+    }
+   }
+  },
+  "44": {
+   "gt": {
+    "n": 331,
+    "accuracy": 0.8489425981873112,
+    "macro_precision": 0.7498991528842275,
+    "macro_recall": 0.7436483739837398,
+    "macro_f1": 0.7460515435698712,
+    "balanced_accuracy": 0.7436483739837398,
+    "per_class": {
+     "Caries": {
+      "precision": 0.900497512437811,
+      "recall": 0.8829268292682927,
+      "f1": 0.8916256157635468,
+      "support": 205,
+      "false_positives": 20
+     },
+     "Deep Caries": {
+      "precision": 0.5416666666666666,
+      "recall": 0.5777777777777777,
+      "f1": 0.5591397849462364,
+      "support": 45,
+      "false_positives": 22
+     },
+     "Impacted": {
+      "precision": 0.9324324324324325,
+      "recall": 0.9583333333333334,
+      "f1": 0.9452054794520548,
+      "support": 72,
+      "false_positives": 5
+     },
+     "Periapical Lesion": {
+      "precision": 0.625,
+      "recall": 0.5555555555555556,
+      "f1": 0.5882352941176471,
+      "support": 9,
+      "false_positives": 3
+     }
+    },
+    "confusion": [
+     [
+      181,
+      18,
+      3,
+      3
+     ],
+     [
+      17,
+      26,
+      2,
+      0
+     ],
+     [
+      1,
+      2,
+      69,
+      0
+     ],
+     [
+      2,
+      2,
+      0,
+      5
+     ]
+    ],
+    "nll": 0.4865971185208959,
+    "ece_10bin": 0.08748066803479843,
+    "abstention_production_rule": {
+     "rule": "abstain if normalised entropy >= 0.3966 (fitted for the deployed model; not refitted)",
+     "accepted": 283,
+     "abstained": 48,
+     "accuracy_on_accepted": 0.8975265017667845
+    }
+   },
+   "det_matched": {
+    "n": 323,
+    "accuracy": 0.8421052631578947,
+    "macro_precision": 0.6914855910001542,
+    "macro_recall": 0.717728316445726,
+    "macro_f1": 0.7000295635776723,
+    "balanced_accuracy": 0.717728316445726,
+    "per_class": {
+     "Caries": {
+      "precision": 0.8786407766990292,
+      "recall": 0.8916256157635468,
+      "f1": 0.8850855745721272,
+      "support": 203,
+      "false_positives": 25
+     },
+     "Deep Caries": {
+      "precision": 0.5428571428571428,
+      "recall": 0.4634146341463415,
+      "f1": 0.5,
+      "support": 41,
+      "false_positives": 16
+     },
+     "Impacted": {
+      "precision": 0.9444444444444444,
+      "recall": 0.9444444444444444,
+      "f1": 0.9444444444444444,
+      "support": 72,
+      "false_positives": 4
+     },
+     "Periapical Lesion": {
+      "precision": 0.4,
+      "recall": 0.5714285714285714,
+      "f1": 0.47058823529411764,
+      "support": 7,
+      "false_positives": 6
+     }
+    },
+    "confusion": [
+     [
+      181,
+      14,
+      4,
+      4
+     ],
+     [
+      20,
+      19,
+      0,
+      2
+     ],
+     [
+      2,
+      2,
+      68,
+      0
+     ],
+     [
+      3,
+      0,
+      0,
+      4
+     ]
+    ],
+    "nll": 0.5671574652999807,
+    "ece_10bin": 0.10051031129279003,
+    "abstention_production_rule": {
+     "rule": "abstain if normalised entropy >= 0.3966 (fitted for the deployed model; not refitted)",
+     "accepted": 285,
+     "abstained": 38,
+     "accuracy_on_accepted": 0.8912280701754386
+    }
+   }
+  },
+  "45": {
+   "gt": {
+    "n": 331,
+    "accuracy": 0.8640483383685801,
+    "macro_precision": 0.7473699842120896,
+    "macro_recall": 0.7697154471544715,
+    "macro_f1": 0.7513357593204227,
+    "balanced_accuracy": 0.7697154471544715,
+    "per_class": {
+     "Caries": {
+      "precision": 0.8947368421052632,
+      "recall": 0.9121951219512195,
+      "f1": 0.9033816425120773,
+      "support": 205,
+      "false_positives": 22
+     },
+     "Deep Caries": {
+      "precision": 0.7142857142857143,
+      "recall": 0.5555555555555556,
+      "f1": 0.6250000000000001,
+      "support": 45,
+      "false_positives": 10
+     },
+     "Impacted": {
+      "precision": 0.918918918918919,
+      "recall": 0.9444444444444444,
+      "f1": 0.9315068493150684,
+      "support": 72,
+      "false_positives": 6
+     },
+     "Periapical Lesion": {
+      "precision": 0.46153846153846156,
+      "recall": 0.6666666666666666,
+      "f1": 0.5454545454545455,
+      "support": 9,
+      "false_positives": 7
+     }
+    },
+    "confusion": [
+     [
+      187,
+      8,
+      4,
+      6
+     ],
+     [
+      17,
+      25,
+      2,
+      1
+     ],
+     [
+      4,
+      0,
+      68,
+      0
+     ],
+     [
+      1,
+      2,
+      0,
+      6
+     ]
+    ],
+    "nll": 0.5000397736913653,
+    "ece_10bin": 0.08725036198999228,
+    "abstention_production_rule": {
+     "rule": "abstain if normalised entropy >= 0.3966 (fitted for the deployed model; not refitted)",
+     "accepted": 298,
+     "abstained": 33,
+     "accuracy_on_accepted": 0.8993288590604027
+    }
+   },
+   "det_matched": {
+    "n": 323,
+    "accuracy": 0.8699690402476781,
+    "macro_precision": 0.755633624170186,
+    "macro_recall": 0.7632948189087803,
+    "macro_f1": 0.7484109260415042,
+    "balanced_accuracy": 0.7632948189087803,
+    "per_class": {
+     "Caries": {
+      "precision": 0.8873239436619719,
+      "recall": 0.9310344827586207,
+      "f1": 0.9086538461538461,
+      "support": 203,
+      "false_positives": 24
+     },
+     "Deep Caries": {
+      "precision": 0.7037037037037037,
+      "recall": 0.4634146341463415,
+      "f1": 0.5588235294117647,
+      "support": 41,
+      "false_positives": 8
+     },
+     "Impacted": {
+      "precision": 0.9315068493150684,
+      "recall": 0.9444444444444444,
+      "f1": 0.9379310344827586,
+      "support": 72,
+      "false_positives": 5
+     },
+     "Periapical Lesion": {
+      "precision": 0.5,
+      "recall": 0.7142857142857143,
+      "f1": 0.588235294117647,
+      "support": 7,
+      "false_positives": 5
+     }
+    },
+    "confusion": [
+     [
+      189,
+      7,
+      4,
+      3
+     ],
+     [
+      19,
+      19,
+      1,
+      2
+     ],
+     [
+      4,
+      0,
+      68,
+      0
+     ],
+     [
+      1,
+      1,
+      0,
+      5
+     ]
+    ],
+    "nll": 0.5374978785300628,
+    "ece_10bin": 0.0855818647349213,
+    "abstention_production_rule": {
+     "rule": "abstain if normalised entropy >= 0.3966 (fitted for the deployed model; not refitted)",
+     "accepted": 285,
+     "abstained": 38,
+     "accuracy_on_accepted": 0.9157894736842105
+    }
+   }
+  },
+  "46": {
+   "gt": {
+    "n": 331,
+    "accuracy": 0.8489425981873112,
+    "macro_precision": 0.7277454153182309,
+    "macro_recall": 0.7771680216802168,
+    "macro_f1": 0.7431131814245263,
+    "balanced_accuracy": 0.7771680216802168,
+    "per_class": {
+     "Caries": {
+      "precision": 0.8932038834951457,
+      "recall": 0.8975609756097561,
+      "f1": 0.8953771289537714,
+      "support": 205,
+      "false_positives": 22
+     },
+     "Deep Caries": {
+      "precision": 0.6111111111111112,
+      "recall": 0.4888888888888889,
+      "f1": 0.5432098765432098,
+      "support": 45,
+      "false_positives": 14
+     },
+     "Impacted": {
+      "precision": 0.9066666666666666,
+      "recall": 0.9444444444444444,
+      "f1": 0.9251700680272109,
+      "support": 72,
+      "false_positives": 7
+     },
+     "Periapical Lesion": {
+      "precision": 0.5,
+      "recall": 0.7777777777777778,
+      "f1": 0.6086956521739131,
+      "support": 9,
+      "false_positives": 7
+     }
+    },
+    "confusion": [
+     [
+      184,
+      11,
+      5,
+      5
+     ],
+     [
+      19,
+      22,
+      2,
+      2
+     ],
+     [
+      3,
+      1,
+      68,
+      0
+     ],
+     [
+      0,
+      2,
+      0,
+      7
+     ]
+    ],
+    "nll": 0.5791067796977932,
+    "ece_10bin": 0.09637989675530492,
+    "abstention_production_rule": {
+     "rule": "abstain if normalised entropy >= 0.3966 (fitted for the deployed model; not refitted)",
+     "accepted": 283,
+     "abstained": 48,
+     "accuracy_on_accepted": 0.8975265017667845
+    }
+   },
+   "det_matched": {
+    "n": 323,
+    "accuracy": 0.8668730650154799,
+    "macro_precision": 0.756238810926311,
+    "macro_recall": 0.7717953595792115,
+    "macro_f1": 0.759239701029897,
+    "balanced_accuracy": 0.7717953595792115,
+    "per_class": {
+     "Caries": {
+      "precision": 0.8942307692307693,
+      "recall": 0.916256157635468,
+      "f1": 0.9051094890510949,
+      "support": 203,
+      "false_positives": 22
+     },
+     "Deep Caries": {
+      "precision": 0.65625,
+      "recall": 0.5121951219512195,
+      "f1": 0.5753424657534246,
+      "support": 41,
+      "false_positives": 11
+     },
+     "Impacted": {
+      "precision": 0.918918918918919,
+      "recall": 0.9444444444444444,
+      "f1": 0.9315068493150684,
+      "support": 72,
+      "false_positives": 6
+     },
+     "Periapical Lesion": {
+      "precision": 0.5555555555555556,
+      "recall": 0.7142857142857143,
+      "f1": 0.6250000000000001,
+      "support": 7,
+      "false_positives": 4
+     }
+    },
+    "confusion": [
+     [
+      186,
+      10,
+      5,
+      2
+     ],
+     [
+      17,
+      21,
+      1,
+      2
+     ],
+     [
+      3,
+      1,
+      68,
+      0
+     ],
+     [
+      2,
+      0,
+      0,
+      5
+     ]
+    ],
+    "nll": 0.5813390767438563,
+    "ece_10bin": 0.08657021954332716,
+    "abstention_production_rule": {
+     "rule": "abstain if normalised entropy >= 0.3966 (fitted for the deployed model; not refitted)",
+     "accepted": 276,
+     "abstained": 47,
+     "accuracy_on_accepted": 0.9021739130434783
+    }
+   }
+  }
+ },
+ "ensemble": {
+  "gt": {
+   "n": 331,
+   "accuracy": 0.8700906344410876,
+   "macro_precision": 0.7631592676113225,
+   "macro_recall": 0.7721544715447154,
+   "macro_f1": 0.7646326263844276,
+   "balanced_accuracy": 0.7721544715447154,
+   "per_class": {
+    "Caries": {
+     "precision": 0.9,
+     "recall": 0.9219512195121952,
+     "f1": 0.9108433734939759,
+     "support": 205,
+     "false_positives": 21
+    },
+    "Deep Caries": {
+     "precision": 0.6756756756756757,
+     "recall": 0.5555555555555556,
+     "f1": 0.6097560975609757,
+     "support": 45,
+     "false_positives": 12
+    },
+    "Impacted": {
+     "precision": 0.9315068493150684,
+     "recall": 0.9444444444444444,
+     "f1": 0.9379310344827586,
+     "support": 72,
+     "false_positives": 5
+    },
+    "Periapical Lesion": {
+     "precision": 0.5454545454545454,
+     "recall": 0.6666666666666666,
+     "f1": 0.6,
+     "support": 9,
+     "false_positives": 5
+    }
+   },
+   "confusion": [
+    [
+     189,
+     9,
+     3,
+     4
+    ],
+    [
+     17,
+     25,
+     2,
+     1
+    ],
+    [
+     3,
+     1,
+     68,
+     0
+    ],
+    [
+     1,
+     2,
+     0,
+     6
+    ]
+   ],
+   "nll": 0.35757942482515115,
+   "ece_10bin": 0.034040274391031015,
+   "abstention_production_rule": {
+    "rule": "abstain if normalised entropy >= 0.3966 (fitted for the deployed model; not refitted)",
+    "accepted": 255,
+    "abstained": 76,
+    "accuracy_on_accepted": 0.9490196078431372
+   }
+  },
+  "det_matched": {
+   "n": 323,
+   "accuracy": 0.8637770897832817,
+   "macro_precision": 0.727400757124551,
+   "macro_recall": 0.7656977986036018,
+   "macro_f1": 0.7371872171721245,
+   "balanced_accuracy": 0.7656977986036018,
+   "per_class": {
+    "Caries": {
+     "precision": 0.8985507246376812,
+     "recall": 0.916256157635468,
+     "f1": 0.9073170731707317,
+     "support": 203,
+     "false_positives": 21
+    },
+    "Deep Caries": {
+     "precision": 0.625,
+     "recall": 0.4878048780487805,
+     "f1": 0.547945205479452,
+     "support": 41,
+     "false_positives": 12
+    },
+    "Impacted": {
+     "precision": 0.9315068493150684,
+     "recall": 0.9444444444444444,
+     "f1": 0.9379310344827586,
+     "support": 72,
+     "false_positives": 5
+    },
+    "Periapical Lesion": {
+     "precision": 0.45454545454545453,
+     "recall": 0.7142857142857143,
+     "f1": 0.5555555555555556,
+     "support": 7,
+     "false_positives": 6
+    }
+   },
+   "confusion": [
+    [
+     186,
+     10,
+     4,
+     3
+    ],
+    [
+     17,
+     20,
+     1,
+     3
+    ],
+    [
+     3,
+     1,
+     68,
+     0
+    ],
+    [
+     1,
+     1,
+     0,
+     5
+    ]
+   ],
+   "nll": 0.4006445745153292,
+   "ece_10bin": 0.05770825670524592,
+   "abstention_production_rule": {
+    "rule": "abstain if normalised entropy >= 0.3966 (fitted for the deployed model; not refitted)",
+    "accepted": 252,
+    "abstained": 71,
+    "accuracy_on_accepted": 0.9523809523809523
+   }
+  }
+ },
+ "acceptance": {
+  "setting": "det_matched",
+  "members": [
+   42,
+   43,
+   44,
+   45,
+   46
+  ],
+  "macro_f1_gain_vs_base_mean": 0.007179447489982227,
+  "members_beaten": 2,
+  "minority_recall_delta": {
+   "Deep Caries": -0.019512195121951237,
+   "Periapical Lesion": 0.02857142857142858
+  },
+  "minority_precision_delta": {
+   "Deep Caries": 0.04622354497354497,
+   "Periapical Lesion": -0.019898989898990027
+  },
+  "class_f1_delta": {
+   "Caries": 0.018170157787095742,
+   "Deep Caries": 0.013016703887865355,
+   "Impacted": 0.0016502953300308043,
+   "Periapical Lesion": -0.00411936704506366
+  },
+  "gt_macro_f1_delta": 0.007181262784727527,
+  "criteria": {
+   "1_gain_gt_0.027_and_beats_4_of_5": false,
+   "2_minority_recall_not_lower": false,
+   "3_no_class_f1_drop_gt_0.05": true,
+   "4_gt_macro_f1_drop_le_0.02": true,
+   "5_minority_precision_drop_le_0.10": true
+  },
+  "pass": false
+ },
+ "bootstrap_det_matched": {
+  "n_boot": 2000,
+  "seed": 0,
+  "mean": 0.006869139715261946,
+  "ci95": [
+   -0.03168954446696044,
+   0.048054742349276175
+  ],
+  "share_positive": 0.625
+ },
+ "bootstrap_gt": {
+  "n_boot": 2000,
+  "seed": 0,
+  "mean": 0.007454718430302496,
+  "ci95": [
+   -0.025709424261635114,
+   0.04044963061921114
+  ],
+  "share_positive": 0.665
+ },
+ "latency": {
+  "device": "Tesla T4",
+  "reps": 5,
+  "single_member_batch64_s_per_crop": 0.0028710471781252522,
+  "ensemble_batch64_s_per_crop": 0.014406236706250297,
+  "single_member_batch1_s": 0.00774347259998649,
+  "ensemble_batch1_s": 0.03806481339997845,
+  "ratio_batch64": 5.0177638375337805,
+  "ratio_batch1": 4.915729074839738
+ },
+ "runtime_s": 48.0
+}

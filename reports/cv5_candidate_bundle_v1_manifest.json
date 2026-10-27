@@ -1,0 +1,39 @@
+{
+ "bundle": "dentamind_cv5_candidate_code_v1.zip",
+ "version": 1,
+ "built": "2026-10-25T04:02:06.787845+00:00",
+ "purpose": "CV5 candidate-path code (reports/cv5_acceptance_protocol.md rev 3; DRAFT Amendment 01 / 01b)",
+ "files": {
+  "kaggle/cv5_accept.py": "f55a44ed57b0232a9be2d49255c107f40dfeaf8e695aa9488d22cf5c18ff7798",
+  "kaggle/cv5_interventions.py": "752b0da88d18ba67c2d807e68e01afced8baf2db6dcdacc9004492fded463c62",
+  "kaggle/cv5_lib.py": "72084f9b7067f71f808880fb70b58e546405f3d970f0e30be52dd93bdaea6b40",
+  "kaggle/make_cv5_notebook.py": "4a5efda8951126644d0e91b4778e3d7c6d93e174cebc6a371f3a7001e2920641",
+  "kaggle/make_notebook.py": "457a45fa7134c12c1b6e4bf1ea3437c566ea92a41f2198f797a8c023982f0cd8",
+  "kaggle/make_cv5_preflight_notebook.py": "63fd98fa8d4aef683b9410b19bdab0d3a32c46068ec1375af36b05a6f8facfd8",
+  "kaggle/cv5_preflight_trainer.py": "d511da4bd07b597ef80a9d09fa88dd192e25e3c604f28ffc012254e7e15b7a33",
+  "kaggle/dentamind_cv5_preflight.ipynb": "6bf9ea1851fe8b63fe01760f5320023f2df142b58f283a35def6643c2b1eb3bb",
+  "kaggle/build_candidate_bundle.py": "066b937b6e035dbd417268ae141f3eeaf6e19417a51af48764893512668c3aaf",
+  "scripts/dataset/make_cv_folds.py": "283fa080ed97c542b942611caa5d7c64230b7b06f15a7ea7ad652c98279ecff6",
+  "data/splits/cv5_folds_v1.csv": "9b767a4822844ccf0c4bf33d299e6e37420d1458a38035af0c3a3cb9107b47a6",
+  "tests/test_cv5_accept.py": "5fe1ba218f249c1d036fc959fb74e953e1dfcfd892747a09e6043d14ed0581e6",
+  "tests/test_cv5_candidate_runs.py": "89b5b7f226a84f5849e64c7239b7c96b97f9fca3fdf9a2dbc3a99f6c66608f0a",
+  "tests/test_cv5_interventions.py": "e4f90b75937a1a1d4e18af89a017692f53b3943a597700700d4d2e4d184b458c"
+ },
+ "base_bundle": {
+  "file": "dentamind_kaggle_bundle.zip",
+  "sha256": "9d070fc79ad8fd92d6323bb8702b03506bc3d29b4c45ada0bfa0062989e63faf",
+  "built": "2026-10-24T11:29:16.826719+00:00",
+  "relied_on_unchanged": {
+   "kaggle/dentamind_kaggle.py": {
+    "bundle_sha256": "879faa93cb313b47e3b9f03dcc94a92e40981384d790f40c604117a9042f3e3d",
+    "working_copy_sha256": "879faa93cb313b47e3b9f03dcc94a92e40981384d790f40c604117a9042f3e3d"
+   },
+   "scripts/dataset/dsutil.py": {
+    "bundle_sha256": "debeb7f08f7e5176347fe58a5d7ada3932e35539eb973590feb9b57b7a864e30",
+    "working_copy_sha256": "debeb7f08f7e5176347fe58a5d7ada3932e35539eb973590feb9b57b7a864e30"
+   }
+  }
+ },
+ "not_included": "no radiographs, label manifests, checkpoints, results or ledger data",
+ "bundle_sha256": "8ce64d2607be9c1fa8176f4abeb6e7db2f4428cfbf9298c479337f141e119544"
+}

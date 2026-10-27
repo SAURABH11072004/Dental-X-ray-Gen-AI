@@ -1,0 +1,34 @@
+status,split,source,class,findings,unique_radiographs_with_class,note
+verified,train,dentex_official_val,Caries,85,32,original expert labels (DENTEX)
+verified,train,dentex_official_val,Deep Caries,29,18,original expert labels (DENTEX)
+verified,train,dentex_official_val,Impacted,36,15,original expert labels (DENTEX)
+verified,train,dentex_official_val,Periapical Lesion,9,7,original expert labels (DENTEX)
+verified,train,dentex_train_disease,Caries,1550,435,original expert labels (DENTEX)
+verified,train,dentex_train_disease,Deep Caries,438,232,original expert labels (DENTEX)
+verified,train,dentex_train_disease,Impacted,412,171,original expert labels (DENTEX)
+verified,train,dentex_train_disease,Periapical Lesion,120,87,original expert labels (DENTEX)
+verified,validation,dentex_train_disease,Caries,205,62,original expert labels (DENTEX)
+verified,validation,dentex_train_disease,Deep Caries,45,29,original expert labels (DENTEX)
+verified,validation,dentex_train_disease,Impacted,72,31,original expert labels (DENTEX)
+verified,validation,dentex_train_disease,Periapical Lesion,9,7,original expert labels (DENTEX)
+verified,calibration,dentex_train_disease,Caries,206,58,original expert labels (DENTEX)
+verified,calibration,dentex_train_disease,Deep Caries,47,26,original expert labels (DENTEX)
+verified,calibration,dentex_train_disease,Impacted,55,24,original expert labels (DENTEX)
+verified,calibration,dentex_train_disease,Periapical Lesion,16,11,original expert labels (DENTEX)
+verified,test,dentex_train_disease,Caries,228,68,original expert labels (DENTEX)
+verified,test,dentex_train_disease,Deep Caries,48,34,original expert labels (DENTEX)
+verified,test,dentex_train_disease,Impacted,65,28,original expert labels (DENTEX)
+verified,test,dentex_train_disease,Periapical Lesion,13,11,original expert labels (DENTEX)
+"verified (clinician, new)",-,-,all,0,0,no clinician review imported yet
+pending review (unlabelled),pool:unassigned,dentex_official_test,-,,155,radiographs awaiting clinician review; no labels
+pending review (unlabelled),pool:eval_locked,dentex_quadrant,-,,24,radiographs awaiting clinician review; no labels
+pending review (unlabelled),pool:train,dentex_quadrant,-,,55,radiographs awaiting clinician review; no labels
+pending review (unlabelled),pool:unassigned,dentex_quadrant-enumeration-disease,-,,16,radiographs awaiting clinician review; no labels
+pending review (unlabelled),pool:eval_locked,dentex_quadrant_enumeration,-,,105,radiographs awaiting clinician review; no labels
+pending review (unlabelled),pool:train,dentex_quadrant_enumeration,-,,251,radiographs awaiting clinician review; no labels
+pending review (unlabelled),pool:unassigned,dentex_unlabelled,-,,1537,radiographs awaiting clinician review; no labels
+pending review (unlabelled),pool:unassigned,hanoi_periapical,-,,3863,radiographs awaiting clinician review; no labels
+TARGET (proposed),train,all verified,Caries,1635,467,"no expansion target; keep all verified labels, do not duplicate"
+TARGET (proposed),train,all verified,Deep Caries,467,250,target >= 750 findings from >= 400 radiographs; gap 283 findings / 150 radiographs
+TARGET (proposed),train,all verified,Impacted,448,186,"no expansion target; keep all verified labels, do not duplicate"
+TARGET (proposed),train,all verified,Periapical Lesion,129,94,target >= 300 findings from >= 200 radiographs; gap 171 findings / 106 radiographs

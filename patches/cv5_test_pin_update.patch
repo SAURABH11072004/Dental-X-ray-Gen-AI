@@ -1,0 +1,113 @@
+diff --git a/tests/test_cv5_import_wiring.py b/tests/test_cv5_import_wiring.py
+index abbed29..68a89ee 100644
+--- a/tests/test_cv5_import_wiring.py
++++ b/tests/test_cv5_import_wiring.py
+@@ -1,10 +1,10 @@
+-"""Tests of the PROPOSED, UNAPPLIED import wiring patches/cv5_import_wiring.patch for the frozen kaggle/make_cv5_notebook.py.
++"""Tests of the import wiring AFTER patches/cv5_import_wiring.patch was applied to kaggle/make_cv5_notebook.py (Amendment 01c).
+ 
+-The patch is applied only to a temporary copy of the generator; the frozen file is checked to stay byte-identical. The manifest-enabled
+-import cell is executed on SYNTHETIC fixtures (tests/test_cv5_imports.py world); no real data, label or training is involved."""
++The generator must be exactly the reviewed patched version, and its imports-off output must equal the baseline recorded from the
++pre-patch generator (LF-normalised SHA-256). The manifest-enabled import cell is executed on SYNTHETIC fixtures
++(tests/test_cv5_imports.py world); no real data, label or training is involved."""
+ import dataclasses
+ import hashlib
+-import importlib.util
+ import json
+ import shutil
+ import subprocess
+@@ -29,8 +29,11 @@ import run_cv5_import_v6 as V6  # noqa: E402
+ from test_cv5_imports import PROVENANCE, built, world  # noqa: E402,F401  (fixture)
+ 
+ PATCH = ROOT / "patches" / "cv5_import_wiring.patch"
+-FROZEN = ROOT / "kaggle" / "make_cv5_notebook.py"
+-FROZEN_SHA = "4a5efda8951126644d0e91b4778e3d7c6d93e174cebc6a371f3a7001e2920641"     # Amendment 01b
++GENERATOR = ROOT / "kaggle" / "make_cv5_notebook.py"
++FROZEN_SHA = "4a5efda8951126644d0e91b4778e3d7c6d93e174cebc6a371f3a7001e2920641"     # Amendment 01b (before the patch)
++PATCHED_SHA = "d15b1a55d959ff8e8079a8e7480c57b059f49cf866fee03ed7987f9e64ea969e"     # Amendment 01c (after the patch)
++# imports-off output of the PRE-patch generator: LF-normalised SHA-256 of json.dumps(_notebook(cells), indent=1, ensure_ascii=False) + "\n"
++BASELINE_LF_SHA256 = {'CROP384': 'd47727b69b31f2fa2f829a7fcc8efc16f8ce201b0c7e23e13e33417ac22ec5f8', 'PAD25': '5e52a6b0dd9315e116c5cebe0466558b60cd1212dade4e4fda54f1986fd6621f', 'CNXTT': 'e6e57c38c9307abf0aeacb859f993e393ab868576efacd5babc701e466038b5f', 'BASE': '31ffc3effb56d422f91807de3d769122d7fb25665f381da846c0a9fcb1d9cfa1'}
+ IMPORTS = {"manifest_sha256": "a" * 64, "v6_record_sha256": "b" * 64, "reviewer_authorization_sha256": "c" * 64,
+            "input_dir": "/kaggle/input/dentamind-cv5-imports"}
+ 
+@@ -43,46 +46,34 @@ def cfg(cid="PAD25"):
+     return dataclasses.asdict(CIV.proposed_config(cid))
+ 
+ 
++def _lf(nb) -> str:
++    return hashlib.sha256((json.dumps(nb, indent=1, ensure_ascii=False) + "\n").encode("utf-8")).hexdigest()
++
++
+ @pytest.fixture(scope="module")
+-def patched(tmp_path_factory):
+-    """The generator with the patch applied, in a temporary tree that mirrors the files it embeds."""
+-    t = tmp_path_factory.mktemp("patched")
+-    for rel in ("kaggle/make_cv5_notebook.py", "kaggle/make_notebook.py", "kaggle/cv5_lib.py", "kaggle/cv5_accept.py",
+-                "kaggle/cv5_interventions.py", "kaggle/cv5_imports.py", "scripts/dataset/make_cv_folds.py", "data/splits/cv5_folds_v1.csv"):
+-        (t / rel).parent.mkdir(parents=True, exist_ok=True)
+-        shutil.copy2(ROOT / rel, t / rel)
+-    import os
+-    env = {**os.environ, "GIT_CEILING_DIRECTORIES": str(t.parent)}           # never let git find an enclosing repository
+-    r = subprocess.run(["git", "apply", str(PATCH)], cwd=t, capture_output=True, text=True, env=env)
+-    assert r.returncode == 0, r.stderr
+-    assert _sha(t / "kaggle" / "make_cv5_notebook.py") != FROZEN_SHA, "patch was not applied to the temporary copy"
+-    spec = importlib.util.spec_from_file_location("make_cv5_notebook_patched", t / "kaggle" / "make_cv5_notebook.py")
+-    mod = importlib.util.module_from_spec(spec)
+-    saved = list(sys.path)
+-    try:
+-        spec.loader.exec_module(mod)
+-    finally:
+-        sys.path[:] = saved
+-    return mod
++def patched():
++    """The real generator, which must be exactly the reviewed patched version."""
++    assert _sha(GENERATOR) == PATCHED_SHA, "generator is not the reviewed patched version (Amendment 01c)"
++    return NB
+ 
+ 
+ # ---------------------------------------------------------------------------------------------------- the patch itself
+-def test_patch_targets_the_frozen_file_and_is_not_applied():
+-    assert _sha(FROZEN) == FROZEN_SHA
+-    r = subprocess.run(["git", "apply", "--check", str(PATCH)], cwd=ROOT, capture_output=True, text=True)
+-    assert r.returncode == 0, r.stderr                                          # applies cleanly ...
+-    assert _sha(FROZEN) == FROZEN_SHA                                           # ... and --check changed nothing
++def test_patch_is_applied_exactly():
++    assert _sha(GENERATOR) == PATCHED_SHA != FROZEN_SHA
++    r = subprocess.run(["git", "apply", "-R", "--check", str(PATCH)], cwd=ROOT, capture_output=True, text=True)
++    assert r.returncode == 0, r.stderr                                          # the reviewed patch is what is applied
++    assert _sha(GENERATOR) == PATCHED_SHA                                       # --check changed nothing
+     text = PATCH.read_text(encoding="utf-8")
+-    assert text.count("diff --git") == 1 and "b/kaggle/make_cv5_notebook.py" in text   # only the generator is touched
++    assert text.count("diff --git") == 1 and "b/kaggle/make_cv5_notebook.py" in text
+ 
+ 
+-def test_default_output_is_byte_identical_to_the_frozen_generator(patched):
+-    assert patched.CELLS == NB.CELLS
+-    assert json.dumps(patched._notebook(patched.CELLS), indent=1, ensure_ascii=False) + "\n" == \
+-        (ROOT / "kaggle" / "dentamind_5fold_cv.ipynb").read_text(encoding="utf-8")               # BASE notebook unchanged
++def test_imports_off_output_equals_the_pre_patch_baseline(patched):
++    assert _lf(patched._notebook(patched.CELLS)) == BASELINE_LF_SHA256["BASE"]
++    base_file = (ROOT / "kaggle" / "dentamind_5fold_cv.ipynb").read_bytes().replace(b"\r\n", b"\n")
++    assert hashlib.sha256(base_file).hexdigest() == BASELINE_LF_SHA256["BASE"]            # protected BASE notebook unchanged
+     for cid in CIV.PROPOSED:
+-        assert patched.candidate_cells(cid, cfg(cid)) == NB.candidate_cells(cid, cfg(cid))   # imports off: identical notebook
+-        assert patched.candidate_cells(cid, cfg(cid), None) == NB.candidate_cells(cid, cfg(cid))
++        assert _lf(patched._notebook(patched.candidate_cells(cid, cfg(cid)))) == BASELINE_LF_SHA256[cid]
++        assert patched.candidate_cells(cid, cfg(cid), None) == patched.candidate_cells(cid, cfg(cid))
+     embed = next(s for k, s in patched.candidate_cells("PAD25", cfg()) if "EMBEDDED_SHA256" in s)
+     assert "kaggle/cv5_imports.py" not in embed
+ 
+diff --git a/tests/test_cv5_base_p2.py b/tests/test_cv5_base_p2.py
+index 726920d..1021fa1 100644
+--- a/tests/test_cv5_base_p2.py
++++ b/tests/test_cv5_base_p2.py
+@@ -147,7 +147,7 @@ def test_writer_refuses_invalid_and_writes_once(tmp_path):
+ 
+ 
+ def test_frozen_files_and_base_notebook_unchanged():
+-    assert _sha(ROOT / "kaggle" / "make_cv5_notebook.py") == "4a5efda8951126644d0e91b4778e3d7c6d93e174cebc6a371f3a7001e2920641"
++    assert _sha(ROOT / "kaggle" / "make_cv5_notebook.py") == "d15b1a55d959ff8e8079a8e7480c57b059f49cf866fee03ed7987f9e64ea969e"   # Amendment 01c
+     assert json.dumps(NB._notebook(NB.CELLS), indent=1, ensure_ascii=False) + "\n" == \
+         (ROOT / "kaggle" / "dentamind_5fold_cv.ipynb").read_text(encoding="utf-8")
+ 

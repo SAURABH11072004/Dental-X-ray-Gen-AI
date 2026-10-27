@@ -1,0 +1,283 @@
+{
+ "generated": "2026-10-16T08:14:19.068724+00:00",
+ "script": "scripts/dataset/audit_class_imbalance.py",
+ "inputs": {
+  "annotation_file": "data\\training_data\\quadrant-enumeration-disease\\train_quadrant_enumeration_disease.json",
+  "annotation_sha256": "6e1f702cfd6c83bc63660d9a0fd79fe5b26d5a54b63d93b954a02cc254314483",
+  "manifest_sha256": "a962602d9e240ae6afa20f010cb6224a8005cca1a40c123fe969843b15233739",
+  "split_file_sha256": "ee88dc6835eb9a205089b72505445f306786d4f06988de34c64927da78c80b4f",
+  "split_seed": 42,
+  "split_fractions": {
+   "train": 0.7,
+   "val": 0.1,
+   "calibration": 0.1,
+   "test": 0.1
+  },
+  "split_fingerprint": "7f66d59d9cbad925"
+ },
+ "classifier_data": {
+  "source": "DENTEX quadrant-enumeration-disease (training archive)",
+  "image_type": "panoramic",
+  "images_in_annotation_file": 705,
+  "images_with_target_findings": 678,
+  "images_without_any_annotation": 27,
+  "images_per_split": {
+   "train": 476,
+   "calibration": 64,
+   "unassigned": 27,
+   "val": 65,
+   "test": 73
+  },
+  "images_with_findings_per_split": {
+   "train": 476,
+   "calibration": 64,
+   "val": 65,
+   "test": 73
+  },
+  "findings_total": 3529,
+  "annotations_dropped": [],
+  "findings_failing_crop_rule": 0,
+  "findings_per_radiograph": {
+   "mean": 5.21,
+   "max": 23
+  },
+  "class_concentration": {
+   "Caries": {
+    "findings": 2189,
+    "radiographs": 623,
+    "max_per_radiograph": 14,
+    "share_in_top_10pct_radiographs": 0.244
+   },
+   "Deep Caries": {
+    "findings": 578,
+    "radiographs": 321,
+    "max_per_radiograph": 9,
+    "share_in_top_10pct_radiographs": 0.27
+   },
+   "Impacted": {
+    "findings": 604,
+    "radiographs": 254,
+    "max_per_radiograph": 4,
+    "share_in_top_10pct_radiographs": 0.166
+   },
+   "Periapical Lesion": {
+    "findings": 158,
+    "radiographs": 116,
+    "max_per_radiograph": 4,
+    "share_in_top_10pct_radiographs": 0.228
+   }
+  },
+  "crop_cache_cross_check": {
+   "train": {
+    "cached": {
+     "Caries": 1550,
+     "Deep Caries": 438,
+     "Impacted": 412,
+     "Periapical Lesion": 120
+    },
+    "computed": {
+     "Caries": 1550,
+     "Deep Caries": 438,
+     "Impacted": 412,
+     "Periapical Lesion": 120
+    },
+    "identical": true
+   },
+   "val": {
+    "cached": {
+     "Caries": 205,
+     "Deep Caries": 45,
+     "Impacted": 72,
+     "Periapical Lesion": 9
+    },
+    "computed": {
+     "Caries": 205,
+     "Deep Caries": 45,
+     "Impacted": 72,
+     "Periapical Lesion": 9
+    },
+    "identical": true
+   }
+  }
+ },
+ "duplicates": {
+  "exact_within_disease_subset": {
+   "count": 11,
+   "image_ids": [
+    "qed_train_559",
+    "qed_train_538",
+    "qed_train_247",
+    "qed_train_611",
+    "qed_train_416",
+    "qed_train_123",
+    "qed_train_571",
+    "qed_train_346",
+    "qed_train_245",
+    "qed_train_175",
+    "qed_train_71"
+   ],
+   "note": "manifest duplicate_of: later copies of a byte-identical image"
+  },
+  "exact_with_other_dentex_subsets": {
+   "count": 542,
+   "examples": [
+    [
+     "qed_train_0",
+     "q_train_341",
+     "training_data/quadrant"
+    ],
+    [
+     "qed_train_0",
+     "qe_train_315",
+     "training_data/quadrant_enumeration"
+    ],
+    [
+     "qed_train_1",
+     "q_train_482",
+     "training_data/quadrant"
+    ],
+    [
+     "qed_train_1",
+     "qe_train_437",
+     "training_data/quadrant_enumeration"
+    ],
+    [
+     "qed_train_10",
+     "q_train_444",
+     "training_data/quadrant"
+    ],
+    [
+     "qed_train_10",
+     "qe_train_401",
+     "training_data/quadrant_enumeration"
+    ],
+    [
+     "qed_train_104",
+     "q_train_430",
+     "training_data/quadrant"
+    ],
+    [
+     "qed_train_104",
+     "qe_train_388",
+     "training_data/quadrant_enumeration"
+    ],
+    [
+     "qed_train_105",
+     "q_train_97",
+     "training_data/quadrant"
+    ],
+    [
+     "qed_train_105",
+     "qe_train_91",
+     "training_data/quadrant_enumeration"
+    ]
+   ],
+   "note": "same radiograph also in quadrant / enumeration / unlabelled subsets; the split file assigns such twins by content hash, so they share one split"
+  },
+  "near_duplicates": {
+   "method": "dHash Hamming <= 4 + 256x128 thumbnail correlation >= 0.97 (scripts/check_leakage.py rule)",
+   "hash_candidates": 78,
+   "confirmed": 0,
+   "confirmed_across_splits": 0,
+   "max_candidate_correlation": 0.8912132978439331,
+   "pairs": []
+  }
+ },
+ "patients": {
+  "patient_ids_available": false,
+  "note": "DENTEX file names carry no patient id; manifest patient_id is a content-hash surrogate (one radiograph = one group). Patient-level separation across splits therefore CANNOT be claimed, and it cannot be checked whether a minority class comes from few patients; per-radiograph concentration is reported instead."
+ },
+ "class_counts_before_and_after_crop_rule": {
+  "train": {
+   "Caries": [
+    1550,
+    1550
+   ],
+   "Deep Caries": [
+    438,
+    438
+   ],
+   "Impacted": [
+    412,
+    412
+   ],
+   "Periapical Lesion": [
+    120,
+    120
+   ]
+  },
+  "val": {
+   "Caries": [
+    205,
+    205
+   ],
+   "Deep Caries": [
+    45,
+    45
+   ],
+   "Impacted": [
+    72,
+    72
+   ],
+   "Periapical Lesion": [
+    9,
+    9
+   ]
+  },
+  "calibration": {
+   "Caries": [
+    206,
+    206
+   ],
+   "Deep Caries": [
+    47,
+    47
+   ],
+   "Impacted": [
+    55,
+    55
+   ],
+   "Periapical Lesion": [
+    16,
+    16
+   ]
+  },
+  "test": {
+   "Caries": [
+    228,
+    228
+   ],
+   "Deep Caries": [
+    48,
+    48
+   ],
+   "Impacted": [
+    65,
+    65
+   ],
+   "Periapical Lesion": [
+    13,
+    13
+   ]
+  },
+  "all": {
+   "Caries": [
+    2189,
+    2189
+   ],
+   "Deep Caries": [
+    578,
+    578
+   ],
+   "Impacted": [
+    604,
+    604
+   ],
+   "Periapical Lesion": [
+    158,
+    158
+   ]
+  }
+ },
+ "unlabelled_images_policy": "1571 unlabelled DENTEX radiographs and 27 disease-subset images without annotations are not used as negatives; teeth without a finding annotation are never labelled healthy."
+}

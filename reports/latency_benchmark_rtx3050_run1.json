@@ -1,0 +1,200 @@
+{
+ "format": "dentamind-latency-benchmark-v1",
+ "date_utc": "2026-10-25T08:36:40Z",
+ "status": "descriptive measurement on one machine; not a CV5 metric and not an acceptance criterion",
+ "script_sha256": "4607be21cd31f4afb288d59cb5e3764a124bf2e3ea98d7f3665664750fa05bf2",
+ "checkpoints": {
+  "checkpoints/kaggle_candidates/dc9c505b/checkpoints/baseline__BASE_s45.pth": "3e0ab876885a1c3dd11eb45210876133cceb331a6662b718530a49af12833798",
+  "Data/checkpoints/dentex_teeth_detection_v1.pth": "a68ce4884066ad80e9f6ea358d7ea56d101c6f7e65445b2f89cef9653e786921"
+ },
+ "classifier_parameters": 23516228,
+ "environment": {
+  "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU",
+  "nvidia_smi": "NVIDIA GeForce RTX 3050 Laptop GPU, 4096 MiB, 610.62, [N/A], 2100 MHz",
+  "vram_bytes": 4294443008,
+  "cuda_runtime": "12.4",
+  "cudnn": 90100,
+  "cudnn_benchmark": false,
+  "torch": "2.6.0+cu124",
+  "torchvision": "0.21.0+cu124",
+  "python": "3.13.0",
+  "cpu": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+  "os": "Windows-11-10.0.26300-SP0",
+  "power_thermal_control": "none (laptop; not controlled)"
+ },
+ "model_only_gpu_fp32": [
+  {
+   "batch": 1,
+   "iterations_per_repetition": 50,
+   "repetitions": 5,
+   "warmup_iterations": 20,
+   "ms_per_crop_by_repetition": [
+    5.205714001785964,
+    5.42642000131309,
+    4.688155998010188,
+    4.959176001138985,
+    4.7367039998061955
+   ],
+   "ms_per_crop": {
+    "n": 5,
+    "median": 4.959176001138985,
+    "min": 4.688155998010188,
+    "max": 5.42642000131309,
+    "p5": 4.69786559836939,
+    "p95": 5.382278801407665
+   },
+   "ms_per_iteration": {
+    "n": 250,
+    "median": 4.608350049238652,
+    "min": 4.570399993099272,
+    "max": 9.339799988083541,
+    "p5": 4.579115059459582,
+    "p95": 7.326559990178771
+   },
+   "throughput_crops_per_s_median": 201.6464025012074,
+   "peak_allocated_mb": 109.39501953125
+  },
+  {
+   "batch": 64,
+   "iterations_per_repetition": 10,
+   "repetitions": 5,
+   "warmup_iterations": 20,
+   "ms_per_crop_by_repetition": [
+    2.9091067186527653,
+    2.9106364063409274,
+    2.9125276563718216,
+    2.9124518749085837,
+    2.9106562500601285
+   ],
+   "ms_per_crop": {
+    "n": 5,
+    "median": 2.9106562500601285,
+    "min": 2.9091067186527653,
+    "max": 2.9125276563718216,
+    "p5": 2.9094126561903977,
+    "p95": 2.912512500079174
+   },
+   "ms_per_iteration": {
+    "n": 50,
+    "median": 186.29994994262233,
+    "min": 185.9272998990491,
+    "max": 186.71789998188615,
+    "p5": 186.06082999613136,
+    "p95": 186.60417002392933
+   },
+   "throughput_crops_per_s_median": 343.56513242652477,
+   "peak_allocated_mb": 771.818359375
+  }
+ ],
+ "model_only_cpu_fp32": [
+  {
+   "batch": 1,
+   "iterations_per_repetition": 50,
+   "repetitions": 5,
+   "warmup_iterations": 20,
+   "ms_per_crop_by_repetition": [
+    66.16394800134003,
+    65.88540999917313,
+    64.70963400090113,
+    65.37598400143906,
+    65.17801200039685
+   ],
+   "ms_per_crop": {
+    "n": 5,
+    "median": 65.37598400143906,
+    "min": 64.70963400090113,
+    "max": 66.16394800134003,
+    "p5": 64.80330960080028,
+    "p95": 66.10824040090665
+   },
+   "ms_per_iteration": {
+    "n": 250,
+    "median": 65.26704999851063,
+    "min": 56.878300034441054,
+    "max": 80.03529999405146,
+    "p5": 60.02927492954768,
+    "p95": 71.44842499983497
+   },
+   "throughput_crops_per_s_median": 15.296136880754068,
+   "peak_allocated_mb": null
+  }
+ ],
+ "end_to_end_gpu": {
+  "images": [
+   "Data/training_data/quadrant-enumeration-disease/xrays/train_4.png",
+   "Data/training_data/quadrant-enumeration-disease/xrays/train_5.png",
+   "Data/training_data/quadrant-enumeration-disease/xrays/train_6.png",
+   "Data/training_data/quadrant-enumeration-disease/xrays/train_8.png",
+   "Data/training_data/quadrant-enumeration-disease/xrays/train_9.png",
+   "Data/training_data/quadrant-enumeration-disease/xrays/train_10.png",
+   "Data/training_data/quadrant-enumeration-disease/xrays/train_11.png",
+   "Data/training_data/quadrant-enumeration-disease/xrays/train_13.png",
+   "Data/training_data/quadrant-enumeration-disease/xrays/train_14.png",
+   "Data/training_data/quadrant-enumeration-disease/xrays/train_15.png",
+   "Data/training_data/quadrant-enumeration-disease/xrays/train_19.png",
+   "Data/training_data/quadrant-enumeration-disease/xrays/train_20.png",
+   "Data/training_data/quadrant-enumeration-disease/xrays/train_24.png",
+   "Data/training_data/quadrant-enumeration-disease/xrays/train_27.png",
+   "Data/training_data/quadrant-enumeration-disease/xrays/train_28.png",
+   "Data/training_data/quadrant-enumeration-disease/xrays/train_30.png",
+   "Data/training_data/quadrant-enumeration-disease/xrays/train_31.png",
+   "Data/training_data/quadrant-enumeration-disease/xrays/train_32.png",
+   "Data/training_data/quadrant-enumeration-disease/xrays/train_34.png",
+   "Data/training_data/quadrant-enumeration-disease/xrays/train_35.png"
+  ],
+  "warmup_images": 2,
+  "repetitions": 5,
+  "detector_boxes_per_image": {
+   "n": 100,
+   "median": 29.0,
+   "min": 18.0,
+   "max": 33.0,
+   "p5": 18.95,
+   "p95": 33.0
+  },
+  "ms_per_radiograph": {
+   "load": {
+    "n": 100,
+    "median": 54.99689996941015,
+    "min": 45.825099921785295,
+    "max": 114.64749998413026,
+    "p5": 49.92871006834321,
+    "p95": 79.89517998648807
+   },
+   "detector": {
+    "n": 100,
+    "median": 84.52135004336014,
+    "min": 79.58889997098595,
+    "max": 116.49359995499253,
+    "p5": 81.0408899851609,
+    "p95": 93.36474999436177
+   },
+   "crop": {
+    "n": 100,
+    "median": 18.393300008028746,
+    "min": 11.763700051233172,
+    "max": 23.596999933943152,
+    "p5": 13.103694963501766,
+    "p95": 22.517760028131306
+   },
+   "classify": {
+    "n": 100,
+    "median": 89.10995000042021,
+    "min": 56.386000011116266,
+    "max": 99.81300006620586,
+    "p5": 59.45357996970415,
+    "p95": 98.64420500234701
+   },
+   "total": {
+    "n": 100,
+    "median": 251.31719990167767,
+    "min": 203.93960003275424,
+    "max": 312.7099999692291,
+    "p5": 208.95660994574428,
+    "p95": 282.48225001152605
+   }
+  },
+  "peak_allocated_mb": 698.265625,
+  "excluded": "image upload / HTTP, tooth numbering, segmentation, report generation, visualisation"
+ }
+}

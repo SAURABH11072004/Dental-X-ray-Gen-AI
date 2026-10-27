@@ -1,0 +1,13 @@
+diff --git a/kaggle/build_candidate_bundle.py b/kaggle/build_candidate_bundle.py
+index 4050e0e..b515f6f 100644
+--- a/kaggle/build_candidate_bundle.py
++++ b/kaggle/build_candidate_bundle.py
+@@ -22,7 +22,7 @@ ROOT = Path(__file__).resolve().parents[1]
+ DIST = ROOT / "kaggle" / "dist"
+ BASE_BUNDLE = DIST / "dentamind_kaggle_bundle.zip"
+ FILES = [
+-    "kaggle/cv5_accept.py", "kaggle/cv5_interventions.py", "kaggle/cv5_lib.py", "kaggle/make_cv5_notebook.py",
++    "kaggle/cv5_accept.py", "kaggle/cv5_interventions.py", "kaggle/cv5_imports.py", "kaggle/cv5_lib.py", "kaggle/make_cv5_notebook.py",
+     "kaggle/make_notebook.py", "kaggle/make_cv5_preflight_notebook.py", "kaggle/cv5_preflight_trainer.py",
+     "kaggle/dentamind_cv5_preflight.ipynb", "kaggle/build_candidate_bundle.py",
+     "scripts/dataset/make_cv_folds.py", "data/splits/cv5_folds_v1.csv",

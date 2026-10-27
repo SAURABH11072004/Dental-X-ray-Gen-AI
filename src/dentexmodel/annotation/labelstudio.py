@@ -5,7 +5,9 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
+import socket
 import urllib.error
+import urllib.parse
 import urllib.request
 from dataclasses import dataclass, field, asdict
 from datetime import datetime, timezone
@@ -255,8 +257,19 @@ class LabelStudioClient:
                                        hint="Start Label Studio (docker compose --profile annotation up -d) or use the manual export/import workflow.")
 
     def health(self) -> dict:
+        # on Windows 'localhost' is tried over IPv6 first and a closed port makes the attempt wait ~4 s (this probe runs on every
+        # Home dashboard load); use the IPv4 loopback, as backend/services/system.py:probe does
+        url = self.url.replace("//localhost", "//127.0.0.1", 1)
+        u = urllib.parse.urlparse(url)
+        if u.hostname in ("127.0.0.1", "::1"):
+            # a refused loopback connection still takes ~2 s on Windows (SYN retries); a running local server accepts in
+            # milliseconds, so a short port check first keeps the dashboard fast when Label Studio is not started
+            try:
+                socket.create_connection((u.hostname, u.port or 80), timeout=0.5).close()
+            except OSError as exc:
+                return {"reachable": False, "error": str(exc)}
         try:
-            req = urllib.request.Request(self.url + "/health", method="GET")
+            req = urllib.request.Request(url + "/health", method="GET")
             with urllib.request.urlopen(req, timeout=self.timeout) as r:
                 return {"reachable": True, "status_code": r.status, "authenticated": bool(self.key)}
         except Exception as exc:  # noqa: BLE001

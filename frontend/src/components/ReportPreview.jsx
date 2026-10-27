@@ -1,8 +1,12 @@
 import React from "react";
 import { fmt, when } from "../lib/format";
+import { HIGH_UNCERTAINTY_TEXT } from "../lib/classResult";
 import { SAFETY_NOTE, reviewStatus } from "../lib/reportStatus";
 import EvidenceReference from "./EvidenceReference";
 import StatusBadge from "./StatusBadge";
+import FinalResult from "./FinalResult";
+
+const UncertainNote = ({ f }) => (f.high_uncertainty ? <span className="block text-xs text-warn" data-testid="high-uncertainty-warning">{HIGH_UNCERTAINTY_TEXT}</span> : null);
 
 export function ValidationIndicators({ validation }) {
   if (!validation) return null;
@@ -51,10 +55,13 @@ function LocalizedReport({ loc, report, imageName, check, validation, techExtra 
         <div><dt className="text-xs text-muted">{h.reviewed_by}</dt><dd>{loc.reviewed_by || h.not_reviewed}</dd></div>
       </dl>
 
+      {/* final result (finding / healthy / error), same rule as the analysis page */}
+      {(loc.final_result || report?.final_result) && <FinalResult result={loc.final_result || report.final_result} title={loc.final_result?.heading || "Final result"} />}
+
       {/* 3. summary */}
       <Section title={h.summary}>
         <p className="text-sm leading-relaxed">{loc.summary}</p>
-        {loc.analysis?.summary_counts && <p className="mt-2 text-xs text-muted">{["n_regions", "n_numbered", "n_with_mask", "n_review_required", "n_abstained"].map((k) => `${k.replace(/^n_/, "").replace(/_/g, " ")}: ${loc.analysis.summary_counts[k]}`).join(" · ")}{loc.analysis.image_quality_flags?.length ? ` · image quality: ${loc.analysis.image_quality_flags.join(", ")}` : ""}</p>}
+        {loc.analysis?.summary_counts && <p className="mt-2 text-xs text-muted">{["n_regions", "n_numbered", "n_with_mask", "n_review_required", "n_abstained"].map((k) => `${k === "n_abstained" ? "high classifier uncertainty" : k.replace(/^n_/, "").replace(/_/g, " ")}: ${loc.analysis.summary_counts[k]}`).join(" · ")}{loc.analysis.image_quality_flags?.length ? ` · image quality: ${loc.analysis.image_quality_flags.join(", ")}` : ""}</p>}
       </Section>
 
       {/* 4. findings */}
@@ -64,7 +71,7 @@ function LocalizedReport({ loc, report, imageName, check, validation, techExtra 
             <thead className="sticky top-0 bg-white"><tr>{loc.columns.map((c) => <th key={c} className="th">{c}</th>)}</tr></thead>
             <tbody>{loc.findings.map((f) => (
               <tr key={f.finding_id}><td className="td font-mono text-xs">{f.finding_id}</td><td className="td">{f.tooth_fdi ?? loc.unassigned}</td>
-                <td className="td">{f.label_display}</td><td className="td">{fmt(f.probability, f.kind === "detection" ? 3 : 2)}</td>
+                <td className="td">{f.kind === "class_unavailable" ? <span className="text-warn">class scores unavailable</span> : f.label_display}<UncertainNote f={f} /></td><td className="td">{fmt(f.probability, f.kind === "detection" ? 3 : 2)}</td>
                 <td className="td">{fmt(f.uncertainty, 2)}</td><td className="td">{f.review_status_text}</td></tr>))}</tbody></table></div>)}
       </Section>
 
@@ -117,13 +124,14 @@ export default function ReportPreview({ report, localized, check, imageName, val
     <article className="space-y-4">
       <header className="flex items-start justify-between gap-2"><h2 className="text-lg font-semibold text-navy">Report {report.report_id}</h2><StatusBadge tone={st.tone}>{st.label}</StatusBadge></header>
       <SafetyNote text={SAFETY_NOTE} />
+      {report.final_result && <FinalResult result={report.final_result} />}
       <Section title="Summary"><p className="text-sm leading-relaxed">{report.summary}</p></Section>
       <Section title="Structured findings">
         {report.findings.length === 0 ? <p className="text-sm text-muted">No findings were supplied.</p> : (
           <div className="overflow-x-auto"><table className="w-full">
-            <thead><tr>{["Tooth", "Closest class / region", "Score", "Uncertainty", "Evidence", "Review"].map((h) => <th key={h} className="th">{h}</th>)}</tr></thead>
+            <thead><tr>{["Tooth", "Highest-scoring class / region", "Raw model score", "Uncertainty", "Evidence", "Review"].map((h) => <th key={h} className="th">{h}</th>)}</tr></thead>
             <tbody>{report.findings.map((f) => (
-              <tr key={f.finding_id}><td className="td">{f.tooth_fdi ?? <StatusBadge status="unassigned" />}</td><td className="td">{f.label}</td>
+              <tr key={f.finding_id}><td className="td">{f.tooth_fdi ?? <StatusBadge status="unassigned" />}</td><td className="td">{f.kind === "class_unavailable" ? <span className="text-warn">class scores unavailable</span> : f.label}<UncertainNote f={f} /></td>
                 <td className="td">{fmt(f.probability, f.kind === "detection" ? 3 : 2)}</td><td className="td">{fmt(f.uncertainty, 2)}</td>
                 <td className="td"><EvidenceReference finding={f} /></td><td className="td"><StatusBadge status={f.review_status} /></td></tr>))}</tbody></table></div>)}
       </Section>

@@ -1,0 +1,21 @@
+{
+ "format": "dentamind-clinician-rereading-queue-v2",
+ "derived_from": "caries_rereading_manifest_v1.json",
+ "v1_manifest_sha256": "1b0e84a04465c199225b2731b4f2a2274199dc89d008ca40cd4b5421b7e102ed",
+ "image_code_seed": 20261026,
+ "images": 158,
+ "items": 220,
+ "script_sha256": "6e9e2fec5629f382756ff276bdf4988188f99ffb29578cf21f74237bdd620ff1",
+ "change": "image_path, image_sha256 and the exact box coordinates removed from the reviewer worksheet (all three could be matched against the public DENTEX annotations); opaque image codes added; mapping and box only in the coordinator key, from which the coordinator configures the viewer that draws the box",
+ "status": "PREPARED ONLY - no image shared, no review performed; blocked until a clinical lead and the governance decision exist",
+ "outputs": {
+  "worksheet": {
+   "path": "reports/clinical_review/caries_rereading_worksheet_v2_BLINDED.csv",
+   "sha256": "effa7db6bc5079750ac6d782840c1c88bd16967a3b6bfcfda549db46dc6d9c73"
+  },
+  "key": {
+   "path": "reports/clinical_review/caries_rereading_key_v2_COORDINATOR_ONLY.csv",
+   "sha256": "c459f5dac5dcec86f82f601be0f0d4eda402be453e95a95bac2f3c457405eb14"
+  }
+ }
+}

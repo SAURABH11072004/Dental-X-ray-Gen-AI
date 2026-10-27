@@ -1,0 +1,15 @@
+{
+ "_instructions": "TEMPLATE ONLY. Copy to a new file, add one record per pool source_dataset that has clinician-verified labels, and replace every <...> with the real value from the data holder's own documentation. Leave nothing as a placeholder: build_cv5_import_manifest.py refuses any blank field, and a value must never be guessed. Delete this _instructions key in the copy.",
+ "<source_dataset as in data/annotation/annotation_pool.csv>": {
+  "name": "<official dataset name>",
+  "licence": "<licence name, e.g. as stated by the data holder>",
+  "licence_terms_url": "<URL of the licence or data-use terms>",
+  "provenance_url_or_doi": "<official URL or DOI of the source>",
+  "version": "<version / release identifier>",
+  "retrieved_on": "<YYYY-MM-DD the archive was downloaded>",
+  "archive_sha256": "<SHA-256 of the downloaded archive, 64 hex characters>",
+  "label_taxonomy": "<the source's original label scheme, or 'none (unlabelled images; all labels from clinician review)'>",
+  "label_mapping": "<how source labels map to Caries / Deep Caries / Impacted / Periapical Lesion, or 'not used: clinician labels only'>",
+  "ethics_statement": "<the source's de-identification / ethics statement, quoted or referenced>"
+ }
+}

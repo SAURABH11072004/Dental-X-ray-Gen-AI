@@ -9,6 +9,7 @@ from urllib.parse import urlparse
 from backend.version import APP_VERSION
 from dentexmodel.inference.registry import scan_checkpoints
 from dentexmodel.inference.system import environment_report, gpu_info
+from dentexmodel.reporting.final_result import final_result
 from dentexmodel.storage import jload
 
 
@@ -87,9 +88,11 @@ class SystemService:
         exps = self.exp.list()
         latest = next((e for e in exps if not e["is_test_data"]), None)
         recent = []
-        for a in db.list("analyses", where="kind IN ('detection','segmentation')", limit=8):
+        for a in db.list("analyses", where="kind IN ('full','detection','segmentation')", limit=8):
+            res = (jload(a["result_json"]) or {}) if a["kind"] == "full" else {}
             recent.append({"image_id": a["image_id"], "kind": a["kind"], "model_version": a["model_version"], "status": a["status"], "created": a["created"],
-                           "thumbnail_url": f"/api/images/{a['image_id']}/thumbnail"})
+                           "analysis_id": a["id"], "thumbnail_url": f"/api/images/{a['image_id']}/thumbnail",
+                           "final_result": (final_result(res) or res.get("final_result")) if a["kind"] == "full" else None})
         return {"images_uploaded": db.count("images"), "images_in_dataset": ds.main_image_count + ds.test_image_count,
                 "images_analyzed": len({a["image_id"] for a in analyses}), "teeth_detected": teeth,
                 "pending_annotations": ann["counts"]["pending"], "al_rounds": db.count("al_rounds"),

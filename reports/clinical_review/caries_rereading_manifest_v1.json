@@ -1,0 +1,24 @@
+{
+ "targets": 110,
+ "controls": 110,
+ "seed": 20261025,
+ "inputs": {
+  "kaggle/artifacts_cv5_run1/caries_confusion_findings.csv": "9998c9451e66e9224b030e7537628c06ebf943b4283657058fe8080e8d8b0ecf",
+  "data/splits/combined_train.csv": "faf2902e473107138c6ce1111f6495f295ef46fffaa9cdbec9f54b0c5d8f4c98",
+  "data/splits/combined_validation.csv": "3e29ffa00f8b9053de73ef0f89d2730ed842838394648a0c0816916754b76375",
+  "data/splits/cv5_folds_v1.csv": "9b767a4822844ccf0c4bf33d299e6e37420d1458a38035af0c3a3cb9107b47a6"
+ },
+ "format": "dentamind-clinician-rereading-queue-v1",
+ "script_sha256": "07dbaaf76ac4cb0bb490cf258236f0ccf05167e54582717088aa65bf448209df",
+ "status": "PREPARED ONLY - no image shared, no review performed; blocked until a clinical lead and data permissions exist",
+ "outputs": {
+  "worksheet": {
+   "path": "reports/clinical_review/caries_rereading_worksheet_v1_BLINDED.csv",
+   "sha256": "9d737e27520d5c373ea8ee5273411bbf046beac9536db5e74a27f4285dc5d7f2"
+  },
+  "key": {
+   "path": "reports/clinical_review/caries_rereading_key_v1_COORDINATOR_ONLY.csv",
+   "sha256": "81cabdc8169e388b47f110bf70eaee7810f4656231276510cd6b2b066033e4a6"
+  }
+ }
+}

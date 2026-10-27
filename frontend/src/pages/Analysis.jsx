@@ -8,6 +8,7 @@ import DetectionOverlay, { OverlayLegend, regionLabel } from "../components/Dete
 import SegmentationOverlay from "../components/SegmentationOverlay";
 import PredictionInspector from "../components/PredictionInspector";
 import RegionTable from "../components/RegionTable";
+import FinalResult from "../components/FinalResult";
 import ErrorState from "../components/ErrorState";
 import LoadingState from "../components/LoadingState";
 import StatusBadge from "../components/StatusBadge";
@@ -71,6 +72,7 @@ export default function Analysis() {
   async function analyze() {
     const r = await full.run(imageId);
     if (r) { setAnalysis(toAnalysisShape(r)); setSegmentation(toSegmentationShape(r)); setSelected(null); setExplain(null); setReportId(null); }
+    else if (analysis?.image_id === imageId) { setAnalysis(null); setSegmentation(null); }   // a failed run must not leave an older result on screen
   }
   async function explainSel() { const r = await exp.run(imageId, active.detections[selected].box); if (r) setExplain(r); }
   async function makeReport() {
@@ -173,6 +175,7 @@ export default function Analysis() {
 
           {active && (
             <div className="card card-pad" data-testid="summary">
+              {active.final_result && <div className="mb-3"><FinalResult result={active.final_result} /></div>}
               <div className="flex flex-wrap items-center gap-3">
                 <p className="text-sm"><b>{active.summary.n_review_required}</b> of <b>{regions.length}</b> regions are recommended for human review. {active.summary.n_numbered} of {regions.length} have a tooth number; {active.summary.n_with_mask} have a segmentation mask.</p>
                 <div className="ml-auto flex flex-wrap gap-2">

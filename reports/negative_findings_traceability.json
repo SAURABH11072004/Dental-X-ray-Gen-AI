@@ -1,0 +1,462 @@
+{
+ "format": "dentamind-negative-findings-traceability-v1",
+ "script_sha256": "d0b12b81c6864b9ec1e383163f3a75e566ee535428f1a1d6a2bd35037cb23fa3",
+ "notes": [
+  "all three experiments were evaluated on the seed-42 project validation split, not on CV5 folds and not on the test split; their criteria are the rules pre-registered for each experiment, not the CV5 acceptance protocol",
+  "Periapical Lesion has 9 validation findings: minority deltas are fragile",
+  "the ensemble file carries a 'latency' field from a separate single-split experiment; it is not reported here"
+ ],
+ "rows": [
+  {
+   "id": "neg.imbalance.REF_unweighted.gain",
+   "quantity": "imbalance strategy REF_unweighted: mean macro-F1 gain vs BASE (detector boxes)",
+   "value": 0.004236789120220119,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/REF_unweighted/mean_gain_macro_f1",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.REF_unweighted.seed_pairs",
+   "quantity": "imbalance strategy REF_unweighted: seed pairs better (of 5)",
+   "value": 3,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/REF_unweighted/seed_pairs_better",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.REF_unweighted.cross_pairs",
+   "quantity": "imbalance strategy REF_unweighted: cross pairs better (of 25)",
+   "value": 14,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/REF_unweighted/cross_pairs_better",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.REF_unweighted.Deep Caries.recall_delta",
+   "quantity": "imbalance strategy REF_unweighted: Deep Caries recall delta",
+   "value": -0.009756097560975618,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/REF_unweighted/minority_recall_delta/Deep Caries",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.REF_unweighted.Periapical Lesion.recall_delta",
+   "quantity": "imbalance strategy REF_unweighted: Periapical Lesion recall delta",
+   "value": -0.08571428571428574,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/REF_unweighted/minority_recall_delta/Periapical Lesion",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.REF_unweighted.pass",
+   "quantity": "imbalance strategy REF_unweighted: passed its acceptance rule",
+   "value": false,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/REF_unweighted/pass",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.A1_sqrt_weights.gain",
+   "quantity": "imbalance strategy A1_sqrt_weights: mean macro-F1 gain vs BASE (detector boxes)",
+   "value": -0.008611502851575126,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/A1_sqrt_weights/mean_gain_macro_f1",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.A1_sqrt_weights.seed_pairs",
+   "quantity": "imbalance strategy A1_sqrt_weights: seed pairs better (of 5)",
+   "value": 2,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/A1_sqrt_weights/seed_pairs_better",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.A1_sqrt_weights.cross_pairs",
+   "quantity": "imbalance strategy A1_sqrt_weights: cross pairs better (of 25)",
+   "value": 11,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/A1_sqrt_weights/cross_pairs_better",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.A1_sqrt_weights.Deep Caries.recall_delta",
+   "quantity": "imbalance strategy A1_sqrt_weights: Deep Caries recall delta",
+   "value": 0.0,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/A1_sqrt_weights/minority_recall_delta/Deep Caries",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.A1_sqrt_weights.Periapical Lesion.recall_delta",
+   "quantity": "imbalance strategy A1_sqrt_weights: Periapical Lesion recall delta",
+   "value": -0.028571428571428692,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/A1_sqrt_weights/minority_recall_delta/Periapical Lesion",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.A1_sqrt_weights.pass",
+   "quantity": "imbalance strategy A1_sqrt_weights: passed its acceptance rule",
+   "value": false,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/A1_sqrt_weights/pass",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.A2_effnum_weights.gain",
+   "quantity": "imbalance strategy A2_effnum_weights: mean macro-F1 gain vs BASE (detector boxes)",
+   "value": 0.0007706376799123449,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/A2_effnum_weights/mean_gain_macro_f1",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.A2_effnum_weights.seed_pairs",
+   "quantity": "imbalance strategy A2_effnum_weights: seed pairs better (of 5)",
+   "value": 2,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/A2_effnum_weights/seed_pairs_better",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.A2_effnum_weights.cross_pairs",
+   "quantity": "imbalance strategy A2_effnum_weights: cross pairs better (of 25)",
+   "value": 12,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/A2_effnum_weights/cross_pairs_better",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.A2_effnum_weights.Deep Caries.recall_delta",
+   "quantity": "imbalance strategy A2_effnum_weights: Deep Caries recall delta",
+   "value": 0.019512195121951237,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/A2_effnum_weights/minority_recall_delta/Deep Caries",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.A2_effnum_weights.Periapical Lesion.recall_delta",
+   "quantity": "imbalance strategy A2_effnum_weights: Periapical Lesion recall delta",
+   "value": 0.0,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/A2_effnum_weights/minority_recall_delta/Periapical Lesion",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.A2_effnum_weights.pass",
+   "quantity": "imbalance strategy A2_effnum_weights: passed its acceptance rule",
+   "value": false,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/A2_effnum_weights/pass",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.B_sampler.gain",
+   "quantity": "imbalance strategy B_sampler: mean macro-F1 gain vs BASE (detector boxes)",
+   "value": -0.003745506458011283,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/B_sampler/mean_gain_macro_f1",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.B_sampler.seed_pairs",
+   "quantity": "imbalance strategy B_sampler: seed pairs better (of 5)",
+   "value": 2,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/B_sampler/seed_pairs_better",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.B_sampler.cross_pairs",
+   "quantity": "imbalance strategy B_sampler: cross pairs better (of 25)",
+   "value": 12,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/B_sampler/cross_pairs_better",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.B_sampler.Deep Caries.recall_delta",
+   "quantity": "imbalance strategy B_sampler: Deep Caries recall delta",
+   "value": -0.024390243902439046,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/B_sampler/minority_recall_delta/Deep Caries",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.B_sampler.Periapical Lesion.recall_delta",
+   "quantity": "imbalance strategy B_sampler: Periapical Lesion recall delta",
+   "value": -0.11428571428571421,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/B_sampler/minority_recall_delta/Periapical Lesion",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.B_sampler.pass",
+   "quantity": "imbalance strategy B_sampler: passed its acceptance rule",
+   "value": false,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/B_sampler/pass",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.C_focal.gain",
+   "quantity": "imbalance strategy C_focal: mean macro-F1 gain vs BASE (detector boxes)",
+   "value": -0.01383751285672179,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/C_focal/mean_gain_macro_f1",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.C_focal.seed_pairs",
+   "quantity": "imbalance strategy C_focal: seed pairs better (of 5)",
+   "value": 1,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/C_focal/seed_pairs_better",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.C_focal.cross_pairs",
+   "quantity": "imbalance strategy C_focal: cross pairs better (of 25)",
+   "value": 8,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/C_focal/cross_pairs_better",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.C_focal.Deep Caries.recall_delta",
+   "quantity": "imbalance strategy C_focal: Deep Caries recall delta",
+   "value": -0.04878048780487809,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/C_focal/minority_recall_delta/Deep Caries",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.C_focal.Periapical Lesion.recall_delta",
+   "quantity": "imbalance strategy C_focal: Periapical Lesion recall delta",
+   "value": -0.11428571428571432,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/C_focal/minority_recall_delta/Periapical Lesion",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.C_focal.pass",
+   "quantity": "imbalance strategy C_focal: passed its acceptance rule",
+   "value": false,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/C_focal/pass",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.D_official_val.gain",
+   "quantity": "imbalance strategy D_official_val: mean macro-F1 gain vs BASE (detector boxes)",
+   "value": -0.004284914036351384,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/D_official_val/mean_gain_macro_f1",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.D_official_val.seed_pairs",
+   "quantity": "imbalance strategy D_official_val: seed pairs better (of 5)",
+   "value": 2,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/D_official_val/seed_pairs_better",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.D_official_val.cross_pairs",
+   "quantity": "imbalance strategy D_official_val: cross pairs better (of 25)",
+   "value": 11,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/D_official_val/cross_pairs_better",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.D_official_val.Deep Caries.recall_delta",
+   "quantity": "imbalance strategy D_official_val: Deep Caries recall delta",
+   "value": 0.004878048780487809,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/D_official_val/minority_recall_delta/Deep Caries",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.D_official_val.Periapical Lesion.recall_delta",
+   "quantity": "imbalance strategy D_official_val: Periapical Lesion recall delta",
+   "value": 0.02857142857142858,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/D_official_val/minority_recall_delta/Periapical Lesion",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.D_official_val.pass",
+   "quantity": "imbalance strategy D_official_val: passed its acceptance rule",
+   "value": false,
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "acceptance/D_official_val/pass",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.imbalance.rule",
+   "quantity": "imbalance experiment acceptance rule",
+   "value": {
+    "gain_min": 0.027,
+    "seed_pairs_min": 4,
+    "cross_pairs_min": 20,
+    "class_f1_drop_max": 0.05,
+    "gt_macro_f1_drop_max": 0.02,
+    "minority_precision_drop_max": 0.1
+   },
+   "source": "checkpoints/kaggle_candidates/dc9c505b/validation_eval.json",
+   "json_path": "rule",
+   "source_sha256": "2c887708be2c8861c73985b3ce15c867adbee1fad3f526d9c77b68018ff55fce",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.external.gain",
+   "quantity": "external data (X2_hanoi): mean macro-F1 gain vs BASE (detector boxes)",
+   "value": -0.0005217751202572174,
+   "source": "kaggle/artifacts_external_run1/validation_eval.json",
+   "json_path": "acceptance/X2_hanoi/mean_gain_macro_f1",
+   "source_sha256": "7cc9fe7f1b9c81a6be32c53083fd0adaa78455c38b1e0473b95763a100d4d51a",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.external.seed_pairs",
+   "quantity": "external data (X2_hanoi): seed pairs better (of 5)",
+   "value": 2,
+   "source": "kaggle/artifacts_external_run1/validation_eval.json",
+   "json_path": "acceptance/X2_hanoi/seed_pairs_better",
+   "source_sha256": "7cc9fe7f1b9c81a6be32c53083fd0adaa78455c38b1e0473b95763a100d4d51a",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.external.cross_pairs",
+   "quantity": "external data (X2_hanoi): cross pairs better (of 25)",
+   "value": 11,
+   "source": "kaggle/artifacts_external_run1/validation_eval.json",
+   "json_path": "acceptance/X2_hanoi/cross_pairs_better",
+   "source_sha256": "7cc9fe7f1b9c81a6be32c53083fd0adaa78455c38b1e0473b95763a100d4d51a",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.external.Deep Caries.recall_delta",
+   "quantity": "external data (X2_hanoi): Deep Caries recall delta",
+   "value": -0.04878048780487798,
+   "source": "kaggle/artifacts_external_run1/validation_eval.json",
+   "json_path": "acceptance/X2_hanoi/minority_recall_delta/Deep Caries",
+   "source_sha256": "7cc9fe7f1b9c81a6be32c53083fd0adaa78455c38b1e0473b95763a100d4d51a",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.external.Periapical Lesion.recall_delta",
+   "quantity": "external data (X2_hanoi): Periapical Lesion recall delta",
+   "value": -0.05714285714285705,
+   "source": "kaggle/artifacts_external_run1/validation_eval.json",
+   "json_path": "acceptance/X2_hanoi/minority_recall_delta/Periapical Lesion",
+   "source_sha256": "7cc9fe7f1b9c81a6be32c53083fd0adaa78455c38b1e0473b95763a100d4d51a",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.external.gt_delta",
+   "quantity": "external data (X2_hanoi): GT-box macro-F1 delta",
+   "value": -0.0061558365161263895,
+   "source": "kaggle/artifacts_external_run1/validation_eval.json",
+   "json_path": "acceptance/X2_hanoi/gt_macro_f1_delta",
+   "source_sha256": "7cc9fe7f1b9c81a6be32c53083fd0adaa78455c38b1e0473b95763a100d4d51a",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.external.pass",
+   "quantity": "external data (X2_hanoi): passed its acceptance rule",
+   "value": false,
+   "source": "kaggle/artifacts_external_run1/validation_eval.json",
+   "json_path": "acceptance/X2_hanoi/pass",
+   "source_sha256": "7cc9fe7f1b9c81a6be32c53083fd0adaa78455c38b1e0473b95763a100d4d51a",
+   "kind": "read (checksum-archived)"
+  },
+  {
+   "id": "neg.ensemble.gain",
+   "quantity": "5-seed ensemble: macro-F1 gain vs BASE mean (detector boxes)",
+   "value": 0.007179447489982227,
+   "source": "reports/ensemble_evaluation_kaggle.json",
+   "json_path": "acceptance/macro_f1_gain_vs_base_mean",
+   "source_sha256": "f208246a45c3394d69e8127bbdc9c0640e9fcb2dc7488a39f163624f17d81a08",
+   "kind": "read (report-level file; not in a checksum-archived run)"
+  },
+  {
+   "id": "neg.ensemble.members_beaten",
+   "quantity": "5-seed ensemble: members beaten (of 5)",
+   "value": 2,
+   "source": "reports/ensemble_evaluation_kaggle.json",
+   "json_path": "acceptance/members_beaten",
+   "source_sha256": "f208246a45c3394d69e8127bbdc9c0640e9fcb2dc7488a39f163624f17d81a08",
+   "kind": "read (report-level file; not in a checksum-archived run)"
+  },
+  {
+   "id": "neg.ensemble.Deep Caries.recall_delta",
+   "quantity": "5-seed ensemble: Deep Caries recall delta",
+   "value": -0.019512195121951237,
+   "source": "reports/ensemble_evaluation_kaggle.json",
+   "json_path": "acceptance/minority_recall_delta/Deep Caries",
+   "source_sha256": "f208246a45c3394d69e8127bbdc9c0640e9fcb2dc7488a39f163624f17d81a08",
+   "kind": "read (report-level file; not in a checksum-archived run)"
+  },
+  {
+   "id": "neg.ensemble.boot.ci95",
+   "quantity": "5-seed ensemble: bootstrap 95% CI of the gain (2,000 resamples)",
+   "value": [
+    -0.03168954446696044,
+    0.048054742349276175
+   ],
+   "source": "reports/ensemble_evaluation_kaggle.json",
+   "json_path": "bootstrap_det_matched/ci95",
+   "source_sha256": "f208246a45c3394d69e8127bbdc9c0640e9fcb2dc7488a39f163624f17d81a08",
+   "kind": "read (report-level file; not in a checksum-archived run)"
+  },
+  {
+   "id": "neg.ensemble.pass",
+   "quantity": "5-seed ensemble: passed its acceptance rule",
+   "value": false,
+   "source": "reports/ensemble_evaluation_kaggle.json",
+   "json_path": "acceptance/pass",
+   "source_sha256": "f208246a45c3394d69e8127bbdc9c0640e9fcb2dc7488a39f163624f17d81a08",
+   "kind": "read (report-level file; not in a checksum-archived run)"
+  }
+ ]
+}

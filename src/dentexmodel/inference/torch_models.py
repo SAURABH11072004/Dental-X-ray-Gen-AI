@@ -138,8 +138,14 @@ def segment_teeth(image_rgb01: np.ndarray, image_id: str, settings: Settings, de
 
 def _prep_crops(image_rgb01: np.ndarray, boxes: list, info: ModelInfo, size: int):
     """Crop + normalise exactly as the classifier was trained (padding and mean/std come from the sidecar)."""
+    from dentexmodel.inference.registry import classifier_preprocessing_problems
     from dentexmodel.training.trainers import crop_region
-    pad = float(info.metadata.get("crop_pad", 0.0))
+    problems = classifier_preprocessing_problems(info.metadata)
+    if problems:      # never guess the preprocessing: a wrong crop or normalisation silently changes every prediction
+        raise ModelUnavailableError(f"Classifier '{info.model_id}' does not state its training preprocessing: " + "; ".join(problems),
+                                    hint="Add crop_pad, image_size and normalize (mean/std) to the checkpoint's .json sidecar, "
+                                         "exactly as used in training.", code="sidecar_preprocessing_missing")
+    pad = float(info.metadata["crop_pad"])
     img = (np.clip(image_rgb01, 0, 1) * 255).astype(np.uint8)
     crops = [crop_region(img, b, size, pad) for b in boxes]
     ok = [i for i, c in enumerate(crops) if c is not None]
@@ -147,9 +153,9 @@ def _prep_crops(image_rgb01: np.ndarray, boxes: list, info: ModelInfo, size: int
 
 
 def _normalize(torch, x_u8: np.ndarray, info: ModelInfo, device):
-    n = info.metadata.get("normalize") or {}
-    mean = torch.tensor(n.get("mean", (0.0, 0.0, 0.0)), device=device).view(1, 3, 1, 1)
-    std = torch.tensor(n.get("std", (1.0, 1.0, 1.0)), device=device).view(1, 3, 1, 1)
+    n = info.metadata["normalize"]                  # presence and shape checked in _prep_crops / validate_sidecar
+    mean = torch.tensor(n["mean"], device=device).view(1, 3, 1, 1)
+    std = torch.tensor(n["std"], device=device).view(1, 3, 1, 1)
     x = torch.from_numpy(x_u8).to(device).permute(0, 3, 1, 2).float() / 255.0
     return (x - mean) / std
 
